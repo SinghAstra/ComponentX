@@ -1,5 +1,9 @@
-import Image from "next/image";
+import AppBar from "./components/AppBar";
 
 export default function Home() {
-  return <h1>Home</h1>;
+  return (
+    <div>
+      <AppBar />
+    </div>
+  );
 }
