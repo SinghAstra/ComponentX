@@ -21,6 +21,8 @@ CREATE TABLE "User" (
 CREATE TABLE "Stream" (
     "id" TEXT NOT NULL,
     "type" "StreamType" NOT NULL,
+    "url" TEXT NOT NULL,
+    "extractedId" TEXT NOT NULL,
     "active" BOOLEAN NOT NULL DEFAULT true,
     "userId" TEXT NOT NULL,
 
