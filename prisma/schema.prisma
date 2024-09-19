@@ -13,16 +13,18 @@ model User {
   provider       Provider
   role           Role
   streams        Stream[]
-  upvotes       Upvote[]
+  upvotes        Upvote[]
 }
 
 model Stream{
   id            String   @id @default(uuid())
-  type          StreamType
+  type          StreamType 
+  url           String
+  extractedId   String 
   active        Boolean @default(true)
   upvotes       Upvote[]
-  userId    String
-  user    User     @relation(fields: [userId], references: [id])
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
 }
 
 model Upvote{
@@ -34,13 +36,12 @@ model Upvote{
   @@unique([userId,streamId])
 }
 
-enum StreamType{
-  Spotify,
+enum StreamType {
+  Spotify
   YouTube
 }
 
-
-enum Role{
+enum Role {
   Streamer
   EndUser
 }
