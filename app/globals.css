@@ -1,3 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Poppins", system-ui;
+}
+
+@layer base {
+  :root {
+    /* Core background and surface colors */
+    --background: 222 47% 5%;
+    --foreground: 213 31% 91%;
+
+    /* Elevated surfaces */
+    --card: 222 47% 7%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 47% 7%;
+    --popover-foreground: 213 31% 91%;
+
+    /* Primary accent - Vivid blue */
+    --primary: 214 95% 65%;
+    --primary-foreground: 222 47% 5%;
+
+    /* Secondary - Subtle blue-gray */
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 213 31% 91%;
+
+    /* Muted elements */
+    --muted: 222 47% 11%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent - Slightly brighter than secondary */
+    --accent: 217 19% 27%;
+    --accent-foreground: 213 31% 91%;
+
+    /* Destructive actions */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and inputs */
+    --border: 222 47% 11%;
+    --input: 222 20% 15%;
+    --ring: 214 95% 65%;
+
+    /* Radius */
+    --radius: 0.875rem;
+
+    --stats-blue: 210 40% 50%; /* Vibrant blue */
+    --stats-purple: 270 50% 50%; /* Deep purple */
+    --stats-pink: 330 60% 50%; /* Bright pink */
+    --stats-teal: 180 50% 40%; /* Teal green */
+    --stats-orange: 25 90% 50%; /* Warm orange */
+
+    --stats-green: 120 50% 40%; /* Verdant green */
+    --stats-red: 0 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  scrollbar-color: hsl(222 47% 11%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(222 47% 11%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+.bg-grid-white {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}

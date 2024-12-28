@@ -1,9 +1,7 @@
-import AppBar from "./components/AppBar";
+import React from "react";
 
-export default function Home() {
-  return (
-    <div>
-      <AppBar />
-    </div>
-  );
-}
+const Home = () => {
+  return <div className="bg-yellow-400">Home</div>;
+};
+
+export default Home;
