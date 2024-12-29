@@ -68,7 +68,7 @@ export async function GET() {
                 marginTop: "32px",
               }}
             >
-              {["Reusbale UI"].map((feature) => (
+              {siteConfig.features.map((feature) => (
                 <div
                   key={feature}
                   style={{
