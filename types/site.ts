@@ -5,6 +5,7 @@ export type SiteConfig = {
   headline: string;
   subHeadline: string;
   url: string;
+  features: string[];
   ogImage?: string;
   links: {
     twitter: string;

@@ -1,12 +1,15 @@
-## Description
+# SelectX
 
-SelectX is a web application designed to display a list of data fetched from an API on the left side of the screen. When an item is selected from the list, detailed information about that item is displayed on the right side. This project is built using Next Js to manage the state and interactions between the two components.
+SelectX is a web application and repository focused on reusable code for building **Master-Detail Layouts** (Split View). It allows developers to create UIs where a list of items is displayed on one side, and detailed information about a selected item is shown on the other.
+
+## Tech Stack
+
+- **Next.js**: For building the application with server-side rendering and optimized state management.
+- **Tailwind CSS**: For styling with utility-first CSS classes.
+- **shadcn**: For a modern, customizable UI component library.
 
 ## Features
 
-- Fetch and display data in a list format.
-- Show detailed information of a selected item on the right side.
-
-## Goal
-
-- To write reusable code
+- Reusable components for Master-Detail Layouts.
+- Seamless integration with APIs for fetching and displaying data.
+- Responsive and accessible design.
