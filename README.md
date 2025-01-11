@@ -1,6 +1,6 @@
 # SelectX
 
-SelectX is a web application and repository focused on reusable code for building **Master-Detail Layouts** (Split View). It allows developers to create UIs where a list of items is displayed on one side, and detailed information about a selected item is shown on the other.
+SelectX is focused on reusable code for building **Master-Detail Layouts** (Split View). It allows developers to create UIs where a list of items is displayed on one side, and detailed information about a selected item is shown on the other.
 
 ## Tech Stack
 
