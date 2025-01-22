@@ -1,6 +1,6 @@
-# SelectX
+# LayoutX
 
-SelectX is a web application and repository focused on reusable code for building **Master-Detail Layouts** (Split View). It allows developers to create UIs where a list of items is displayed on one side, and detailed information about a selected item is shown on the other.
+LayoutX is a web application and repository focused on reusable code for building **Layouts**.
 
 ## Tech Stack
 
@@ -8,8 +8,6 @@ SelectX is a web application and repository focused on reusable code for buildin
 - **Tailwind CSS**: For styling with utility-first CSS classes.
 - **shadcn**: For a modern, customizable UI component library.
 
-## Features
+## Layouts
 
-- Reusable components for Master-Detail Layouts.
-- Seamless integration with APIs for fetching and displaying data.
-- Responsive and accessible design.
+✅ Master Detail Layout

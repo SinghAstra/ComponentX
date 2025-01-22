@@ -1,53 +1,108 @@
 "use client";
+import { Icons } from "@/components/Icons";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { siteConfig } from "@/config/site";
+import { Command, Menu, Search } from "lucide-react";
+import Link from "next/link";
+import React, { useState } from "react";
 
-import { ItemDetail } from "@/components/list/item-detail";
-import { ItemList } from "@/components/list/item-list";
-import { Item } from "@/types/item";
-import { useState } from "react";
+interface SidebarProps {
+  className?: string;
+}
 
-// Mock data with additional fields
-const mockData: Item[] = [
-  {
-    id: 1,
-    title: "Complete project proposal",
-    description:
-      "Draft and finalize the Q2 project proposal including timeline, budget, and resource allocation.",
-    status: "active",
-    createdAt: "2024-03-15T10:00:00Z",
-    updatedAt: "2024-03-15T14:30:00Z",
-  },
-  {
-    id: 2,
-    title: "Review client feedback",
-    description:
-      "Analyze and address client feedback on the latest design iteration.",
-    status: "pending",
-    createdAt: "2024-03-14T09:00:00Z",
-    updatedAt: "2024-03-14T16:45:00Z",
-  },
-  {
-    id: 3,
-    title: "Update documentation",
-    description:
-      "Update the technical documentation with recent API changes and new features.",
-    status: "completed",
-    createdAt: "2024-03-13T11:20:00Z",
-    updatedAt: "2024-03-13T17:15:00Z",
-  },
-];
-
-export default function ListDetailView() {
-  const [items] = useState<Item[]>(mockData);
-  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
-
+const Sidebar = ({ className }: SidebarProps) => {
   return (
-    <div className="flex gap-4 p-4 min-h-screen">
-      <ItemList
-        items={items}
-        selectedItem={selectedItem}
-        onSelectItem={setSelectedItem}
-      />
-      <ItemDetail item={selectedItem} />
+    <div className={`w-64 bg-background p-2 space-y-1 ${className}`}>
+      <Link
+        href="/dashboard"
+        className="flex items-center space-x-2 p-2 hover:bg-accent rounded-md"
+      >
+        <span>Dashboard</span>
+      </Link>
+      <Link
+        href="/projects"
+        className="flex items-center space-x-2 p-2 hover:bg-accent rounded-md"
+      >
+        <span>Projects</span>
+      </Link>
+      <Link
+        href="/settings"
+        className="flex items-center space-x-2 p-2 hover:bg-accent rounded-md"
+      >
+        <span>Settings</span>
+      </Link>
     </div>
   );
-}
+};
+
+const HomePage = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <header className="fixed top-0 z-50 w-full border-b bg-background/40">
+        <div className="md:container md:px-0 px-2 flex h-14 items-center justify-between mx-auto">
+          <Link href="/" className="flex items-center space-x-2">
+            {/* Mobile Menu Button  */}
+            <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 pt-8 w-[256px]">
+                <SheetHeader className="px-4 pt-4 hidden">
+                  <SheetTitle>Navigation</SheetTitle>
+                  <SheetDescription>Sidebar For Docs</SheetDescription>
+                </SheetHeader>
+                <Sidebar />
+              </SheetContent>
+            </Sheet>
+            <span className="font-medium leading-loose text-2xl">
+              {siteConfig.name}
+            </span>
+          </Link>
+
+          <div className="flex items-center space-x-2">
+            <div className="border rounded-md py-1 px-2 flex items-center space-x-2 bg-card/20">
+              <span className="flex items-center w-48">
+                <Search className="mr-2 h-4 w-4" />
+                Search...
+              </span>
+              <span className="ml-auto flex items-center text-sm">
+                <Command className="h-4 w-4" />K
+              </span>
+            </div>
+
+            {/* Right side buttons */}
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 px-4"
+            >
+              <Icons.gitLogo className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </header>
+      {/* Main content */}
+      <div className="flex pt-14">
+        {/* Desktop sidebar - hidden on mobile */}
+        <Sidebar className="hidden md:block fixed h-[calc(100vh-3.5rem)] border-r" />
+
+        {/* Main content area */}
+        <main className="flex-1 md:ml-64 p-4">This is main content</main>
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
