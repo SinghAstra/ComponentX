@@ -20,13 +20,13 @@ export function DocsNav({
   return (
     <div
       className={cn(
-        "w-64 bg-background p-2 space-y-2 overflow-auto",
+        "w-64 bg-background p-2 space-y-2 overflow-auto h-full",
         className
       )}
     >
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
+          <h4 className="rounded-md px-2 py-1 text-sm font-medium tracking-wide">
             {item.title}
           </h4>
           {item?.items?.length && (

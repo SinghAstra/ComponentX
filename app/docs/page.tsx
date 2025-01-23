@@ -24,28 +24,28 @@ const HomePage = () => {
     <div className="min-h-screen bg-background">
       <header className="fixed top-0 z-50 w-full border-b bg-background/40">
         <div className="md:container md:px-0 px-2 flex h-14 items-center justify-between mx-auto">
-          {/* Mobile Menu Button  */}
-          <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="p-0 pt-8 w-[256px]">
-              <VisuallyHidden.Root asChild>
-                <SheetHeader>
-                  <SheetTitle>Navigation</SheetTitle>
-                  <SheetDescription>Sidebar For Docs</SheetDescription>
-                </SheetHeader>
-              </VisuallyHidden.Root>
-              <DocsNav config={docsConfig} />
-            </SheetContent>
-          </Sheet>
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="font-medium leading-loose text-2xl">
+          <div className="flex items-center space-x-2">
+            {/* Mobile Menu Button  */}
+            <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 pt-8 w-[256px]">
+                <VisuallyHidden.Root asChild>
+                  <SheetHeader>
+                    <SheetTitle>Navigation</SheetTitle>
+                    <SheetDescription>Sidebar For Docs</SheetDescription>
+                  </SheetHeader>
+                </VisuallyHidden.Root>
+                <DocsNav config={docsConfig} />
+              </SheetContent>
+            </Sheet>
+            <Link href="/" className="font-medium leading-loose text-2xl">
               {siteConfig.name}
-            </span>
-          </Link>
+            </Link>
+          </div>
 
           <div className="flex items-center space-x-2">
             <div className="border rounded-md py-1 px-2 flex items-center space-x-2 bg-card/20">
