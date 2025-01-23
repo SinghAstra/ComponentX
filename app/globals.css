@@ -9,41 +9,30 @@
 
 @layer base {
   :root {
-    /* Core background and surface colors */
-    --background: 222 47% 5%;
-    --foreground: 213 31% 91%;
-
-    /* Elevated surfaces */
-    --card: 222 47% 7%;
-    --card-foreground: 213 31% 91%;
-    --popover: 222 47% 7%;
-    --popover-foreground: 213 31% 91%;
-
-    /* Primary accent - Vivid blue */
-    --primary: 214 95% 65%;
-    --primary-foreground: 222 47% 5%;
-
-    /* Secondary - Subtle blue-gray */
-    --secondary: 222 47% 11%;
-    --secondary-foreground: 213 31% 91%;
-
-    /* Muted elements */
-    --muted: 222 47% 11%;
-    --muted-foreground: 215 20% 65%;
-
-    /* Accent - Slightly brighter than secondary */
-    --accent: 217 19% 27%;
-    --accent-foreground: 213 31% 91%;
-
-    /* Destructive actions */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    /* Borders and inputs */
-    --border: 222 47% 11%;
-    --input: 222 20% 15%;
-    --ring: 214 95% 65%;
-
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
     /* Radius */
     --radius: 0.875rem;
 
