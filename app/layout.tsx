@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import type { Metadata } from "next";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -51,7 +52,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-background">{children}</body>
+      <body className="min-h-screen bg-background">
+        <NextTopLoader color="hsl(var(--primary))" showSpinner={false} />
+        {children}
+      </body>
     </html>
   );
 }
