@@ -20,13 +20,13 @@ export function DocsNav({
   return (
     <div
       className={cn(
-        "w-64 bg-background p-2 space-y-2 overflow-auto h-full",
+        "w-64 bg-background space-y-6 overflow-auto h-full py-2",
         className
       )}
     >
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md px-2 py-1 text-sm font-medium tracking-wide">
+          <h4 className="rounded-md py-1 pl-1 text-xs tracking-wider text-muted-foreground uppercase">
             {item.title}
           </h4>
           {item?.items?.length && (
@@ -46,7 +46,7 @@ function DocsNavItems({
   pathname: string | null;
 }) {
   return items?.length ? (
-    <div className="gap-0.5 text-sm">
+    <div className="gap-0.5 text-sm pl-2">
       {items.map(
         (item, index) =>
           item.href && (
@@ -54,7 +54,7 @@ function DocsNavItems({
               key={index}
               href={item.href}
               className={cn(
-                "group flex h-8 w-full items-center px-2 font-normal text-foreground hover:bg-accent hover:text-accent-foreground transition-all",
+                "group flex h-8 w-full items-center pl-2 font-normal text-foreground hover:bg-accent hover:text-accent-foreground transition-all border-l-2 border-muted",
                 pathname === item.href &&
                   "bg-accent font-medium text-accent-foreground border-l-2 border-primary"
               )}

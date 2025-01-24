@@ -1,4 +1,5 @@
 "use client";
+
 import { DocsNav } from "@/components/docs-sidebar";
 import { Icons } from "@/components/Icons";
 import { Button } from "@/components/ui/button";
@@ -17,11 +18,11 @@ import { Command, Menu, Search } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const HomePage = () => {
+const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div>
       <header className="fixed top-0 z-50 w-full border-b bg-background/40">
         <div className="md:container md:px-0 px-2 flex h-14 items-center justify-between mx-auto">
           <div className="flex items-center space-x-2">
@@ -69,18 +70,15 @@ const HomePage = () => {
           </div>
         </div>
       </header>
-      {/* Main content */}
       <div className="flex pt-14">
-        {/* Desktop sidebar - hidden on mobile */}
         <DocsNav
           config={docsConfig}
           className="hidden md:block fixed h-[calc(100vh-3.5rem)] border-r"
         />
-        {/* Main content area */}
-        <main className="flex-1 md:ml-64 p-4">This is main content</main>
+        {children}
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default DocsLayout;
