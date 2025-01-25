@@ -20,7 +20,6 @@ var Post = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: (doc) => {
-        console.log("doc is ", doc);
         return doc._raw.flattenedPath;
       }
     }
@@ -30,20 +29,43 @@ var contentlayer_config_default = makeSource({
   contentDirPath: "./content",
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkEmoji, [remarkToc, { tight: true }]],
-    rehypePlugins: [
-      rehypeSlug,
-      // Add ids to headings
+    remarkPlugins: [
+      () => {
+        console.log("Remark GFM applied");
+        return remarkGfm;
+      },
+      () => {
+        console.log("Remark Emoji applied");
+        return remarkEmoji;
+      },
       [
-        rehypePrism,
+        () => {
+          console.log("Remark TOC applied");
+          return remarkToc;
+        },
+        { tight: true }
+      ]
+    ],
+    rehypePlugins: [
+      () => {
+        console.log("Rehype Slug applied");
+        return rehypeSlug;
+      },
+      [
+        () => {
+          console.log("Rehype Prism applied");
+          return rehypePrism;
+        },
         {
           defaultLanguage: "javascript",
           showLineNumbers: true
         }
       ],
-      // Enhanced code syntax highlighting
       [
-        rehypeAutolinkHeadings,
+        () => {
+          console.log("Rehype Autolink Headings applied");
+          return rehypeAutolinkHeadings;
+        },
         {
           behavior: "wrap",
           properties: {
@@ -57,4 +79,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-2DOCARNQ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-AETKIFSJ.mjs.map

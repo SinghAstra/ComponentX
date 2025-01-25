@@ -1,0 +1,35 @@
+{
+  "cacheItemsMap": {
+    "post/getting-started.mdx": {
+      "document": {
+        "title": "MDX Plugins Showcase",
+        "description": "Demonstrating remark and rehype plugin capabilities",
+        "published": true,
+        "date": "2024-01-23T18:30:00.000Z",
+        "tags": [
+          "markdown",
+          "mdx",
+          "plugins",
+          "tutorial"
+        ],
+        "body": {
+          "raw": "\r\n## Usage\r\n\r\n```tsx\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from \"@/components/ui/accordion\";\r\n```\r\n",
+          "code": "var Component=(()=>{var u=Object.create;var c=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var g=Object.getOwnPropertyNames;var h=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var _=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),f=(n,e)=>{for(var t in e)c(n,t,{get:e[t],enumerable:!0})},s=(n,e,t,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of g(e))!x.call(n,o)&&o!==t&&c(n,o,{get:()=>e[o],enumerable:!(i=p(e,o))||i.enumerable});return n};var j=(n,e,t)=>(t=n!=null?u(h(n)):{},s(e||!n||!n.__esModule?c(t,\"default\",{value:n,enumerable:!0}):t,n)),A=n=>s(c({},\"__esModule\",{value:!0}),n);var d=_((C,a)=>{a.exports=_jsx_runtime});var M={};f(M,{default:()=>l,frontmatter:()=>D});var r=j(d()),D={title:\"MDX Plugins Showcase\",description:\"Demonstrating remark and rehype plugin capabilities\",published:!0,tags:[\"markdown\",\"mdx\",\"plugins\",\"tutorial\"],date:\"2024-01-24\"};function m(n){let e={code:\"code\",h2:\"h2\",pre:\"pre\",...n.components};return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(e.h2,{children:\"Usage\"}),`\n`,(0,r.jsx)(e.pre,{children:(0,r.jsx)(e.code,{className:\"language-tsx\",children:`import {\\r\n  Accordion,\\r\n  AccordionContent,\\r\n  AccordionItem,\\r\n  AccordionTrigger,\\r\n} from \"@/components/ui/accordion\";\n`})})]})}function l(n={}){let{wrapper:e}=n.components||{};return e?(0,r.jsx)(e,{...n,children:(0,r.jsx)(m,{...n})}):m(n)}return A(M);})();\n;return Component;"
+        },
+        "_id": "post/getting-started.mdx",
+        "_raw": {
+          "sourceFilePath": "post/getting-started.mdx",
+          "sourceFileName": "getting-started.mdx",
+          "sourceFileDir": "post",
+          "contentType": "mdx",
+          "flattenedPath": "post/getting-started"
+        },
+        "type": "Post",
+        "slug": "post/getting-started"
+      },
+      "documentHash": "1737711804126",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}

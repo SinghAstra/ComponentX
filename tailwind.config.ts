@@ -1,4 +1,3 @@
-import tailwindTypography from "@tailwindcss/typography";
 import tailwindAnimate from "tailwindcss-animate";
 
 module.exports = {
@@ -59,5 +58,5 @@ module.exports = {
       },
     },
   },
-  plugins: [tailwindAnimate, tailwindTypography],
+  plugins: [tailwindAnimate],
 };

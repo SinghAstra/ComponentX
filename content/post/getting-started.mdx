@@ -1,93 +1,29 @@
 ---
-title: "MDX Plugins Showcase"
-description: "Demonstrating remark and rehype plugin capabilities"
+title: "Getting Started with Our Project"
+description: "A comprehensive guide to getting started"
 published: true
-tags: ["markdown", "mdx", "plugins", "tutorial"]
+tags: ["introduction", "guide"]
 date: 2024-01-24
 ---
 
-# MDX Plugins Exploration :rocket:
+# Welcome to Our Project
 
-## Table of Contents
+## Introduction
 
-## Markdown Basics
+This is a sample MDX file demonstrating Contentlayer capabilities.
 
-This document showcases various markdown and plugin features:
+### Features
 
-- **Bold text** and _italic text_
-- [Hyperlinks](https://example.com)
-- Inline `code` highlighting
+- Markdown support
+- Code imports
+- Custom components
 
-## GitHub Flavored Markdown (remark-gfm)
-
-### Task Lists
-
-- [x] Complete MDX tutorial
-- [ ] Explore more plugins
-- [ ] Write advanced content
-
-### Tables
-
-| Feature  | Support | Notes                 |
-| -------- | ------- | --------------------- |
-| Markdown | ✅      | Native support        |
-| MDX      | ✅      | Enhanced capabilities |
-| Plugins  | ✅      | Extensible            |
-
-## Code Blocks with Syntax Highlighting (rehype-prism)
-
-### JavaScript Example
+## Code Example
 
 ```javascript
-function demonstratePlugins(features) {
-  return features.map((feature) => {
-    console.log(`Exploring: ${feature}`);
-    return `Enhanced ${feature}`;
-  });
+function greet(name) {
+  return `Hello, ${name}!`;
 }
 
-const pluginFeatures = ["markdown", "syntax", "transformation"];
-demonstratePlugins(pluginFeatures);
+console.log(greet("World"));
 ```
-
-### Python Example
-
-```python
-def markdown_magic(content):
-    """Transform markdown with ease"""
-    return content.upper()
-
-# Plugin-powered transformation
-result = markdown_magic("mdx is awesome")
-print(result)
-```
-
-## Emoji Support (remark-emoji)
-
-Coding can be fun! :computer: :smile:
-
-Programming is an art :paintbrush: and a science :microscope:
-
-## Headings with Automatic Slugs (rehype-slug)
-
-Headings automatically get unique identifiers for easy linking.
-
-### Nested Heading Example
-
-You can directly link to this section using its generated slug.
-
-## Custom React Component Integration
-
-import CustomAlert from "../components/CustomAlert";
-
-<CustomAlert type="info">
-  MDX allows seamless React and Markdown integration!
-</CustomAlert>
-
-## Code Block Line Numbers
-
-Notice how our code blocks now have line numbers thanks to rehype-prism.
-
-## Conclusion
-
-Plugins transform markdown from simple text formatting to a powerful documentation system! :tada:

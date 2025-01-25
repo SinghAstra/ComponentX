@@ -1,0 +1,33 @@
+{
+  "cacheItemsMap": {
+    "post/getting-started.mdx": {
+      "document": {
+        "title": "Getting Started with Our Project",
+        "description": "A comprehensive guide to getting started",
+        "published": true,
+        "date": "2024-01-23T18:30:00.000Z",
+        "tags": [
+          "introduction",
+          "guide"
+        ],
+        "body": {
+          "raw": "\r\n# Welcome to Our Project\r\n\r\n## Introduction\r\n\r\nThis is a sample MDX file demonstrating Contentlayer capabilities.\r\n\r\n### Features\r\n\r\n- Markdown support\r\n- Code imports\r\n- Custom components\r\n\r\n## Code Example\r\n\r\n```javascript\r\nfunction greet(name) {\r\n  return `Hello, ${name}!`;\r\n}\r\n\r\nconsole.log(greet(\"World\"));\r\n```\r\n",
+          "code": "var Component=(()=>{var p=Object.create;var c=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var E=Object.getPrototypeOf,y=Object.prototype.hasOwnProperty;var g=(l,e)=>()=>(e||l((e={exports:{}}).exports,e),e.exports),f=(l,e)=>{for(var a in e)c(l,a,{get:e[a],enumerable:!0})},o=(l,e,a,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of u(e))!y.call(l,r)&&r!==a&&c(l,r,{get:()=>e[r],enumerable:!(i=m(e,r))||i.enumerable});return l};var F=(l,e,a)=>(a=l!=null?p(E(l)):{},o(e||!l||!l.__esModule?c(a,\"default\",{value:l,enumerable:!0}):a,l)),N=l=>o(c({},\"__esModule\",{value:!0}),l);var t=g((k,s)=>{s.exports=_jsx_runtime});var j={};f(j,{default:()=>h,frontmatter:()=>x});var n=F(t()),x={title:\"Getting Started with Our Project\",description:\"A comprehensive guide to getting started\",published:!0,tags:[\"introduction\",\"guide\"],date:\"2024-01-24\"};function d(l){let e={a:\"a\",code:\"code\",div:\"div\",h1:\"h1\",h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",pre:\"pre\",span:\"span\",ul:\"ul\",...l.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(e.h1,{id:\"welcome-to-our-project\",children:[(0,n.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#welcome-to-our-project\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"Welcome to Our Project\"]}),`\n`,(0,n.jsxs)(e.h2,{id:\"introduction\",children:[(0,n.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#introduction\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"Introduction\"]}),`\n`,(0,n.jsx)(e.p,{children:\"This is a sample MDX file demonstrating Contentlayer capabilities.\"}),`\n`,(0,n.jsxs)(e.h3,{id:\"features\",children:[(0,n.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#features\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"Features\"]}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Markdown support\"}),`\n`,(0,n.jsx)(e.li,{children:\"Code imports\"}),`\n`,(0,n.jsx)(e.li,{children:\"Custom components\"}),`\n`]}),`\n`,(0,n.jsxs)(e.h2,{id:\"code-example\",children:[(0,n.jsx)(e.a,{className:\"subheading-anchor\",\"aria-label\":\"Link to section\",href:\"#code-example\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"Code Example\"]}),`\n`,(0,n.jsx)(e.div,{\"data-rehype-pretty-code-fragment\":\"\",children:(0,n.jsx)(e.pre,{\"data-language\":\"javascript\",\"data-theme\":\"default\",children:(0,n.jsxs)(e.code,{\"data-language\":\"javascript\",\"data-theme\":\"default\",children:[(0,n.jsxs)(e.span,{className:\"line\",children:[(0,n.jsx)(e.span,{style:{color:\"#F97583\"},children:\"function\"}),(0,n.jsx)(e.span,{style:{color:\"#B392F0\"},children:\" greet\"}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"(\"}),(0,n.jsx)(e.span,{style:{color:\"#FFAB70\"},children:\"name\"}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\") {\"})]}),`\n`,(0,n.jsxs)(e.span,{className:\"line\",children:[(0,n.jsx)(e.span,{style:{color:\"#F97583\"},children:\"  return\"}),(0,n.jsx)(e.span,{style:{color:\"#9ECBFF\"},children:\" `Hello, ${\"}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"name\"}),(0,n.jsx)(e.span,{style:{color:\"#9ECBFF\"},children:\"}!`\"}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\";\"})]}),`\n`,(0,n.jsx)(e.span,{className:\"line\",children:(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"}\"})}),`\n`,(0,n.jsx)(e.span,{className:\"line\",children:\" \"}),`\n`,(0,n.jsxs)(e.span,{className:\"line\",children:[(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"console.\"}),(0,n.jsx)(e.span,{style:{color:\"#B392F0\"},children:\"log\"}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"(\"}),(0,n.jsx)(e.span,{style:{color:\"#B392F0\"},children:\"greet\"}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"(\"}),(0,n.jsx)(e.span,{style:{color:\"#9ECBFF\"},children:'\"World\"'}),(0,n.jsx)(e.span,{style:{color:\"#E1E4E8\"},children:\"));\"})]})]})})})]})}function h(l={}){let{wrapper:e}=l.components||{};return e?(0,n.jsx)(e,{...l,children:(0,n.jsx)(d,{...l})}):d(l)}return N(j);})();\n;return Component;"
+        },
+        "_id": "post/getting-started.mdx",
+        "_raw": {
+          "sourceFilePath": "post/getting-started.mdx",
+          "sourceFileName": "getting-started.mdx",
+          "sourceFileDir": "post",
+          "contentType": "mdx",
+          "flattenedPath": "post/getting-started"
+        },
+        "type": "Post",
+        "slug": "post/getting-started"
+      },
+      "documentHash": "1737781195829",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}

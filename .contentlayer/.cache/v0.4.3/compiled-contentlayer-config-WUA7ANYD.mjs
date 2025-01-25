@@ -1,14 +1,12 @@
+// contentlayer.config.ts
 import { getHighlighter } from "@shikijs/compat";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
-import { Element } from "hast";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
-import { Plugin } from "unified";
-
-const Post = defineDocumentType(() => ({
+var Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `post/**/*.mdx`,
   contentType: "mdx",
@@ -17,7 +15,7 @@ const Post = defineDocumentType(() => ({
     description: { type: "string", required: true },
     published: { type: "boolean", required: true },
     date: { type: "date", required: true },
-    tags: { type: "list", of: { type: "string" } },
+    tags: { type: "list", of: { type: "string" } }
   },
   computedFields: {
     slug: {
@@ -25,53 +23,56 @@ const Post = defineDocumentType(() => ({
       resolve: (doc) => {
         console.log("doc is ", doc);
         return doc._raw.flattenedPath;
-      },
-    },
-  },
+      }
+    }
+  }
 }));
-
-export default makeSource({
+var contentlayer_config_default = makeSource({
   contentDirPath: "./content",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [
-      rehypeSlug as Plugin,
+      rehypeSlug,
       [
         rehypePrettyCode,
         {
           theme: "github-dark",
           getHighlighter,
-          onVisitLine(node: Element) {
+          onVisitLine(node) {
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }];
             }
           },
-          onVisitHighlightedLine(node: Element) {
+          onVisitHighlightedLine(node) {
             if (Array.isArray(node.properties.className)) {
               node.properties.className.push("line--highlighted");
             } else {
               node.properties.className = ["line--highlighted"];
             }
           },
-          onVisitHighlightedWord(node: Element) {
+          onVisitHighlightedWord(node) {
             if (Array.isArray(node.properties.className)) {
               node.properties.className = ["word--highlighted"];
             } else {
               node.properties.className = ["word--highlighted"];
             }
-          },
-        },
+          }
+        }
       ],
       [
-        rehypeAutolinkHeadings as Plugin,
+        rehypeAutolinkHeadings,
         {
           properties: {
             className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
-          },
-        },
-      ],
-    ],
-  },
+            ariaLabel: "Link to section"
+          }
+        }
+      ]
+    ]
+  }
 });
+export {
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-WUA7ANYD.mjs.map

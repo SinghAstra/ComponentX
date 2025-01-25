@@ -1,0 +1,33 @@
+{
+  "cacheItemsMap": {
+    "post/getting-started.mdx": {
+      "document": {
+        "title": "Getting Started with Our Project",
+        "description": "A comprehensive guide to getting started",
+        "published": true,
+        "date": "2024-01-23T18:30:00.000Z",
+        "tags": [
+          "introduction",
+          "guide"
+        ],
+        "body": {
+          "raw": "\r\n# Welcome to Our Project\r\n\r\n## Introduction\r\n\r\nThis is a sample MDX file demonstrating Contentlayer capabilities.\r\n\r\n### Features\r\n\r\n- Markdown support\r\n- Code imports\r\n- Custom components\r\n\r\n## Code Example\r\n\r\n```javascript\r\nfunction greet(name) {\r\n  return `Hello, ${name}!`;\r\n}\r\n\r\nconsole.log(greet(\"World\"));\r\n```\r\n",
+          "code": "var Component=(()=>{var u=Object.create;var i=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var j=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),f=(n,e)=>{for(var r in e)i(n,r,{get:e[r],enumerable:!0})},l=(n,e,r,c)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of p(e))!x.call(n,o)&&o!==r&&i(n,o,{get:()=>e[o],enumerable:!(c=m(e,o))||c.enumerable});return n};var _=(n,e,r)=>(r=n!=null?u(g(n)):{},l(e||!n||!n.__esModule?i(r,\"default\",{value:n,enumerable:!0}):r,n)),C=n=>l(i({},\"__esModule\",{value:!0}),n);var d=j((F,s)=>{s.exports=_jsx_runtime});var w={};f(w,{default:()=>h,frontmatter:()=>M});var t=_(d()),M={title:\"Getting Started with Our Project\",description:\"A comprehensive guide to getting started\",published:!0,tags:[\"introduction\",\"guide\"],date:\"2024-01-24\"};function a(n){let e={code:\"code\",h1:\"h1\",h2:\"h2\",h3:\"h3\",li:\"li\",p:\"p\",pre:\"pre\",ul:\"ul\",...n.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.h1,{children:\"Welcome to Our Project\"}),`\n`,(0,t.jsx)(e.h2,{children:\"Introduction\"}),`\n`,(0,t.jsx)(e.p,{children:\"This is a sample MDX file demonstrating Contentlayer capabilities.\"}),`\n`,(0,t.jsx)(e.h3,{children:\"Features\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"Markdown support\"}),`\n`,(0,t.jsx)(e.li,{children:\"Code imports\"}),`\n`,(0,t.jsx)(e.li,{children:\"Custom components\"}),`\n`]}),`\n`,(0,t.jsx)(e.h2,{children:\"Code Example\"}),`\n`,(0,t.jsx)(e.pre,{children:(0,t.jsx)(e.code,{className:\"language-javascript\",children:`function greet(name) {\\r\n  return \\`Hello, \\${name}!\\`;\\r\n}\\r\n\\r\nconsole.log(greet(\"World\"));\n`})})]})}function h(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(a,{...n})}):a(n)}return C(w);})();\n;return Component;"
+        },
+        "_id": "post/getting-started.mdx",
+        "_raw": {
+          "sourceFilePath": "post/getting-started.mdx",
+          "sourceFileName": "getting-started.mdx",
+          "sourceFileDir": "post",
+          "contentType": "mdx",
+          "flattenedPath": "post/getting-started"
+        },
+        "type": "Post",
+        "slug": "post/getting-started"
+      },
+      "documentHash": "1737781195829",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}

@@ -1,31 +1,19 @@
 "use client";
 
-import { allDocuments } from "@/.contentlayer/generated";
-import { format, parseISO } from "date-fns";
+import { allPosts } from "@/.contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 
 const DocsPage = () => {
-  const doc = allDocuments[0];
+  console.log("allPosts is ", allPosts);
+  const doc = allPosts[0];
+  console.log("doc is ", doc);
+  const MDXContent = useMDXComponent(doc.body.code);
+  console.log("MDXContent is ", MDXContent);
 
   return (
     <main className="flex-1 md:ml-64 p-4">
       <article className="prose lg:prose-xl">
-        <h1>{doc.title}</h1>
-        <div className="text-sm text-gray-500 mb-4">
-          <p>Published on {format(parseISO(doc.date), "LLLL d, yyyy")}</p>
-          {doc.tags && (
-            <div className="flex gap-2 mt-2">
-              {doc.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-1 bg-gray-100 rounded-md text-xs"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: doc.body.html }} />
+        <MDXContent />
       </article>
     </main>
   );

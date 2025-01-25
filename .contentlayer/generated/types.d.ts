@@ -18,8 +18,8 @@ export type Post = {
   published: boolean
   date: IsoDateTimeString
   tags?: string[] | undefined
-  /** Markdown file body */
-  body: Markdown
+  /** MDX file body */
+  body: MDX
   slug: string
 }  
 
