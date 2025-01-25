@@ -54,7 +54,7 @@ function DocsNavItems({
               key={index}
               href={item.href}
               className={cn(
-                "group flex h-8 w-full items-center pl-2 font-normal text-foreground hover:bg-accent hover:text-accent-foreground transition-all border-l-2 border-muted",
+                "group flex h-8 w-full items-center pl-4 font-normal text-foreground hover:bg-accent hover:text-accent-foreground transition-all border-l-2 border-muted",
                 pathname === item.href &&
                   "bg-accent font-medium text-accent-foreground border-l-2 border-primary"
               )}

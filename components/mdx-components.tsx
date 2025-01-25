@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import { Callout } from "./callout";
+import { Code } from "./code";
 import { CodeBlockWrapper } from "./code-block-wrapper";
 import {
   Accordion,
@@ -151,13 +152,13 @@ const components = {
       {...props}
     />
   ),
-
+  code: Code,
   Image,
   Callout,
-  //   ComponentPreview,
-  //   ComponentExample,
-  //   ComponentSource,
-  //   AspectRatio,
+  // ComponentPreview,
+  // ComponentExample,
+  // ComponentSource,
+  // AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
@@ -215,12 +216,12 @@ const components = {
       {...props}
     />
   ),
-  //   FrameworkDocs: ({
-  //     className,
-  //     ...props
-  //   }: React.ComponentProps<typeof FrameworkDocs>) => (
-  //     <FrameworkDocs className={cn(className)} {...props} />
-  //   ),
+  // FrameworkDocs: ({
+  //   className,
+  //   ...props
+  // }: React.ComponentProps<typeof FrameworkDocs>) => (
+  //   <FrameworkDocs className={cn(className)} {...props} />
+  // ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}

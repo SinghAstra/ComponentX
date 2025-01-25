@@ -5,7 +5,6 @@ import {
   makeSource,
 } from "contentlayer2/source-files";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkCodeImport from "remark-code-import";
 import remarkGfm from "remark-gfm";
@@ -79,16 +78,6 @@ export default makeSource({
   documentTypes: [Doc],
   mdx: {
     remarkPlugins: [remarkGfm, remarkCodeImport],
-    rehypePlugins: [
-      rehypeSlug as Plugin,
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-          keepBackground: true,
-        },
-      ],
-      rehypeAutoLinkHeadings as Plugin,
-    ],
+    rehypePlugins: [rehypeSlug as Plugin, rehypeAutoLinkHeadings as Plugin],
   },
 });

@@ -5,7 +5,6 @@ import {
   makeSource
 } from "contentlayer2/source-files";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkCodeImport from "remark-code-import";
 import remarkGfm from "remark-gfm";
@@ -74,21 +73,11 @@ var contentlayer_config_default = makeSource({
   documentTypes: [Doc],
   mdx: {
     remarkPlugins: [remarkGfm, remarkCodeImport],
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-          keepBackground: true
-        }
-      ],
-      rehypeAutoLinkHeadings
-    ]
+    rehypePlugins: [rehypeSlug, rehypeAutoLinkHeadings]
   }
 });
 export {
   Doc,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-A3IHW2YQ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-BPK2ONJF.mjs.map

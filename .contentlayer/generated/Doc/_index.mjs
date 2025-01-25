@@ -2,5 +2,6 @@
 
 import docs__aboutMdx from './docs__about.mdx.json' assert { type: 'json' }
 import docs__indexMdx from './docs__index.mdx.json' assert { type: 'json' }
+import docs__installation__indexMdx from './docs__installation__index.mdx.json' assert { type: 'json' }
 
-export const allDocs = [docs__aboutMdx, docs__indexMdx]
+export const allDocs = [docs__aboutMdx, docs__indexMdx, docs__installation__indexMdx]
