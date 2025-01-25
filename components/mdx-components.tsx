@@ -152,7 +152,7 @@ const components = {
       {...props}
     />
   ),
-  code: Code,
+  code: ({ ...props }) => <Code {...props} />,
   Image,
   Callout,
   // ComponentPreview,
