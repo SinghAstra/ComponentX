@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 
 const DocsPage = () => {
+  const params = useParams();
+  console.log("params is ", params);
   console.log("allPosts is ", allDocs);
   const doc = allDocs[0];
   console.log("doc is ", doc);
