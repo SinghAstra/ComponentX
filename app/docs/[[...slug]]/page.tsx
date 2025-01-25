@@ -5,19 +5,24 @@ import { Mdx } from "@/components/mdx-components";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ChevronRight, ExternalLink } from "lucide-react";
-import { useMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 
 const DocsPage = () => {
   const params = useParams();
-  console.log("params is ", params);
-  console.log("allPosts is ", allDocs);
-  const doc = allDocs[0];
-  console.log("doc is ", doc);
-  const MDXContent = useMDXComponent(doc.body.code);
-  console.log("MDXContent is ", MDXContent);
+  const paramsSlug = params.slug as string[];
+  const ans = paramsSlug?.join("/") || "";
+  const doc = allDocs.find((doc) => doc.slugAsParams === ans);
+  console.log("ans is ", ans);
+  allDocs.map((doc) => {
+    console.log("slug is ", doc.slugAsParams);
+    console.log("result is ", ans === doc.slugAsParams);
+  });
+
+  if (!doc) {
+    notFound();
+  }
 
   return (
     <main className="relative py-6 flex-1 md:ml-64 ">
