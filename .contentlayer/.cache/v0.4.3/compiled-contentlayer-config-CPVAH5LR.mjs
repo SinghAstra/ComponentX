@@ -1,95 +1,95 @@
+// contentlayer.config.ts
 import {
-  ComputedFields,
   defineDocumentType,
   defineNestedType,
-  makeSource,
+  makeSource
 } from "contentlayer2/source-files";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkCodeImport from "remark-code-import";
 import remarkGfm from "remark-gfm";
-import { Plugin } from "unified";
-
-const computedFields: ComputedFields<"Doc"> = {
+var computedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc) => `/${doc._raw.flattenedPath}`
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
-  },
+    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/")
+  }
 };
-
-const LinksProperties = defineNestedType(() => ({
+var LinksProperties = defineNestedType(() => ({
   name: "LinksProperties",
   fields: {
     doc: {
-      type: "string",
+      type: "string"
     },
     api: {
-      type: "string",
-    },
-  },
+      type: "string"
+    }
+  }
 }));
-
-export const Doc = defineDocumentType(() => ({
+var Doc = defineDocumentType(() => ({
   name: "Doc",
   filePathPattern: `docs/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
       type: "string",
-      required: true,
+      required: true
     },
     description: {
       type: "string",
-      required: true,
+      required: true
     },
     published: {
       type: "boolean",
-      default: true,
+      default: true
     },
     links: {
       type: "nested",
-      of: LinksProperties,
+      of: LinksProperties
     },
     featured: {
       type: "boolean",
       default: false,
-      required: false,
+      required: false
     },
     component: {
       type: "boolean",
       default: false,
-      required: false,
+      required: false
     },
     toc: {
       type: "boolean",
       default: true,
-      required: false,
-    },
+      required: false
+    }
   },
-  computedFields,
+  computedFields
 }));
-
-export default makeSource({
+var contentlayer_config_default = makeSource({
   contentDirPath: "./content",
   documentTypes: [Doc],
   mdx: {
     remarkPlugins: [remarkGfm, remarkCodeImport],
     rehypePlugins: [
-      rehypeSlug as Plugin,
+      rehypeSlug,
       [
         rehypePrettyCode,
         {
           theme: "github-dark",
           keepBackground: true,
-          createHighlight: true,
-        },
+          createHighlight: true
+        }
       ],
-      rehypeAutoLinkHeadings as Plugin,
-    ],
-  },
+      rehypeAutoLinkHeadings
+    ]
+  }
 });
+export {
+  Doc,
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-CPVAH5LR.mjs.map

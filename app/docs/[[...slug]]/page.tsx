@@ -1,11 +1,11 @@
 "use client";
 
-import { allPosts } from "@/.contentlayer/generated";
+import { allDocs } from "@/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 
 const DocsPage = () => {
-  console.log("allPosts is ", allPosts);
-  const doc = allPosts[0];
+  console.log("allPosts is ", allDocs);
+  const doc = allDocs[0];
   console.log("doc is ", doc);
   const MDXContent = useMDXComponent(doc.body.code);
   console.log("MDXContent is ", MDXContent);

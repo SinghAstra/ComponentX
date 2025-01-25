@@ -1,0 +1,149 @@
+---
+title: About
+description: Powered by amazing open source projects.
+---
+
+Am Working ?
+
+# Mastering Code Highlighting
+
+## 1. Basic Syntax Highlighting
+
+Simple code blocks get automatic syntax highlighting:
+
+```javascript
+function greetUser(name) {
+  console.log(`Welcome, ${name}!`);
+  return `Hello, ${name}`;
+}
+```
+
+## 2. Line Highlighting 🎯
+
+Emphasize specific lines to draw attention to key code segments:
+
+```javascript {2-3}
+function calculateTax(amount) {
+  const taxRate = 0.1; // Tax rate definition
+  const taxAmount = amount * taxRate; // Calculate tax
+  return {
+    amount,
+    taxAmount,
+    total: amount + taxAmount,
+  };
+}
+```
+
+### Why Line Highlighting Matters
+
+- Quickly draw attention to critical code sections
+- Explain complex logic step-by-step
+- Highlight changes or important implementation details
+
+## Word
+
+Pinpoint exact words or expressions:
+
+```typescript /calculateTax/
+function processInvoice(invoice) {
+  const tax = calculateTax(invoice.subtotal);
+  return {
+    invoiceId: invoice.id,
+    taxDetails: tax,
+  };
+}
+```
+
+### Benefits of Word Highlighting
+
+- Focus on specific function or variable names
+- Explain naming conventions
+- Draw attention to key implementation details
+
+## 4. Code Block Titles 📝
+
+Add context with descriptive titles:
+
+```javascript title="userAuthentication.js"
+async function authenticateUser(credentials) {
+  const user = await User.findByEmail(credentials.email);
+  const isValid = await bcrypt.compare(credentials.password, user.passwordHash);
+  return isValid ? user : null;
+}
+```
+
+### Advantages of Titles
+
+- Provide immediate context about the code's purpose
+- Improve documentation readability
+- Help readers understand code context quickly
+
+## 5. Multi-Language Support 🌐
+
+Seamless highlighting across languages:
+
+```python
+def fibonacci(n):
+    """Recursive Fibonacci sequence generator"""
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+```
+
+```rust
+fn calculate_factorial(n: u64) -> u64 {
+    match n {
+        0 | 1 => 1,
+        _ => n * calculate_factorial(n - 1)
+    }
+}
+```
+
+### Multilingual Code Documentation
+
+- Support for numerous programming languages
+- Consistent highlighting across different tech stacks
+- Perfect for polyglot project documentation
+
+## 6. Error and Warning Highlighting 🚨
+
+```javascript
+function riskyOperation() {
+  try {
+    // Potentially problematic code
+    throw new Error("Simulated error");
+  } catch (error) {
+    console.error("Operation failed:", error.message);
+  }
+}
+```
+
+## Configuration Example
+
+To enable these features, configure your MDX setup:
+
+```javascript
+// next.config.js
+const rehypePrettyCode = require("rehype-pretty-code");
+
+module.exports = {
+  // Other configurations
+  mdx: {
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          keepBackground: false,
+        },
+      ],
+    ],
+  },
+};
+```
+
+## Pro Tips 💡
+
+- Always provide context around code blocks
+- Use highlighting strategically
+- Combine techniques for maximum [word](#word)

@@ -1,0 +1,33 @@
+{
+  "cacheItemsMap": {
+    "post/getting-started.mdx": {
+      "document": {
+        "title": "Getting Started",
+        "description": "A comprehensive guide to our project",
+        "published": true,
+        "date": "2024-01-24T18:30:00.000Z",
+        "tags": [
+          "tutorial",
+          "introduction"
+        ],
+        "body": {
+          "raw": "",
+          "code": "var Component=(()=>{var p=Object.create;var i=Object.defineProperty;var x=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,l=Object.prototype.hasOwnProperty;var _=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),j=(t,e)=>{for(var n in e)i(t,n,{get:e[n],enumerable:!0})},u=(t,e,n,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of f(e))!l.call(t,o)&&o!==n&&i(t,o,{get:()=>e[o],enumerable:!(a=x(e,o))||a.enumerable});return t};var h=(t,e,n)=>(n=t!=null?p(g(t)):{},u(e||!t||!t.__esModule?i(n,\"default\",{value:t,enumerable:!0}):n,t)),M=t=>u(i({},\"__esModule\",{value:!0}),t);var s=_((X,c)=>{c.exports=_jsx_runtime});var D={};j(D,{default:()=>m,frontmatter:()=>C});var r=h(s()),C={title:\"Getting Started\",description:\"A comprehensive guide to our project\",published:!0,tags:[\"tutorial\",\"introduction\"],date:\"2024-01-25\"};function d(t){return(0,r.jsx)(r.Fragment,{})}function m(t={}){let{wrapper:e}=t.components||{};return e?(0,r.jsx)(e,{...t,children:(0,r.jsx)(d,{...t})}):d(t)}return M(D);})();\n;return Component;"
+        },
+        "_id": "post/getting-started.mdx",
+        "_raw": {
+          "sourceFilePath": "post/getting-started.mdx",
+          "sourceFileName": "getting-started.mdx",
+          "sourceFileDir": "post",
+          "contentType": "mdx",
+          "flattenedPath": "post/getting-started"
+        },
+        "type": "Post",
+        "slug": "post/getting-started"
+      },
+      "documentHash": "1737787076043",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    }
+  }
+}
