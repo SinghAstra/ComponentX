@@ -3,7 +3,7 @@ title: components.json
 description: Configuration for your project.
 ---
 
-import { Button } from "@/components/ui/button";
+import { ButtonExample, ButtonCode } from "@/examples/button-example";
 
 The `components.json` file holds configuration for your project.
 
@@ -43,10 +43,7 @@ The style for your components. **This cannot be changed after initialization.**
 }
 ```
 
-<ComponentPreview name="Button" component={<Button>Click me</Button>}>
-  {/* Code snippet */}
-  <pre>{`<Button>Click me</Button>`}</pre>
-</ComponentPreview>
+<ComponentPreview code={ButtonCode} component={<ButtonExample />} />
 
 ## tailwind
 

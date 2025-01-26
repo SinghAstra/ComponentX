@@ -26,7 +26,7 @@ export function Code({ className, children, ...props }: CodeProps) {
     const language = className.replace("language-", "");
 
     return (
-      <div className="relative group">
+      <div className="relative group border rounded-md h-full mt-4">
         <Button
           variant="outline"
           size="icon"
@@ -43,7 +43,7 @@ export function Code({ className, children, ...props }: CodeProps) {
           language={language}
           style={oneDark}
           customStyle={{
-            background: "#18181b",
+            background: "transparent",
             lineHeight: "1.3rem",
             overflowX: "auto",
             marginBottom: "1rem",
