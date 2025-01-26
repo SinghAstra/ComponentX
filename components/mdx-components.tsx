@@ -8,6 +8,7 @@ import * as React from "react";
 import { Callout } from "./callout";
 import { Code } from "./code";
 import { CodeBlockWrapper } from "./code-block-wrapper";
+import { ComponentPreview } from "./component-preview";
 import {
   Accordion,
   AccordionContent,
@@ -155,7 +156,7 @@ const components = {
   code: ({ ...props }) => <Code {...props} />,
   Image,
   Callout,
-  // ComponentPreview,
+  ComponentPreview,
   // ComponentExample,
   // ComponentSource,
   // AspectRatio,

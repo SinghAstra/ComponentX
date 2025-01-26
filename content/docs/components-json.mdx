@@ -3,7 +3,7 @@ title: components.json
 description: Configuration for your project.
 ---
 
-import { OctagonAlert } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 The `components.json` file holds configuration for your project.
 
@@ -42,6 +42,11 @@ The style for your components. **This cannot be changed after initialization.**
   "style": "default" | "new-york"
 }
 ```
+
+<ComponentPreview name="Button" component={<Button>Click me</Button>}>
+  {/* Code snippet */}
+  <pre>{`<Button>Click me</Button>`}</pre>
+</ComponentPreview>
 
 ## tailwind
 
@@ -145,7 +150,7 @@ The CLI uses these values and the `paths` config from your `tsconfig.json` or `j
 
 Path aliases have to be set up in your `tsconfig.json` or `jsconfig.json` file.
 
-<Callout className="mt-6" icon={<OctagonAlert />}>
+<Callout className="mt-6">
   **Important:** If you're using the `src` directory, make sure it is included
   under `paths` in your `tsconfig.json` or `jsconfig.json` file.
 </Callout>
