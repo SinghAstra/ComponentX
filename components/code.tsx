@@ -26,7 +26,7 @@ export function Code({ className, children, ...props }: CodeProps) {
     const language = className.replace("language-", "");
 
     return (
-      <div className="relative group border rounded-md h-full mt-4">
+      <div className="relative group border rounded-md h-full mt-4 overflow-auto py-0">
         <Button
           variant="outline"
           size="icon"
@@ -45,13 +45,9 @@ export function Code({ className, children, ...props }: CodeProps) {
           customStyle={{
             background: "transparent",
             lineHeight: "1.3rem",
-            overflowX: "auto",
-            marginBottom: "1rem",
             maxHeight: "650px",
             borderRadius: "0.75rem",
-            paddingTop: "1rem",
             paddingRight: "2.5rem",
-            paddingBottom: "1rem",
             letterSpacing: "0.02rem",
             fontFamily: "Fira Code, monospace",
           }}
@@ -69,7 +65,7 @@ export function Code({ className, children, ...props }: CodeProps) {
   return (
     <code
       className={cn(
-        "relative rounded font-mono text-sm bg-muted px-[0.3rem] py-[0.2rem]",
+        "relative rounded font-mono text-sm bg-muted px-[0.3rem] ",
         className
       )}
       {...props}
