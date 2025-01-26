@@ -20,7 +20,7 @@ export function DocsNav({
   return (
     <div
       className={cn(
-        "w-64 bg-background space-y-6 overflow-auto h-full py-2",
+        "w-64 bg-background space-y-6 overflow-auto h-full py-2 ",
         className
       )}
     >
@@ -46,7 +46,7 @@ function DocsNavItems({
   pathname: string | null;
 }) {
   return items?.length ? (
-    <div className="gap-0.5 text-sm pl-2">
+    <div className="space-y-1 text-sm pl-2">
       {items.map(
         (item, index) =>
           item.href && (

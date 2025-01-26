@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-2">
       <h1 className="text-6xl">{siteConfig.name}</h1>
-      <p>Building Reusable Component Library on top of ShadCn</p>
+      <p>{siteConfig.description}</p>
       <div className="flex gap-4">
         <Link href="/docs">
           <Button variant={"outline"}>

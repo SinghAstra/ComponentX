@@ -13,7 +13,13 @@ const DocsPage = () => {
   const params = useParams();
   const paramsSlug = params.slug as string[];
   const ans = paramsSlug?.join("/") || "";
+  console.log("ans is ", ans);
   const doc = allDocs.find((doc) => doc.slugAsParams === ans);
+  allDocs.map((doc) => {
+    console.log("doc.slugAsParams is ", doc.slugAsParams);
+    console.log("ans is ", ans);
+    console.log("ans === doc.slugAsParams is ", ans === doc.slugAsParams);
+  });
 
   if (!doc) {
     notFound();
