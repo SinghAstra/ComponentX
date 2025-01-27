@@ -1,0 +1,26 @@
+{
+  "name": "layoutx",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Collection of Reusable UI Components built on top of ShadCN UI",
+  "bin": {
+    "init": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "ora": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "typescript": "^5.7.3"
+  }
+}
