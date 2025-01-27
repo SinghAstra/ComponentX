@@ -19,5 +19,32 @@
   },
   "type": "Doc",
   "slug": "/docs/dark-mode/next",
-  "slugAsParams": "dark-mode/next"
+  "slugAsParams": "dark-mode/next",
+  "headings": [
+    {
+      "level": 2,
+      "title": "Dark mode",
+      "id": "dark-mode"
+    },
+    {
+      "level": 3,
+      "title": "Install next-themes",
+      "id": "install-next-themes"
+    },
+    {
+      "level": 3,
+      "title": "Create a theme provider",
+      "id": "create-a-theme-provider"
+    },
+    {
+      "level": 3,
+      "title": "Wrap your root layout",
+      "id": "wrap-your-root-layout"
+    },
+    {
+      "level": 3,
+      "title": "Add a mode toggle",
+      "id": "add-a-mode-toggle"
+    }
+  ]
 }

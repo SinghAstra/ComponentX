@@ -19,5 +19,17 @@
   },
   "type": "Doc",
   "slug": "/docs/installation",
-  "slugAsParams": "installation"
+  "slugAsParams": "installation",
+  "headings": [
+    {
+      "level": 2,
+      "title": "Frameworks",
+      "id": "frameworks"
+    },
+    {
+      "level": 2,
+      "title": "TypeScript",
+      "id": "typescript"
+    }
+  ]
 }

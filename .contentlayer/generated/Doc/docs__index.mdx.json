@@ -19,5 +19,12 @@
   },
   "type": "Doc",
   "slug": "/docs",
-  "slugAsParams": ""
+  "slugAsParams": "",
+  "headings": [
+    {
+      "level": 2,
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ]
 }

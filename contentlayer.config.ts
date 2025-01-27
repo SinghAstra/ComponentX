@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import remarkCodeImport from "remark-code-import";
 import remarkGfm from "remark-gfm";
 import { Plugin } from "unified";
+import { extractHeadings } from "./lib/toc";
 
 const computedFields: ComputedFields<"Doc"> = {
   slug: {
@@ -18,6 +19,14 @@ const computedFields: ComputedFields<"Doc"> = {
   slugAsParams: {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+  },
+  headings: {
+    type: "json",
+    resolve: async (doc) => {
+      const headings = extractHeadings(doc.body.raw);
+      console.log("headings is ", headings);
+      return headings;
+    },
   },
 };
 

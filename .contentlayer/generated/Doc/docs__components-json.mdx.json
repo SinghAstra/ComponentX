@@ -19,5 +19,87 @@
   },
   "type": "Doc",
   "slug": "/docs/components-json",
-  "slugAsParams": "components-json"
+  "slugAsParams": "components-json",
+  "headings": [
+    {
+      "level": 2,
+      "title": "$schema",
+      "id": "-schema"
+    },
+    {
+      "level": 2,
+      "title": "style",
+      "id": "style"
+    },
+    {
+      "level": 2,
+      "title": "tailwind",
+      "id": "tailwind"
+    },
+    {
+      "level": 3,
+      "title": "tailwind.config",
+      "id": "tailwind-config"
+    },
+    {
+      "level": 3,
+      "title": "tailwind.css",
+      "id": "tailwind-css"
+    },
+    {
+      "level": 3,
+      "title": "tailwind.baseColor",
+      "id": "tailwind-basecolor"
+    },
+    {
+      "level": 3,
+      "title": "tailwind.cssVariables",
+      "id": "tailwind-cssvariables"
+    },
+    {
+      "level": 3,
+      "title": "tailwind.prefix",
+      "id": "tailwind-prefix"
+    },
+    {
+      "level": 2,
+      "title": "rsc",
+      "id": "rsc"
+    },
+    {
+      "level": 2,
+      "title": "tsx",
+      "id": "tsx"
+    },
+    {
+      "level": 2,
+      "title": "aliases",
+      "id": "aliases"
+    },
+    {
+      "level": 3,
+      "title": "aliases.utils",
+      "id": "aliases-utils"
+    },
+    {
+      "level": 3,
+      "title": "aliases.components",
+      "id": "aliases-components"
+    },
+    {
+      "level": 3,
+      "title": "aliases.ui",
+      "id": "aliases-ui"
+    },
+    {
+      "level": 3,
+      "title": "aliases.lib",
+      "id": "aliases-lib"
+    },
+    {
+      "level": 3,
+      "title": "aliases.hooks",
+      "id": "aliases-hooks"
+    }
+  ]
 }

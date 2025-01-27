@@ -19,5 +19,22 @@
   },
   "type": "Doc",
   "slug": "/docs/about",
-  "slugAsParams": "about"
+  "slugAsParams": "about",
+  "headings": [
+    {
+      "level": 2,
+      "title": "About",
+      "id": "about"
+    },
+    {
+      "level": 2,
+      "title": "Credits",
+      "id": "credits"
+    },
+    {
+      "level": 2,
+      "title": "License",
+      "id": "license"
+    }
+  ]
 }

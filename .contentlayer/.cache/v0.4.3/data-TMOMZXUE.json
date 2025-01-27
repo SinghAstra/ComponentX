@@ -22,7 +22,8 @@
         },
         "type": "Doc",
         "slug": "/docs/about",
-        "slugAsParams": "about"
+        "slugAsParams": "about",
+        "headings": []
       },
       "documentHash": "1737798635332",
       "hasWarnings": false,
@@ -50,7 +51,8 @@
         },
         "type": "Doc",
         "slug": "/docs/components-json",
-        "slugAsParams": "components-json"
+        "slugAsParams": "components-json",
+        "headings": []
       },
       "documentHash": "1737883993284",
       "hasWarnings": false,
@@ -78,7 +80,8 @@
         },
         "type": "Doc",
         "slug": "/docs",
-        "slugAsParams": ""
+        "slugAsParams": "",
+        "headings": []
       },
       "documentHash": "1737825860752",
       "hasWarnings": false,
@@ -106,7 +109,8 @@
         },
         "type": "Doc",
         "slug": "/docs/theming",
-        "slugAsParams": "theming"
+        "slugAsParams": "theming",
+        "headings": []
       },
       "documentHash": "1737887261853",
       "hasWarnings": false,
@@ -134,7 +138,8 @@
         },
         "type": "Doc",
         "slug": "/docs/installation",
-        "slugAsParams": "installation"
+        "slugAsParams": "installation",
+        "headings": []
       },
       "documentHash": "1737835345052",
       "hasWarnings": false,
@@ -162,7 +167,8 @@
         },
         "type": "Doc",
         "slug": "/docs/dark-mode",
-        "slugAsParams": "dark-mode"
+        "slugAsParams": "dark-mode",
+        "headings": []
       },
       "documentHash": "1737887356088",
       "hasWarnings": false,
@@ -190,7 +196,8 @@
         },
         "type": "Doc",
         "slug": "/docs/dark-mode/next",
-        "slugAsParams": "dark-mode/next"
+        "slugAsParams": "dark-mode/next",
+        "headings": []
       },
       "documentHash": "1737893413115",
       "hasWarnings": false,

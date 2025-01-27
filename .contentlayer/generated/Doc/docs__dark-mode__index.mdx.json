@@ -19,5 +19,6 @@
   },
   "type": "Doc",
   "slug": "/docs/dark-mode",
-  "slugAsParams": "dark-mode"
+  "slugAsParams": "dark-mode",
+  "headings": []
 }

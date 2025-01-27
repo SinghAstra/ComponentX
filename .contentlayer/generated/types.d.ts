@@ -24,6 +24,7 @@ export type Doc = {
   body: MDX
   slug: string
   slugAsParams: string
+  headings: json
 }  
 
 /** Nested types */

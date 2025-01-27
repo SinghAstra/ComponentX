@@ -19,5 +19,37 @@
   },
   "type": "Doc",
   "slug": "/docs/theming",
-  "slugAsParams": "theming"
+  "slugAsParams": "theming",
+  "headings": [
+    {
+      "level": 2,
+      "title": "Utility classes",
+      "id": "utility-classes"
+    },
+    {
+      "level": 2,
+      "title": "CSS Variables",
+      "id": "css-variables"
+    },
+    {
+      "level": 3,
+      "title": "Convention",
+      "id": "convention"
+    },
+    {
+      "level": 3,
+      "title": "List of variables",
+      "id": "list-of-variables"
+    },
+    {
+      "level": 3,
+      "title": "Adding new colors",
+      "id": "adding-new-colors"
+    },
+    {
+      "level": 3,
+      "title": "Other color formats",
+      "id": "other-color-formats"
+    }
+  ]
 }
