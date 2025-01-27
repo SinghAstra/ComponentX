@@ -23,7 +23,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div>
-      <header className="fixed top-0 z-50 w-full border-b bg-background/40">
+      <header className="fixed top-0 z-50 w-full border-b bg-background/40 backdrop-blur-sm ">
         <div className="md:container md:px-0 px-2 flex h-14 items-center justify-between mx-auto">
           <div className="flex items-center space-x-2">
             {/* Mobile Menu Button  */}

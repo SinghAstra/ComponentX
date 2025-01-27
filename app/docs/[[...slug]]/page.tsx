@@ -110,17 +110,17 @@ const DocsPage = () => {
           <Mdx code={doc.body.code} />
         </div>
       </div>
-      <div className="hidden md:block fixed h-[calc(100vh-3.5rem)] right-0 w-72 py-2">
+      <div className="hidden md:block fixed h-[calc(100vh-3.5rem)] right-0 w-72 py-2 ">
         <nav className="space-y-1">
           {doc.headings.map((heading: Heading) => (
             <a
               key={heading.id}
               href={`#${heading.id}`}
               className={cn(
-                "block text-sm transition-colors hover:text-foreground",
+                "block text-sm transition-colors hover:text-foreground border-l-2",
                 activeSection === heading.id
-                  ? "text-foreground font-medium"
-                  : "text-muted-foreground",
+                  ? "text-foreground font-medium border-primary"
+                  : "text-muted-foreground ",
                 {
                   "pl-4": heading.level === 2,
                   "pl-8": heading.level === 3,
