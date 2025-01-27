@@ -39,7 +39,7 @@ export const MultiStepIconsExample = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 max-w-5xl mx-auto">
+    <div className="h-[60vh] flex flex-col gap-4 items-center justify-center p-4 max-w-5xl mx-auto">
       <MultiStepIcons
         stages={initialStages}
         className={isHorizontal ? "w-full" : "h-full flex-1"}

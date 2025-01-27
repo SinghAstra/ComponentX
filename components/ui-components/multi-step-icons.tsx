@@ -24,8 +24,8 @@ const MultiStepIcons = ({
   return (
     <div
       className={cn(
-        "flex p-4 bg-background rounded-lg border border-border shadow-md justify-between",
-        isHorizontal ? "flex-row w-full" : "flex-col h-full",
+        "flex p-4 bg-background rounded-lg border shadow-md justify-between",
+        isHorizontal ? "flex-row w-xl" : "flex-col h-full",
         className
       )}
     >
@@ -33,20 +33,20 @@ const MultiStepIcons = ({
         <div
           key={stage.id}
           className={cn(
-            "border border-green-500 flex items-center",
-            isHorizontal ? "flex-row" : "flex-col",
+            " flex items-center",
+            isHorizontal ? "flex-row w-full" : "flex-col",
             index < stages.length - 1 && "flex-grow"
           )}
         >
           <div
             className={cn(
-              "flex items-center justify-center border border-purple-500",
+              "flex items-center justify-center ",
               isHorizontal ? "flex-col" : "flex-row"
             )}
           >
             <div
               className={cn(
-                "rounded-full flex items-center justify-center border border-cyan-500",
+                "rounded-full flex items-center justify-center ",
                 "w-16 h-16",
                 {
                   "bg-green-600/20 text-green-600":
@@ -64,18 +64,18 @@ const MultiStepIcons = ({
           {index < stages.length - 1 && (
             <div
               className={cn(
-                "flex-grow border border-yellow-400",
+                "flex-grow border border-purple-400",
                 isHorizontal ? " h-px mx-2 " : "w-px my-2"
               )}
             >
-              <div
+              {/* <div
                 className={cn({
                   "bg-green-300":
                     stages[index].status === "completed" &&
                     stages[index + 1].status !== "pending",
                   "bg-muted": stages[index + 1].status === "pending",
                 })}
-              />
+              /> */}
             </div>
           )}
         </div>

@@ -27,8 +27,8 @@ export function ComponentPreview({
   };
 
   return (
-    <div className={cn("group relative my-4 flex flex-col space-y-2")}>
-      <Tabs defaultValue="preview" className="relative mr-auto w-full">
+    <div className={cn("group relative my-4 flex flex-col space-y-2 ")}>
+      <Tabs defaultValue="preview" className="relative mr-auto w-full ">
         <div className="flex items-center justify-between pb-3">
           <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
             <TabsTrigger
@@ -81,7 +81,7 @@ export function ComponentPreview({
           </div>
         </TabsContent>
         <TabsContent value="code">
-          <div className="w-full rounded-md h-[350px]">
+          <div className="w-full rounded-md ">
             <Code className="language-tsx">{code}</Code>
           </div>
         </TabsContent>

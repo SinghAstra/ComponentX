@@ -62,7 +62,7 @@ const DocsPage = () => {
   // }, [doc.headings]);
 
   return (
-    <main className="relative flex-1 md:ml-64 flex md:mr-72">
+    <main className="relative flex-1 md:ml-64 flex xl:mr-72">
       <div className="mx-auto w-full max-w-2xl py-6 relative">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
@@ -109,7 +109,7 @@ const DocsPage = () => {
           <Mdx code={doc.body.code} />
         </div>
       </div>
-      <div className="hidden md:block fixed h-[calc(100vh-3.5rem)] right-0 w-72 py-2 ">
+      <div className="hidden xl:block fixed h-[calc(100vh-3.5rem)] right-0 w-72 py-2 ">
         <nav className="space-y-1">
           {doc.headings.map((heading: Heading) => (
             <a
