@@ -1,0 +1,6 @@
+{
+    "ignoreCommand": "!packages/cli/**",
+    "buildCommand": "npm run build",
+    "outputDirectory": ".next",
+    "installCommand": "npm install"
+  }
