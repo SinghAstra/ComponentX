@@ -4,11 +4,10 @@ import { allDocs } from "@/.contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Heading, HeadingWithElement } from "@/types/heading";
+import { Heading } from "@/types/heading";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import Balancer from "react-wrap-balancer";
 
 const DocsPage = () => {
