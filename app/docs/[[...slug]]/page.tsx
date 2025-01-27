@@ -1,7 +1,7 @@
 "use client";
 
 import { allDocs } from "@/.contentlayer/generated";
-import { Mdx } from "@/components/mdx-components";
+import { Mdx } from "@/components/mdx/mdx-components";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Heading, HeadingWithElement } from "@/types/heading";
@@ -16,51 +16,51 @@ const DocsPage = () => {
   const paramsSlug = params.slug as string[];
   const parsedParamsSlug = paramsSlug?.join("/") || "";
   const doc = allDocs.find((doc) => doc.slugAsParams === parsedParamsSlug);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  // const [activeSection, setActiveSection] = useState<string | null>(null);
 
   if (!doc) {
     notFound();
   }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const headingElements: HeadingWithElement[] = doc.headings.map(
-        (heading: Heading) => ({
-          id: heading.id,
-          element: document.getElementById(heading.id),
-        })
-      );
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const headingElements: HeadingWithElement[] = doc.headings.map(
+  //       (heading: Heading) => ({
+  //         id: heading.id,
+  //         element: document.getElementById(heading.id),
+  //       })
+  //     );
 
-      // Get all heading positions
-      const headingPositions = headingElements
-        .map(({ id, element }) => ({
-          id,
-          position: element?.getBoundingClientRect().top || 0,
-        }))
-        .filter(({ position }) => position !== 0);
+  //     // Get all heading positions
+  //     const headingPositions = headingElements
+  //       .map(({ id, element }) => ({
+  //         id,
+  //         position: element?.getBoundingClientRect().top || 0,
+  //       }))
+  //       .filter(({ position }) => position !== 0);
 
-      // Find the heading closest to being 100px from the top of the viewport
-      const currentSection = headingPositions.reduce((closest, current) => {
-        if (!closest) return current;
+  //     // Find the heading closest to being 100px from the top of the viewport
+  //     const currentSection = headingPositions.reduce((closest, current) => {
+  //       if (!closest) return current;
 
-        const closestDistance = Math.abs(closest.position - 100);
-        const currentDistance = Math.abs(current.position - 100);
+  //       const closestDistance = Math.abs(closest.position - 100);
+  //       const currentDistance = Math.abs(current.position - 100);
 
-        return currentDistance < closestDistance ? current : closest;
-      });
+  //       return currentDistance < closestDistance ? current : closest;
+  //     });
 
-      setActiveSection(currentSection?.id || null);
-    };
+  //     setActiveSection(currentSection?.id || null);
+  //   };
 
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    // Run once on mount to set initial active section
-    handleScroll();
+  //   // Add scroll event listener
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  //   // Run once on mount to set initial active section
+  //   handleScroll();
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [doc.headings]);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [doc.headings]);
 
   return (
     <main className="relative flex-1 md:ml-64 flex md:mr-72">
@@ -118,9 +118,10 @@ const DocsPage = () => {
               href={`#${heading.id}`}
               className={cn(
                 "block text-sm transition-colors hover:text-foreground border-l-2",
-                activeSection === heading.id
-                  ? "text-foreground font-medium border-primary"
-                  : "text-muted-foreground ",
+                // activeSection === heading.id
+                //   ? "text-foreground font-medium border-primary"
+                // :
+                "text-muted-foreground ",
                 {
                   "pl-4": heading.level === 2,
                   "pl-8": heading.level === 3,

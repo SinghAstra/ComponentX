@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import { Check, Copy, Loader2 } from "lucide-react";
 import React, { useState } from "react";
+import { Button } from "../ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Code } from "./code";
-import { Button } from "./ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 interface ComponentPreviewProps {
   component: React.ReactNode;

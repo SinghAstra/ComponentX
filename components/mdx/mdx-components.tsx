@@ -5,18 +5,18 @@ import { useMDXComponent } from "next-contentlayer2/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
-import { Callout } from "./callout";
-import { Code } from "./code";
-import { CodeBlockWrapper } from "./code-block-wrapper";
-import { ComponentPreview } from "./component-preview";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+} from "../ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { Callout } from "./callout";
+import { Code } from "./code";
+import { CodeBlockWrapper } from "./code-block-wrapper";
+import { ComponentPreview } from "./component-preview";
 
 const components = {
   Accordion,

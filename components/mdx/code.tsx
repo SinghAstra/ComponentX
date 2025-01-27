@@ -3,7 +3,7 @@ import { Check, Copy } from "lucide-react";
 import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 interface CodeProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;
@@ -26,7 +26,7 @@ export function Code({ className, children, ...props }: CodeProps) {
     const language = className.replace("language-", "");
 
     return (
-      <div className="relative group border rounded-md h-full mt-4 overflow-auto py-0">
+      <div className="relative group border rounded-md h-full mt-4 py-0">
         <Button
           variant="outline"
           size="icon"

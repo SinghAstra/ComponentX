@@ -1,4 +1,4 @@
-import { Icons } from "@/components/Icons";
+import { Icons } from "@/components/icons/Icons";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { Rocket } from "lucide-react";

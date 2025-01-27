@@ -1,7 +1,7 @@
 "use client";
 
-import { DocsNav } from "@/components/docs-sidebar";
-import { Icons } from "@/components/Icons";
+import { Icons } from "@/components/icons/Icons";
+import { DocsNav } from "@/components/layout/docs-sidebar";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
