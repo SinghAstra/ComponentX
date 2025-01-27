@@ -17,10 +17,11 @@ function extractHeadings(source) {
     if (!match)
       return null;
     const [, level, title] = match;
+    const id = title.toLowerCase().replace(/\./g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
     return {
       level: level.length,
       title,
-      id: title.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+      id
     };
   }).filter((heading) => heading !== null);
 }
@@ -106,4 +107,4 @@ export {
   Doc,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-FGDYJP4K.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-LKBKGBRW.mjs.map

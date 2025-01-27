@@ -3,3 +3,7 @@ export type Heading = {
   title: string;
   id: string;
 };
+
+export interface HeadingWithElement extends Heading {
+  element: HTMLElement | null;
+}

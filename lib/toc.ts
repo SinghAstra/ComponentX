@@ -12,10 +12,17 @@ export function extractHeadings(source: string): Heading[] {
 
       const [, level, title] = match;
 
+      // First remove dots, then replace other special characters with hyphens
+      const id = title
+        .toLowerCase()
+        .replace(/\./g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, ""); // Clean up any leading/trailing hyphens
+
       return {
         level: level.length,
         title: title,
-        id: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        id,
       };
     })
     .filter((heading): heading is Heading => heading !== null);

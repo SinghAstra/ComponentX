@@ -65,7 +65,7 @@
       {
         "level": 2,
         "title": "$schema",
-        "id": "-schema"
+        "id": "schema"
       },
       {
         "level": 2,
@@ -80,27 +80,27 @@
       {
         "level": 3,
         "title": "tailwind.config",
-        "id": "tailwind-config"
+        "id": "tailwindconfig"
       },
       {
         "level": 3,
         "title": "tailwind.css",
-        "id": "tailwind-css"
+        "id": "tailwindcss"
       },
       {
         "level": 3,
         "title": "tailwind.baseColor",
-        "id": "tailwind-basecolor"
+        "id": "tailwindbasecolor"
       },
       {
         "level": 3,
         "title": "tailwind.cssVariables",
-        "id": "tailwind-cssvariables"
+        "id": "tailwindcssvariables"
       },
       {
         "level": 3,
         "title": "tailwind.prefix",
-        "id": "tailwind-prefix"
+        "id": "tailwindprefix"
       },
       {
         "level": 2,
@@ -120,27 +120,27 @@
       {
         "level": 3,
         "title": "aliases.utils",
-        "id": "aliases-utils"
+        "id": "aliasesutils"
       },
       {
         "level": 3,
         "title": "aliases.components",
-        "id": "aliases-components"
+        "id": "aliasescomponents"
       },
       {
         "level": 3,
         "title": "aliases.ui",
-        "id": "aliases-ui"
+        "id": "aliasesui"
       },
       {
         "level": 3,
         "title": "aliases.lib",
-        "id": "aliases-lib"
+        "id": "aliaseslib"
       },
       {
         "level": 3,
         "title": "aliases.hooks",
-        "id": "aliases-hooks"
+        "id": "aliaseshooks"
       }
     ]
   },
