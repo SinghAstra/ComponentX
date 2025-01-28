@@ -1,20 +1,27 @@
 #!/usr/bin/env node
-import chalk from "chalk";
+
 import { Command } from "commander";
+import initCommand from "./commands/init.js";
+import { getPackageInfo } from "./utils/get-package-info.js";
 
-const program: Command = new Command();
+process.on("SIGINT", () => process.exit(0));
+process.on("SIGTERM", () => process.exit(0));
 
-program
-  .name("ui-name")
-  .description("A simple UI component CLI")
-  .version("0.0.1");
+async function main() {
+  const packageInfo = await getPackageInfo();
 
-program
-  .command("init")
-  .description("Initialize the UI library")
-  .action((): void => {
-    console.log(chalk.green("🎉 Hello! Everything is working fine!"));
-    console.log(chalk.blue("Your UI CLI is ready to use."));
-  });
+  const program = new Command()
+    .name("layoutx")
+    .description("add customizable components to your project.")
+    .version(
+      packageInfo.version || "1.0.0",
+      "-v, --version",
+      "display the version number"
+    );
 
-program.parse();
+  program.addCommand(initCommand);
+
+  program.parse();
+}
+
+main();
