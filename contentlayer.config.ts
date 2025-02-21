@@ -24,7 +24,6 @@ const computedFields: ComputedFields<"Doc"> = {
     type: "json",
     resolve: async (doc) => {
       const headings = extractHeadings(doc.body.raw);
-      console.log("headings is ", headings);
       return headings;
     },
   },
