@@ -3,17 +3,29 @@ title: Theming
 description: Using CSS Variables or Tailwind CSS for theming.
 ---
 
-You can choose between using CSS variables or Tailwind CSS utility classes for theming.
+# This is the h1.
+
+> This is a blockquote in MDX. Notice how it's styled with a left border and italic text.
+>
+> You can have multiple paragraphs in your blockquote.
+
+<img src="https://cdn.pixabay.com/photo/2023/10/03/10/06/ai-generated-8291089_1280.png" />
+
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+| Cell 7   | Cell 8   | Cell 9   |
 
 ## Utility classes
 
-```tsx /bg-zinc-950/ /text-zinc-50/ /dark:bg-white/ /dark:text-zinc-950/
+```tsx
 <div className="bg-zinc-950 dark:bg-white" />
 ```
 
 To use utility classes for theming set `tailwind.cssVariables` to `false` in your `components.json` file.
 
-```json {8} title="components.json"
+```json
 {
   "style": "default",
   "rsc": true,
@@ -32,13 +44,13 @@ To use utility classes for theming set `tailwind.cssVariables` to `false` in you
 
 ## CSS Variables
 
-```tsx /bg-background/ /text-foreground/
+```tsx
 <div className="bg-background text-foreground" />
 ```
 
 To use CSS variables for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
 
-```json {8} title="components.json"
+```json
 {
   "style": "default",
   "rsc": true,
@@ -84,17 +96,9 @@ The `background` color of the following component will be `hsl(var(--primary))` 
 
 </Callout>
 
-<Steps>
-  <Step>First Step Description</Step>
-  <Step>Second Step Description</Step>
-  <Step>Third Step Description</Step>
-</Steps>
-
 ### List of variables
 
 Here's the list of variables available for customization:
-
-<Steps>
 
 ```css title="Default background color of <body />...etc"
 --background: 0 0% 100%;
@@ -151,8 +155,6 @@ Here's the list of variables available for customization:
 ```css title="Border radius for card, input and buttons"
 --radius: 0.5rem;
 ```
-
-</Steps>
 
 ### Adding new colors
 

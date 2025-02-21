@@ -26,7 +26,7 @@ export function Code({ className, children, ...props }: CodeProps) {
     const language = className.replace("language-", "");
 
     return (
-      <div className="relative group border rounded-md h-full py-0">
+      <div className="relative group border rounded-md h-full py-0 my-4">
         <Button
           variant="outline"
           size="icon"
@@ -50,7 +50,7 @@ export function Code({ className, children, ...props }: CodeProps) {
             paddingRight: "2.5rem",
             letterSpacing: "0.02rem",
             fontFamily: "Fira Code, monospace",
-            margin: "0",
+            margin: "0px",
           }}
           codeTagProps={{
             className: "language-" + language,
