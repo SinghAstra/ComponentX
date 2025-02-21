@@ -1,9 +1,6 @@
-export interface NavItem {
+export interface NavItemWithChildren {
   title: string;
   href?: string;
   label?: string;
-}
-
-export interface NavItemWithChildren extends NavItem {
   items: NavItemWithChildren[];
 }

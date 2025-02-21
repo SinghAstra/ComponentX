@@ -14,7 +14,7 @@ import {
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { Command, Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -49,16 +49,6 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <div className="border rounded-md py-1 px-2 flex items-center space-x-2 bg-card/20">
-              <span className="flex items-center w-48">
-                <Search className="mr-2 h-4 w-4" />
-                Search...
-              </span>
-              <span className="ml-auto flex items-center text-sm">
-                <Command className="h-4 w-4" />K
-              </span>
-            </div>
-
             {/* Right side buttons */}
             <a
               href={siteConfig.links.github}

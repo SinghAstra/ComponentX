@@ -2,11 +2,9 @@
 
 import { allDocs } from "@/.contentlayer/generated";
 import { Mdx } from "@/components/mdx/mdx-components";
-import { badgeVariants } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Heading } from "@/types/heading";
-import { ChevronRight, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { notFound, useParams } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 
@@ -29,7 +27,7 @@ const DocsPage = () => {
           <div className="text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
-          <h1 className={cn("scroll-m-20 text-3xl font-bold tracking-tight")}>
+          <h1 className={cn("text-3xl font-bold tracking-tight")}>
             {doc.title}
           </h1>
           {doc.description && (
@@ -38,32 +36,6 @@ const DocsPage = () => {
             </p>
           )}
         </div>
-        {doc.links ? (
-          <div className="flex items-center space-x-2 pt-4">
-            {doc.links?.doc && (
-              <Link
-                href={doc.links.doc}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                Docs
-                <ExternalLink className="h-3 w-3" />
-              </Link>
-            )}
-            {doc.links?.api && (
-              <Link
-                href={doc.links.api}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                API Reference
-                <ExternalLink className="h-3 w-3" />
-              </Link>
-            )}
-          </div>
-        ) : null}
         <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />
         </div>
