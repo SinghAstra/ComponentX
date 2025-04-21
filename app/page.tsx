@@ -1,9 +1,9 @@
-import { Icons } from "@/components/icons/Icons";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { Rocket } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
 const HomePage = () => {
   return (
@@ -18,7 +18,7 @@ const HomePage = () => {
         </Link>
         <a href={siteConfig.links.github} target="_blank">
           <Button variant={"outline"}>
-            Github <Icons.gitLogo className="h-5 w-5" />
+            Github <FaGithub className="h-5 w-5" />
           </Button>
         </a>
       </div>

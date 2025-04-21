@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import "devicon/devicon.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Poppins", system-ui;
+  font-family: "Space Grotesk", "Space Mono", monospace;
 }
 
 @layer base {
@@ -35,15 +36,6 @@ body {
     --chart-5: 340 75% 55%;
     /* Radius */
     --radius: 0.875rem;
-
-    --stats-blue: 210 40% 50%; /* Vibrant blue */
-    --stats-purple: 270 50% 50%; /* Deep purple */
-    --stats-pink: 330 60% 50%; /* Bright pink */
-    --stats-teal: 180 50% 40%; /* Teal green */
-    --stats-orange: 25 90% 50%; /* Warm orange */
-
-    --stats-green: 120 50% 40%; /* Verdant green */
-    --stats-red: 0 70% 50%;
   }
 }
 
@@ -55,45 +47,112 @@ body {
     @apply bg-background text-foreground;
   }
 
-  ::-webkit-scrollbar {
-    width: 5px;
+  /* Apply scrollbar styles globally */
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--secondary)) transparent;
   }
-  ::-webkit-scrollbar-track {
+
+  /* Target all elements that can scroll */
+  *::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 3px;
+    height: 6px; /* For horizontal scrollbars */
+  }
+
+  *::-webkit-scrollbar-track {
     background: transparent;
   }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
-    border-radius: 5px;
+
+  *::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--secondary));
+    border-radius: 8px;
   }
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--border)) transparent;
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--secondary) / 0.8);
+    cursor: grab;
+  }
+
+  /* Specific styling for horizontal scrollbars */
+  *::-webkit-scrollbar-corner {
+    background: transparent;
   }
 }
 
-body {
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: thin;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  caret-color: hsl(var(--foreground)) !important;
+  box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+}
+
+input:-webkit-autofill:not(:focus) {
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--background)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
 }
 
 .bg-grid-white {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H63.5V64'/%3e%3c/svg%3e");
 }
 
-@layer utilities {
-  .step {
-    counter-increment: step;
-  }
+/* Prism Syntax Highlight */
 
-  .step:before {
-    @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
-    @apply ml-[-50px] mt-[-4px];
-    content: counter(step);
-    font-family: "Poppins", system-ui;
-  }
+.keyword {
+  color: #f97583; /* GitHub Light Red */
 }
 
-html {
-  scroll-behavior: smooth;
+.function {
+  color: #d2a8ff; /* GitHub Light Purple */
+}
+
+.punctuation {
+  color: #c9d1d9; /* GitHub Light Gray */
+}
+
+.comment {
+  color: #8b949e; /* GitHub Muted Gray */
+}
+
+.string,
+.constant,
+.annotation,
+.boolean,
+.number {
+  color: #79c0ff; /* GitHub Light Blue */
+}
+
+.tag {
+  color: #a5d6ff; /* GitHub Cyan */
+}
+
+.attr-name {
+  color: #d2a8ff; /* GitHub Light Purple */
+}
+
+.attr-value {
+  color: #ffa657; /* GitHub Light Orange */
+}
+
+pre > code {
+  display: grid;
+  max-width: inherit !important;
+  padding: 10px 14px !important;
+}
+
+.rehype-code-title {
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+  border: 1px solid hsl(var(--border));
+  letter-spacing: 0.05em;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 4px;
+  background-color: hsl(var(--muted) / 0.2);
 }

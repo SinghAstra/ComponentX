@@ -1,6 +1,5 @@
 "use client";
 
-import { Icons } from "@/components/icons/Icons";
 import { DocsNav } from "@/components/layout/docs-sidebar";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +16,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+import { FaGithub } from "react-icons/fa";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -55,7 +55,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
               target="_blank"
               className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 px-4"
             >
-              <Icons.gitLogo className="h-4 w-4" />
+              <FaGithub className="h-4 w-4" />
             </a>
           </div>
         </div>

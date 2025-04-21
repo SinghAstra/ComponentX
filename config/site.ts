@@ -1,17 +1,13 @@
-import { SiteConfig } from "@/types/site";
+import { SiteConfig } from "@/interfaces/site";
 
 export const siteConfig: SiteConfig = {
-  name: "LayoutX",
-  description: "Reusable UI Components built on top of shadCn UI.",
+  name: "ComponentX",
+  description: "Reusable UI Components",
   tagline: "Reusable UI Components.",
-  headline: "Effortlessly Create UIs",
-  subHeadline:
-    "Simplify your UI development with modular, reusable components.",
-  url: "https://layoutx.vercel.app",
-  features: ["Reusable UI components"],
+  url: "https://componentx.vercel.app",
   links: {
     twitter: "https://x.com/XSinghAstra",
-    github: "https://github.com/SinghAstra/layoutx",
-    linkedIn: "https://www.linkedin.com/in/singhastra",
+    github: "https://github.com/SinghAstra",
+    githubRepo: "https://github.com/SinghAstra/componentx",
   },
 };
