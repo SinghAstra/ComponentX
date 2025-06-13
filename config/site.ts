@@ -2,7 +2,8 @@ import { SiteConfig } from "@/interfaces/site";
 
 export const siteConfig: SiteConfig = {
   name: "ComponentX",
-  description: "Reusable UI Components",
+  description:
+    " Collection of Reusable UI Components. Simple Copy Paste and Elevate UI.",
   tagline: "Reusable UI Components.",
   url: "https://componentx.vercel.app",
   links: {
