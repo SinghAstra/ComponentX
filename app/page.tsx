@@ -1,8 +1,9 @@
 import React from "react";
-import BackgroundShowcase from "./background-showcase";
-import GradientMeshBackgroundShowcase from "./gradient-mesh-background-showcase";
 import { HeroContent } from "./hero";
-import RadialFadeBackgroundShowcase from "./radial-fade-background-showcase";
+import GradientMeshBackgroundShowcase from "./showcase/gradient-mesh-background-showcase";
+import RadialFadeBackgroundShowcase from "./showcase/radial-fade-background-showcase";
+import RadialFadePingBackgroundShowcase from "./showcase/radial-fade-ping-background-showcase";
+import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsating-background-showcase";
 
 const HomePage = () => {
   return (
@@ -10,7 +11,8 @@ const HomePage = () => {
       <HeroContent />
       <GradientMeshBackgroundShowcase />
       <RadialFadeBackgroundShowcase />
-      <BackgroundShowcase />
+      <RadialFadePulsatingBackgroundShowcase />
+      <RadialFadePingBackgroundShowcase />
     </div>
   );
 };

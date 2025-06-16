@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 export function HeroContent() {
@@ -59,23 +59,6 @@ export function HeroContent() {
           <FaGithub className="mr-2 h-4 w-4" />
           View on GitHub
         </Button>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-full border  bg-muted/60 p-2"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 0.7, y: 0 }}
-        transition={{
-          delay: 5,
-          duration: 0.8,
-          y: {
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            duration: 2,
-          },
-        }}
-      >
-        <ChevronDown className="w-6 h-6 text-primary" />
       </motion.div>
     </div>
   );

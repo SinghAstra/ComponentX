@@ -2,8 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { RadialFadeBackground } from "./radial-fade-background";
-const RadialFadeBackgroundShowcase = () => {
+import { RadialFadePulsatingBackground } from "../ui/radial-fade-pulsating-background";
+const RadialFadePulsatingBackgroundShowcase = () => {
   const radialFadeBackgroundContainerTextRef = useRef(null);
   const radialFadeBackgroundContainerTextInView = useInView(
     radialFadeBackgroundContainerTextRef,
@@ -26,9 +26,9 @@ const RadialFadeBackgroundShowcase = () => {
           }
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          Radial Fade Background
+          Radial Fade Pulsating Background
         </motion.h1>
-        <RadialFadeBackground
+        <RadialFadePulsatingBackground
           centerX={0}
           centerY={0}
           color="hsl(var(--primary))"
@@ -39,4 +39,4 @@ const RadialFadeBackgroundShowcase = () => {
   );
 };
 
-export default RadialFadeBackgroundShowcase;
+export default RadialFadePulsatingBackgroundShowcase;

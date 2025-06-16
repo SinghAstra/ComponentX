@@ -28,13 +28,13 @@ export function GradientMeshBackground({
         }}
       >
         <div
-          className="grow"
+          className="grow "
           style={{
             background: `conic-gradient(from 180deg at 99.78% 35% in lab, ${colors.primary} 18deg, ${colors.secondary} 36deg, ${colors.accent} 90deg, ${colors.accent} 342deg, ${colors.primary} 360deg)`,
           }}
         />
         <div
-          className="grow"
+          className="grow "
           style={{
             background: `conic-gradient(from 0deg at 99.78% 65% in lab, ${colors.primary} 0deg, ${colors.accent} 18deg, ${colors.accent} 270deg, ${colors.secondary} 324deg, ${colors.primary} 342deg)`,
           }}
