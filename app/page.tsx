@@ -1,3 +1,6 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import { motion, useInView } from "framer-motion";
 import React from "react";
 import Hero from "./hero";
 import ConicGradientBackgroundShowcase from "./showcase/conic-gradient-background-showcase";
@@ -17,6 +20,17 @@ const HomePage = () => {
       <RadialFadePingBackgroundShowcase />
       <ConicGradientBackgroundShowcase />
       <LightBulbGradientShowCase />
+      <div className="flex items-center justify-center">
+        <div className="h-[80vh] w-[80vw] border rounded-sm border-neutral-800/40 flex items-center justify-center">
+          <motion.div
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Button>Hey There</Button>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 };
