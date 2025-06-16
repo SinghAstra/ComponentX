@@ -17,7 +17,7 @@ export function RadialFadeBackground({
 }: RadialFadeBackgroundProps) {
   return (
     <div
-      className={`absolute inset-0 pointer-events-none ${className} `}
+      className={`absolute inset-0 pointer-events-none ${className} z-[-3]`}
       style={{
         background: `radial-gradient(circle at ${centerX}% ${centerY}%, ${color} ${
           innerOpacity * 100

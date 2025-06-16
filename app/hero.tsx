@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
-export function HeroContent() {
+function Hero() {
   return (
     <div className="relative z-10 flex flex-col items-center gap-8 text-center min-h-screen justify-center px-4 overflow-hidden">
       <motion.div
@@ -63,3 +63,5 @@ export function HeroContent() {
     </div>
   );
 }
+
+export default Hero;

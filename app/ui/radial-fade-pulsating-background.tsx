@@ -19,7 +19,7 @@ export function RadialFadePulsatingBackground({
 }: RadialFadePulsatingBackgroundProps) {
   return (
     <div
-      className={`absolute inset-0 pointer-events-none ${className} animate-pulse`}
+      className={`absolute inset-0 pointer-events-none ${className} animate-pulse z-[-3]`}
       style={{
         background: `radial-gradient(circle at ${centerX}% ${centerY}%, ${color} ${
           innerOpacity * 100

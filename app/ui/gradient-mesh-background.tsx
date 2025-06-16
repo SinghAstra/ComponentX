@@ -18,7 +18,7 @@ export function GradientMeshBackground({
   },
 }: GradientMeshBackgroundProps) {
   return (
-    <div className={`absolute inset-0 overflow-hidden ${className}`}>
+    <div className={`absolute inset-0 overflow-hidden ${className} z-[-3]`}>
       <div
         className="absolute -inset-y-[25%] -right-24 flex w-[100vw] flex-col md:-right-6 md:w-[1200px] blur"
         style={{

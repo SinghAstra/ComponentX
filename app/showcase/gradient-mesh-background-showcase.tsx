@@ -17,7 +17,7 @@ const GradientMeshBackgroundShowcase = () => {
       <div className="w-[80vw] h-[80vh] border border-neutral-800/40 relative rounded-md overflow-hidden flex items-center justify-center">
         <motion.h1
           ref={gradientBackgroundContainerTextRef}
-          className="text-3xl"
+          className="text-5xl font-medium"
           initial={{ opacity: 0, y: 30 }}
           animate={
             gradientBackgroundContainerTextInView

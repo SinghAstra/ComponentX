@@ -2,11 +2,11 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { RadialFadePulsatingBackground } from "../ui/radial-fade-pulsating-background";
-const RadialFadePulsatingBackgroundShowcase = () => {
-  const radialFadeBackgroundContainerTextRef = useRef(null);
-  const radialFadeBackgroundContainerTextInView = useInView(
-    radialFadeBackgroundContainerTextRef,
+import { LightBulbGradient } from "../ui/light-bulb-gradient";
+const LightBulbGradientShowCase = () => {
+  const gradientBackgroundContainerTextRef = useRef(null);
+  const gradientBackgroundContainerTextInView = useInView(
+    gradientBackgroundContainerTextRef,
     {
       once: true,
       margin: "-100px",
@@ -16,27 +16,22 @@ const RadialFadePulsatingBackgroundShowcase = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-[80vw] h-[80vh] border border-neutral-800/40 relative rounded-md overflow-hidden flex items-center justify-center">
         <motion.h1
-          ref={radialFadeBackgroundContainerTextRef}
+          ref={gradientBackgroundContainerTextRef}
           className="text-5xl font-medium"
           initial={{ opacity: 0, y: 30 }}
           animate={
-            radialFadeBackgroundContainerTextInView
+            gradientBackgroundContainerTextInView
               ? { opacity: 1, y: 0 }
               : { opacity: 0, y: 30 }
           }
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          Radial Fade Pulsating Background
+          Light Bulb Gradient
         </motion.h1>
-        <RadialFadePulsatingBackground
-          centerX={0}
-          centerY={0}
-          color="hsl(var(--primary))"
-          outerOpacity={0.6}
-        />
+        <LightBulbGradient />
       </div>
     </div>
   );
 };
 
-export default RadialFadePulsatingBackgroundShowcase;
+export default LightBulbGradientShowCase;

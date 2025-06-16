@@ -19,7 +19,7 @@ export function RadialFadePingBackground({
 }: RadialFadePingBackgroundProps) {
   return (
     <div
-      className={`absolute inset-0 pointer-events-none ${className} animate-ping`}
+      className={`absolute inset-0 pointer-events-none ${className} animate-ping z-[-3]`}
       style={{
         background: `radial-gradient(circle at ${centerX}% ${centerY}%, ${color} ${
           innerOpacity * 100
