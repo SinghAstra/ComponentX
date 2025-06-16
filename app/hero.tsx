@@ -11,7 +11,7 @@ function Hero() {
     <div className="relative z-10 flex flex-col items-center gap-8 text-center min-h-screen justify-center px-4 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="text-md uppercase tracking-widest text-primary font-mono mb-4">
@@ -25,7 +25,7 @@ function Hero() {
       <motion.div
         className="max-w-2xl space-y-4"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <p className="text-xl text-foreground/80">
@@ -41,7 +41,7 @@ function Hero() {
       <motion.div
         className="flex flex-col sm:flex-row gap-4 mt-4"
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <Button
