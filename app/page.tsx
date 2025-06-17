@@ -2,6 +2,7 @@
 import React from "react";
 import Hero from "./hero";
 import ConicGradientBackgroundShowcase from "./showcase/conic-gradient-background-showcase";
+import DialogShowCase from "./showcase/dialog-showcase";
 import GradientMeshBackgroundShowcase from "./showcase/gradient-mesh-background-showcase";
 import LightBulbGradientShowCase from "./showcase/light-bulb-gradient-showcase";
 import RadialFadeBackgroundShowcase from "./showcase/radial-fade-background-showcase";
@@ -18,6 +19,7 @@ const HomePage = () => {
       <RadialFadePingBackgroundShowcase />
       <ConicGradientBackgroundShowcase />
       <LightBulbGradientShowCase />
+      <DialogShowCase />
     </div>
   );
 };

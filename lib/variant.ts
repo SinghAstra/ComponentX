@@ -1,0 +1,20 @@
+export const textVariant = {
+  hidden: { opacity: 0, y: 60, filter: "blur(20px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.4 },
+  },
+};
+
+export const buttonVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4 },
+  },
+  hover: { scale: 1.03, transition: { duration: 0.1 } },
+  tap: { scale: 0.97, transition: { duration: 0.1 } },
+};
