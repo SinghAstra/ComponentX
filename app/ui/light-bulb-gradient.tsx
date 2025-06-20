@@ -1,3 +1,4 @@
+"use client";
 import type React from "react";
 
 interface LightBulbGradient {
@@ -5,12 +6,12 @@ interface LightBulbGradient {
 }
 
 const colors = {
-  white: "rgb(255, 255, 255)",
-  blue: "rgb(156, 184, 221)",
-  transparent: "rgba(17, 17, 17, 0)",
+  primary: "hsl(var(--primary) / 1)",
+  secondary: "hsl(var(--primary) / 0.7)",
+  tertiary: "rgba(17, 17, 17, 0)",
 };
 
-export function LightBulbGradient({ className = "" }: LightBulbGradient) {
+function LightBulbGradient({ className = "" }: LightBulbGradient) {
   return (
     <div className={`absolute  overflow-x-hidden inset-0  ${className}`}>
       <div
@@ -26,11 +27,11 @@ export function LightBulbGradient({ className = "" }: LightBulbGradient) {
           style={{
             background: `conic-gradient(
               from 90deg at 35% -1% in lab, 
-              ${colors.white} 7.2deg, 
-              ${colors.blue} 14.4deg, 
-              ${colors.transparent} 36deg, 
-              ${colors.transparent} 342deg, 
-              ${colors.white} 360deg
+              ${colors.primary} 7.2deg, 
+              ${colors.secondary} 14.4deg, 
+              ${colors.tertiary} 36deg, 
+              ${colors.tertiary} 342deg, 
+              ${colors.primary} 360deg
             )`,
           }}
         />
@@ -39,11 +40,11 @@ export function LightBulbGradient({ className = "" }: LightBulbGradient) {
           style={{
             background: `conic-gradient(
               from -90deg at 65% -1% in lab, 
-              ${colors.white} 0deg, 
-              ${colors.transparent} 18deg, 
-              ${colors.transparent} 324deg, 
-              ${colors.blue} 345.6deg, 
-              ${colors.white} 352.8deg
+              ${colors.primary} 0deg, 
+              ${colors.tertiary} 18deg, 
+              ${colors.tertiary} 324deg, 
+              ${colors.secondary} 345.6deg, 
+              ${colors.primary} 352.8deg
             )`,
           }}
         />
@@ -51,3 +52,5 @@ export function LightBulbGradient({ className = "" }: LightBulbGradient) {
     </div>
   );
 }
+
+export default LightBulbGradient;
