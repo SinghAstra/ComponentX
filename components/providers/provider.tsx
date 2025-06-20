@@ -1,6 +1,6 @@
 "use client";
 
-import { LightBulbGradient } from "@/app/ui/light-bulb-gradient";
+import LightBulbGradient from "@/app/ui/light-bulb-gradient";
 import { siteConfig } from "@/config/site";
 import { textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
