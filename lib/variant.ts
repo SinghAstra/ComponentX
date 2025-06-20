@@ -8,16 +8,8 @@ export const textVariant = {
   },
 };
 
-export const buttonVariant = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.4 },
-  },
-  hover: { scale: 1.03, transition: { duration: 0.1 } },
-  tap: { scale: 0.97, transition: { duration: 0.1 } },
-};
+export const hover = { scale: 1.03, transition: { duration: 0.1 } };
+export const tap = { scale: 0.97, transition: { duration: 0.1 } };
 
 export const scaleInVariant = {
   hidden: { opacity: 0, scale: 0.6 },
@@ -26,10 +18,9 @@ export const scaleInVariant = {
     scale: 1,
     transition: { duration: 0.2 },
   },
-  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
 };
 
-export const dialogItemVariant = {
+export const fadeInVariant = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
