@@ -1,5 +1,5 @@
 import React from "react";
-import NotificationInput from "../notification-input";
+import NotificationInput from "../ui/notification-input";
 import VideoBackground from "../ui/video-background";
 
 const NotificationInputShowCase = () => {

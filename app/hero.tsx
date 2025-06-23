@@ -2,19 +2,22 @@
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { containerVariant, slideUpVariant, textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { BackgroundShine } from "./ui/background-shine";
 import VideoBackground from "./ui/video-background";
 
 function Hero() {
   return (
-    <div className="relative z-10 flex flex-col items-center gap-8 text-center min-h-screen justify-center px-4 overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      whileInView="visible"
+      className="relative z-10 flex flex-col items-center gap-8 text-center min-h-screen justify-center px-4 overflow-hidden"
+    >
+      <motion.div variants={textVariant}>
         <div className="text-md uppercase tracking-widest text-primary font-mono mb-4">
           Elevate your projects
         </div>
@@ -23,12 +26,7 @@ function Hero() {
         </h1>
       </motion.div>
 
-      <motion.div
-        className="max-w-2xl space-y-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <motion.div className="max-w-2xl space-y-4" variants={textVariant}>
         <p className="text-xl text-foreground/80">
           Collection of beautiful, accessible, and customizable UI components.
           <br />
@@ -41,14 +39,13 @@ function Hero() {
 
       <motion.div
         className="flex flex-col sm:flex-row gap-4 mt-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        variants={slideUpVariant}
       >
         <Button
-          size="lg"
-          className="group rounded-md text-lg bg-primary/80 hover:bg-primary/90 transition-all duration-300"
+          variant={"outline"}
+          className="group rounded-md text-lg relative bg-transparent hover:bg-transparent transition-all duration-300"
         >
+          <BackgroundShine />
           Follow For Updates
           <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
         </Button>
@@ -62,7 +59,7 @@ function Hero() {
         </Button>
         <VideoBackground videoSrc="/music.mp4" />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 

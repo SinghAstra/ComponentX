@@ -14,7 +14,7 @@ import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsat
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col  gap-2">
+    <div className="min-h-screen flex flex-col gap-2">
       <Hero />
       <GradientMeshBackgroundShowcase />
       <RadialFadeBackgroundShowcase />

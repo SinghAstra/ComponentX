@@ -44,7 +44,7 @@ const NotificationInput = () => {
           <div className="relative">
             <input
               className={cn(
-                "flex w-[400px] h-[50px] rounded border border-input bg-transparent  px-3 py-2 pr-32 text-3xl shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-md lg:text-xl",
+                "flex w-[400px] h-[50px] rounded border border-primary bg-transparent  px-3 py-2 pr-32 text-3xl shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-md lg:text-xl",
                 formik.touched.email &&
                   formik.errors.email &&
                   "border-destructive focus-visible:ring-destructive"

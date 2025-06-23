@@ -53,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased min-h-screen bg-background">
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased min-h-screen bg-background ">
         <Providers>
           <NextTopLoader color="hsl(var(--primary))" showSpinner={false} />
           {children}
