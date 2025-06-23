@@ -16,7 +16,7 @@ const AbstractBackgroundShowCase = () => {
         >
           Abstract Background
         </motion.h1>
-        <VideoBackground videoSrc="/video-1.mp4" />
+        <VideoBackground videoSrc="/abstract.mp4" />
       </div>
     </div>
   );

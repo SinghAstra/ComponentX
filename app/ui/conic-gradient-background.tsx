@@ -1,50 +1,45 @@
-function ConicGradientBackground({
-  className = "",
-  opacity = 1,
-  blur = true,
-  primary = "rgb(156, 184, 221)",
-  secondary = "rgba(81, 100, 132, 0.9)",
-  accent = "rgba(6, 16, 43, 0.05)",
-}: {
-  className?: string;
-  opacity?: number;
-  blur?: boolean;
-  primary?: string;
-  secondary?: string;
-  accent?: string;
-}) {
+function ConicGradientBackground() {
+  const colors = {
+    primary: "hsl(var(--primary) / 1)",
+    secondary: "hsl(var(--primary) / 0.7)",
+    tertiary: "rgba(17, 17, 17, 0)",
+  };
   return (
-    <div
-      className={`pointer-events-none absolute z-[-3] inset-0 ${className} ${
-        blur ? "blur" : ""
-      }`}
-      style={{ opacity }}
-    >
+    <div className="pointer-events-none absolute z-[-3] inset-0 blur">
       <div
-        className={`pointer-events-none absolute inset-0`}
+        className="absolute -inset-y-[25%] -right-24 flex w-[100vw] flex-col md:-right-6 md:w-[1200px] blur"
         style={{
-          background: `conic-gradient(
+          maskImage:
+            "linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255))",
+          opacity: 0.5,
+        }}
+      >
+        <div
+          className={`pointer-events-none absolute inset-0`}
+          style={{
+            background: `conic-gradient(
         from 90deg at 65% 50%, 
         rgb(248, 247, 245) 0deg, 
-        ${primary} 4deg, 
-        ${secondary} 8deg, 
-        ${accent} 45deg, 
+        ${colors.primary} 4deg, 
+        ${colors.secondary} 8deg, 
+        ${colors.tertiary} 45deg, 
         rgba(255, 255, 255, 0) 360deg)`,
-        }}
-      />
-      <div
-        className={`pointer-events-none absolute inset-0`}
-        style={{
-          background: `conic-gradient(
+          }}
+        />
+        <div
+          className={`pointer-events-none absolute inset-0`}
+          style={{
+            background: `conic-gradient(
         from 90deg at 65% 50%, 
         rgba(255, 255, 255, 0) ,
-        ${accent} 315deg, 
-        ${secondary} 352deg, 
-        ${primary} 356deg, 
+        ${colors.tertiary} 315deg, 
+        ${colors.secondary} 352deg, 
+        ${colors.primary} 356deg, 
         rgb(248, 247, 245) 360deg)
         `,
-        }}
-      />
+          }}
+        />
+      </div>
     </div>
   );
 }

@@ -80,21 +80,6 @@ body {
   }
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
-  -webkit-text-fill-color: hsl(var(--foreground)) !important;
-  caret-color: hsl(var(--foreground)) !important;
-  box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
-}
-
-input:-webkit-autofill:not(:focus) {
-  -webkit-box-shadow: 0 0 0 1000px hsl(var(--background)) inset !important;
-  -webkit-text-fill-color: hsl(var(--foreground)) !important;
-}
-
 .bg-grid-white {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H63.5V64'/%3e%3c/svg%3e");
 }
@@ -156,27 +141,15 @@ pre > code {
   background-color: hsl(var(--muted) / 0.2);
 }
 
-.glass-card {
-  background: rgba(30, 30, 40, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+@keyframes shine {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -400% 0;
+  }
 }
 
-/* Add subtle hover effects */
-.hover-lift {
-  transition: transform 0.2s ease-out;
-}
-
-.hover-lift:hover {
-  transform: translateY(-3px);
-}
-
-/* Add glow effects */
-.glow-text {
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
-}
-
-.glow-border {
-  box-shadow: 0 0 15px -3px rgba(168, 85, 247, 0.3);
+.shine {
+  animation: shine 6s linear infinite;
 }

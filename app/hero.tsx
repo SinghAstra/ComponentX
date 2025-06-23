@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import VideoBackground from "./ui/video-background";
 
 function Hero() {
   return (
@@ -17,7 +18,7 @@ function Hero() {
         <div className="text-md uppercase tracking-widest text-primary font-mono mb-4">
           Elevate your projects
         </div>
-        <h1 className="max-w-3xl font-medium text-6xl tracking-tight md:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-primary/20 via-primary/60 to-primary/90">
+        <h1 className="max-w-3xl font-medium text-6xl tracking-tight md:text-7xl ">
           {siteConfig.name}
         </h1>
       </motion.div>
@@ -59,6 +60,7 @@ function Hero() {
           <FaGithub className="mr-2 h-4 w-4" />
           View on GitHub
         </Button>
+        <VideoBackground videoSrc="/music.mp4" />
       </motion.div>
     </div>
   );

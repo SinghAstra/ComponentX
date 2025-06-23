@@ -26,6 +26,7 @@
     "contentlayer2": "^0.4.6",
     "date-fns": "^4.1.0",
     "devicon": "^2.16.0",
+    "formik": "^2.4.6",
     "framer-motion": "^12.17.3",
     "lucide-react": "^0.469.0",
     "motion": "^12.18.1",
@@ -46,6 +47,7 @@
     "sonner": "^2.0.3",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "yup": "^1.6.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {

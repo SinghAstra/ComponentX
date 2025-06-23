@@ -23,6 +23,11 @@ function VideoBackground({ className, videoSrc }: AbstractBackgroundProps) {
   return (
     <div
       className={`pointer-events-none absolute inset-0 z-[-3] overflow-hidden ${className}`}
+      style={{
+        maskImage:
+          "linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255))",
+        opacity: 0.5,
+      }}
     >
       <video
         ref={videoRef}

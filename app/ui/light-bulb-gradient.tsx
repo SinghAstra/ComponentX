@@ -1,19 +1,15 @@
 "use client";
 import type React from "react";
 
-interface LightBulbGradient {
-  className?: string;
-}
-
 const colors = {
   primary: "hsl(var(--primary) / 1)",
   secondary: "hsl(var(--primary) / 0.7)",
   tertiary: "rgba(17, 17, 17, 0)",
 };
 
-function LightBulbGradient({ className = "" }: LightBulbGradient) {
+function LightBulbGradient() {
   return (
-    <div className={`absolute  overflow-x-hidden inset-0  ${className}`}>
+    <div className="absolute  overflow-x-hidden inset-0">
       <div
         className="absolute -inset-x-[20vw] top-0 flex h-[50vh] grow   "
         style={{
