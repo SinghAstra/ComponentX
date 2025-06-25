@@ -57,7 +57,7 @@ function Hero() {
           <FaGithub className="mr-2 h-4 w-4" />
           View on GitHub
         </Button>
-        <VideoBackground videoSrc="/music.mp4" />
+        <VideoBackground videoSrc="/abstract.mp4" />
       </motion.div>
     </motion.div>
   );
