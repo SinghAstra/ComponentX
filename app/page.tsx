@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import GradientShowCase from "./gradient-showcase";
 import Hero from "./hero";
 import AbstractBackgroundShowCase from "./showcase/abstract-background-showcase";
 import ButtonBackgroundShineShowCase from "./showcase/button-background-shine-showcase";
@@ -15,6 +16,7 @@ import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsat
 const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col gap-2">
+      <GradientShowCase />
       <Hero />
       <GradientMeshBackgroundShowcase />
       <RadialFadeBackgroundShowcase />
