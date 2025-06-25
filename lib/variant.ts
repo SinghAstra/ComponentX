@@ -42,8 +42,8 @@ export const containerVariant = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: 0.4,
+      delayChildren: 0.5,
     },
   },
 };
