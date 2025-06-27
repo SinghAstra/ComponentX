@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { BackgroundShine } from "./ui/background-shine";
-import VideoBackground from "./ui/video-background";
 
 function Hero() {
   return (
@@ -17,6 +16,7 @@ function Hero() {
       whileInView="visible"
       className="relative z-10 flex flex-col items-center gap-8 text-center min-h-screen justify-center px-4 overflow-hidden"
     >
+      {/* <RadialFadeBackground /> */}
       <motion.div variants={textVariant}>
         <div className="text-md uppercase tracking-widest text-primary font-mono mb-4">
           Elevate your projects
@@ -57,7 +57,6 @@ function Hero() {
           <FaGithub className="mr-2 h-4 w-4" />
           View on GitHub
         </Button>
-        <VideoBackground videoSrc="/abstract.mp4" />
       </motion.div>
     </motion.div>
   );

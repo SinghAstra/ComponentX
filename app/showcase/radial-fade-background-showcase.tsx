@@ -2,7 +2,7 @@
 
 import { textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
-import { RadialFadeBackground } from "../ui/radial-fade-background";
+import RadialFadeBackground from "../ui/radial-fade-background";
 import ShowCase from "./showcase";
 const RadialFadeBackgroundShowcase = () => {
   return (

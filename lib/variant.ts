@@ -8,9 +8,6 @@ export const textVariant = {
   },
 };
 
-export const hover = { scale: 1.03, transition: { duration: 0.1 } };
-export const tap = { scale: 0.97, transition: { duration: 0.1 } };
-
 export const scaleInVariant = {
   hidden: { opacity: 0, scale: 0.6 },
   visible: {
