@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Command,
+  CommandIcon,
   HelpCircle,
   Search,
   Settings,
@@ -18,7 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import Dialog from "../ui/dialog";
 import ShowCase from "./showcase";
 
-const DialogShowCase = () => {
+const SearchDialogShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -27,8 +28,8 @@ const DialogShowCase = () => {
 
   const toggleDialog = () => {
     setIsDialogVisible(!isDialogVisible);
+    setSelectedIndex(0);
     if (!isDialogVisible) {
-      setSelectedIndex(0);
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   };
@@ -38,31 +39,31 @@ const DialogShowCase = () => {
       icon: Search,
       label: "Search",
       description: "Find anything quickly",
-      shortcut: "⌘F",
+      shortcut: "F",
     },
     {
       icon: Zap,
       label: "Quick Actions",
       description: "Perform common tasks",
-      shortcut: "⌘J",
+      shortcut: "A",
     },
     {
       icon: Settings,
       label: "Settings",
       description: "Configure your preferences",
-      shortcut: "⌘,",
+      shortcut: "S",
     },
     {
       icon: User,
       label: "Profile",
       description: "Manage your account",
-      shortcut: "⌘P",
+      shortcut: "P",
     },
     {
       icon: HelpCircle,
       label: "Help",
       description: "Get support and documentation",
-      shortcut: "⌘?",
+      shortcut: "H",
     },
   ];
 
@@ -110,6 +111,19 @@ const DialogShowCase = () => {
             setIsDialogVisible(false);
           }
           break;
+        default:
+          const matchedIndex = filteredCommands.findIndex(
+            (cmd) => cmd.shortcut.toLowerCase() === event.key.toLowerCase()
+          );
+          if (matchedIndex !== -1) {
+            event.preventDefault();
+            const command = filteredCommands[matchedIndex];
+            if (command) {
+              setToastMessage(`Selected: ${command.label}`);
+              toggleDialog();
+            }
+          }
+          break;
       }
     };
 
@@ -120,7 +134,13 @@ const DialogShowCase = () => {
     return () => {
       document.removeEventListener("keydown", handleDialogKeyDown);
     };
-  }, [isDialogVisible, filteredCommands, selectedIndex, setToastMessage]);
+  }, [
+    isDialogVisible,
+    filteredCommands,
+    selectedIndex,
+    setToastMessage,
+    toggleDialog,
+  ]);
 
   return (
     <ShowCase>
@@ -170,18 +190,14 @@ const DialogShowCase = () => {
                   transition={{ delay: index * 0.05 }}
                   onClick={() => handleSelectCommand(index)}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`flex items-center justify-between p-3 rounded-md cursor-pointer group transition-all duration-200 ${
-                    selectedIndex === index
-                      ? "bg-muted/60 ring-1 ring-border/50"
-                      : "hover:bg-muted/40"
+                  className={`flex items-center justify-between p-3 rounded cursor-pointer transition-all duration-200 ${
+                    selectedIndex === index && "bg-muted/30 "
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-8 h-8 rounded-md flex items-center justify-center transition-all duration-200 ${
-                        selectedIndex === index
-                          ? "bg-muted/80"
-                          : "bg-muted/70 group-hover:bg-muted/80"
+                        selectedIndex === index ? "bg-muted/80" : "bg-muted/40 "
                       }`}
                     >
                       <command.icon className="w-4 h-4 text-muted-foreground" />
@@ -197,12 +213,11 @@ const DialogShowCase = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <kbd
-                      className={`px-2 py-1 text-xs text-muted-foreground rounded border border-border transition-all duration-200 ${
-                        selectedIndex === index
-                          ? "bg-muted/80"
-                          : "bg-muted/70 group-hover:bg-muted/80"
+                      className={`px-2 py-1 flex items-center gap-1 text-xs text-muted-foreground rounded border border-border transition-all duration-200 ${
+                        selectedIndex === index ? "bg-muted" : "bg-muted/40"
                       }`}
                     >
+                      <CommandIcon className="h-3 w-3" />
                       {command.shortcut}
                     </kbd>
                     <ArrowRight
@@ -255,4 +270,4 @@ const DialogShowCase = () => {
   );
 };
 
-export default DialogShowCase;
+export default SearchDialogShowCase;

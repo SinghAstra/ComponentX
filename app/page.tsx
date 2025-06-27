@@ -9,21 +9,21 @@ import LightBulbGradientShowCase from "./showcase/light-bulb-gradient-showcase";
 import NotificationInputShowCase from "./showcase/notification-input-showcase";
 import RadialFadeBackgroundShowcase from "./showcase/radial-fade-background-showcase";
 import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsating-background-showcase";
-import DialogShowCase from "./showcase/search-dialog-showcase";
+import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col gap-2">
       <Hero />
       <DialogBoilerPlateShowCase />
+      <SearchDialogShowCase />
+      <ButtonBackgroundShineShowCase />
+      <NotificationInputShowCase />
       <ConicGradientBackgroundShowcase />
       <RadialFadeBackgroundShowcase />
       <RadialFadePulsatingBackgroundShowcase />
       <LightBulbGradientShowCase />
       <GradientShowCase />
-      <DialogShowCase />
-      <NotificationInputShowCase />
-      <ButtonBackgroundShineShowCase />
     </div>
   );
 };

@@ -3,28 +3,21 @@ import { scaleInVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import React from "react";
 import { BackgroundShine } from "../ui/background-shine";
+import ShowCase from "./showcase";
 
 const ButtonBackgroundShineShowCase = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-[80vw] h-[80vh] border border-border/40 relative rounded-lg overflow-hidden flex items-center justify-center">
-        <motion.div
-          variants={scaleInVariant}
-          animate="hidden"
-          whileInView="visible"
-          whileHover="hover"
-          whileTap="tap"
+    <ShowCase>
+      <motion.div variants={scaleInVariant}>
+        <Button
+          variant={"outline"}
+          className="relative bg-transparent  hover:bg-transparent"
         >
-          <Button
-            variant={"outline"}
-            className="relative bg-transparent  hover:bg-transparent"
-          >
-            Button With Shine
-            <BackgroundShine />
-          </Button>
-        </motion.div>
-      </div>
-    </div>
+          Button With Shine
+          <BackgroundShine />
+        </Button>
+      </motion.div>
+    </ShowCase>
   );
 };
 
