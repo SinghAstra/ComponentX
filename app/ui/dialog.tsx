@@ -1,6 +1,5 @@
 import { scaleInVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
@@ -61,15 +60,9 @@ const Dialog = ({
         variants={scaleInVariant}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-xl px-3 py-2 bg-background border border-neutral-800/60 rounded shadow-2xl relative cursor-pointer z-[1000]"
+        className="w-full max-w-xl  bg-background border border-neutral-800/60 rounded shadow-2xl relative cursor-pointer z-[1000]"
         ref={dialogRef}
       >
-        <div
-          className="absolute top-3 right-2"
-          onClick={() => setIsDialogVisible(false)}
-        >
-          <X className="w-4 h-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
-        </div>
         {children}
       </motion.div>
     </div>,
