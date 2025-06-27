@@ -2,6 +2,7 @@ import { scaleInVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import React, { useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 
 interface DialogProps {
   isDialogVisible: boolean;
@@ -52,15 +53,15 @@ const Dialog = ({
   }, [isDialogVisible, setIsDialogVisible, keyToMakeDialogVisible]);
 
   if (!isDialogVisible) return;
-  return (
-    <div className="fixed inset-0 flex items-center justify-center ">
-      <div className="absolute inset-0 bg-background/20 backdrop-blur-sm" />
+  return ReactDOM.createPortal(
+    <div className="fixed inset-0 flex items-center justify-center z-[999]">
+      <div className="absolute inset-0 bg-background/20 backdrop-blur-md z-[-1]" />
 
       <motion.div
         variants={scaleInVariant}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-xl px-3 py-2 bg-muted/40 border border-neutral-800/40 rounded shadow-2xl relative cursor-pointer z-[99]"
+        className="w-full max-w-xl px-3 py-2 bg-background border border-neutral-800/60 rounded shadow-2xl relative cursor-pointer z-[1000]"
         ref={dialogRef}
       >
         <div
@@ -71,7 +72,8 @@ const Dialog = ({
         </div>
         {children}
       </motion.div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
