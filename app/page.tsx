@@ -5,7 +5,9 @@ import ButtonBackgroundShineShowCase from "./showcase/button-background-shine-sh
 import ConicGradientBackgroundShowcase from "./showcase/conic-gradient-background-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientShowCase from "./showcase/gradient-showcase";
+import GridBackgroundShowCase from "./showcase/grid-background-showcase";
 import LightBulbGradientShowCase from "./showcase/light-bulb-gradient-showcase";
+import MaskedGridBackgroundShowCase from "./showcase/masked-grid-background-showcase";
 import NotificationInputShowCase from "./showcase/notification-input-showcase";
 import RadialFadeBackgroundShowcase from "./showcase/radial-fade-background-showcase";
 import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsating-background-showcase";
@@ -15,6 +17,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col gap-2">
       <Hero />
+      <GridBackgroundShowCase />
+      <MaskedGridBackgroundShowCase />
       <DialogBoilerPlateShowCase />
       <SearchDialogShowCase />
       <ButtonBackgroundShineShowCase />
