@@ -1,9 +1,12 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { ArrowRightIcon } from "lucide-react";
 import React from "react";
 import Hero from "./hero";
 import ButtonBackgroundShineShowCase from "./showcase/button-background-shine-showcase";
 import ConicGradientBackgroundShowcase from "./showcase/conic-gradient-background-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
+import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
 import GradientShowCase from "./showcase/gradient-showcase";
 import GridBackgroundShowCase from "./showcase/grid-background-showcase";
 import LightBulbGradientShowCase from "./showcase/light-bulb-gradient-showcase";
@@ -17,6 +20,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col gap-2">
       <Hero />
+      <GradientInsetBackgroundShowCase />
       <GridBackgroundShowCase />
       <MaskedGridBackgroundShowCase />
       <DialogBoilerPlateShowCase />
