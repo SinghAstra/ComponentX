@@ -6,7 +6,7 @@ import { containerVariant, slideUpVariant, textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import { BackgroundShine } from "./ui/background-shine";
+import MovingBackground from "./ui/moving-background";
 
 function Hero() {
   return (
@@ -45,7 +45,7 @@ function Hero() {
           variant={"outline"}
           className="group rounded-md text-lg relative bg-transparent hover:bg-transparent transition-all duration-300"
         >
-          <BackgroundShine />
+          <MovingBackground />
           Follow For Updates
           <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
         </Button>

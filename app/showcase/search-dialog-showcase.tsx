@@ -120,7 +120,7 @@ const SearchDialogShowCase = () => {
             const command = filteredCommands[matchedIndex];
             if (command) {
               setToastMessage(`Selected: ${command.label}`);
-              toggleDialog();
+              setIsDialogVisible(false);
             }
           }
           break;
@@ -134,13 +134,7 @@ const SearchDialogShowCase = () => {
     return () => {
       document.removeEventListener("keydown", handleDialogKeyDown);
     };
-  }, [
-    isDialogVisible,
-    filteredCommands,
-    selectedIndex,
-    setToastMessage,
-    toggleDialog,
-  ]);
+  }, [isDialogVisible, filteredCommands, selectedIndex, setToastMessage]);
 
   return (
     <ShowCase>
