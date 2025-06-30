@@ -16,7 +16,9 @@ import NotificationInputShowCase from "./showcase/notification-input-showcase";
 import RadialFadeBackgroundShowcase from "./showcase/radial-fade-background-showcase";
 import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsating-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
+import ConicGradientBackground from "./ui/conic-gradient-background";
 import GridBackground from "./ui/grid-background";
+import MaskedGridBackground from "./ui/masked-grid-background";
 import NotificationInput from "./ui/notification-input";
 
 const HomePage = () => {
@@ -46,19 +48,29 @@ const HomePage = () => {
 
       {/* <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 auto-rows-fr"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr mb-[100px] px-2">
-        <div className="col-span-1 row-span-1 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <MovingBorderShowCase />
         </div>
 
-        <div className="col-span-1 row-span-1 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 sm:col-span-2  row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <motion.h1
+            className="text-3xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Conic Gradient Background
+          </motion.h1>
+          <ConicGradientBackground />
+        </div>
+
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <GradientInsetBackgroundShowCase />
         </div>
 
-        <div className="col-span-1 row-span-1 lg:row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 row-span-2  min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <MovingBackgroundShowCase />
         </div>
 
-        <div className="col-span-1  row-span-2 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1  row-span-3 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
           <motion.h1
             className="text-3xl sm:text-4xl font-normal text-center"
             variants={textVariant}
@@ -68,26 +80,26 @@ const HomePage = () => {
           <GridBackground />
         </div>
 
-        <div className="col-span-1 row-span-1 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <NotificationInput />
         </div>
-        <div className="col-span-1 row-span-1 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
-          <SearchDialogShowCase />
-        </div>
-
-        {/*   <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
-          <MaskedGridBackgroundShowCase />
-        </div>
-
-        <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
-          <ConicGradientBackgroundShowcase />
-        </div>
-
-        <div className="col-span-2 md:col-span-2 lg:col-span-2 row-span-1 min-h-[120px]">
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
           <DialogBoilerPlateShowCase />
         </div>
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
+          <SearchDialogShowCase />
+        </div>
+        <div className="col-span-1 row-span-3 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <motion.h1
+            className="text-3xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Masked Grid
+          </motion.h1>
+          <MaskedGridBackground />
+        </div>
 
-        <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
+        {/*    <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
           <RadialFadeBackgroundShowcase />
         </div>
 

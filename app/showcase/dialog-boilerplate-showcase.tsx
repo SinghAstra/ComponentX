@@ -1,24 +1,28 @@
 import { Button } from "@/components/ui/button";
+import { scaleInVariant } from "@/lib/variant";
+import { motion } from "framer-motion";
 import { Command } from "lucide-react";
 import React, { useState } from "react";
 import Dialog from "../ui/dialog";
-import ShowCase from "./showcase";
 
 const DialogBoilerPlateShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
 
   return (
-    <ShowCase>
-      <Button
-        className="rounded px-3 py-1"
-        variant={"outline"}
-        onClick={() => setIsDialogVisible(true)}
-      >
-        Dialog Skeleton
-        <span className="flex items-center gap-1 bg-muted/60 p-1 rounded mr-[-0.5rem]">
-          <Command />K
-        </span>
-      </Button>
+    <>
+      <motion.div variants={scaleInVariant}>
+        <Button
+          className="rounded px-3 py-1 font-normal hover:bg-muted/40 transition-all duration-200"
+          variant="outline"
+          onClick={() => setIsDialogVisible(true)}
+        >
+          <span className="text-muted-foreground">Dialog Skeleton</span>
+          <span className="flex items-center gap-1 bg-muted/60 p-1 rounded mr-[-0.5rem]">
+            <Command />K
+          </span>
+        </Button>
+      </motion.div>
+
       <Dialog
         isDialogVisible={isDialogVisible}
         setIsDialogVisible={setIsDialogVisible}
@@ -28,7 +32,7 @@ const DialogBoilerPlateShowCase = () => {
           <p> This is the Dialog</p> <p>Press Escape to Cancel</p>
         </div>
       </Dialog>
-    </ShowCase>
+    </>
   );
 };
 
