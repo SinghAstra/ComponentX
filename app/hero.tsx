@@ -2,11 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { containerVariant, slideUpVariant, textVariant } from "@/lib/variant";
+import { containerVariant, scaleInVariant, textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { ArrowRight, ArrowRightIcon } from "lucide-react";
+import { FaGithub, FaTwitter } from "react-icons/fa";
+import GradientInsetBackground from "./ui/gradient-inset-background";
 import MovingBackground from "./ui/moving-background";
+import MovingBorder from "./ui/moving-border";
 
 function Hero() {
   return (
@@ -14,50 +16,69 @@ function Hero() {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="relative z-10 flex flex-col items-center gap-8 text-center min-h-screen justify-center px-4 overflow-hidden"
+      className="relative z-10 flex flex-col gap-4 items-center text-center min-h-screen justify-center px-4 overflow-hidden"
     >
-      {/* <RadialFadeBackground /> */}
-      <motion.div variants={textVariant}>
-        <div className="text-md uppercase tracking-widest text-primary font-mono mb-4">
-          Elevate your projects
-        </div>
-        <h1 className="max-w-3xl font-medium text-6xl tracking-tight md:text-7xl ">
-          {siteConfig.name}
-        </h1>
+      <motion.div variants={scaleInVariant}>
+        <a href={siteConfig.links.buildInPublic} target="_blank">
+          <Button className="rounded bg-transparent hover:bg-transparent group relative">
+            <GradientInsetBackground />
+            <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
+            <span
+              className="z-10 text-sm text-foreground
+          flex items-center justify-center gap-2"
+            >
+              <FaTwitter className="size-3" /> Build in Public
+              <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
+            </span>
+          </Button>
+        </a>
       </motion.div>
 
-      <motion.div className="max-w-2xl space-y-4" variants={textVariant}>
-        <p className="text-xl text-foreground/80">
+      <motion.div
+        variants={textVariant}
+        className="text-md uppercase tracking-widest text-primary font-mono"
+      >
+        Elevate your projects
+      </motion.div>
+      <motion.h1
+        variants={textVariant}
+        className=" font-medium text-5xl tracking-tight md:text-6xl lg:text-7xl my-2 sm:my-4 "
+      >
+        {siteConfig.name}
+      </motion.h1>
+
+      <motion.div variants={textVariant}>
+        <p className=" md:text-lg lg:text-xl text-foreground/80 text-balance max-w-2xl">
           Collection of beautiful, accessible, and customizable UI components.
-          <br />
-          <span className="text-primary/70 font-medium">
+          <span className="text-primary/70 font-medium mx-2">
             Simple Copy Paste
-          </span>{" "}
+          </span>
           and elevate your interface.
         </p>
       </motion.div>
 
-      <motion.div
-        className="flex flex-col sm:flex-row gap-4 mt-4"
-        variants={slideUpVariant}
-      >
-        <Button
-          variant={"outline"}
-          className="group rounded-md text-lg relative bg-transparent hover:bg-transparent transition-all duration-300"
-        >
-          <MovingBackground />
-          Follow For Updates
-          <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="lg"
-          className="bg-muted/20 hover:bg-muted/60 transition-all duration-300"
-        >
-          <FaGithub className="mr-2 h-4 w-4" />
-          View on GitHub
-        </Button>
-      </motion.div>
+      <div className="flex flex-col sm:flex-row gap-4 sm:mt-4 ">
+        <a href={siteConfig.links.twitter} target="_blank">
+          <motion.div
+            variants={scaleInVariant}
+            className="group rounded relative bg-transparent hover:bg-transparent transition-all duration-200 flex items-center gap-1 px-3 py-2 border border-neutral-800"
+          >
+            <MovingBackground />
+            Follow For Updates
+            <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
+          </motion.div>
+        </a>
+        <motion.div variants={scaleInVariant}>
+          <MovingBorder className="rounded">
+            <a href={siteConfig.links.githubRepo} target="_blank">
+              <div className="bg-muted/70 backdrop-blur-sm px-3 py-1  flex items-center justify-center gap-2">
+                <FaGithub className=" h-4 w-4" />
+                View on GitHub
+              </div>
+            </a>
+          </MovingBorder>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

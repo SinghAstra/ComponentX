@@ -8,11 +8,9 @@ const ShowCase = ({ children }: { children: ReactNode }) => {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="min-h-screen flex items-center justify-center"
+      className=" flex items-center justify-center border border-neutral-800 rounded grid-cols-4"
     >
-      <motion.div className="w-[80vw] h-[80vh] border border-neutral-800 relative rounded-md overflow-hidden flex items-center justify-center">
-        {children}
-      </motion.div>
+      {children}
     </motion.div>
   );
 };

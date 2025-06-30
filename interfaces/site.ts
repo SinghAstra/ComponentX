@@ -7,5 +7,6 @@ export type SiteConfig = {
     twitter: string;
     githubRepo: string;
     github: string;
+    buildInPublic: string;
   };
 };

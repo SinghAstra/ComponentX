@@ -10,5 +10,7 @@ export const siteConfig: SiteConfig = {
     twitter: "https://x.com/XSinghAstra",
     github: "https://github.com/SinghAstra",
     githubRepo: "https://github.com/SinghAstra/componentx",
+    buildInPublic:
+      "https://x.com/i/communities/1493446837214187523/hashtag/ComponentX",
   },
 };
