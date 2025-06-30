@@ -22,7 +22,7 @@ const MovingBorder = () => {
     window.addEventListener("resize", updateBeforeWidth);
 
     return () => window.removeEventListener("resize", updateBeforeWidth);
-  }, []);
+  }, [movingBorderRef]);
 
   return (
     <div
