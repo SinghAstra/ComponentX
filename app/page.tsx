@@ -3,23 +3,16 @@ import { containerVariant, textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import React from "react";
 import Hero from "./hero";
-import ConicGradientBackgroundShowcase from "./showcase/conic-gradient-background-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
-import GradientShowCase from "./showcase/gradient-showcase";
-import GridBackgroundShowCase from "./showcase/grid-background-showcase";
-import LightBulbGradientShowCase from "./showcase/light-bulb-gradient-showcase";
-import MaskedGridBackgroundShowCase from "./showcase/masked-grid-background-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import MovingBorderShowCase from "./showcase/moving-border-showcase";
-import NotificationInputShowCase from "./showcase/notification-input-showcase";
-import RadialFadeBackgroundShowcase from "./showcase/radial-fade-background-showcase";
-import RadialFadePulsatingBackgroundShowcase from "./showcase/radial-fade-pulsating-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import GridBackground from "./ui/grid-background";
 import MaskedGridBackground from "./ui/masked-grid-background";
 import NotificationInput from "./ui/notification-input";
+import RadialFadeBackground from "./ui/radial-fade-background";
 
 const HomePage = () => {
   return (
@@ -52,14 +45,24 @@ const HomePage = () => {
           <MovingBorderShowCase />
         </div>
 
-        <div className="col-span-1 sm:col-span-2  row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
-            className="text-3xl sm:text-4xl font-normal text-center"
+            className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
           >
             Conic Gradient Background
           </motion.h1>
           <ConicGradientBackground />
+        </div>
+
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <motion.h1
+            className="text-2xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Radial Fade Background
+          </motion.h1>
+          <RadialFadeBackground />
         </div>
 
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
@@ -99,11 +102,7 @@ const HomePage = () => {
           <MaskedGridBackground />
         </div>
 
-        {/*    <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
-          <RadialFadeBackgroundShowcase />
-        </div>
-
-        <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
+        {/*       <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
           <RadialFadePulsatingBackgroundShowcase />
         </div>
 
