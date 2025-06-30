@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Dialog from "../ui/dialog";
-import ShowCase from "./showcase";
 
 const SearchDialogShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -137,19 +136,19 @@ const SearchDialogShowCase = () => {
   }, [isDialogVisible, filteredCommands, selectedIndex, setToastMessage]);
 
   return (
-    <ShowCase>
+    <>
       <motion.div
         variants={scaleInVariant}
         onClick={toggleDialog}
-        className="flex flex-col items-center gap-4"
+        className="w-full max-w-[300px]"
       >
         <Button
-          className="rounded px-3 py-1 gap-4"
+          className="rounded px-1  flex items-center justify-between w-full bg-transparent hover:bg-muted/40 font-normal"
           variant={"outline"}
           onClick={() => setIsDialogVisible(true)}
         >
-          Search
-          <span className="flex items-center gap-1 bg-muted/60 p-1 rounded mr-[-0.5rem]">
+          <span className="text-muted-foreground mx-2">Search</span>
+          <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ">
             <Command /> M
           </span>
         </Button>
@@ -260,7 +259,7 @@ const SearchDialogShowCase = () => {
           </div>
         </div>
       </Dialog>
-    </ShowCase>
+    </>
   );
 };
 

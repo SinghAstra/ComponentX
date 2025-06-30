@@ -192,7 +192,7 @@ pre > code {
   margin: 5px;
 }
 
-.moving-border-container::before {
+.moving-border::before {
   content: "";
   display: block;
   background: linear-gradient(

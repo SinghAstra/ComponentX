@@ -20,7 +20,7 @@ function Hero() {
     >
       <motion.div variants={scaleInVariant}>
         <a href={siteConfig.links.buildInPublic} target="_blank">
-          <Button className="rounded bg-transparent hover:bg-transparent group relative">
+          <Button className="rounded bg-transparent hover:bg-transparent group relative font-normal">
             <GradientInsetBackground />
             <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
             <span
@@ -57,26 +57,32 @@ function Hero() {
         </p>
       </motion.div>
 
-      <div className="flex flex-col sm:flex-row gap-4 sm:mt-4 ">
+      <div className="flex flex-col sm:flex-row gap-4 sm:mt-4 items-center ">
         <a href={siteConfig.links.twitter} target="_blank">
-          <motion.div
-            variants={scaleInVariant}
-            className="group rounded relative bg-transparent hover:bg-transparent transition-all duration-200 flex items-center gap-1 px-3 py-2 border border-neutral-800"
-          >
-            <MovingBackground />
-            Follow For Updates
-            <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
+          <motion.div variants={scaleInVariant} className="p-1">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group rounded relative bg-transparent hover:bg-transparent flex items-center gap-1 text-md font-normal  "
+            >
+              <MovingBackground />
+              Follow For Updates
+              <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
+            </Button>
           </motion.div>
         </a>
-        <motion.div variants={scaleInVariant}>
-          <MovingBorder className="rounded">
-            <a href={siteConfig.links.githubRepo} target="_blank">
-              <div className="bg-muted/70 backdrop-blur-sm px-3 py-1  flex items-center justify-center gap-2">
-                <FaGithub className=" h-4 w-4" />
-                View on GitHub
-              </div>
-            </a>
-          </MovingBorder>
+        <motion.div variants={scaleInVariant} className="p-1 relative rounded">
+          <MovingBorder />
+          <a href={siteConfig.links.githubRepo} target="_blank">
+            <Button
+              variant="outline"
+              size="lg"
+              className="bg-muted/60 hover:bg-muted/70 flex items-center text-md justify-center gap-2 rounded font-normal"
+            >
+              <FaGithub className=" h-4 w-4" />
+              View on GitHub
+            </Button>
+          </a>
         </motion.div>
       </div>
     </motion.div>

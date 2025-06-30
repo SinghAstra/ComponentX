@@ -1,46 +1,34 @@
-import { cn } from "@/lib/utils";
-import React, { ReactNode, useEffect, useRef } from "react";
+"use client";
 
-const MovingBorder = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
-  const movingBorderContainerRef = useRef<HTMLDivElement>(null);
+import { useEffect, useRef } from "react";
+
+const MovingBorder = () => {
+  const movingBorderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function updateBeforeWidth() {
-      const movingBorderContainer = movingBorderContainerRef.current;
-      if (!movingBorderContainer) return;
-      const parentWidth = movingBorderContainer.offsetWidth;
-      const parentHeight = movingBorderContainer.offsetHeight;
+      const movingBorder = movingBorderRef.current;
+      if (!movingBorder) return;
+
+      const parentWidth = movingBorder.offsetWidth;
+      const parentHeight = movingBorder.offsetHeight;
       const maxDimension = Math.max(2 * parentWidth, 2 * parentHeight);
-      movingBorderContainer.style.setProperty(
-        "--before-width",
-        `${maxDimension}px`
-      );
-      movingBorderContainer.style.setProperty(
-        "--before-height",
-        `${maxDimension}px`
-      );
+
+      movingBorder.style.setProperty("--before-width", `${maxDimension}px`);
+      movingBorder.style.setProperty("--before-height", `${maxDimension}px`);
     }
 
     updateBeforeWidth();
     window.addEventListener("resize", updateBeforeWidth);
+
     return () => window.removeEventListener("resize", updateBeforeWidth);
   }, []);
+
   return (
     <div
-      className={cn(
-        "moving-border-container p-1 relative overflow-hidden",
-        className
-      )}
-      ref={movingBorderContainerRef}
-    >
-      <div>{children}</div>
-    </div>
+      className="moving-border absolute inset-0 w-full h-full rounded-[inherit] overflow-hidden z-[-1]"
+      ref={movingBorderRef}
+    />
   );
 };
 

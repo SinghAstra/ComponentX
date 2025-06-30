@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import * as Yup from "yup";
+import GradientInsetBackground from "./gradient-inset-background";
 
 const NotificationInput = () => {
   const { setToastMessage } = useToastContext();
@@ -44,7 +45,7 @@ const NotificationInput = () => {
           <div className="relative">
             <input
               className={cn(
-                "flex w-[400px] h-[50px] rounded border border-primary bg-transparent  px-3 py-2 pr-32 text-3xl shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-md lg:text-xl",
+                "flex max-w-[400px] w-full h-[50px] rounded border border-neutral-800 bg-transparent  px-3 py-2 pr-32 text-3xl shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-md lg:text-xl",
                 formik.touched.email &&
                   formik.errors.email &&
                   "border-destructive focus-visible:ring-destructive"
@@ -55,12 +56,16 @@ const NotificationInput = () => {
               onChange={formik.handleChange}
               autoComplete="off"
             />
-            <Button
-              className="absolute rounded tracking-wide right-1 top-1 bottom-1 h-[calc(100%-0.5rem)] transition-all duration-200 hover:scale-[1.03] "
-              type="submit"
-            >
-              Get Notified
-            </Button>
+            <div className="absolute right-1 top-1 bottom-1 h-[calc(100%-0.5rem)] border">
+              <GradientInsetBackground />
+              <Button
+                variant="outline"
+                className=" bg-transparent hover:bg-transparent rounded font-normal transition-all duration-200  "
+                type="submit"
+              >
+                Get Notified
+              </Button>
+            </div>
           </div>
         </form>
         {formik.touched.email && formik.errors.email && (

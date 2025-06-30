@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { scaleInVariant } from "@/lib/variant";
+import { motion } from "framer-motion";
 import { ArrowRightIcon } from "lucide-react";
 import React from "react";
 import { FaTwitter } from "react-icons/fa";
 import GradientInsetBackground from "../ui/gradient-inset-background";
-import ShowCase from "./showcase";
 
 const GradientInsetBackgroundShowCase = () => {
   return (
-    <ShowCase>
-      <Button className="rounded bg-transparent hover:bg-transparent group relative">
+    <motion.div variants={scaleInVariant}>
+      <Button className="rounded bg-transparent hover:bg-transparent group relative font-normal">
         <GradientInsetBackground />
         <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
         <span
@@ -19,7 +20,7 @@ const GradientInsetBackgroundShowCase = () => {
           <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
         </span>
       </Button>
-    </ShowCase>
+    </motion.div>
   );
 };
 
