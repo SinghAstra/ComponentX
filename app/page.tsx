@@ -5,14 +5,17 @@ import React from "react";
 import Hero from "./hero";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
+import GradientShowCase from "./showcase/gradient-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import MovingBorderShowCase from "./showcase/moving-border-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import GridBackground from "./ui/grid-background";
+import LightBulbGradient from "./ui/light-bulb-gradient";
 import MaskedGridBackground from "./ui/masked-grid-background";
 import NotificationInput from "./ui/notification-input";
 import RadialFadeBackground from "./ui/radial-fade-background";
+import RadialFadePulsatingBackground from "./ui/radial-fade-pulsating-background";
 
 const HomePage = () => {
   return (
@@ -23,21 +26,6 @@ const HomePage = () => {
       className="min-h-screen flex flex-col "
     >
       <Hero />
-      {/* <div className="grid grid-cols-12 border border-red-400">
-        <MovingBorderShowCase />
-        <GradientInsetBackgroundShowCase />
-        <MovingBackgroundShowCase />
-        <GridBackgroundShowCase />
-        <MaskedGridBackgroundShowCase />
-        <DialogBoilerPlateShowCase />
-        <SearchDialogShowCase />
-        <NotificationInputShowCase />
-        <ConicGradientBackgroundShowcase />
-        <RadialFadeBackgroundShowcase />
-        <RadialFadePulsatingBackgroundShowcase />
-        <LightBulbGradientShowCase />
-        <GradientShowCase />
-      </div> */}
 
       {/* <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 auto-rows-fr"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr mb-[100px] px-2">
@@ -73,6 +61,26 @@ const HomePage = () => {
           <MovingBackgroundShowCase />
         </div>
 
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <motion.h1
+            className="text-3xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Radial Fade Pulsating Background
+          </motion.h1>
+          <RadialFadePulsatingBackground />
+        </div>
+
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <motion.h1
+            className="text-3xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Light Bulb Gradient
+          </motion.h1>
+          <LightBulbGradient />
+        </div>
+
         <div className="col-span-1  row-span-3 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
           <motion.h1
             className="text-3xl sm:text-4xl font-normal text-center"
@@ -101,18 +109,9 @@ const HomePage = () => {
           </motion.h1>
           <MaskedGridBackground />
         </div>
-
-        {/*       <div className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 min-h-[250px]">
-          <RadialFadePulsatingBackgroundShowcase />
-        </div>
-
-        <div className="col-span-2 md:col-span-2 lg:col-span-2 row-span-2 min-h-[250px]">
-          <LightBulbGradientShowCase />
-        </div>
-
-        <div className="col-span-2 md:col-span-4 lg:col-span-6 row-span-1 min-h-[120px]">
-          <GradientShowCase />
-        </div> */}
+      </div>
+      <div className="col-span-2 md:col-span-4 lg:col-span-6 row-span-1 min-h-[120px]">
+        <GradientShowCase />
       </div>
     </motion.div>
   );

@@ -2,6 +2,7 @@
 
 import { textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
+import ShowCase from "./showcase";
 
 function GradientShowCase() {
   const gradients = [
@@ -51,7 +52,7 @@ function GradientShowCase() {
     <div>
       {gradients.map((gradient, index) => {
         return (
-          <div key={index}>
+          <ShowCase key={index}>
             <div
               style={{
                 maskImage: gradient.maskImage,
@@ -80,7 +81,7 @@ function GradientShowCase() {
                 {gradient.description}
               </motion.p>
             </div>
-          </div>
+          </ShowCase>
         );
       })}
     </div>
