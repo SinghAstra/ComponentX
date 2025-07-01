@@ -4,7 +4,7 @@ const ConicGradientBackground = () => {
       className="absolute inset-0 overflow-hidden z-[-3]"
       style={{
         maskImage:
-          "radial-gradient(circle at 100% 50%, rgb(255, 255, 255), rgba(255, 255, 255,0))",
+          "radial-gradient(circle at 100% 50%, rgb(255, 255, 255,0.6), rgba(255, 255, 255,0))",
         opacity: 0.5,
       }}
     >

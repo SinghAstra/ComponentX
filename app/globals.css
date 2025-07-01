@@ -207,10 +207,7 @@ pre > code {
   z-index: -1;
   width: var(--before-width, 100%);
   height: var(--before-height, 100%);
-  transform: translate(
-    -var(--(before-width, 100%) / 2),
-    -var(--(before-width, 100%) / 2)
-  );
+  transform: translateX(-50%) translateY(-50%);
 }
 
 @keyframes rotate {
