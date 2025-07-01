@@ -1,30 +1,34 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 
 const MovingBorder = () => {
   const movingBorderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function updateBeforeWidth() {
-      const movingBorder = movingBorderRef.current;
-      if (!movingBorder) return;
+    const movingBorder = movingBorderRef.current;
+    if (!movingBorder) return;
 
+    const updateBeforeWidth = () => {
       const parentWidth = movingBorder.offsetWidth;
       const parentHeight = movingBorder.offsetHeight;
       const maxDimension = Math.max(2 * parentWidth, 2 * parentHeight);
 
-      console.log("maxDimension is ", maxDimension);
-
       movingBorder.style.setProperty("--before-width", `${maxDimension}px`);
       movingBorder.style.setProperty("--before-height", `${maxDimension}px`);
-    }
+    };
 
+    // Use ResizeObserver for continuous dimension tracking
+    const resizeObserver = new ResizeObserver(updateBeforeWidth);
+    resizeObserver.observe(movingBorder);
+
+    // Initial update
     updateBeforeWidth();
-    window.addEventListener("resize", updateBeforeWidth);
 
-    return () => window.removeEventListener("resize", updateBeforeWidth);
-  }, [movingBorderRef]);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateBeforeWidth);
+    };
+  }, []);
 
   return (
     <div
