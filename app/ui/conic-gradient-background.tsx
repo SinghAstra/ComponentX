@@ -11,7 +11,7 @@ const ConicGradientBackground = () => {
       <div
         className="w-full h-full"
         style={{
-          background: `conic-gradient(from 180deg at 100% 50%, hsl(var(--muted-foreground)) 30deg, hsl(var(--primary)) 90deg,hsl(var(--muted)) 150deg)`,
+          background: `conic-gradient(from 180deg at 100% 50%, hsl(var(--muted-foreground)) 30deg, hsl(var(--primary)) 90deg,hsl(var(--muted-foreground)) 150deg)`,
         }}
       />
     </div>

@@ -5,7 +5,6 @@ import React from "react";
 import Hero from "./hero";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
-import GradientShowCase from "./showcase/gradient-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import MovingBorderShowCase from "./showcase/moving-border-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
