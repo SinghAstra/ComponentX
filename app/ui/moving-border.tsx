@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
-const MovingBorder = () => {
+const MovingBorder = ({ children }: { children: ReactNode }) => {
   const movingBorderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,10 +27,9 @@ const MovingBorder = () => {
   }, [movingBorderRef]);
 
   return (
-    <div
-      className="moving-border absolute inset-0 w-full h-full rounded-[inherit] z-[-1]"
-      ref={movingBorderRef}
-    />
+    <div className="moving-border p-1" ref={movingBorderRef}>
+      {children}
+    </div>
   );
 };
 

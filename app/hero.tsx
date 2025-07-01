@@ -72,17 +72,18 @@ function Hero() {
           </motion.div>
         </a>
         <motion.div variants={scaleInVariant} className="p-1 relative rounded">
-          <MovingBorder />
-          <a href={siteConfig.links.githubRepo} target="_blank">
-            <Button
-              variant="outline"
-              size="lg"
-              className="bg-muted/60 hover:bg-muted/70 flex items-center text-md justify-center gap-2 rounded font-normal"
-            >
-              <FaGithub className=" h-4 w-4" />
-              View on GitHub
-            </Button>
-          </a>
+          <MovingBorder>
+            <a href={siteConfig.links.githubRepo} target="_blank">
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-muted/60 hover:bg-muted/70 flex items-center text-md justify-center gap-2 rounded font-normal"
+              >
+                <FaGithub className=" h-4 w-4" />
+                View on GitHub
+              </Button>
+            </a>
+          </MovingBorder>
         </motion.div>
       </div>
     </motion.div>
