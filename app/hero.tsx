@@ -8,7 +8,6 @@ import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import GradientInsetBackground from "./ui/gradient-inset-background";
 import MovingBackground from "./ui/moving-background";
-import MovingBorder from "./ui/moving-border";
 
 function Hero() {
   return (
@@ -72,7 +71,6 @@ function Hero() {
           </motion.div>
         </a>
         <motion.div variants={scaleInVariant} className="p-1 relative rounded">
-          <MovingBorder />
           <a href={siteConfig.links.githubRepo} target="_blank">
             <Button
               variant="outline"
