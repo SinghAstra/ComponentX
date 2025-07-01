@@ -27,7 +27,6 @@ const HomePage = () => {
     >
       <Hero />
 
-      {/* <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 auto-rows-fr"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr mb-[100px] px-2">
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <MovingBorderShowCase />
@@ -109,9 +108,6 @@ const HomePage = () => {
           </motion.h1>
           <MaskedGridBackground />
         </div>
-      </div>
-      <div className="col-span-2 md:col-span-4 lg:col-span-6 row-span-1 min-h-[120px]">
-        <GradientShowCase />
       </div>
     </motion.div>
   );

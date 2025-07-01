@@ -14,6 +14,8 @@ const MovingBorder = () => {
       const parentHeight = movingBorder.offsetHeight;
       const maxDimension = Math.max(2 * parentWidth, 2 * parentHeight);
 
+      console.log("maxDimension is ", maxDimension);
+
       movingBorder.style.setProperty("--before-width", `${maxDimension}px`);
       movingBorder.style.setProperty("--before-height", `${maxDimension}px`);
     }
@@ -26,7 +28,7 @@ const MovingBorder = () => {
 
   return (
     <div
-      className="moving-border absolute inset-0 w-full h-full rounded-[inherit] overflow-hidden z-[-1]"
+      className="moving-border absolute inset-0 w-full h-full rounded-[inherit] z-[-1]"
       ref={movingBorderRef}
     />
   );
