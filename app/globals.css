@@ -203,11 +203,14 @@ pre > code {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   animation: rotate 8s linear infinite;
   z-index: -1;
   width: var(--before-width, 100%);
   height: var(--before-height, 100%);
+  transform: translate(
+    -var(--(before-width, 100%) / 2),
+    -var(--(before-width, 100%) / 2)
+  );
 }
 
 @keyframes rotate {
