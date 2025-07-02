@@ -6,7 +6,6 @@ import Hero from "./hero";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
-import MovingBorderShowCase from "./showcase/moving-border-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import GridBackground from "./ui/grid-background";
@@ -28,7 +27,7 @@ const HomePage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr mb-[100px] px-2">
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
-          <MovingBorderShowCase />
+          <NotificationInput />
         </div>
 
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
@@ -61,7 +60,7 @@ const HomePage = () => {
 
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
-            className="text-3xl sm:text-4xl font-normal text-center"
+            className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
           >
             Radial Fade Pulsating Background
@@ -71,41 +70,68 @@ const HomePage = () => {
 
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
-            className="text-3xl sm:text-4xl font-normal text-center"
+            className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
           >
             Light Bulb Gradient
           </motion.h1>
           <LightBulbGradient />
         </div>
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
+          <DialogBoilerPlateShowCase />
+        </div>
 
         <div className="col-span-1  row-span-3 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
           <motion.h1
-            className="text-3xl sm:text-4xl font-normal text-center"
+            className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
           >
             Grid
           </motion.h1>
           <GridBackground />
         </div>
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative grid grid-cols-12">
+          <div
+            className=" border col-span-4 "
+            style={{
+              maskImage:
+                "radial-gradient(circle at 100% 50%, rgb(255, 255, 255,0.6), rgba(255, 255, 255,0))",
+              clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0 100%, 0 0)",
+              opacity: "0.5",
+              background: `conic-gradient(from 180deg at 100% 50%, hsl(var(--primary)/0.3) 30deg, hsl(var(--primary)) 90deg,hsl(var(--primary)/0.3) 150deg)`,
+            }}
+          />
+          <div className="flex items-center justify-center col-span-4">
+            <motion.h1
+              className="text-2xl sm:text-4xl font-normal text-center"
+              variants={textVariant}
+            >
+              Triad Banner
+            </motion.h1>
+          </div>
+          <div
+            className=" border col-span-4 "
+            style={{
+              maskImage:
+                "radial-gradient(circle at 0% 50%, rgb(255, 255, 255,0.6), rgba(255, 255, 255,0))",
+              clipPath: "polygon(50% 0%, 100% 0, 100% 100%, 50% 100%, 0 50%)",
+              opacity: "0.5",
+              background: `conic-gradient(from 0deg at 0% 50%, hsl(var(--primary)/0.3) 30deg, hsl(var(--primary)) 90deg,hsl(var(--primary)/0.3) 150deg)`,
+            }}
+          />
+        </div>
 
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
-          <NotificationInput />
-        </div>
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
-          <DialogBoilerPlateShowCase />
-        </div>
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
-          <SearchDialogShowCase />
-        </div>
         <div className="col-span-1 row-span-3 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
-            className="text-3xl sm:text-4xl font-normal text-center"
+            className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
           >
             Masked Grid
           </motion.h1>
           <MaskedGridBackground />
+        </div>
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
+          <SearchDialogShowCase />
         </div>
       </div>
     </motion.div>
