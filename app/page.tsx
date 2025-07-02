@@ -12,6 +12,7 @@ import EdgeTriadBanner from "./ui/edge-triad-banner";
 import GridBackground from "./ui/grid-background";
 import LightBulbGradient from "./ui/light-bulb-gradient";
 import MaskedGridBackground from "./ui/masked-grid-background";
+import MovingGlow from "./ui/moving-glow";
 import NotificationInput from "./ui/notification-input";
 import RadialFadeBackground from "./ui/radial-fade-background";
 import RadialFadePulsatingBackground from "./ui/radial-fade-pulsating-background";
@@ -107,7 +108,17 @@ const HomePage = () => {
           </motion.h1>
         </div>
 
-        <div className="col-span-1 row-span-3 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+        <div className="col-span-1 row-span-2 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
+          <motion.h1
+            className="text-2xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Grid
+          </motion.h1>
+          <GridBackground />
+        </div>
+
+        <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
@@ -136,14 +147,11 @@ const HomePage = () => {
           </motion.h1>
         </div>
 
-        <div className="col-span-1  row-span-3 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
-          <motion.h1
-            className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
-          >
-            Grid
-          </motion.h1>
-          <GridBackground />
+        <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <div className="px-4 py-1 border border-neutral-800/40 relative">
+            <MovingGlow />
+            Moving Glow
+          </div>
         </div>
       </div>
     </motion.div>

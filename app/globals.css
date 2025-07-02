@@ -150,6 +150,19 @@ pre > code {
   }
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .shine {
   animation: shine 6s linear infinite;
+}
+
+.rotate {
+  animation: rotate 6s linear infinite;
 }
