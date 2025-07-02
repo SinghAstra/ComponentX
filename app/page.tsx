@@ -14,6 +14,8 @@ import MaskedGridBackground from "./ui/masked-grid-background";
 import NotificationInput from "./ui/notification-input";
 import RadialFadeBackground from "./ui/radial-fade-background";
 import RadialFadePulsatingBackground from "./ui/radial-fade-pulsating-background";
+import ReverseTriadBanner from "./ui/reverse-triad-banner";
+import TriadBanner from "./ui/triad-banner";
 
 const HomePage = () => {
   return (
@@ -81,44 +83,26 @@ const HomePage = () => {
           <DialogBoilerPlateShowCase />
         </div>
 
-        <div className="col-span-1  row-span-3 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
+          <SearchDialogShowCase />
+        </div>
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
+          <TriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
             variants={textVariant}
           >
-            Grid
+            Triad Banner
           </motion.h1>
-          <GridBackground />
         </div>
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative grid grid-cols-12">
-          <div
-            className=" border col-span-4 "
-            style={{
-              maskImage:
-                "radial-gradient(circle at 100% 50%, rgb(255, 255, 255,0.6), rgba(255, 255, 255,0))",
-              clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0 100%, 0 0)",
-              opacity: "0.5",
-              background: `conic-gradient(from 180deg at 100% 50%, hsl(var(--primary)/0.3) 30deg, hsl(var(--primary)) 90deg,hsl(var(--primary)/0.3) 150deg)`,
-            }}
-          />
-          <div className="flex items-center justify-center col-span-4">
-            <motion.h1
-              className="text-2xl sm:text-4xl font-normal text-center"
-              variants={textVariant}
-            >
-              Triad Banner
-            </motion.h1>
-          </div>
-          <div
-            className=" border col-span-4 "
-            style={{
-              maskImage:
-                "radial-gradient(circle at 0% 50%, rgb(255, 255, 255,0.6), rgba(255, 255, 255,0))",
-              clipPath: "polygon(50% 0%, 100% 0, 100% 100%, 50% 100%, 0 50%)",
-              opacity: "0.5",
-              background: `conic-gradient(from 0deg at 0% 50%, hsl(var(--primary)/0.3) 30deg, hsl(var(--primary)) 90deg,hsl(var(--primary)/0.3) 150deg)`,
-            }}
-          />
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
+          <ReverseTriadBanner />
+          <motion.h1
+            className="text-2xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Reverse Triad Banner
+          </motion.h1>
         </div>
 
         <div className="col-span-1 row-span-3 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
@@ -130,8 +114,15 @@ const HomePage = () => {
           </motion.h1>
           <MaskedGridBackground />
         </div>
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
-          <SearchDialogShowCase />
+
+        <div className="col-span-1  row-span-3 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
+          <motion.h1
+            className="text-2xl sm:text-4xl font-normal text-center"
+            variants={textVariant}
+          >
+            Grid
+          </motion.h1>
+          <GridBackground />
         </div>
       </div>
     </motion.div>
