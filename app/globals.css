@@ -163,6 +163,21 @@ pre > code {
   animation: shine 6s linear infinite;
 }
 
-.rotate {
-  animation: rotate 6s linear infinite;
+.moving-element {
+  width: 40px;
+  height: 40px;
+  background: orange;
+  position: absolute;
+  offset-path: path("M20,170 L100,20 L180,100 Z");
+  offset-rotate: auto;
+  animation: moveAlongPath 3s linear infinite;
+}
+
+@keyframes moveAlongPath {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
 }

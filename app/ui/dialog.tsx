@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { scaleInVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
@@ -8,6 +9,7 @@ interface DialogProps {
   setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
   keyToMakeDialogVisible: string;
+  className?: string;
 }
 
 const Dialog = ({
@@ -15,6 +17,7 @@ const Dialog = ({
   setIsDialogVisible,
   children,
   keyToMakeDialogVisible,
+  className,
 }: DialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -60,7 +63,10 @@ const Dialog = ({
         variants={scaleInVariant}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-xl  bg-background border border-neutral-800/60 rounded shadow-2xl relative cursor-pointer z-[1000]"
+        className={cn(
+          "w-full max-w-xl mx-4 bg-background border border-neutral-800/60 rounded shadow-2xl relative cursor-pointer z-[1000]",
+          className
+        )}
         ref={dialogRef}
       >
         {children}

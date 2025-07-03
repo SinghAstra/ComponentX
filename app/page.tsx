@@ -3,6 +3,7 @@ import { containerVariant, textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import React from "react";
 import Hero from "./hero";
+import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
@@ -152,6 +153,9 @@ const HomePage = () => {
             <MovingGlow />
             Moving Glow
           </div>
+        </div>
+        <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+          <AuthModalShowCase />
         </div>
       </div>
     </motion.div>
