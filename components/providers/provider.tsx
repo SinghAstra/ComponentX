@@ -1,6 +1,6 @@
 "use client";
 
-import LightBulbGradient from "@/app/ui/light-bulb-gradient";
+import MaskedGridBackground from "@/app/ui/masked-grid-background";
 import { siteConfig } from "@/config/site";
 import { textVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
@@ -14,7 +14,7 @@ interface ProviderProps {
 
 const LoadingFallback = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen flex flex-col gap-4 items-center justify-center relative overflow-hidden px-4">
       <div className="flex gap-4">
         <Image
           src={"/favicon.ico"}
@@ -26,10 +26,13 @@ const LoadingFallback = () => {
           {siteConfig.name}
         </motion.p>
       </div>
-      <motion.p className="text-xl tracking-wide" variants={textVariant}>
+      <motion.p
+        className="text-xl tracking-wide text-muted-foreground"
+        variants={textVariant}
+      >
         {siteConfig.description}
       </motion.p>
-      <LightBulbGradient />
+      <MaskedGridBackground />
     </div>
   );
 };

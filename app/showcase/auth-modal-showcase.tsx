@@ -5,7 +5,6 @@ import { scaleInVariant } from "@/lib/variant";
 import { motion } from "framer-motion";
 import { Command, Loader } from "lucide-react";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import Dialog from "../ui/dialog";
@@ -15,10 +14,6 @@ const AuthModalShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isGithubLoading, setIsGithubLoading] = useState(false);
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
-
-  console.log("callbackUrl is ", callbackUrl);
 
   const handleGitHubSignIn = async () => {
     try {
