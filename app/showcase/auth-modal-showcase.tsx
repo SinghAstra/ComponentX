@@ -9,7 +9,6 @@ import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import Dialog from "../ui/dialog";
-import MaskedGridBackground from "../ui/masked-grid-background";
 import MovingBackground from "../ui/moving-background";
 
 const AuthModalShowCase = () => {
@@ -70,12 +69,11 @@ const AuthModalShowCase = () => {
         </Button>
       </motion.div>
       <Dialog
-        className="max-w-[400px] relative"
+        className="max-w-[400px] relative bg-muted/20"
         isDialogVisible={isDialogVisible}
         setIsDialogVisible={setIsDialogVisible}
         keyToMakeDialogVisible="a"
       >
-        <MaskedGridBackground />
         <div className="space-y-4 m-4 text-center">
           <div className="space-y-1 mb-4">
             <h1 className="text-3xl tracking-wider">{siteConfig.name}</h1>
