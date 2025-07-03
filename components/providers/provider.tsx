@@ -14,7 +14,7 @@ interface ProviderProps {
 
 const LoadingFallback = () => {
   return (
-    <div className="min-h-screen flex flex-col gap-4 items-center justify-center relative overflow-hidden px-4">
+    <div className="min-h-screen flex flex-col gap-4 items-center text-center justify-center relative overflow-hidden px-4">
       <div className="flex gap-4">
         <Image
           src={"/favicon.ico"}
