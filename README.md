@@ -1,6 +1,6 @@
-# LayoutX
+# ComponenetX
 
-LayoutX is collection of Reusable UI Components.
+ComponentX is collection of Reusable UI Components.
 
 ## UI Components
 

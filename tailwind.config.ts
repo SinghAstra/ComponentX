@@ -85,8 +85,8 @@ module.exports = {
         },
       },
       animation: {
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         rotate: "rotate 3s linear infinite both",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
