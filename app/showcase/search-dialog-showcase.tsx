@@ -3,7 +3,7 @@
 import { useToastContext } from "@/components/providers/toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { fadeInVariant, scaleInVariant } from "@/lib/variant";
+import { fadeInVariant, scaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import {
   ArrowRight,

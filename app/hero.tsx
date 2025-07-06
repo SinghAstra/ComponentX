@@ -2,7 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { containerVariant, scaleInVariant, textVariant } from "@/lib/variant";
+import {
+  blurInVariant,
+  containerVariant,
+  scaleInVariant,
+} from "@/lib/variants";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
@@ -34,19 +38,19 @@ function Hero() {
       </motion.div>
 
       <motion.div
-        variants={textVariant}
+        variants={blurInVariant}
         className="text-md uppercase tracking-widest text-primary font-mono"
       >
         Elevate your projects
       </motion.div>
       <motion.h1
-        variants={textVariant}
+        variants={blurInVariant}
         className=" font-medium text-5xl tracking-tight md:text-6xl lg:text-7xl my-2 sm:my-4 "
       >
         {siteConfig.name}
       </motion.h1>
 
-      <motion.div variants={textVariant}>
+      <motion.div variants={blurInVariant}>
         <p className=" md:text-lg lg:text-xl text-foreground/80 text-balance max-w-2xl">
           Collection of beautiful, accessible, and customizable UI components.
           <span className="text-primary/70 font-medium mx-2">

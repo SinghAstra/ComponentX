@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { scaleInVariant } from "@/lib/variant";
+import { scaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";

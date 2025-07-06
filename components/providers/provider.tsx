@@ -2,7 +2,7 @@
 
 import MaskedGridBackground from "@/app/ui/masked-grid-background";
 import { siteConfig } from "@/config/site";
-import { textVariant } from "@/lib/variant";
+import { blurInVariant, containerVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { ReactNode, Suspense } from "react";
@@ -14,7 +14,10 @@ interface ProviderProps {
 
 const LoadingFallback = () => {
   return (
-    <div className="min-h-screen flex flex-col gap-4 items-center text-center justify-center relative overflow-hidden px-4">
+    <motion.div
+      variants={containerVariant}
+      className="min-h-screen flex flex-col gap-4 items-center text-center justify-center relative overflow-hidden px-4"
+    >
       <div className="flex gap-4">
         <Image
           src={"/favicon.ico"}
@@ -22,18 +25,18 @@ const LoadingFallback = () => {
           height={48}
           alt={siteConfig.name}
         />
-        <motion.p className="text-5xl tracking-wide" variants={textVariant}>
+        <motion.p className="text-5xl tracking-wide" variants={blurInVariant}>
           {siteConfig.name}
         </motion.p>
       </div>
       <motion.p
         className="text-xl tracking-wide text-muted-foreground"
-        variants={textVariant}
+        variants={blurInVariant}
       >
         {siteConfig.description}
       </motion.p>
       <MaskedGridBackground />
-    </div>
+    </motion.div>
   );
 };
 

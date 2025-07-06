@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
-import { scaleInVariant } from "@/lib/variant";
+import { scaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { Command, Loader } from "lucide-react";
 import Image from "next/image";

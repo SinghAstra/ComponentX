@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { scaleInVariant } from "@/lib/variant";
+import { scaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "lucide-react";
 import React from "react";

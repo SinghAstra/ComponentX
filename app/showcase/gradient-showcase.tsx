@@ -1,6 +1,6 @@
 "use client";
 
-import { textVariant } from "@/lib/variant";
+import { blurInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import ShowCase from "./showcase";
 
@@ -70,13 +70,13 @@ function GradientShowCase() {
             <div className="flex flex-col gap-2 items-center justify-center">
               <motion.h1
                 className="text-5xl font-medium"
-                variants={textVariant}
+                variants={blurInVariant}
               >
                 {gradient.name}
               </motion.h1>
               <motion.p
                 className="text-muted-foreground"
-                variants={textVariant}
+                variants={blurInVariant}
               >
                 {gradient.description}
               </motion.p>

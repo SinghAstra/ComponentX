@@ -1,5 +1,5 @@
 "use client";
-import { containerVariant, textVariant } from "@/lib/variant";
+import { blurInVariant, containerVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import React from "react";
 import Hero from "./hero";
@@ -39,7 +39,7 @@ const HomePage = () => {
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Conic Gradient Background
           </motion.h1>
@@ -49,7 +49,7 @@ const HomePage = () => {
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Radial Fade Background
           </motion.h1>
@@ -67,7 +67,7 @@ const HomePage = () => {
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Radial Fade Pulsating Background
           </motion.h1>
@@ -77,7 +77,7 @@ const HomePage = () => {
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Light Bulb Gradient
           </motion.h1>
@@ -94,7 +94,7 @@ const HomePage = () => {
           <TriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Triad Banner
           </motion.h1>
@@ -103,7 +103,7 @@ const HomePage = () => {
           <ReverseTriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Reverse Triad Banner
           </motion.h1>
@@ -112,7 +112,7 @@ const HomePage = () => {
         <div className="col-span-1 row-span-2 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Grid
           </motion.h1>
@@ -122,7 +122,7 @@ const HomePage = () => {
         <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Masked Grid
           </motion.h1>
@@ -133,7 +133,7 @@ const HomePage = () => {
           <EdgeTriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Edge Triad Banner
           </motion.h1>
@@ -142,7 +142,7 @@ const HomePage = () => {
           <ReverseEdgeTriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
-            variants={textVariant}
+            variants={blurInVariant}
           >
             Reverse Edge Triad Banner
           </motion.h1>

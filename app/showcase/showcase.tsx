@@ -1,4 +1,4 @@
-import { containerVariant } from "@/lib/variant";
+import { containerVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
 

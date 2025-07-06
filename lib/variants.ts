@@ -1,15 +1,14 @@
-export const textVariant = {
-  hidden: { opacity: 0, y: 60, filter: "blur(20px)" },
+export const blurInVariant = {
+  hidden: { opacity: 0, filter: "blur(20px)" },
   visible: {
     opacity: 1,
-    y: 0,
     filter: "blur(0px)",
     transition: { duration: 0.4 },
   },
 };
 
 export const scaleInVariant = {
-  hidden: { opacity: 0, scale: 0.7 },
+  hidden: { opacity: 0, scale: 0.6 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -35,12 +34,11 @@ export const slideUpVariant = {
 };
 
 export const containerVariant = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.4,
-      delayChildren: 0.5,
+      delayChildren: 0.1,
     },
   },
 };
