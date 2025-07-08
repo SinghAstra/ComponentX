@@ -10,7 +10,6 @@ import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
-import ShowCase from "./showcase/showcase";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import EdgeTriadBanner from "./ui/edge-triad-banner";
 import { FloatingNavbar } from "./ui/floating-navbar";
