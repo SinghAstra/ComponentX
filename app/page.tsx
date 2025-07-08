@@ -1,16 +1,23 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import { blurInVariant, containerVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import React, { useState } from "react";
+import { FloatingText } from "./floating-text";
+import { GradientText } from "./gradient-text";
 import Hero from "./hero";
+import { HighlightText } from "./highlight-text";
+import { ScrambleText } from "./scramble-text";
 import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import { carouselItems } from "./showcase/spring-carousel";
+import { TextReveal } from "./text-reveal";
+import { TypewriterEffect } from "./typewriter-effect";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import EdgeTriadBanner from "./ui/edge-triad-banner";
 import { FloatingNavbar } from "./ui/floating-navbar";
@@ -25,6 +32,7 @@ import ReverseEdgeTriadBanner from "./ui/reverse-edge-triad-banner";
 import ReverseTriadBanner from "./ui/reverse-triad-banner";
 import { SpringCarousel } from "./ui/spring-carousel";
 import TriadBanner from "./ui/triad-banner";
+import { WaveText } from "./wave-text";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
@@ -35,6 +43,84 @@ const HomePage = () => {
       whileInView="visible"
       className="min-h-screen flex flex-col gap-8 "
     >
+      <div className="min-h-screen bg-background text-foreground p-8 space-y-16">
+        <div className="max-w-4xl mx-auto space-y-16">
+          {/* Header */}
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl font-bold">Text Animation Showcase</h1>
+            <p className="text-muted-foreground">
+              Modern text animations using Tailwind CSS and Framer Motion
+            </p>
+          </div>
+
+          {/* Gradient Text */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold border-b pb-2">
+              Gradient Text
+            </h2>
+            <GradientText
+              text="Beautiful gradient text animation"
+              className="text-4xl font-bold"
+            />
+          </section>
+
+          {/* Text Reveal */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold border-b pb-2">
+              Text Reveal
+            </h2>
+            <TextReveal
+              text="Text reveals character by character"
+              className="text-2xl font-medium"
+            />
+          </section>
+
+          {/* Floating Text */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold border-b pb-2">
+              Floating Text
+            </h2>
+            <FloatingText
+              text="Floating text with subtle movement"
+              className="text-xl"
+            />
+          </section>
+
+          {/* Scramble Text */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold border-b pb-2">
+              Scramble Effect
+            </h2>
+            <ScrambleText
+              text="Text scrambles before revealing"
+              className="text-xl font-mono"
+            />
+          </section>
+
+          {/* Highlight Text */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold border-b pb-2">
+              Highlight Animation
+            </h2>
+            <HighlightText
+              text="This text gets highlighted with animation"
+              highlightWords={["highlighted", "animation"]}
+              className="text-xl"
+            />
+          </section>
+
+          {/* Wave Text */}
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold border-b pb-2">
+              Wave Animation
+            </h2>
+            <WaveText
+              text="Wave animation effect"
+              className="text-3xl font-bold"
+            />
+          </section>
+        </div>
+      </div>
       <Hero />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr  px-2">
@@ -140,7 +226,8 @@ const HomePage = () => {
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
           <DialogBoilerPlateShowCase />
         </div>
-
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2">
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
           <SearchDialogShowCase />
         </div>
@@ -207,6 +294,18 @@ const HomePage = () => {
             <MovingGlow />
             Moving Glow
           </div>
+        </div>
+        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
+          <TypewriterEffect
+            words={[
+              `Welcome to ${siteConfig.name} !`,
+              `${siteConfig.name} is  Open Source.`,
+              `${siteConfig.name} is collection of Reusable UI Components.`,
+              `${siteConfig.name} is built on top of ShadCn.`,
+              `${siteConfig.name} is maintained by @SinghAstra.`,
+            ]}
+            className=" text-xl sm:text-2xl lg:text-3xl font-normal"
+          />
         </div>
 
         <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
