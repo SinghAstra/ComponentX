@@ -35,32 +35,6 @@ const HomePage = () => {
     >
       <Hero />
 
-      <div className="h-screen flex items-center justify-center px-4 sm:px-8 w-full ">
-        <div
-          className="h-[80vh] w-full flex flex-col gap-8 items-center justify-start border border-neutral-800 rounded relative overflow-y-auto p-8 sm:p-16"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 0%, hsl(var(--primary)/0.2) 0%, hsl(var(--primary)/0.3) 40%, hsl(var(--primary)/0.4) 50%, transparent 60%)",
-            backgroundAttachment: "fixed",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "100% 100%",
-          }}
-        >
-          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
-            This Will
-          </div>
-          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
-            be the
-          </div>
-          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
-            content above
-          </div>
-          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
-            Centered Radial Background
-          </div>
-        </div>
-      </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr  px-2">
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <FloatingNavbar showNavbar={showFloatingNavbar} />
@@ -105,6 +79,32 @@ const HomePage = () => {
 
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
           <GradientInsetBackgroundShowCase />
+        </div>
+      </div>
+
+      <div className="h-screen flex items-center justify-center px-4 sm:px-8 w-full ">
+        <div
+          className="h-[80vh] w-full flex flex-col gap-8 items-center justify-start border border-neutral-800 rounded relative overflow-y-auto p-8 sm:p-16"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 0%, hsl(var(--primary)/0.2) 0%, hsl(var(--primary)/0.3) 40%, hsl(var(--primary)/0.4) 50%, transparent 60%)",
+            backgroundAttachment: "fixed",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "100% 100%",
+          }}
+        >
+          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
+            This Will
+          </div>
+          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
+            be the
+          </div>
+          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
+            content above
+          </div>
+          <div className="min-h-[60vh] w-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl border rounded bg-muted/10 text-center">
+            Centered Radial Background
+          </div>
         </div>
       </div>
 
