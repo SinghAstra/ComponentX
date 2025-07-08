@@ -1,7 +1,9 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { blurInVariant, containerVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
-import React from "react";
+import { Menu, X } from "lucide-react";
+import React, { useState } from "react";
 import Hero from "./hero";
 import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
@@ -10,6 +12,7 @@ import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import EdgeTriadBanner from "./ui/edge-triad-banner";
+import { FloatingNavbar } from "./ui/floating-navbar";
 import GridBackground from "./ui/grid-background";
 import LightBulbGradient from "./ui/light-bulb-gradient";
 import MaskedGridBackground from "./ui/masked-grid-background";
@@ -22,6 +25,7 @@ import ReverseTriadBanner from "./ui/reverse-triad-banner";
 import TriadBanner from "./ui/triad-banner";
 
 const HomePage = () => {
+  const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
   return (
     <motion.div
       variants={containerVariant}
@@ -33,7 +37,24 @@ const HomePage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr mb-[100px] px-2">
         <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
-          <NotificationInput />
+          <FloatingNavbar showNavbar={showFloatingNavbar} />
+          <Button
+            variant="outline"
+            className="rounded font-normal hover:bg-muted/20"
+            onClick={() => setShowFloatingNavbar(!showFloatingNavbar)}
+          >
+            {showFloatingNavbar ? (
+              <>
+                <X className="h-5 w-5 mr-1" />
+                <span>Hide Floating Navbar</span>
+              </>
+            ) : (
+              <>
+                <Menu className="h-5 w-5 mr-1" />
+                <span>View Floating Navbar</span>
+              </>
+            )}
+          </Button>
         </div>
 
         <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
@@ -156,6 +177,9 @@ const HomePage = () => {
         </div>
         <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <AuthModalShowCase />
+        </div>
+        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+          <NotificationInput />
         </div>
       </div>
     </motion.div>
