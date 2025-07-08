@@ -10,6 +10,7 @@ import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import GradientInsetBackgroundShowCase from "./showcase/gradient-inset-background-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
+import { carouselItems } from "./showcase/spring-carousel";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import EdgeTriadBanner from "./ui/edge-triad-banner";
 import { FloatingNavbar } from "./ui/floating-navbar";
@@ -22,6 +23,7 @@ import RadialFadeBackground from "./ui/radial-fade-background";
 import RadialFadePulsatingBackground from "./ui/radial-fade-pulsating-background";
 import ReverseEdgeTriadBanner from "./ui/reverse-edge-triad-banner";
 import ReverseTriadBanner from "./ui/reverse-triad-banner";
+import { SpringCarousel } from "./ui/spring-carousel";
 import TriadBanner from "./ui/triad-banner";
 
 const HomePage = () => {
@@ -106,6 +108,9 @@ const HomePage = () => {
             Centered Radial Background
           </div>
         </div>
+      </div>
+      <div className="min-h-screen flex items-center justify-center border mx-4 sm:mx-8 rounded">
+        <SpringCarousel items={carouselItems} />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2">
