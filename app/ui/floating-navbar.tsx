@@ -6,10 +6,10 @@ import { Fragment } from "react";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
-  { icon: Info, label: "About", href: "/about" },
-  { icon: Briefcase, label: "Work", href: "/work" },
-  { icon: BookOpen, label: "Blog", href: "/blog" },
-  { icon: ImageIcon, label: "Gallery", href: "/gallery" },
+  { icon: Info, label: "About", href: "/" },
+  { icon: Briefcase, label: "Work", href: "/" },
+  { icon: BookOpen, label: "Blog", href: "/" },
+  { icon: ImageIcon, label: "Gallery", href: "/" },
 ];
 
 function NavbarContent() {
