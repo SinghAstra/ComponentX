@@ -25,20 +25,14 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex items-center justify-between px-6 py-3 fixed top-0 sm:top-4 inset-x-0 sm:inset-x-24 lg:inset-x-32 backdrop-blur-md z-[10]
+      className={`flex items-center justify-between px-6 py-3 fixed top-0  inset-x-0 sm:inset-x-24 lg:inset-x-32 backdrop-blur-md z-[10]
         transition-all duration-300
-        rounded
-        ${
-          scrolled
-            ? "border bg-muted/20 shadow-2xl"
-            : "border-transparent bg-transparent shadow-none"
-        }
+        rounded border bg-muted/20
+        ${scrolled ? "shadow-2xl sm:top-2" : "sm:top-6"}
       `}
     >
       <Link href="/">
-        <p className="text-xl sm:text-2xl tracking-wide text-primary/80 ">
-          {siteConfig.name}
-        </p>
+        <p className="text-xl sm:text-2xl tracking-wide">{siteConfig.name}</p>
       </Link>
       <Link href="/background">
         <p className="text-foreground/80 hover:text-foreground transition-all duration-200">
