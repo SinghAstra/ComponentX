@@ -20,7 +20,7 @@ function Hero() {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="relative z-10 flex flex-col gap-4 items-center text-center min-h-[calc(100vh-60px)] justify-center px-4 overflow-hidden"
+      className="relative flex flex-col gap-4 items-center text-center min-h-screen justify-center px-4 overflow-hidden"
     >
       <motion.div variants={scaleInVariant}>
         <a href={siteConfig.links.buildInPublic} target="_blank">
@@ -29,7 +29,7 @@ function Hero() {
             <MovingGlow />
             <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
             <span
-              className="z-10 text-sm text-foreground
+              className=" text-sm text-foreground
           flex items-center justify-center gap-2"
             >
               <FaTwitter className="size-3" /> Build in Public
