@@ -12,6 +12,7 @@ import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import GradientInsetBackground from "./ui/gradient-inset-background";
 import MovingBackground from "./ui/moving-background";
+import MovingGlow from "./ui/moving-glow";
 
 function Hero() {
   return (
@@ -19,12 +20,13 @@ function Hero() {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="relative z-10 flex flex-col gap-4 items-center text-center min-h-screen justify-center px-4 overflow-hidden"
+      className="relative z-10 flex flex-col gap-4 items-center text-center min-h-[calc(100vh-60px)] justify-center px-4 overflow-hidden"
     >
       <motion.div variants={scaleInVariant}>
         <a href={siteConfig.links.buildInPublic} target="_blank">
           <Button className="rounded bg-transparent hover:bg-transparent group relative font-normal">
             <GradientInsetBackground />
+            <MovingGlow />
             <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
             <span
               className="z-10 text-sm text-foreground
@@ -37,12 +39,6 @@ function Hero() {
         </a>
       </motion.div>
 
-      <motion.div
-        variants={blurInVariant}
-        className="text-md uppercase tracking-widest text-primary font-mono"
-      >
-        Elevate your projects
-      </motion.div>
       <motion.h1
         variants={blurInVariant}
         className=" font-medium text-5xl tracking-tight md:text-6xl lg:text-7xl my-2 sm:my-4 "
@@ -52,7 +48,7 @@ function Hero() {
 
       <motion.div variants={blurInVariant}>
         <p className=" md:text-lg lg:text-xl text-foreground/80 text-balance max-w-2xl">
-          Collection of beautiful, accessible, and customizable UI components.
+          Collection of beautiful, and customizable UI components.
           <span className="text-primary/70 font-medium mx-2">
             Simple Copy Paste
           </span>
@@ -79,8 +75,9 @@ function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="bg-muted hover:bg-muted flex items-center text-md justify-center gap-2 rounded font-normal z-3"
+              className="bg-muted/20 hover:bg-muted/40 flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative"
             >
+              <MovingGlow />
               <FaGithub className=" h-4 w-4" />
               View on GitHub
             </Button>

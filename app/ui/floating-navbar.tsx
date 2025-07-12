@@ -14,7 +14,7 @@ const navItems = [
 
 function NavbarContent() {
   return (
-    <div className="flex items-center gap-1 bg-background/80 backdrop-blur-md border rounded px-2 py-1 shadow-lg">
+    <div className="flex items-center gap-1 bg-background/20 backdrop-blur-sm border rounded px-2 py-1 shadow-lg">
       {navItems.map((item, index) => (
         <Fragment key={item.label}>
           <Button
@@ -43,12 +43,7 @@ export function FloatingNavbar({ showNavbar }: { showNavbar: boolean }) {
   return (
     <>
       {/* Desktop Navbar - Top Center */}
-      <nav className="hidden md:flex fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-        <NavbarContent />
-      </nav>
-
-      {/* Mobile Navbar - Bottom Center */}
-      <nav className="md:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <nav className="fixed bottom-6 md:bottom-auto  md:top-6 left-1/2 transform -translate-x-1/2 z-50">
         <NavbarContent />
       </nav>
     </>

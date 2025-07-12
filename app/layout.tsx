@@ -1,6 +1,7 @@
 import Providers from "@/components/providers/provider";
 import { siteConfig } from "@/config/site";
 import type { Metadata } from "next";
+import Link from "next/link";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -57,6 +58,16 @@ export default function RootLayout({
       <body className="antialiased min-h-screen bg-background ">
         <Providers>
           <NextTopLoader color="hsl(var(--primary))" showSpinner={false} />
+          <div className="flex items-center justify-between px-6 py-3 sticky top-0 inset-x-0 backdrop-blur-sm z-[10] bg-muted/20 h-[60px]">
+            <Link href="/">
+              <p className="text-xl sm:text-2xl tracking-wide">
+                {siteConfig.name}
+              </p>
+            </Link>
+            <Link href="/background">
+              <p className="text-base sm:text-xl">Background</p>
+            </Link>
+          </div>
           {children}
           <Toaster
             theme="dark"
