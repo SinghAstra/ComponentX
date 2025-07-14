@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import * as Yup from "yup";
-import GradientInsetBackground from "./gradient-inset-background";
 
 const NotificationInput = () => {
   const { setToastMessage } = useToastContext();
@@ -57,7 +56,6 @@ const NotificationInput = () => {
               autoComplete="off"
             />
             <div className="absolute right-1 top-1 bottom-1 h-[calc(100%-0.5rem)] border">
-              <GradientInsetBackground />
               <Button
                 variant="outline"
                 className=" bg-transparent hover:bg-transparent rounded font-normal transition-all duration-200  "

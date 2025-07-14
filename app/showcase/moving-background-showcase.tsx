@@ -9,10 +9,13 @@ const MovingBackgroundShowCase = () => {
     <motion.div variants={scaleInVariant}>
       <Button
         variant="outline"
-        className="relative bg-transparent hover:bg-transparent rounded font-normal"
+        className="relative bg-transparent hover:bg-transparent rounded font-normal z-[5]"
       >
         Moving Background
-        <MovingBackground />
+        <MovingBackground
+          backgroundColor="hsla(var(--muted)/0.4)"
+          shineColor="hsla(var(--primary)/0.4)"
+        />
       </Button>
     </motion.div>
   );

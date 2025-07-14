@@ -27,7 +27,7 @@ const Navbar = () => {
     <div
       className={`flex items-center justify-between px-6 py-3 fixed top-0  inset-x-0 sm:inset-x-24 lg:inset-x-32 backdrop-blur-md z-[10]
         transition-all duration-300
-        rounded border bg-muted/20
+        rounded border bg-background/40
         ${scrolled ? "shadow-2xl sm:top-2" : "sm:top-6"}
       `}
     >

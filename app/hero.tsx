@@ -10,7 +10,6 @@ import {
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import GradientInsetBackground from "./ui/gradient-inset-background";
 import MovingBackground from "./ui/moving-background";
 import MovingGlow from "./ui/moving-glow";
 
@@ -24,8 +23,7 @@ function Hero() {
     >
       <motion.div variants={scaleInVariant}>
         <a href={siteConfig.links.buildInPublic} target="_blank">
-          <Button className="rounded bg-transparent hover:bg-transparent group relative font-normal">
-            <GradientInsetBackground />
+          <Button className="rounded group relative font-normal">
             <MovingGlow />
             <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
             <span
