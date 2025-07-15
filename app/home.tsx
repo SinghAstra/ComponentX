@@ -9,7 +9,6 @@ import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
-import { carouselItems } from "./showcase/spring-carousel";
 import EdgeTriadBanner from "./ui/edge-triad-banner";
 import { FloatingNavbar } from "./ui/floating-navbar";
 import GridBackground from "./ui/grid-background";
@@ -20,7 +19,6 @@ import NotificationInput from "./ui/notification-input";
 import RadialFadePulsatingBackground from "./ui/radial-fade-pulsating-background";
 import ReverseEdgeTriadBanner from "./ui/reverse-edge-triad-banner";
 import ReverseTriadBanner from "./ui/reverse-triad-banner";
-import { SpringCarousel } from "./ui/spring-carousel";
 import TriadBanner from "./ui/triad-banner";
 
 const HomePage = () => {
