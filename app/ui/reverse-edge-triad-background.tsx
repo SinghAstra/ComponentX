@@ -1,8 +1,15 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-const ReverseEdgeTriadBanner = () => {
+interface ReverseEdgeTriadBackgroundProps {
+  className?: string;
+}
+
+const ReverseEdgeTriadBackground = ({
+  className,
+}: ReverseEdgeTriadBackgroundProps) => {
   return (
-    <div className="absolute inset-0 ">
+    <div className={cn("absolute inset-0 z-[-1]", className)}>
       <div className="relative w-full h-full grid grid-cols-12">
         <div
           className="col-span-3 "
@@ -30,4 +37,4 @@ const ReverseEdgeTriadBanner = () => {
   );
 };
 
-export default ReverseEdgeTriadBanner;
+export default ReverseEdgeTriadBackground;

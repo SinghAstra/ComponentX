@@ -55,10 +55,9 @@ const NotificationInput = () => {
               onChange={formik.handleChange}
               autoComplete="off"
             />
-            <div className="absolute right-1 top-1 bottom-1 h-[calc(100%-0.5rem)] border">
+            <div className="absolute right-1 top-1 bottom-1 ">
               <Button
-                variant="outline"
-                className=" bg-transparent hover:bg-transparent rounded font-normal transition-all duration-200  "
+                className="rounded font-normal transition-all duration-200 h-full "
                 type="submit"
               >
                 Get Notified

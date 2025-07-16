@@ -143,7 +143,7 @@ const SearchDialogShowCase = () => {
         className="w-full max-w-[300px]"
       >
         <Button
-          className="rounded px-1  flex items-center justify-between w-full bg-transparent hover:bg-muted/40 font-normal"
+          className="rounded px-1 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 font-normal"
           variant={"outline"}
           onClick={() => setIsDialogVisible(true)}
         >

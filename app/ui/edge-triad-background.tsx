@@ -1,8 +1,13 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-const EdgeTriadBanner = () => {
+interface EdgeTriadBackgroundProps {
+  className?: string;
+}
+
+const EdgeTriadBackground = ({ className }: EdgeTriadBackgroundProps) => {
   return (
-    <div className="absolute inset-0 ">
+    <div className={cn("absolute inset-0 z-[-1] ", className)}>
       <div className="relative w-full h-full grid grid-cols-12">
         <div
           className="col-span-3 "
@@ -30,4 +35,4 @@ const EdgeTriadBanner = () => {
   );
 };
 
-export default EdgeTriadBanner;
+export default EdgeTriadBackground;
