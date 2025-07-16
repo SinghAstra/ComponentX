@@ -23,17 +23,19 @@ function Hero() {
     >
       <motion.div variants={scaleInVariant}>
         <a href={siteConfig.links.buildInPublic} target="_blank">
-          <Button className="rounded group relative font-normal">
+          <div className="p-1 relative rounded">
             <MovingGlow />
-            <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
-            <span
-              className=" text-sm text-foreground
+            <Button className="rounded group relative font-normal">
+              <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
+              <span
+                className=" text-sm text-foreground
           flex items-center justify-center gap-2"
-            >
-              <FaTwitter className="size-3" /> Build in Public
-              <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
-            </span>
-          </Button>
+              >
+                <FaTwitter className="size-3" /> Build in Public
+                <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
+              </span>
+            </Button>
+          </div>
         </a>
       </motion.div>
 
@@ -60,9 +62,12 @@ function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="group rounded relative bg-transparent hover:bg-transparent flex items-center gap-1 text-md font-normal  "
+              className="group rounded relative bg-transparent hover:bg-transparent flex items-center gap-1 text-md font-normal backdrop-blur-md  "
             >
-              <MovingBackground />
+              <MovingBackground
+                backgroundColor="hsl(var(--muted)/0.4)"
+                shineColor="hsla(var(--primary)/0.4)"
+              />
               Follow For Updates
               <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
             </Button>
@@ -73,7 +78,7 @@ function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="bg-muted/20 hover:bg-muted/40 flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative"
+              className="bg-muted/40 hover:bg-muted/60 flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg"
             >
               <MovingGlow />
               <FaGithub className=" h-4 w-4" />

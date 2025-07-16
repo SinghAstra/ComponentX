@@ -1,4 +1,4 @@
-# ComponenetX [wip]
+# ComponenetX
 
 ComponentX is collection of Reusable UI Components.
 
