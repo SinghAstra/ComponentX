@@ -1,7 +1,15 @@
-function LightBulbGradient() {
+import { cn } from "@/lib/utils";
+
+interface LightBulbGradientBackgroundProps {
+  className?: string;
+}
+
+function LightBulbGradientBackground({
+  className,
+}: LightBulbGradientBackgroundProps) {
   return (
     <div
-      className="absolute inset-0 flex bottom-[50%]"
+      className={cn("absolute inset-0 flex bottom-[50%] z-[-1]", className)}
       style={{
         maskImage:
           "linear-gradient(0deg, rgba(255, 255, 255, 0), rgb(255, 255, 255))",
@@ -14,7 +22,7 @@ function LightBulbGradient() {
           background: `conic-gradient(
               from 90deg at 0% 0%, 
               hsl(var(--primary)) 0deg, 
-              transparent 30deg
+              transparent 80deg
             )`,
         }}
       />
@@ -23,7 +31,7 @@ function LightBulbGradient() {
         style={{
           background: `conic-gradient(
               from 180deg at 100% 0%, 
-              transparent 60deg,
+              transparent 10deg,
               hsl(var(--primary)) 90deg
             )`,
         }}
@@ -32,4 +40,4 @@ function LightBulbGradient() {
   );
 }
 
-export default LightBulbGradient;
+export default LightBulbGradientBackground;

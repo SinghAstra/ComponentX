@@ -12,14 +12,11 @@ import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import EdgeTriadBanner from "./ui/edge-triad-banner";
 import { FloatingNavbar } from "./ui/floating-navbar";
 import GridBackground from "./ui/grid-background";
-import LightBulbGradient from "./ui/light-bulb-gradient";
 import MaskedGridBackground from "./ui/masked-grid-background";
 import MovingGlow from "./ui/moving-glow";
 import NotificationInput from "./ui/notification-input";
-import RadialFadePulsatingBackground from "./ui/radial-fade-pulsating-background";
 import ReverseEdgeTriadBanner from "./ui/reverse-edge-triad-banner";
 import ReverseTriadBanner from "./ui/reverse-triad-banner";
-import TriadBanner from "./ui/triad-banner";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
@@ -33,7 +30,7 @@ const HomePage = () => {
       <Hero />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr  px-2">
-        <div className="bg-background col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+        <div className="bg-background col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded">
           <FloatingNavbar showNavbar={showFloatingNavbar} />
           <Button
             variant="outline"
@@ -62,48 +59,19 @@ const HomePage = () => {
           variants={containerVariant}
           initial="hidden"
           whileInView="visible"
-          className="bg-background col-span-1 row-span-2  min-h-[120px] flex items-center justify-center border border-neutral-800 rounded"
+          className="bg-background col-span-1 row-span-1  min-h-[250px] flex items-center justify-center border border-neutral-800 rounded"
         >
           <MovingBackgroundShowCase />
         </motion.div>
 
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
-          <motion.h1
-            className="text-2xl sm:text-4xl font-normal text-center"
-            variants={blurInVariant}
-          >
-            Radial Fade Pulsating Background
-          </motion.h1>
-          <RadialFadePulsatingBackground />
-        </div>
-
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
-          <motion.h1
-            className="text-2xl sm:text-4xl font-normal text-center"
-            variants={blurInVariant}
-          >
-            Light Bulb Gradient
-          </motion.h1>
-          <LightBulbGradient />
-        </div>
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <DialogBoilerPlateShowCase />
         </div>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2">
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded ">
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <SearchDialogShowCase />
         </div>
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
-          <TriadBanner />
-          <motion.h1
-            className="text-2xl sm:text-4xl font-normal text-center"
-            variants={blurInVariant}
-          >
-            Triad Banner
-          </motion.h1>
-        </div>
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
+
+        <div className="col-span-1 sm:col-span-2 row-span-1 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
           <ReverseTriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
@@ -113,7 +81,7 @@ const HomePage = () => {
           </motion.h1>
         </div>
 
-        <div className="col-span-1 row-span-2 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 row-span-1 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
             variants={blurInVariant}
@@ -123,7 +91,7 @@ const HomePage = () => {
           <GridBackground />
         </div>
 
-        <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
             variants={blurInVariant}
@@ -133,7 +101,7 @@ const HomePage = () => {
           <MaskedGridBackground />
         </div>
 
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
+        <div className="col-span-1 sm:col-span-2 row-span-1 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
           <EdgeTriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
@@ -142,7 +110,7 @@ const HomePage = () => {
             Edge Triad Banner
           </motion.h1>
         </div>
-        <div className="col-span-1 sm:col-span-2 row-span-2 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
+        <div className="col-span-1 sm:col-span-2 row-span-1 min-h-[250px]  border border-neutral-800 rounded relative flex items-center justify-center">
           <ReverseEdgeTriadBanner />
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center"
@@ -152,17 +120,17 @@ const HomePage = () => {
           </motion.h1>
         </div>
 
-        <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <div className="px-4 py-1 border border-neutral-800/40 relative">
             <MovingGlow />
             Moving Glow
           </div>
         </div>
 
-        <div className="col-span-1 row-span-2 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative">
           <AuthModalShowCase />
         </div>
-        <div className="col-span-1 row-span-2 min-h-[120px] flex items-center justify-center border border-neutral-800 rounded">
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded">
           <NotificationInput />
         </div>
       </div>
