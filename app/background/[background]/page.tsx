@@ -26,7 +26,9 @@ const BackgroundInAction = () => {
         angleSpan="large"
       />
     ),
-    RadialFadeBackground: <RadialFadeBackground className="fixed" />,
+    RadialFadeBackground: (
+      <RadialFadeBackground className="fixed" position="left-center" />
+    ),
     TopCenterRadialBackground: <TopCenterRadialBackground className="fixed" />,
     RadialFadePulsatingBackground: (
       <RadialFadePulsatingBackground className="fixed" />

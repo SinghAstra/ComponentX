@@ -54,15 +54,16 @@ const ConicGradientBackground = ({
 
   return (
     <div
-      className={cn("absolute inset-0 overflow-hidden z-[-1]", className)}
-      style={{
-        maskImage: maskImageValue,
-      }}
+      className={cn(
+        "absolute inset-0 overflow-hidden z-[-1] bg-background",
+        className
+      )}
     >
       <div
         className="w-full h-full"
         style={{
           background: conicGradientValue,
+          maskImage: maskImageValue,
         }}
       />
     </div>
