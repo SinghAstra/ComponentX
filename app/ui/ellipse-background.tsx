@@ -10,7 +10,7 @@ type RadialPosition =
   | "bottom-center"
   | "bottom-right";
 
-interface RadialFadeBackgroundProps {
+interface EllipseBackgroundProps {
   className?: string;
   colorOne?: string;
   colorTwo?: string;
@@ -22,7 +22,9 @@ interface RadialFadeBackgroundProps {
    */
   variant?: "fade" | "glow";
   animate?: boolean;
-  radius?: number;
+  radiusX?: number;
+  radiusY?: number;
+  transition?: number;
 }
 
 const positionMap: Record<RadialPosition, string> = {
@@ -36,25 +38,31 @@ const positionMap: Record<RadialPosition, string> = {
   "bottom-right": "100% 100%",
 };
 
-const RadialFadeBackground = ({
+function EllipseBackground({
   className,
   colorOne = "hsl(var(--primary))",
   colorTwo = "transparent",
-  position = "top-left", // Default position
+  position = "top-center", // Default position for ellipse
   variant = "fade",
-  radius = 60,
+  radiusX = 60,
+  radiusY = 100,
+  transition = 80,
   animate = false,
-}: RadialFadeBackgroundProps) => {
+}: EllipseBackgroundProps) {
   const gradientPosition = positionMap[position];
   let backgroundGradientValue;
-  const maskImageValue = `radial-gradient(circle at ${gradientPosition}, rgb(255, 255, 255,0.8), rgba(255, 255, 255,0.3) ${radius}%,rgba(255, 255, 255,0) 100%)`;
+
+  // The mask image for ellipse gradient
+
   if (variant === "fade") {
-    backgroundGradientValue = `radial-gradient(circle at ${gradientPosition}, ${colorOne} 8%, ${colorTwo} ${radius}%,${colorTwo} 100%)`;
+    backgroundGradientValue = `radial-gradient(ellipse ${radiusX}% ${radiusY}% at ${gradientPosition}, ${colorOne} 0%, ${colorTwo} ${transition}%)`;
   } else {
-    backgroundGradientValue = `radial-gradient(circle at ${gradientPosition}, ${colorOne} ${
-      radius / 2
-    }%, ${colorTwo} ${radius}%,${colorTwo} 100%)`;
+    // Glow variant logic, similar to RadialBackground
+    backgroundGradientValue = `radial-gradient(ellipse  ${radiusX}% ${radiusY}% at ${gradientPosition}, ${colorOne} ${
+      transition / 2
+    }%, ${colorTwo} ${transition}%)`;
   }
+  const maskGradientValue = `radial-gradient(ellipse ${radiusX}% ${radiusY}% at ${gradientPosition}, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)`;
 
   return (
     <div
@@ -67,11 +75,11 @@ const RadialFadeBackground = ({
         className={`w-full h-full ${animate && "animate-pulse"}`}
         style={{
           background: backgroundGradientValue,
-          maskImage: maskImageValue,
+          maskImage: maskGradientValue,
         }}
       />
     </div>
   );
-};
+}
 
-export default RadialFadeBackground;
+export default EllipseBackground;

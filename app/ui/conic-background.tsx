@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface ConicGradientBackgroundProps {
+interface ConicBackgroundProps {
   className?: string;
   position?: "right" | "top" | "left" | "bottom";
   /**
@@ -25,13 +25,13 @@ interface ConicGradientBackgroundProps {
   colorTwo?: string;
 }
 
-const ConicGradientBackground = ({
+const ConicBackground = ({
   className,
   position = "right",
   angleSpan = "medium",
   colorOne = "hsl(var(--primary)/0.4)",
   colorTwo = "hsl(var(--primary))",
-}: ConicGradientBackgroundProps) => {
+}: ConicBackgroundProps) => {
   const positionVal = {
     right: { positionX: "100%", positionY: "50%", from: "180deg" },
     top: { positionX: "50%", positionY: "0%", from: "90deg" },
@@ -70,4 +70,4 @@ const ConicGradientBackground = ({
   );
 };
 
-export default ConicGradientBackground;
+export default ConicBackground;

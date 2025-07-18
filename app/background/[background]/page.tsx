@@ -1,14 +1,11 @@
 "use client";
 
 import HomePage from "@/app/home";
-import ConicGradientBackground from "@/app/ui/conic-gradient-background";
-import EdgeTriadBackground from "@/app/ui/edge-triad-background";
+import ConicBackground from "@/app/ui/conic-background";
+import EllipseBackground from "@/app/ui/ellipse-background";
 import GridBackground from "@/app/ui/grid-background";
-import LightBulbGradientBackground from "@/app/ui/light-bulb-gradient-background";
 import MaskedGridBackground from "@/app/ui/masked-grid-background";
-import RadialFadeBackground from "@/app/ui/radial-fade-background";
-import ReverseEdgeTriadBackground from "@/app/ui/reverse-edge-triad-background";
-import TriadBackground from "@/app/ui/triad-background";
+import RadialBackground from "@/app/ui/radial-background";
 import { notFound, redirect, useParams } from "next/navigation";
 import React from "react";
 
@@ -17,15 +14,11 @@ const BackgroundInAction = () => {
   const background = params.background;
 
   const inActionComponents: { [key: string]: JSX.Element } = {
-    ConicGradientBackground: (
-      <ConicGradientBackground
-        className="fixed"
-        position="top"
-        angleSpan="large"
-      />
+    ConicBackground: (
+      <ConicBackground className="fixed" position="top" angleSpan="large" />
     ),
-    RadialFadeBackground: (
-      <RadialFadeBackground
+    RadialBackground: (
+      <RadialBackground
         className="fixed"
         position="left-center"
         radius={40}
@@ -33,16 +26,11 @@ const BackgroundInAction = () => {
       />
     ),
 
-    LightBulbGradientBackground: (
-      <LightBulbGradientBackground className="fixed" />
+    EllipseBackground: (
+      <EllipseBackground className="fixed" position="top-center" />
     ),
-    TriadBackground: <TriadBackground className="fixed" />,
     GridBackground: <GridBackground className="fixed" />,
     MaskedGridBackground: <MaskedGridBackground className="fixed" />,
-    EdgeTriadBackground: <EdgeTriadBackground className="fixed" />,
-    ReverseEdgeTriadBackground: (
-      <ReverseEdgeTriadBackground className="fixed" />
-    ),
   };
 
   if (!background || typeof background !== "string") {
