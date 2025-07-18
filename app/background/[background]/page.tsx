@@ -32,7 +32,7 @@ const BackgroundInAction = () => {
     ),
     GridBackground: <GridBackground className="fixed" />,
     MaskedGridBackground: <MaskedGridBackground className="fixed" />,
-    LampBackground: <LampBackground />,
+    LampBackground: <LampBackground position="right" />,
   };
 
   if (!background || typeof background !== "string") {
