@@ -15,6 +15,14 @@ interface RadialFadeBackgroundProps {
   colorOne?: string;
   colorTwo?: string;
   position?: RadialPosition;
+  /**
+   * Defines the type of radial gradient effect.
+   * 'fade': A simple fade from colorOne to colorTwo with an optional mask.
+   * 'glow': A multi-stop gradient with primary color opacities, typically used for a subtle glow.
+   */
+  variant?: "fade" | "glow";
+  animate?: boolean;
+  radius?: number;
 }
 
 const positionMap: Record<RadialPosition, string> = {
@@ -33,8 +41,20 @@ const RadialFadeBackground = ({
   colorOne = "hsl(var(--primary))",
   colorTwo = "transparent",
   position = "top-left", // Default position
+  variant = "fade",
+  radius = 60,
+  animate = false,
 }: RadialFadeBackgroundProps) => {
   const gradientPosition = positionMap[position];
+  let backgroundGradientValue;
+  const maskImageValue = `radial-gradient(circle at ${gradientPosition}, rgb(255, 255, 255,0.8), rgba(255, 255, 255,0.3) ${radius}%,rgba(255, 255, 255,0) 100%)`;
+  if (variant === "fade") {
+    backgroundGradientValue = `radial-gradient(circle at ${gradientPosition}, ${colorOne} 8%, ${colorTwo} ${radius}%,${colorTwo} 100%)`;
+  } else {
+    backgroundGradientValue = `radial-gradient(circle at ${gradientPosition}, ${colorOne} ${
+      radius / 2
+    }%, ${colorTwo} ${radius}%,${colorTwo} 100%)`;
+  }
 
   return (
     <div
@@ -44,10 +64,10 @@ const RadialFadeBackground = ({
       )}
     >
       <div
-        className="w-full h-full"
+        className={`w-full h-full ${animate && "animate-pulse"}`}
         style={{
-          background: `radial-gradient(circle at ${gradientPosition}, ${colorOne} 8%, ${colorTwo} 60%,${colorTwo} 100%)`,
-          maskImage: `radial-gradient(circle at ${gradientPosition}, rgb(255, 255, 255), rgba(255, 255, 255,0))`,
+          background: backgroundGradientValue,
+          maskImage: maskImageValue,
         }}
       />
     </div>

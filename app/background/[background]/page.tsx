@@ -7,9 +7,7 @@ import GridBackground from "@/app/ui/grid-background";
 import LightBulbGradientBackground from "@/app/ui/light-bulb-gradient-background";
 import MaskedGridBackground from "@/app/ui/masked-grid-background";
 import RadialFadeBackground from "@/app/ui/radial-fade-background";
-import RadialFadePulsatingBackground from "@/app/ui/radial-fade-pulsating-background";
 import ReverseEdgeTriadBackground from "@/app/ui/reverse-edge-triad-background";
-import TopCenterRadialBackground from "@/app/ui/top-center-radial-background";
 import TriadBackground from "@/app/ui/triad-background";
 import { notFound, redirect, useParams } from "next/navigation";
 import React from "react";
@@ -27,12 +25,14 @@ const BackgroundInAction = () => {
       />
     ),
     RadialFadeBackground: (
-      <RadialFadeBackground className="fixed" position="left-center" />
+      <RadialFadeBackground
+        className="fixed"
+        position="left-center"
+        radius={40}
+        animate={true}
+      />
     ),
-    TopCenterRadialBackground: <TopCenterRadialBackground className="fixed" />,
-    RadialFadePulsatingBackground: (
-      <RadialFadePulsatingBackground className="fixed" />
-    ),
+
     LightBulbGradientBackground: (
       <LightBulbGradientBackground className="fixed" />
     ),

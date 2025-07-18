@@ -19,7 +19,6 @@ import MovingBackground from "./ui/moving-background";
 import MovingGlow from "./ui/moving-glow";
 import NotificationInput from "./ui/notification-input";
 import RadialFadeBackground from "./ui/radial-fade-background";
-import TopCenterRadialBackground from "./ui/top-center-radial-background";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
@@ -100,7 +99,7 @@ const HomePage = () => {
             View in Action
             <ArrowRightIcon className="size-4 transform-all duration-300 group-hover:translate-x-1" />
           </Link>
-          <RadialFadeBackground endColor="hsl(var(--background))" />
+          <RadialFadeBackground animate={true} position="left-center" />
         </motion.div>
 
         <motion.div
@@ -131,27 +130,7 @@ const HomePage = () => {
         >
           <DialogBoilerPlateShowCase />
         </motion.div>
-        <motion.div
-          variants={containerVariant}
-          initial="hidden"
-          whileInView="visible"
-          className="col-span-2  row-span-1  flex flex-col gap-4 items-center justify-center border  rounded relative group transition-all duration-200 hover:shadow-[inset_0_-5px_30px_0px_hsl(var(--muted)),inset_0px_5px_30px_0px_hsl(var(--muted))] hover:bg-background/60"
-        >
-          <motion.h1
-            className="text-2xl sm:text-4xl font-normal text-center translate-y-5 group-hover:translate-y-0 transition-all duration-200 "
-            variants={blurInVariant}
-          >
-            Top Center Radial Background
-          </motion.h1>
-          <Link
-            href="/background/top-center-radial-background"
-            className="border px-3 py-1 rounded bg-muted/20 hover:bg-muted/40 backdrop-blur-md translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-200 flex gap-1 items-center"
-          >
-            View in Action
-            <ArrowRightIcon className="size-4 transform-all duration-300 group-hover:translate-x-1" />
-          </Link>
-          <TopCenterRadialBackground />
-        </motion.div>
+
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <SearchDialogShowCase />
         </div>
