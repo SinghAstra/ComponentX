@@ -12,7 +12,6 @@ import React, { useState } from "react";
 import Hero from "./hero";
 import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
-import MovingBackgroundShowCase from "./showcase/moving-background-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import ConicGradientBackground from "./ui/conic-gradient-background";
 import { FloatingNavbar } from "./ui/floating-navbar";

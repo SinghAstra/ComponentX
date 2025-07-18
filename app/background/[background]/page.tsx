@@ -19,7 +19,13 @@ const BackgroundInAction = () => {
   const background = params.background;
 
   const inActionComponents: { [key: string]: JSX.Element } = {
-    ConicGradientBackground: <ConicGradientBackground className="fixed" />,
+    ConicGradientBackground: (
+      <ConicGradientBackground
+        className="fixed"
+        position="top"
+        angleSpan="large"
+      />
+    ),
     RadialFadeBackground: <RadialFadeBackground className="fixed" />,
     TopCenterRadialBackground: <TopCenterRadialBackground className="fixed" />,
     RadialFadePulsatingBackground: (
