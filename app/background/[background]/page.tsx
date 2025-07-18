@@ -4,6 +4,7 @@ import HomePage from "@/app/home";
 import ConicBackground from "@/app/ui/conic-background";
 import EllipseBackground from "@/app/ui/ellipse-background";
 import GridBackground from "@/app/ui/grid-background";
+import LampBackground from "@/app/ui/lamp-background";
 import MaskedGridBackground from "@/app/ui/masked-grid-background";
 import RadialBackground from "@/app/ui/radial-background";
 import { notFound, redirect, useParams } from "next/navigation";
@@ -31,6 +32,7 @@ const BackgroundInAction = () => {
     ),
     GridBackground: <GridBackground className="fixed" />,
     MaskedGridBackground: <MaskedGridBackground className="fixed" />,
+    LampBackground: <LampBackground />,
   };
 
   if (!background || typeof background !== "string") {
