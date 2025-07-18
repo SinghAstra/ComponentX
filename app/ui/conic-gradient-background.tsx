@@ -13,7 +13,6 @@ const ConicGradientBackground = ({
       style={{
         maskImage:
           "linear-gradient(90deg,rgba(255, 255, 255,0),rgb(255, 255, 255,0.6))",
-        opacity: 0.5,
       }}
     >
       <div

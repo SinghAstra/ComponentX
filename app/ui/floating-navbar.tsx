@@ -2,17 +2,19 @@
 
 import { Button } from "@/components/ui/button";
 import { BookOpen, Briefcase, Home, ImageIcon, Info } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
-  { icon: Info, label: "About", href: "/" },
-  { icon: Briefcase, label: "Work", href: "/" },
-  { icon: BookOpen, label: "Blog", href: "/" },
-  { icon: ImageIcon, label: "Gallery", href: "/" },
+  { icon: Info, label: "About", href: "/background" },
+  { icon: Briefcase, label: "Work", href: "/background" },
+  { icon: BookOpen, label: "Blog", href: "/background" },
+  { icon: ImageIcon, label: "Gallery", href: "/background" },
 ];
 
 function NavbarContent() {
+  const pathname = usePathname();
   return (
     <div className="flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded px-2 py-1 shadow-lg">
       {navItems.map((item, index) => (
@@ -20,7 +22,13 @@ function NavbarContent() {
           <Button
             key={item.label}
             variant="ghost"
-            className="hover:bg-background transition-all duration-200 rounded font-normal"
+            className={`hover:bg-primary transition-all duration-200 rounded font-normal
+               ${
+                 pathname === item.href
+                   ? "bg-primary text-primary-foreground"
+                   : "text-muted-foreground"
+               }
+            `}
             asChild
           >
             <a href={item.href}>

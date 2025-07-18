@@ -74,6 +74,11 @@ export default function RootLayout({
             }}
           />
         </Providers>
+        <script
+          async
+          src="http://localhost:3000/track.js"
+          data-tracking-id="cmcyiln7u0003f8kgvmqtsa3v"
+        ></script>
       </body>
     </html>
   );

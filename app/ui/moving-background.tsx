@@ -11,7 +11,7 @@ function MovingBackground({
 }: MovingBackgroundProps) {
   return (
     <div
-      className={cn("absolute inset-0 z-[-3] rounded-[inherit] shine")}
+      className={cn("absolute inset-0 z-[-1] rounded-[inherit] shine")}
       style={{
         background: `linear-gradient(110deg,${backgroundColor} 45%,${shineColor} 55%,${backgroundColor})`,
         backgroundSize: "400% 100%",

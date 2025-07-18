@@ -24,13 +24,12 @@ function Hero() {
       <motion.div variants={scaleInVariant}>
         <a href={siteConfig.links.buildInPublic} target="_blank">
           <div className="p-1 relative rounded">
-            <MovingGlow />
-            <Button className="rounded group relative font-normal">
-              <div className="absolute inset-0 group-hover:bg-muted/40 transition-all duration-200" />
-              <span
-                className=" text-sm text-foreground
-          flex items-center justify-center gap-2"
-              >
+            <Button
+              variant="outline"
+              className="rounded group relative font-normal bg-transparent hover:bg-muted/40"
+            >
+              <MovingBackground shineColor="hsl(var(--primary)/20)" />
+              <span className=" text-sm text-foreground flex items-center justify-center gap-2">
                 <FaTwitter className="size-3" /> Build in Public
                 <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
               </span>
@@ -60,14 +59,9 @@ function Hero() {
         <a href={siteConfig.links.twitter} target="_blank">
           <motion.div variants={scaleInVariant} className="p-1">
             <Button
-              variant="outline"
               size="lg"
-              className="group rounded relative bg-transparent hover:bg-transparent flex items-center gap-1 text-md font-normal backdrop-blur-md  "
+              className="group rounded relative flex items-center gap-1 text-md font-normal backdrop-blur-md  "
             >
-              <MovingBackground
-                backgroundColor="hsl(var(--muted)/0.4)"
-                shineColor="hsla(var(--primary)/0.4)"
-              />
               Follow For Updates
               <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
             </Button>
@@ -76,9 +70,9 @@ function Hero() {
         <motion.div variants={scaleInVariant} className="p-1 relative rounded">
           <a href={siteConfig.links.githubRepo} target="_blank">
             <Button
-              variant="outline"
+              variant={"outline"}
               size="lg"
-              className="bg-muted/40 hover:bg-muted/60 flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg"
+              className="flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg"
             >
               <MovingGlow />
               <FaGithub className=" h-4 w-4" />
