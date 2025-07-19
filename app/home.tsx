@@ -16,9 +16,11 @@ import SearchDialogShowCase from "./showcase/search-dialog-showcase";
 import ConicBackground from "./ui/conic-background";
 import EllipseBackground from "./ui/ellipse-background";
 import { FloatingNavbar } from "./ui/floating-navbar";
+import GridBackground from "./ui/grid-background";
 import LampBackground from "./ui/lamp-background";
+import MaskedGridBackground from "./ui/masked-grid-background";
 import MovingBackground from "./ui/moving-background";
-import MovingGlow from "./ui/moving-glow";
+import MovingBorder from "./ui/moving-border";
 import NotificationInput from "./ui/notification-input";
 import RadialBackground from "./ui/radial-background";
 
@@ -33,7 +35,7 @@ const HomePage = () => {
     >
       <Hero />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2 mb-6">
         <motion.div
           variants={containerVariant}
           initial="hidden"
@@ -179,12 +181,14 @@ const HomePage = () => {
           <SearchDialogShowCase />
         </div>
 
-        {/* <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
-          <div className="px-4 py-1 border border-neutral-800/40 relative">
-            <MovingGlow />
-            Moving Glow
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
+          <div className="p-1 relative z-[2] overflow-hidden rounded">
+            <MovingBorder />
+            <div className="w-full h-full px-3 py-1 bg-background border">
+              Moving Border
+            </div>
           </div>
-        </div> */}
+        </div>
 
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
           <AuthModalShowCase />
@@ -192,6 +196,34 @@ const HomePage = () => {
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <NotificationInput />
         </div>
+        <motion.div
+          variants={containerVariant}
+          initial="hidden"
+          whileInView="visible"
+          className="col-span-1 row-span-1 relative min-h-[250px] flex items-center justify-center border border-neutral-800 rounded px-3 py-2"
+        >
+          <GridBackground />
+          <motion.h1
+            className="text-2xl sm:text-3xl font-normal text-center "
+            variants={blurInVariant}
+          >
+            Grid Background
+          </motion.h1>
+        </motion.div>
+        <motion.div
+          variants={containerVariant}
+          initial="hidden"
+          whileInView="visible"
+          className="col-span-1 row-span-1 relative min-h-[250px] flex items-center justify-center border border-neutral-800 rounded px-3 py-2"
+        >
+          <MaskedGridBackground />
+          <motion.h1
+            className="text-2xl sm:text-3xl font-normal text-center "
+            variants={blurInVariant}
+          >
+            Masked Grid Background
+          </motion.h1>
+        </motion.div>
       </div>
     </motion.div>
   );

@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import MovingBackground from "./ui/moving-background";
-import MovingGlow from "./ui/moving-glow";
+import MovingBorder from "./ui/moving-border";
 
 function Hero() {
   return (
@@ -69,15 +69,17 @@ function Hero() {
         </a>
         <motion.div variants={scaleInVariant} className="p-1 relative rounded">
           <a href={siteConfig.links.githubRepo} target="_blank">
-            <Button
-              variant={"outline"}
-              size="lg"
-              className="flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg"
-            >
-              <MovingGlow />
-              <FaGithub className=" h-4 w-4" />
-              View on GitHub
-            </Button>
+            <div className="p-1 relative z-[2] overflow-hidden rounded">
+              <MovingBorder />
+              <Button
+                variant={"outline"}
+                size="lg"
+                className="flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg"
+              >
+                <FaGithub className=" h-4 w-4" />
+                View on GitHub
+              </Button>
+            </div>
           </a>
         </motion.div>
       </div>

@@ -153,31 +153,20 @@ pre > code {
 .shine {
   animation: shine 6s linear infinite;
 }
-/* 
-@keyframes rotate {
+
+@keyframes moving-glow {
   from {
-    transform: rotate(-90deg);
+    transform: translate(-50%, -50%) rotate(0deg);
+    top: 50%;
+    left: 50%;
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
+    top: 50%;
+    left: 50%;
   }
-} */
-
-/* .moving-element {
-  width: 40px;
-  height: 40px;
-  background: orange;
-  position: absolute;
-  offset-path: path("M20,170 L100,20 L180,100 Z");
-  offset-rotate: auto;
-  animation: moveAlongPath 3s linear infinite;
 }
 
-@keyframes moveAlongPath {
-  from {
-    offset-distance: 0%;
-  }
-  to {
-    offset-distance: 100%;
-  }
-} */
+.moving-glow {
+  animation: moving-glow 4s linear infinite;
+}

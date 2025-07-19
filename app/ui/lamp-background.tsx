@@ -93,9 +93,6 @@ function LampBackground({
         containerFlexClass,
         className
       )}
-      style={{
-        maskImage: maskImageStyle,
-      }}
     >
       <div
         className={div1SizeClass}
@@ -105,6 +102,7 @@ function LampBackground({
             ${finalColorOne} 0deg,
             ${finalColorTwo} ${angleSpread}deg
           )`,
+          maskImage: maskImageStyle,
         }}
       />
       <div
@@ -115,6 +113,7 @@ function LampBackground({
             ${finalColorTwo} ${angleOffset}deg,
             ${finalColorOne} 90deg
           )`,
+          maskImage: maskImageStyle,
         }}
       />
     </div>

@@ -8,7 +8,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import Dialog from "../ui/dialog";
-import MovingBackground from "../ui/moving-background";
 
 const AuthModalShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -64,12 +63,12 @@ const AuthModalShowCase = () => {
         </Button>
       </motion.div>
       <Dialog
-        className="max-w-[400px] relative bg-muted/20"
+        className="max-w-[400px] relative"
         isDialogVisible={isDialogVisible}
         setIsDialogVisible={setIsDialogVisible}
         keyToMakeDialogVisible="a"
       >
-        <div className="space-y-4 m-4 text-center">
+        <div className="space-y-4 p-4 text-center bg-muted/20">
           <div className="space-y-1 mb-4">
             <h1 className="text-3xl tracking-wider">{siteConfig.name}</h1>
             <span className="text-sm text-muted-foreground">
@@ -80,7 +79,7 @@ const AuthModalShowCase = () => {
             onClick={handleGitHubSignIn}
             disabled={isGithubLoading}
             variant="outline"
-            className="w-full text-foreground rounded font-normal"
+            className="w-full text-foreground rounded font-normal hover:bg-muted/40"
           >
             {isGithubLoading ? (
               <>
@@ -97,22 +96,21 @@ const AuthModalShowCase = () => {
             )}
           </Button>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
+          <div className="relative flex gap-1">
+            <span className="flex-1 flex items-center">
               <Separator />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase ">
-              <span className="bg-background px-2 text-foreground">Or</span>
-            </div>
+            </span>
+            <span className="text-foreground">Or</span>
+            <span className="flex-1 flex items-center">
+              <Separator />
+            </span>
           </div>
 
           <Button
-            variant="outline"
-            className="w-full text-foreground rounded font-normal bg-transparent hover:bg-transparent relative"
+            className="w-full rounded tracking-wide relative"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading}
           >
-            <MovingBackground />
             {isGoogleLoading ? (
               <>
                 <Loader className="w-5 h-5 animate-spin" />
