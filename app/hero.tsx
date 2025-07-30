@@ -73,7 +73,7 @@ function Hero() {
               <Button
                 variant={"outline"}
                 size="lg"
-                className="flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg"
+                className="flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg w-full"
               >
                 <FaGithub className=" h-4 w-4" />
                 View on GitHub

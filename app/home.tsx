@@ -14,6 +14,7 @@ import Hero from "./hero";
 import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
 import SearchDialogShowCase from "./showcase/search-dialog-showcase";
+import BorderHoverLink from "./ui/border-hover-link";
 import ConicBackground from "./ui/conic-background";
 import EllipseBackground from "./ui/ellipse-background";
 import { FloatingNavbar } from "./ui/floating-navbar";
@@ -239,6 +240,11 @@ const HomePage = () => {
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <NotificationInput />
+        </div>
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
+          <BorderHoverLink className="text-muted-foreground hover:text-foreground transition-all duration-200">
+            Hover me
+          </BorderHoverLink>
         </div>
       </div>
       <Footer />

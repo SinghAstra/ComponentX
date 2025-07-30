@@ -3,6 +3,7 @@
 import { siteConfig } from "@/config/site";
 import { containerVariant, fadeInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import BorderHoverLink from "./ui/border-hover-link";
 
 const Footer = () => {
@@ -16,20 +17,18 @@ const Footer = () => {
         <motion.div variants={fadeInVariant}>
           <span className=" text-muted-foreground flex gap-2 items-center tracking-wider">
             Made by{" "}
-            <BorderHoverLink
-              href={siteConfig.links.github}
-              className="text-foreground tracking-wider"
-            >
-              SinghAstra
+            <BorderHoverLink className="text-foreground tracking-wider">
+              <Link target="_blank" href={siteConfig.links.github}>
+                SinghAstra
+              </Link>
             </BorderHoverLink>
           </span>
         </motion.div>
         <motion.div variants={fadeInVariant}>
-          <BorderHoverLink
-            href={siteConfig.links.twitter}
-            className="text-foreground tracking-wider"
-          >
-            Connect on X
+          <BorderHoverLink className="text-foreground tracking-wider">
+            <Link target="_blank" href={siteConfig.links.twitter}>
+              Connect on X
+            </Link>
           </BorderHoverLink>
         </motion.div>
       </footer>
