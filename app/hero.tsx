@@ -47,17 +47,16 @@ function Hero() {
 
       <motion.div variants={blurInVariant}>
         <p className=" md:text-lg lg:text-xl text-foreground/80 text-balance max-w-2xl">
-          Collection of beautiful, and customizable UI components.
-          <span className="text-primary/70 font-medium mx-2">
-            Simple Copy Paste
+          Collection of
+          <span className="text-primary font-medium mx-2">
+            beautiful, and customizable UI components.
           </span>
-          and elevate your interface.
         </p>
       </motion.div>
 
       <div className="flex flex-col sm:flex-row gap-4 sm:mt-4 items-center ">
         <a href={siteConfig.links.twitter} target="_blank">
-          <motion.div variants={scaleInVariant} className="p-1">
+          <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
             <Button
               size="lg"
               className="group rounded relative flex items-center gap-1 text-md font-normal backdrop-blur-md  "
@@ -67,9 +66,9 @@ function Hero() {
             </Button>
           </motion.div>
         </a>
-        <motion.div variants={scaleInVariant} className="p-1 relative rounded">
+        <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
           <a href={siteConfig.links.githubRepo} target="_blank">
-            <div className="p-1 relative z-[2] overflow-hidden rounded">
+            <div className="p-[2px] relative z-[2] overflow-hidden rounded">
               <MovingBorder />
               <Button
                 variant={"outline"}

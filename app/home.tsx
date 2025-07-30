@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { ArrowRightIcon, Menu, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+import Footer from "./footer";
 import Hero from "./hero";
 import AuthModalShowCase from "./showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
@@ -240,6 +241,7 @@ const HomePage = () => {
           <NotificationInput />
         </div>
       </div>
+      <Footer />
     </motion.div>
   );
 };
