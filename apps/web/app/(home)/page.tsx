@@ -9,22 +9,23 @@ import { motion } from "framer-motion";
 import { ArrowRightIcon, Menu, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+import AuthModalShowCase from "../showcase/auth-modal-showcase";
+import DialogBoilerPlateShowCase from "../showcase/dialog-boilerplate-showcase";
+import SearchDialogShowCase from "../showcase/search-dialog-showcase";
+import BorderHoverLink from "../ui/border-hover-link";
+import ConicBackground from "../ui/conic-background";
+import EllipseBackground from "../ui/ellipse-background";
+import { FloatingNavbar } from "../ui/floating-navbar";
+import GridBackground from "../ui/grid-background";
+import LampBackground from "../ui/lamp-background";
+import MaskedGridBackground from "../ui/masked-grid-background";
+import MovingBackground from "../ui/moving-background";
+import MovingBorder from "../ui/moving-border";
+import NotificationInput from "../ui/notification-input";
+import RadialBackground from "../ui/radial-background";
 import Footer from "./footer";
 import Hero from "./hero";
-import AuthModalShowCase from "./showcase/auth-modal-showcase";
-import DialogBoilerPlateShowCase from "./showcase/dialog-boilerplate-showcase";
-import SearchDialogShowCase from "./showcase/search-dialog-showcase";
-import BorderHoverLink from "./ui/border-hover-link";
-import ConicBackground from "./ui/conic-background";
-import EllipseBackground from "./ui/ellipse-background";
-import { FloatingNavbar } from "./ui/floating-navbar";
-import GridBackground from "./ui/grid-background";
-import LampBackground from "./ui/lamp-background";
-import MaskedGridBackground from "./ui/masked-grid-background";
-import MovingBackground from "./ui/moving-background";
-import MovingBorder from "./ui/moving-border";
-import NotificationInput from "./ui/notification-input";
-import RadialBackground from "./ui/radial-background";
+import Navbar from "./navbar";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
@@ -35,6 +36,7 @@ const HomePage = () => {
       whileInView="visible"
       className="min-h-screen flex flex-col  "
     >
+      <Navbar />
       <Hero />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2 mb-6">

@@ -22,52 +22,61 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div>
-      <header className="fixed top-0 z-50 w-full border-b bg-background/40 backdrop-blur-sm ">
-        <div className="md:container md:px-0 px-2 flex h-14 items-center justify-between mx-auto">
+    <>
+      <header className="sticky top-0 z-50 w-full border-b bg-background/40 backdrop-blur-lg">
+        <div className="px-2 h-14 flex items-center justify-between mx-auto">
           <div className="flex items-center space-x-2">
-            {/* Mobile Menu Button  */}
             <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="p-0 pt-8 w-[256px]">
+              <SheetContent side="left" className="p-0 w-[256px]">
                 <VisuallyHidden.Root asChild>
                   <SheetHeader>
                     <SheetTitle>Navigation</SheetTitle>
                     <SheetDescription>Sidebar For Docs</SheetDescription>
                   </SheetHeader>
                 </VisuallyHidden.Root>
-                <DocsNav config={docsConfig} />
+                <Link
+                  href="/"
+                  className="font-medium leading-loose text-2xl text-primary px-2"
+                >
+                  {siteConfig.name}
+                </Link>
+                <DocsNav
+                  config={docsConfig}
+                  className="fixed border-r left-0 bottom-0 top-12 pl-1"
+                  onLinkClick={() => setIsSidebarOpen(false)}
+                />
               </SheetContent>
             </Sheet>
-            <Link href="/" className="font-medium leading-loose text-2xl">
+            <Link
+              href="/"
+              className="font-medium leading-loose text-2xl text-primary"
+            >
               {siteConfig.name}
             </Link>
           </div>
 
           <div className="flex items-center space-x-2">
-            {/* Right side buttons */}
             <a
               href={siteConfig.links.github}
               target="_blank"
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 px-4"
+              className="inline-flex items-center justify-center rounded transition-all duration-200 hover:bg-muted/80 py-2 px-3 border"
             >
               <FaGithub className="h-4 w-4" />
             </a>
           </div>
         </div>
       </header>
-      <div className="flex pt-14">
-        <DocsNav
-          config={docsConfig}
-          className="hidden md:block fixed h-[calc(100vh-3.5rem)] border-r"
-        />
-        {children}
-      </div>
-    </div>
+      <DocsNav
+        config={docsConfig}
+        className="hidden md:block fixed border-r left-0 bottom-0 top-16"
+      />
+      <div className="md:pl-64">{children}</div>
+    </>
   );
 };
 

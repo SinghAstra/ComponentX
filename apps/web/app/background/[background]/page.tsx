@@ -1,6 +1,6 @@
 "use client";
 
-import HomePage from "@/app/home";
+import HomePage from "@/app/(home)/page";
 import ConicBackground from "@/app/ui/conic-background";
 import EllipseBackground from "@/app/ui/ellipse-background";
 import GridBackground from "@/app/ui/grid-background";

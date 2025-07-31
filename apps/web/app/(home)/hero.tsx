@@ -9,9 +9,10 @@ import {
 } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import MovingBackground from "./ui/moving-background";
-import MovingBorder from "./ui/moving-border";
+import MovingBackground from "../ui/moving-background";
+import MovingBorder from "../ui/moving-border";
 
 function Hero() {
   return (
@@ -55,17 +56,17 @@ function Hero() {
       </motion.div>
 
       <div className="flex flex-col sm:flex-row gap-4 sm:mt-4 items-center ">
-        <a href={siteConfig.links.twitter} target="_blank">
+        <Link href="/docs">
           <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
             <Button
               size="lg"
               className="group rounded relative flex items-center gap-1 text-md font-normal backdrop-blur-md  "
             >
-              Follow For Updates
+              Docs
               <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
             </Button>
           </motion.div>
-        </a>
+        </Link>
         <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
           <a href={siteConfig.links.githubRepo} target="_blank">
             <div className="p-[2px] relative z-[2] overflow-hidden rounded">
@@ -76,7 +77,7 @@ function Hero() {
                 className="flex items-center text-md justify-center gap-2 rounded font-normal z-3 relative backdrop-blur-lg w-full"
               >
                 <FaGithub className=" h-4 w-4" />
-                View on GitHub
+                GitHub
               </Button>
             </div>
           </a>

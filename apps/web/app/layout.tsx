@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 import "./globals.css";
-import Navbar from "./navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -58,7 +57,6 @@ export default function RootLayout({
       <body className="antialiased min-h-screen bg-background ">
         <Providers>
           <NextTopLoader color="hsl(var(--primary))" showSpinner={false} />
-          <Navbar />
           {children}
           <Toaster
             theme="dark"

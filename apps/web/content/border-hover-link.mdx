@@ -1,0 +1,142 @@
+---
+title: "BorderHoverLink"
+description: "A link component with a smooth border animation on hover."
+category: "Navigation"
+version: "0.1.0"
+---
+
+# BorderHoverLink
+
+A link component with a smooth border animation on hover effect. Perfect for creating elegant navigation links and interactive text elements.
+
+## Installation
+
+\`\`\`bash
+npm install @component-x/ui
+\`\`\`
+
+## Import
+
+\`\`\`tsx
+import { BorderHoverLink } from '@component-x/ui'
+\`\`\`
+
+## Usage
+
+### Basic Usage
+
+\`\`\`tsx
+import { BorderHoverLink } from '@component-x/ui'
+
+export default function MyComponent() {
+  return (
+    <BorderHoverLink>
+      <span>Hover me!</span>
+    </BorderHoverLink>
+  )
+}
+\`\`\`
+
+### With Custom Border Color
+
+\`\`\`tsx
+
+<BorderHoverLink borderColor="#ef4444">
+  <span>Red border on hover</span>
+</BorderHoverLink>
+\`\`\`
+
+### With Custom Styling
+
+\`\`\`tsx
+
+<BorderHoverLink borderColor="#10b981" className="text-green-600 font-semibold">
+  <span>Green themed link</span>
+</BorderHoverLink>
+\`\`\`
+
+## Examples
+
+<div className="space-y-6 my-8">
+  <div className="p-6 border rounded-lg bg-slate-50">
+    <h3 className="text-lg font-semibold mb-4">Default</h3>
+    <BorderHoverLink>
+      <span className="text-lg">Hover me!</span>
+    </BorderHoverLink>
+  </div>
+
+{" "}
+<div className="p-6 border rounded-lg bg-slate-50">
+  <h3 className="text-lg font-semibold mb-4">Custom Red Border</h3>
+  <BorderHoverLink borderColor="#ef4444">
+    <span className="text-lg">Red border animation</span>
+  </BorderHoverLink>
+</div>
+
+  <div className="p-6 border rounded-lg bg-slate-50">
+    <h3 className="text-lg font-semibold mb-4">Green Themed</h3>
+    <BorderHoverLink borderColor="#10b981" className="text-green-600">
+      <span className="text-lg font-semibold">Green themed link</span>
+    </BorderHoverLink>
+  </div>
+</div>
+
+## API Reference
+
+| Prop          | Type        | Default                 | Description                                     |
+| ------------- | ----------- | ----------------------- | ----------------------------------------------- |
+| `children`    | `ReactNode` | -                       | The content to be wrapped with the hover effect |
+| `borderColor` | `string`    | `"hsl(var(--primary))"` | The color of the animated border                |
+| `className`   | `string`    | -                       | Additional CSS classes to apply                 |
+
+## Component Code
+
+\`\`\`tsx
+import { cn } from "../lib/utils"
+import type { ReactNode } from "react"
+
+export interface BorderHoverLinkProps {
+  children: ReactNode
+  borderColor?: string
+  className?: string
+}
+
+const BorderHoverLink = ({
+children,
+borderColor = "hsl(var(--primary))",
+className
+}: BorderHoverLinkProps) => {
+return (
+<div className={cn("relative group cursor-pointer", className)}>
+{children}
+<span
+className={cn(
+"absolute bottom-0 left-0 w-full h-[1px]",
+"transition-transform duration-700",
+"scale-x-0 origin-right",
+"group-hover:scale-x-100 group-hover:origin-left",
+)}
+style={{
+          backgroundColor: borderColor,
+        }}
+/>
+</div>
+)
+}
+
+export default BorderHoverLink
+\`\`\`
+
+## Accessibility
+
+- Uses semantic HTML structure
+- Maintains focus states for keyboard navigation
+- Screen reader friendly with proper content structure
+
+## Browser Support
+
+- All modern browsers
+- IE11+ (with CSS custom properties polyfill)
+  \`\`\`
+
+Create utility functions for MDX parsing:

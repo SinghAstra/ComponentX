@@ -2,9 +2,9 @@
 
 import { siteConfig } from "@/config/site";
 import { containerVariant, fadeInVariant } from "@/lib/variants";
+import { BorderHoverLink } from "@component-x/ui";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import BorderHoverLink from "./ui/border-hover-link";
 
 const Footer = () => {
   return (
