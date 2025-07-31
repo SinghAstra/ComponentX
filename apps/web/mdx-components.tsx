@@ -1,8 +1,12 @@
+import { BorderHoverLink } from "@component-x/ui";
 import { ComponentProps } from "react";
+import ComponentShowcase from "./components/component-showcase";
 import Pre from "./components/markdown/pre";
 import { cn } from "./lib/utils";
 
 export const components = {
+  BorderHoverLink,
+  ComponentShowcase,
   pre: Pre,
   code: ({ className, children, ...props }: ComponentProps<"code">) => {
     return (
