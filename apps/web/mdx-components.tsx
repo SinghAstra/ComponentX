@@ -11,7 +11,7 @@ export const components = {
   code: ({ className, children, ...props }: ComponentProps<"code">) => {
     return (
       <code
-        className={`${className} text-sm  py-0.5 px-1 rounded  border`}
+        className={`${className} text-sm py-0.5 px-1 rounded border`}
         {...props}
       >
         {children}

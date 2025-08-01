@@ -1,6 +1,5 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface ComponentShowcaseProps {
@@ -11,23 +10,23 @@ interface ComponentShowcaseProps {
 function ComponentShowcase({ preview, code }: ComponentShowcaseProps) {
   return (
     <Tabs defaultValue="preview" className="w-full">
-      <TabsList className="rounded px-1 py-[1px]">
-        <TabsTrigger value="preview" className="rounded px-3 py-1 font-normal">
+      <TabsList className="rounded px-1 py-[1px] m-0 rounded-b-none bg-muted/80">
+        <TabsTrigger value="preview" className="rounded px-3 py-1 font-normal ">
           Preview
         </TabsTrigger>
-        <TabsTrigger value="code" className="rounded px-3 py-1 font-normal">
+        <TabsTrigger value="code" className="rounded px-3 py-1 font-normal ">
           Code
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="preview">
-        <Card className="p-4 flex justify-center items-center min-h-[150px]">
+      <TabsContent value="preview" className="mt-0 ">
+        <div className="rounded-tl-none flex items-center justify-center min-h-[200px] border">
           {preview}
-        </Card>
+        </div>
       </TabsContent>
-      <TabsContent value="code">
-        <pre className="p-4 rounded overflow-auto text-sm">
+      <TabsContent value="code" className="mt-0">
+        <div className="rounded-tl-none border">
           <code>{code}</code>
-        </pre>
+        </div>
       </TabsContent>
     </Tabs>
   );

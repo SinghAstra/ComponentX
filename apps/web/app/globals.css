@@ -123,9 +123,8 @@ body {
 }
 
 pre > code {
-  display: grid;
-  max-width: inherit !important;
-  padding: 10px 14px !important;
+  border: 0;
+  padding: 0 !important;
 }
 
 .rehype-code-title {

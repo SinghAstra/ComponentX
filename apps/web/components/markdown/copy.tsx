@@ -29,13 +29,19 @@ export default function Copy({ content, fileName }: CopyProps) {
 
   return (
     <div
-      className="border w-6 h-6 flex items-center justify-center rounded cursor-pointer hover:bg-muted transition-all duration-200"
+      className="border flex gap-2 px-2 py-1 items-center justify-center rounded cursor-pointer bg-muted/30 backdrop-blur-md hover:bg-muted/60 transition-all duration-200"
       onClick={handleCopy}
     >
       {isCopied ? (
-        <CheckIcon className="w-3 h-3" />
+        <>
+          <CheckIcon className="w-4 h-4" />
+          <span className="text-base">Copied</span>
+        </>
       ) : (
-        <CopyIcon className="w-3 h-3" />
+        <>
+          <CopyIcon className="w-4 h-4" />
+          <span className="text-base">Copy Code</span>
+        </>
       )}
     </div>
   );

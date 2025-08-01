@@ -5,6 +5,7 @@ import {
   containerVariant,
   scaleInVariant,
 } from "@/lib/variants";
+import { BorderHoverLink } from "@component-x/ui";
 import { motion } from "framer-motion";
 import { ArrowRightIcon, Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -12,7 +13,6 @@ import React, { useState } from "react";
 import AuthModalShowCase from "../showcase/auth-modal-showcase";
 import DialogBoilerPlateShowCase from "../showcase/dialog-boilerplate-showcase";
 import SearchDialogShowCase from "../showcase/search-dialog-showcase";
-import BorderHoverLink from "../ui/border-hover-link";
 import ConicBackground from "../ui/conic-background";
 import EllipseBackground from "../ui/ellipse-background";
 import { FloatingNavbar } from "../ui/floating-navbar";
