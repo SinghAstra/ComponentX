@@ -1,7 +1,4 @@
-import { Typography } from "@/components/markdown/typography";
 import { getComponentDoc, getComponentSlugs } from "@/lib/mdx";
-import { components } from "@/mdx-components";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -20,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const doc = getComponentDoc(params.slug);
+  const doc = await getComponentDoc(params.slug);
 
   if (!doc) {
     return {
@@ -34,10 +31,10 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-function ComponentDocPage({ params }: PageProps) {
+async function ComponentDocPage({ params }: PageProps) {
   console.log("params.slug is ", params.slug);
 
-  const doc = getComponentDoc(params.slug);
+  const doc = await getComponentDoc(params.slug);
 
   console.log("doc is ", doc);
 
@@ -51,9 +48,7 @@ function ComponentDocPage({ params }: PageProps) {
         <h1 className="text-3xl font-bold">{doc.title}</h1>
         <p className="text-muted-foreground">{doc.description}</p>
       </div>
-      <Typography>
-        <MDXRemote source={doc.content} components={components} />
-      </Typography>
+      <div>{doc.content}</div>
     </div>
   );
 }
