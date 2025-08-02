@@ -1,5 +1,4 @@
 import fs from "fs";
-import matter from "gray-matter";
 import path from "path";
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -17,17 +16,19 @@ export async function getComponentDoc(slug: string[] | undefined) {
       // console.log("filePath is ", filePath);
     }
     const fileContent = fs.readFileSync(filePath, "utf8");
-    // console.log("fileContent is ", fileContent);
-    const { data, content: rawMdxContent } = matter(fileContent);
+    console.log("fileContent is ", fileContent);
+    // const { data, content: rawMdxContent } = matter(fileContent);
 
     // Compile MDX content with plugins
 
-    console.log("rawMdXContent is ", rawMdxContent);
+    // console.log("rawMdXContent is ", rawMdxContent);
 
     return {
-      title: data.title || slug,
-      description: data.description || "",
-      content: rawMdxContent,
+      title: "title",
+      description: "Description",
+      // title: data.title || slug,
+      // description: data.description || "",
+      content: fileContent,
     };
   } catch (error) {
     if (error instanceof Error) {

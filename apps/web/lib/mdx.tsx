@@ -1,17 +1,13 @@
-import ComponentShowcase from "@/components/component-showcase";
-import Pre from "@/components/markdown/pre";
-import { BorderHoverLink } from "@component-x/ui";
 import fs from "fs";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
-import { ComponentProps } from "react";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
-import { cn } from "./utils";
+import { components } from "./mdx-components";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -92,31 +88,31 @@ export async function getComponentDoc(slug: string[] | undefined) {
     const { data, content: rawMdxContent } = matter(fileContent);
 
     // Compile MDX content with plugins
-    // const { content: compiledMdxContent } = await compileMDX({
-    //   source: rawMdxContent,
-    //   options: {
-    //     parseFrontmatter: false, // Frontmatter already parsed by gray-matter
-    //     mdxOptions: {
-    //       rehypePlugins: [
-    //         preProcess,
-    //         normalizeLanguage,
-    //         rehypePrism,
-    //         rehypeSlug,
-    //         rehypeAutolinkHeadings,
-    //         postProcess,
-    //       ],
-    //       remarkPlugins: [remarkGfm],
-    //     },
-    //   },
-    //   components,
-    // });
+    const { content: compiledMdxContent } = await compileMDX({
+      source: rawMdxContent,
+      options: {
+        parseFrontmatter: false,
+        mdxOptions: {
+          rehypePlugins: [
+            preProcess,
+            normalizeLanguage,
+            rehypePrism,
+            rehypeSlug,
+            rehypeAutolinkHeadings,
+            postProcess,
+          ],
+          remarkPlugins: [remarkGfm],
+        },
+      },
+      components,
+    });
 
     console.log("rawMdXContent is ", rawMdxContent);
 
     return {
       title: data.title || slug,
       description: data.description || "",
-      content: "hey there",
+      content: compiledMdxContent,
     };
   } catch (error) {
     if (error instanceof Error) {
