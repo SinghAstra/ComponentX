@@ -1,3 +1,4 @@
+import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import fs from "fs";
 import matter from "gray-matter";
@@ -12,24 +13,34 @@ import { normalizeLanguage, postProcess, preProcess } from "./rehype-plugins";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
-export async function getComponentDoc(slug: string[] | undefined) {
-  try {
-    let parsedFilePath;
-    let filePath;
-    if (!slug) {
-      filePath = path.join(contentDirectory, `introduction/index.mdx`);
-      // console.log("filePath is ", filePath);
-    } else {
-      parsedFilePath = slug.join("/");
-      // console.log("parsedFilePath is ", parsedFilePath);
-      filePath = path.join(contentDirectory, `${parsedFilePath}/index.mdx`);
-      // console.log("filePath is ", filePath);
-    }
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    // console.log("fileContent is ", fileContent);
-    const { data, content: rawMdxContent } = matter(fileContent);
+function getDocumentFilePath(urlPath: string) {
+  const isIntroduction = urlPath === "";
+  const contentPath = isIntroduction
+    ? "introduction/index.mdx"
+    : `${urlPath}/index.mdx`;
+  return path.join(contentDirectory, contentPath);
+}
 
-    // Compile MDX content with plugins
+async function getAllMdxFilePaths(dir: string, baseDir: string) {
+  let mdxFiles: string[] = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      mdxFiles = mdxFiles.concat(await getAllMdxFilePaths(fullPath, baseDir));
+    } else if (entry.isFile() && entry.name.endsWith(".mdx")) {
+      mdxFiles.push(path.relative(baseDir, fullPath));
+    }
+  }
+  return mdxFiles;
+}
+
+export async function getDocument(urlPath: string) {
+  try {
+    const filePath = getDocumentFilePath(urlPath);
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const { data, content: rawMdxContent } = matter(fileContent);
     const { content: compiledMdxContent } = await compileMDX({
       source: rawMdxContent,
       options: {
@@ -50,38 +61,19 @@ export async function getComponentDoc(slug: string[] | undefined) {
       components,
     });
 
-    console.log("rawMdXContent is ", rawMdxContent);
-
     return {
-      title: data.title || slug,
-      description: data.description || "",
+      title: data.title,
+      description: data.description,
       content: compiledMdxContent,
     };
   } catch (error) {
     if (error instanceof Error) {
+      console.log("Error in getDocument");
       console.log("error.stack is ", error.stack);
       console.log("error.message is ", error.message);
     }
     return null;
   }
-}
-
-async function getAllMdxFilePaths(
-  dir: string,
-  baseDir: string
-): Promise<string[]> {
-  let mdxFiles: string[] = [];
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      mdxFiles = mdxFiles.concat(await getAllMdxFilePaths(fullPath, baseDir));
-    } else if (entry.isFile() && entry.name.endsWith(".mdx")) {
-      mdxFiles.push(path.relative(baseDir, fullPath));
-    }
-  }
-  return mdxFiles;
 }
 
 export async function getComponentSlugs(): Promise<string[][]> {
@@ -115,9 +107,62 @@ export async function getComponentSlugs(): Promise<string[][]> {
     return slugs;
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Error in getComponentSlugs:", error.message);
-      console.error(error.stack);
+      console.log("Error in getComponentSlugs.");
+      console.log("error.stack is ", error.stack);
+      console.log("error.message is ", error.message);
     }
     return [];
   }
+}
+
+export function getPreviousNext(urlPath: string) {
+  // Flatten the sidebar navigation items
+  const flattenedNav: { title: string; href: string }[] = [];
+
+  docsConfig.sidebarNav.forEach((section) => {
+    section.items.forEach((item) => {
+      if (item.href) {
+        flattenedNav.push({ title: item.title, href: item.href });
+      }
+    });
+  });
+
+  const parsedPath = urlPath === "" ? "/docs" : `/docs/${urlPath}`;
+  const currentPathIndex = flattenedNav.findIndex(
+    (item) => item.href === parsedPath
+  );
+
+  console.log("currentPathIndex is ", currentPathIndex);
+
+  return {
+    prev: currentPathIndex > 0 ? flattenedNav[currentPathIndex - 1] : null,
+    next:
+      currentPathIndex < flattenedNav.length - 1
+        ? flattenedNav[currentPathIndex + 1]
+        : null,
+  };
+}
+
+function getLinkForHeading(text: string) {
+  const slug = text.toLowerCase().replace(/\s+/g, "-");
+  return slug.replace(/[^a-z0-9-]/g, "");
+}
+
+export async function getDocumentTOC(urlPath: string) {
+  const contentPath = getDocumentFilePath(urlPath);
+  const fileContent = fs.readFileSync(contentPath, "utf8");
+  const headingsRegex = /^(#{2,4})\s(.+)$/gm;
+  let match;
+  const extractedHeadings = [];
+  while ((match = headingsRegex.exec(fileContent)) !== null) {
+    const headingLevel = match[1].length;
+    const headingText = match[2].trim();
+    const slug = getLinkForHeading(headingText);
+    extractedHeadings.push({
+      level: headingLevel,
+      text: headingText,
+      href: `#${slug}`,
+    });
+  }
+  return extractedHeadings;
 }
