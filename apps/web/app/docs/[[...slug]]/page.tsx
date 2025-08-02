@@ -1,6 +1,7 @@
 import { Typography } from "@/components/markdown/typography";
 import { getComponentSlugs, getDocument } from "@/lib/mdx";
 import { notFound } from "next/navigation";
+import TOC from "./toc";
 
 interface PageProps {
   params: {
@@ -52,11 +53,12 @@ async function ComponentDocPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen px-4 py-2 space-y-4">
-      <div className="space-y-2">
+      <div className="p-4 flex-1">
         <h1 className="text-3xl font-bold">{document.title}</h1>
-        <p className="text-muted-foreground">{document.description}</p>
+        <p className="text-muted-foreground mb-8">{document.description}</p>
+        <Typography>{document.content}</Typography>
       </div>
-      <Typography>{document.content}</Typography>
+      <TOC path={urlPath} />
     </div>
   );
 }
