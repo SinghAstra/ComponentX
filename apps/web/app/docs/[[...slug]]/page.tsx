@@ -52,7 +52,7 @@ async function ComponentDocPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen px-4 py-2 space-y-4">
+    <div className="min-h-screen px-4 py-2 space-y-4 flex md:pr-80">
       <div className="p-4 flex-1">
         <h1 className="text-3xl font-bold">{document.title}</h1>
         <p className="text-muted-foreground mb-8">{document.description}</p>
