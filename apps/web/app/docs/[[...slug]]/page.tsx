@@ -1,3 +1,4 @@
+import { Typography } from "@/components/markdown/typography";
 import { getComponentDoc, getComponentSlugs } from "@/lib/mdx";
 import { notFound } from "next/navigation";
 
@@ -48,7 +49,7 @@ async function ComponentDocPage({ params }: PageProps) {
         <h1 className="text-3xl font-bold">{doc.title}</h1>
         <p className="text-muted-foreground">{doc.description}</p>
       </div>
-      <div>{doc.content}</div>
+      <Typography>{doc.content}</Typography>
     </div>
   );
 }

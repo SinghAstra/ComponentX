@@ -7,10 +7,13 @@ version: "0.1.0"
 
 <ComponentShowcase
   preview={<BorderHoverLink>Hover Me</BorderHoverLink>}
-  code={`import { Button } from "@/packages/ui/src/components/button";\n\n<Button>Click Me</Button>`}
+  code={
+    <HighlightedCode
+      language="jsx"
+      code={`import { BorderHoverLink } from "@component-x/ui";
+<BorderHoverLink>Hover me</BorderHoverLink>;`}
+    />
+  }
 />
 
-```jsx
-import { BorderHoverLink } from "@component-x/ui";
-<BorderHoverLink>Hover me</BorderHoverLink>;
-```
+<HighlightedCode code={"npm install @component-x/ui"} language="bash" />

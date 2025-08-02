@@ -11,11 +11,11 @@ const BorderHoverLink = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("relative group cursor-pointer", className)}>
+    <span className={cn("relative group cursor-pointer", className)}>
       {children}
       <span
         className={cn(
-          "absolute bottom-0 left-0 w-full h-[1px]",
+          "absolute bottom-0 left-0 w-full  h-[1px]",
           "transition-transform duration-700",
           "scale-x-0 origin-right",
           "group-hover:scale-x-100 group-hover:origin-left"
@@ -24,7 +24,7 @@ const BorderHoverLink = ({
           backgroundColor: borderColor,
         }}
       />
-    </div>
+    </span>
   );
 };
 
