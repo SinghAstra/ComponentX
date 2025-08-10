@@ -95,7 +95,7 @@ const HoverPopOver = ({
           initial="hidden"
           animate="visible"
           className={cn(
-            "absolute w-64 bg-muted/20 backdrop-blur-lg z-50 border divide-y",
+            "absolute z-50",
             alignmentClasses[align],
             (contentElement as React.ReactElement<HoverPopOverContentProps>)
               .props.className
