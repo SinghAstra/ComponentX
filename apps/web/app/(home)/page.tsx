@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import {
   blurInVariant,
   containerVariant,
@@ -17,6 +18,7 @@ import ConicBackground from "../ui/conic-background";
 import EllipseBackground from "../ui/ellipse-background";
 import { FloatingNavbar } from "../ui/floating-navbar";
 import GridBackground from "../ui/grid-background";
+import HoverPopOver from "../ui/hover-popover";
 import LampBackground from "../ui/lamp-background";
 import MaskedGridBackground from "../ui/masked-grid-background";
 import MovingBackground from "../ui/moving-background";
@@ -249,7 +251,33 @@ const HomePage = () => {
           </BorderHoverLink>
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
-          {/* <HoverPopOver /> */}
+          <HoverPopOver>
+            <HoverPopOver.Trigger>
+              <Button
+                variant="outline"
+                className="rounded transition-all duration-200"
+              >
+                Pop Over
+              </Button>
+            </HoverPopOver.Trigger>
+            <HoverPopOver.Content>
+              <div className="mt-2 border bg-muted/40 w-64">
+                {[1, 2, 3].map((elem) => {
+                  return (
+                    <div
+                      key={elem}
+                      className="px-3 py-1 hover:bg-muted/60 cursor-pointer"
+                    >
+                      This is Pop Over {elem}
+                    </div>
+                  );
+                })}
+              </div>
+            </HoverPopOver.Content>
+          </HoverPopOver>
+        </div>
+        <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
+          <h1 className="text-shine">{siteConfig.name}</h1>
         </div>
       </div>
       <Footer />
