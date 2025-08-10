@@ -145,7 +145,7 @@ pre > code {
     background-position: 0 0;
   }
   to {
-    background-position: -400% 0;
+    background-position: -200% 0;
   }
 }
 
@@ -168,4 +168,19 @@ pre > code {
 
 .moving-glow {
   animation: moving-glow 4s linear infinite;
+}
+
+.text-animation {
+  color: hsl(0, 0%, 30%);
+  letter-spacing: 7px;
+  background: linear-gradient(
+    to right,
+    hsl(0, 0%, 30%) 0%,
+    hsl(0, 0%, 100%) 10%,
+    hsl(0, 0%, 30%) 20%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+  background-size: 200% 100%;
 }

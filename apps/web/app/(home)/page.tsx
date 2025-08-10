@@ -17,7 +17,6 @@ import ConicBackground from "../ui/conic-background";
 import EllipseBackground from "../ui/ellipse-background";
 import { FloatingNavbar } from "../ui/floating-navbar";
 import GridBackground from "../ui/grid-background";
-import HoverPopOver from "../ui/hover-popover";
 import LampBackground from "../ui/lamp-background";
 import MaskedGridBackground from "../ui/masked-grid-background";
 import MovingBackground from "../ui/moving-background";
