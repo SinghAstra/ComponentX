@@ -17,7 +17,7 @@ function NavbarShowCase() {
             Start for free
           </Button>
           <Button
-            className="rounded border border-muted bg-muted/40 hover:bg-muted/30 transition-colors duration-200"
+            className="rounded bg-secondary transition-colors duration-200"
             size="lg"
           >
             Watch video
