@@ -230,7 +230,7 @@ function Navbar() {
                           className="flex items-center gap-3 rounded p-2 border border-transparent hover:border-border"
                         >
                           <div className="bg-muted/60 rounded p-2 ">
-                            <item.icon className="h-5 w-5 text-primary " />
+                            <item.icon className="h-5 w-5 text-foreground " />
                           </div>
                           <div>
                             <div className="text-sm text-foreground">
