@@ -203,7 +203,7 @@ const navItems = [
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 ">
           <span className="text-lg font-bold">Framer</span>
