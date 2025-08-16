@@ -3,46 +3,27 @@ import {
   CarouselContent,
   CarouselIndicator,
   CarouselItem,
-  CarouselNavigation,
 } from "./carousel";
-
-function CarouselBasic() {
-  return (
-    <div className="relative w-full max-w-xs">
-      <Carousel>
-        <CarouselContent>
-          <CarouselItem className="p-4">
-            <div className="flex aspect-square items-center justify-center border border-zinc-800">
-              1
-            </div>
-          </CarouselItem>
-          <CarouselItem className="p-4">
-            <div className="flex aspect-square items-center justify-center border border-zinc-800">
-              2
-            </div>
-          </CarouselItem>
-          <CarouselItem className="p-4">
-            <div className="flex aspect-square items-center justify-center border border-zinc-800">
-              3
-            </div>
-          </CarouselItem>
-          <CarouselItem className="p-4">
-            <div className="flex aspect-square items-center justify-center border border-zinc-800">
-              4
-            </div>
-          </CarouselItem>
-        </CarouselContent>
-        <CarouselNavigation alwaysShow />
-        <CarouselIndicator />
-      </Carousel>
-    </div>
-  );
-}
 
 const CarouselPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <CarouselBasic />
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-8">
+      <div className="relative w-full max-w-lg mx-auto">
+        <Carousel>
+          <CarouselContent>
+            {Array.from({ length: 5 }, (_, i) => {
+              return (
+                <CarouselItem key={i} className="p-4">
+                  <div className="flex items-center justify-center border w-full min-h-[400px]">
+                    {i + 1}
+                  </div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselIndicator />
+        </Carousel>
+      </div>
     </div>
   );
 };
