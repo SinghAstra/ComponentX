@@ -1,7 +1,9 @@
 import {
   Carousel,
+  CarouselBottomNavigation,
   CarouselContent,
-  CarouselIndicator,
+  CarouselFooter,
+  CarouselIndicatorLabel,
   CarouselItem,
 } from "./carousel";
 
@@ -13,7 +15,7 @@ const CarouselPage = () => {
           <CarouselContent>
             {Array.from({ length: 5 }, (_, i) => {
               return (
-                <CarouselItem key={i} className="p-4">
+                <CarouselItem key={i} className="pb-8">
                   <div className="flex items-center justify-center border w-full min-h-[400px]">
                     {i + 1}
                   </div>
@@ -21,7 +23,12 @@ const CarouselPage = () => {
               );
             })}
           </CarouselContent>
-          <CarouselIndicator />
+          <CarouselFooter>
+            <CarouselIndicatorLabel
+              labels={["First", "Second", "Third", "Fourth", "Fifth"]}
+            />
+            <CarouselBottomNavigation />
+          </CarouselFooter>
         </Carousel>
       </div>
     </div>

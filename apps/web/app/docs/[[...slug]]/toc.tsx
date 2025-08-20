@@ -7,6 +7,10 @@ interface TOCProps {
 export default async function TOC({ path }: TOCProps) {
   const toc = await getDocumentTOC(path);
 
+  if (toc.length === 0) {
+    return;
+  }
+
   return (
     <div className="hidden md:block fixed border-l right-0 bottom-0 top-16 w-80">
       <div className="flex flex-col gap-3 w-full pl-2">

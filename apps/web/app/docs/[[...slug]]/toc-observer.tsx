@@ -54,7 +54,7 @@ export default function TocObserver({ data }: TOCObserverProps) {
   }, [data]);
 
   return (
-    <div className="flex flex-col gap-2.5 text-sm text-stone-300/85  ml-0.5">
+    <div className="flex flex-col gap-2.5 text-sm text-muted-foreground  ml-4">
       {data.map(({ href, level, text }, index) => {
         return (
           <Link

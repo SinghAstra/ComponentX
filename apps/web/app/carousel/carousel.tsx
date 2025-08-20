@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Children,
   createContext,
@@ -18,6 +19,36 @@ export type CarouselContextType = {
   setItemsCount: (newItemsCount: number) => void;
 };
 
+export type CarouselProviderProps = {
+  children: ReactNode;
+};
+
+export type CarouselProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export type CarouselIndicatorRoundedIconProps = {
+  className?: string;
+  classNameButton?: string;
+};
+
+export type CarouselIndicatorLabelProps = {
+  className?: string;
+  classNameButton?: string;
+  labels: string[];
+};
+
+export type CarouselContentProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export type CarouselItemProps = {
+  children: ReactNode;
+  className?: string;
+};
+
 const CarouselContext = createContext<CarouselContextType | undefined>(
   undefined
 );
@@ -29,10 +60,6 @@ function useCarousel() {
   }
   return context;
 }
-
-export type CarouselProviderProps = {
-  children: ReactNode;
-};
 
 function CarouselProvider({ children }: CarouselProviderProps) {
   const [index, setIndex] = useState(0);
@@ -52,11 +79,6 @@ function CarouselProvider({ children }: CarouselProviderProps) {
   );
 }
 
-export type CarouselProps = {
-  children: ReactNode;
-  className?: string;
-};
-
 function Carousel({ children, className }: CarouselProps) {
   return (
     <CarouselProvider>
@@ -67,15 +89,10 @@ function Carousel({ children, className }: CarouselProps) {
   );
 }
 
-export type CarouselIndicatorProps = {
-  className?: string;
-  classNameButton?: string;
-};
-
-function CarouselIndicator({
+function CarouselIndicatorRoundedIcon({
   className,
   classNameButton,
-}: CarouselIndicatorProps) {
+}: CarouselIndicatorRoundedIconProps) {
   const { index, itemsCount, setIndex } = useCarousel();
 
   return (
@@ -102,10 +119,36 @@ function CarouselIndicator({
   );
 }
 
-export type CarouselContentProps = {
-  children: ReactNode;
-  className?: string;
-};
+function CarouselIndicatorLabel({
+  className,
+  classNameButton,
+  labels,
+}: CarouselIndicatorLabelProps) {
+  const { index, itemsCount, setIndex } = useCarousel();
+
+  if (labels.length !== itemsCount) {
+    return;
+  }
+
+  return (
+    <div className={cn("flex w-full items-center justify-center ", className)}>
+      <div className="flex space-x-2">
+        {Array.from({ length: itemsCount }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={cn(
+              index === i ? "text-foreground" : "text-muted-foreground/60",
+              classNameButton
+            )}
+          >
+            {labels[i]}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function CarouselContent({ children, className }: CarouselContentProps) {
   const { index, setIndex, setItemsCount } = useCarousel();
@@ -184,11 +227,6 @@ function CarouselContent({ children, className }: CarouselContentProps) {
   );
 }
 
-export type CarouselItemProps = {
-  children: ReactNode;
-  className?: string;
-};
-
 function CarouselItem({ children, className }: CarouselItemProps) {
   return (
     <motion.div
@@ -199,10 +237,44 @@ function CarouselItem({ children, className }: CarouselItemProps) {
   );
 }
 
+function CarouselBottomNavigation() {
+  const { index, setIndex, itemsCount } = useCarousel();
+
+  const handlePrevious = () => {
+    setIndex(index > 0 ? index - 1 : itemsCount - 1);
+  };
+  const handleNext = () => {
+    setIndex((index + 1) % itemsCount);
+  };
+  return (
+    <div className="flex gap-2">
+      <button
+        className="bg-muted/60 text-muted-foreground hover:text-foreground rounded-full cursor-pointer"
+        onClick={handlePrevious}
+      >
+        <ChevronLeft className="h-4 w-4 m-1" />
+      </button>
+      <button
+        className="bg-muted/60 text-muted-foreground hover:text-foreground rounded-full cursor-pointer"
+        onClick={handleNext}
+      >
+        <ChevronRight className="h-4 w-4 m-1" />
+      </button>
+    </div>
+  );
+}
+
+function CarouselFooter({ children }: { children: ReactNode }) {
+  return <div className="absolute bottom-0 z-10 w-full flex">{children}</div>;
+}
+
 export {
   Carousel,
+  CarouselBottomNavigation,
   CarouselContent,
-  CarouselIndicator,
+  CarouselFooter,
+  CarouselIndicatorLabel,
+  CarouselIndicatorRoundedIcon,
   CarouselItem,
   useCarousel,
 };

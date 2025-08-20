@@ -1,5 +1,5 @@
 import { Typography } from "@/components/markdown/typography";
-import { getComponentSlugs, getDocument } from "@/lib/mdx";
+import { getComponentSlugs, getDocument, getDocumentTOC } from "@/lib/mdx";
 import { notFound } from "next/navigation";
 import TOC from "./toc";
 
@@ -50,10 +50,17 @@ async function ComponentDocPage({ params }: PageProps) {
   if (!document) {
     notFound();
   }
+  const toc = await getDocumentTOC(urlPath);
+
+  const isTocEmpty = toc.length === 0;
 
   return (
-    <div className="min-h-screen px-4 py-2 space-y-4 flex md:pr-80">
-      <div className="p-4 flex-1">
+    <div
+      className={`min-h-screen px-4 py-2 space-y-4 flex ${
+        !isTocEmpty && "md:pr-80"
+      }`}
+    >
+      <div className="p-4 flex-1 max-w-3xl w-full mx-auto">
         <h1 className="text-3xl font-bold">{document.title}</h1>
         <p className="text-muted-foreground mb-8">{document.description}</p>
         <Typography>{document.content}</Typography>
