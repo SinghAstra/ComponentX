@@ -52,7 +52,7 @@ const columns = [
 export default function HomePage() {
   return (
     <div className="p-4 sm:px-8 flex items-center justify-center min-h-screen">
-      <Table className="border">
+      <Table className="">
         <TableHeader>
           <TableRow>
             {columns.map((column) => (
@@ -63,10 +63,7 @@ export default function HomePage() {
         <TableBody>
           {data.length === 0 ? (
             <TableRow>
-              <TableCell
-                colSpan={columns.length}
-                className="text-center text-muted-foreground"
-              >
+              <TableCell className="text-center text-muted-foreground">
                 No data available
               </TableCell>
             </TableRow>
