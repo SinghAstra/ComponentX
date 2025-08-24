@@ -12,7 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@component-x/ui": "^0.1.0",
+    "@component-x/ui": "^0.1.1",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-collapsible": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.4",

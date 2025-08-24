@@ -1,31 +1,31 @@
-import { cn } from "@/lib/utils";
 import * as React from "react";
+import { cn } from "../lib/utils";
 
-interface TableProps {
+export interface TableProps {
   children: React.ReactNode;
   className?: string;
 }
-interface TableHeaderProps {
+export interface TableHeaderProps {
   children: React.ReactNode;
   className?: string;
 }
-interface TableHeadProps {
+export interface TableHeadProps {
   children: React.ReactNode;
   className?: string;
 }
-interface TableCellProps {
+export interface TableCellProps {
   children: React.ReactNode;
   className?: string;
 }
-interface TableBodyProps {
+export interface TableBodyProps {
   children: React.ReactNode;
   className?: string;
 }
-interface TableFooterProps {
+export interface TableFooterProps {
   children: React.ReactNode;
   className?: string;
 }
-interface TableRowProps {
+export interface TableRowProps {
   children: React.ReactNode;
   className?: string;
 }
