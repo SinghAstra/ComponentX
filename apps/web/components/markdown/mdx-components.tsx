@@ -1,5 +1,4 @@
 import BorderHoverLink from "@/app/ui/border-hover-link";
-import ComponentShowcase from "@/components/markdown/component-showcase";
 import { HighlightedCode } from "@/components/markdown/highlighted-code";
 import Pre from "@/components/markdown/pre";
 import Link from "next/link";
@@ -10,7 +9,6 @@ export const components = {
   Link,
   HighlightedCode,
   BorderHoverLink,
-  ComponentShowcase,
   pre: Pre,
   code: ({ className, children, ...props }: ComponentProps<"code">) => {
     return (
