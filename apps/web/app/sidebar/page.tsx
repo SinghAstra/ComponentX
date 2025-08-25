@@ -1,25 +1,32 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import Link from "next/link";
+import { useState } from "react";
 import Sidebar from "./sidebar";
 
 function HomePage() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
-    <div className="min-h-screen flex gap-4 items-center justify-center">
-      <Sidebar title="App Navigation">
-        <nav>
-          <ul className="space-y-2">
-            <li>
-              <a href="#" className="block p-2 ">
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block p-2">
-                Settings
-              </a>
-            </li>
-          </ul>
-        </nav>
+    <div className="min-h-screen flex items-center justify-center">
+      <Button
+        variant={"outline"}
+        className="hover:bg-muted/40 transition-all duration-300"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        Toggle Sidebar
+      </Button>
+      <Sidebar
+        title={siteConfig.name}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      >
+        <div className="flex flex-col gap-2">
+          <Link href={"/background"}>Background</Link>
+          <Link href={"/docs"}>Documentation</Link>
+        </div>
       </Sidebar>
-      Hey There
     </div>
   );
 }
