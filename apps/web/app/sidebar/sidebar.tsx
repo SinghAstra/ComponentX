@@ -25,7 +25,7 @@ const Sidebar = ({
       ></div>
 
       <div
-        className={`fixed top-0 left-0 h-full shadow-xl transform transition-transform duration-300 ease-in-out bg-background
+        className={`fixed z-[3] border-r top-0 left-0 h-full shadow-xl transform transition-transform duration-300 ease-in-out bg-background
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex items-center justify-between px-1 py-3">

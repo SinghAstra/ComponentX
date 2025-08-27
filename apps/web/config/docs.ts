@@ -6,7 +6,7 @@ export const docsLink: DocsSectionLink[] = [
     links: [
       {
         title: "Introduction",
-        path: "/docs/getting-started/introduction",
+        path: "/docs",
       },
       {
         title: "Installation",

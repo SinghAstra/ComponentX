@@ -14,10 +14,10 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <>
-      <header className="fixed top-0 w-full backdrop-blur-lg bg-background border-b shadow-xl flex items-center justify-between p-4">
-        <div className="flex items-center space-x-2">
+      <header className="fixed z-[2] top-0 w-full backdrop-blur-lg bg-background border-b shadow-xl flex items-center justify-between p-4">
+        <div className="flex items-center">
           <Button
-            variant={"outline"}
+            variant={"ghost"}
             className="hover:bg-muted/40 transition-all duration-300"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
@@ -52,7 +52,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
       >
         <DocsNav docsLink={docsLink} />
       </Sidebar>
-      <div className="md:pl-64">{children}</div>
+      <div className="md:pl-72 mt-24 p-4 sm:px-8">{children}</div>
     </>
   );
 };
