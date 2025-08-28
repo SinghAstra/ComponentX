@@ -1,4 +1,5 @@
 "use client";
+import Tabs, { TabElem } from "@/components/component-x/tab";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -31,6 +32,20 @@ import Navbar from "./navbar";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
+  const sampleTabs: TabElem[] = [
+    {
+      label: "Tab 1",
+      content: <div className="p-4 text-center">Content for Tab 1</div>,
+    },
+    {
+      label: "Tab 2",
+      content: <div className="p-4 text-center">Content for Tab 2.</div>,
+    },
+    {
+      label: "Tab 3",
+      content: <div className="p-4 text-center">Content For Tab 3.</div>,
+    },
+  ];
   return (
     <motion.div
       variants={containerVariant}
@@ -278,6 +293,12 @@ const HomePage = () => {
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <h1 className="text-shine">{siteConfig.name}</h1>
+        </div>
+        <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
+          <Tabs
+            tabs={sampleTabs}
+            tabContentClassName="border p-6 bg-muted/40 text-muted-foreground w-full h-full"
+          />
         </div>
       </div>
       <Footer />

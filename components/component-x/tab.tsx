@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-interface TabElem {
+export interface TabElem {
   label: string;
   content: React.JSX.Element;
 }
@@ -30,7 +30,7 @@ const Tabs = ({ tabs, tabContentClassName }: TabsProps) => {
   }, [activeTab]);
 
   return (
-    <div>
+    <div className="w-full ">
       <div className="flex relative">
         {tabs.map((tab, index) => (
           <button
