@@ -12,6 +12,7 @@ type Heading = {
 
 export function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([]);
+  const [activeId, setActiveId] = useState<string>("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -35,12 +36,34 @@ export function TableOfContents() {
     };
 
     updateHeadings();
-
-    const observer = new MutationObserver(updateHeadings);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    return () => observer.disconnect();
   }, [pathname]);
+
+  useEffect(() => {
+    const headingElements = Array.from(
+      document.querySelectorAll("[data-heading]")
+    ).filter((elem) => elem.getAttribute("data-heading") !== "1");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+            break;
+          }
+        }
+      },
+      {
+        rootMargin: "0px 0px -60% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    headingElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      headingElements.forEach((element) => observer.unobserve(element));
+    };
+  }, [pathname, headings]);
 
   if (headings.length === 0) return null;
 
@@ -58,7 +81,15 @@ export function TableOfContents() {
               heading.level === 4 && "pl-4"
             )}
           >
-            <a href={`#${heading.link}`} className={cn("")}>
+            <a
+              href={`#${heading.link}`}
+              className={cn(
+                "hover:text-primary transition-colors duration-200",
+                activeId === heading.link
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground"
+              )}
+            >
               {heading.text}
             </a>
           </li>
