@@ -9,6 +9,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import Sidebar from "../sidebar/sidebar";
+import { TableOfContents } from "../ui/toc";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -52,7 +53,10 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
       >
         <DocsNav docsLink={docsLink} />
       </Sidebar>
-      <div className="md:pl-72 mt-24 p-4 sm:px-8">{children}</div>
+      <div className="md:pl-72 md:pr-64 mt-24 p-4 sm:px-8">{children}</div>
+      <div className="hidden md:block pl-8 fixed w-64 top-24 right-0 bottom-0 overflow-y-auto">
+        <TableOfContents />
+      </div>
     </>
   );
 };
