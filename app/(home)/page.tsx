@@ -32,7 +32,7 @@ import Navbar from "./navbar";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
-  const sampleTabs: TabElem[] = [
+  const tabs: TabElem[] = [
     {
       label: "Tab 1",
       content: <div className="p-4 text-center">Content for Tab 1</div>,
@@ -296,7 +296,7 @@ const HomePage = () => {
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
           <Tabs
-            tabs={sampleTabs}
+            tabs={tabs}
             tabContentClassName="border p-6 bg-muted/40 text-muted-foreground w-full h-full"
           />
         </div>

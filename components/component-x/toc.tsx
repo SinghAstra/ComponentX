@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Heading = {
   id: string;
@@ -14,6 +14,8 @@ function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const pathname = usePathname();
+  const [sliderStyle, setSliderStyle] = useState({ top: 0, height: 0 });
+  const listItemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
     const updateHeadings = () => {
@@ -69,12 +71,29 @@ function TableOfContents() {
     };
   }, [pathname, headings]);
 
+  useEffect(() => {
+    if (activeId && listItemRefs.current.length > 0) {
+      const activeItem = headings.findIndex((h) => h.link === activeId);
+      if (activeItem !== -1 && listItemRefs.current[activeItem]) {
+        const activeElement = listItemRefs.current[activeItem];
+        setSliderStyle({
+          top: activeElement.offsetTop,
+          height: activeElement.offsetHeight,
+        });
+      }
+    }
+  }, [activeId, headings]);
+
   if (headings.length === 0) return null;
 
   return (
     <>
-      <p className="mb-2 text-sm">On this page</p>
-      <ul className="list-none space-y-2 text-sm/6 " role="list" key={pathname}>
+      <p className="mt-4 mb-2 text-sm">On this page</p>
+      <ul
+        className="list-none space-y-3 text-sm pl-2 "
+        role="list"
+        key={pathname}
+      >
         {headings.map((heading) => (
           <li
             key={`${heading.id}-${heading.level}-${pathname}`}
@@ -88,7 +107,7 @@ function TableOfContents() {
             <a
               href={`#${heading.link}`}
               className={cn(
-                "hover:text-primary transition-colors duration-200",
+                "hover:text-primary transition-colors duration-200 tracking-wide",
                 activeId === heading.link
                   ? "text-primary font-semibold"
                   : "text-muted-foreground"
