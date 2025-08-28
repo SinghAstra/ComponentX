@@ -1,4 +1,4 @@
-import MaskedGridBackground from "@/app/ui/masked-grid-background";
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import React, { ReactNode, Suspense } from "react";

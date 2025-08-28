@@ -3,7 +3,7 @@ import { scaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { Command } from "lucide-react";
 import React, { useState } from "react";
-import Dialog from "../ui/dialog";
+import Dialog from "../component-x/dialog";
 
 const DialogBoilerPlateShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);

@@ -10,7 +10,7 @@ type Heading = {
   link: string;
 };
 
-export function TableOfContents() {
+function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const pathname = usePathname();
@@ -43,19 +43,23 @@ export function TableOfContents() {
       document.querySelectorAll("[data-heading]")
     ).filter((elem) => elem.getAttribute("data-heading") !== "1");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-            break;
-          }
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+          break;
         }
-      },
-      {
-        rootMargin: "0px 0px -60% 0px",
-        threshold: 0.1,
       }
+    };
+
+    const observerOptions = {
+      rootMargin: "0px 0px 0px 0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
     );
 
     headingElements.forEach((element) => observer.observe(element));
@@ -98,3 +102,5 @@ export function TableOfContents() {
     </>
   );
 }
+
+export default TableOfContents;

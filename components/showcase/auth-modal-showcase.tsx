@@ -7,7 +7,7 @@ import { Command, Loader } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import Dialog from "../ui/dialog";
+import Dialog from "../component-x/dialog";
 
 const AuthModalShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);

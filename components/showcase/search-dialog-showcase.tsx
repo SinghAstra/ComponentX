@@ -16,7 +16,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import Dialog from "../ui/dialog";
+import Dialog from "../component-x/dialog";
 
 const SearchDialogShowCase = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);

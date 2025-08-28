@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import ConicBackground from "../ui/conic-background";
-import MovingBorder from "../ui/moving-border";
+import ConicBackground from "../../components/component-x/conic-background";
+import MovingBorder from "../../components/component-x/moving-border";
 import Navbar from "./navbar";
 
 function FirstPage() {

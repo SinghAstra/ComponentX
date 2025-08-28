@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
-import { CodeBlock } from "./app/ui/codeblock";
+import { CodeBlock } from "./components/component-x/codeblock";
 import {
   Table,
   TableBody,

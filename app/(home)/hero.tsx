@@ -11,8 +11,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import MovingBackground from "../ui/moving-background";
-import MovingBorder from "../ui/moving-border";
+import MovingBackground from "../../components/component-x/moving-background";
+import MovingBorder from "../../components/component-x/moving-border";
 
 function Hero() {
   return (
