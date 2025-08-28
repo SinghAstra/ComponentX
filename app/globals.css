@@ -34,7 +34,7 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --radius: 0.875rem;
+    --radius: 0.5rem;
   }
 }
 
@@ -80,10 +80,6 @@ body {
   }
 }
 
-.bg-grid-white {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H63.5V64'/%3e%3c/svg%3e");
-}
-
 /* Prism Syntax Highlight */
 
 .keyword {
@@ -123,9 +119,8 @@ body {
 }
 
 pre > code {
-  display: grid;
-  max-width: inherit !important;
-  padding: 10px 14px !important;
+  border: 0;
+  padding: 0 !important;
 }
 
 .rehype-code-title {
@@ -169,4 +164,27 @@ pre > code {
 
 .moving-glow {
   animation: moving-glow 4s linear infinite;
+}
+
+@keyframes text-animation-shine {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -400% 0;
+  }
+}
+
+.text-shine {
+  color: hsl(var(--muted));
+  background: linear-gradient(
+    to right,
+    hsla(var(--muted)) 0%,
+    hsl(var(--foreground)) 10%,
+    hsl(var(--muted)) 20%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-animation-shine 3s linear infinite;
+  background-size: 200% 100%;
 }

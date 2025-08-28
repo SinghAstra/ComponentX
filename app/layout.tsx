@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 import "./globals.css";
-import Navbar from "./navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -58,7 +57,6 @@ export default function RootLayout({
       <body className="antialiased min-h-screen bg-background ">
         <Providers>
           <NextTopLoader color="hsl(var(--primary))" showSpinner={false} />
-          <Navbar />
           {children}
           <Toaster
             theme="dark"
@@ -74,11 +72,7 @@ export default function RootLayout({
             }}
           />
         </Providers>
-        <script
-          async
-          src="http://localhost:3000/track.js"
-          data-tracking-id="cmcyiln7u0003f8kgvmqtsa3v"
-        ></script>
+        <script async src="http://localhost:3000/track.js" data-tracking-id="cmdyjqe350006f8zceajfa9lm"></script>
       </body>
     </html>
   );

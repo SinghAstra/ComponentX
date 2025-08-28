@@ -1,9 +1,5 @@
-"use client";
-
-import MaskedGridBackground from "@/app/ui/masked-grid-background";
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
 import { siteConfig } from "@/config/site";
-import { blurInVariant, containerVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { ReactNode, Suspense } from "react";
 import { ToastProvider } from "./toast";
@@ -14,10 +10,7 @@ interface ProviderProps {
 
 const LoadingFallback = () => {
   return (
-    <motion.div
-      variants={containerVariant}
-      className="min-h-screen flex flex-col gap-4 items-center text-center justify-center relative overflow-hidden px-4"
-    >
+    <div className="min-h-screen flex flex-col gap-4 items-center text-center justify-center relative overflow-hidden px-4">
       <div className="flex gap-4">
         <Image
           src={"/favicon.ico"}
@@ -25,18 +18,13 @@ const LoadingFallback = () => {
           height={48}
           alt={siteConfig.name}
         />
-        <motion.p className="text-5xl tracking-wide" variants={blurInVariant}>
-          {siteConfig.name}
-        </motion.p>
+        <p className="text-5xl tracking-wide">{siteConfig.name}</p>
       </div>
-      <motion.p
-        className="text-xl tracking-wide text-muted-foreground"
-        variants={blurInVariant}
-      >
+      <p className="text-xl tracking-wide text-muted-foreground">
         {siteConfig.description}
-      </motion.p>
+      </p>
       <MaskedGridBackground />
-    </motion.div>
+    </div>
   );
 };
 

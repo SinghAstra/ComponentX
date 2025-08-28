@@ -1,37 +1,33 @@
 "use client";
 
+import { DocsLink, DocsSectionLink } from "@/interfaces/docs-link";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { type DocsConfig } from "@/config/docs";
-import { cn } from "@/lib/utils";
-import { NavItemWithChildren } from "@/types/nav";
-
 export function DocsNav({
-  config,
+  docsLink,
   className,
+  onLinkClick,
 }: {
-  config: DocsConfig;
+  docsLink: DocsSectionLink[];
   className?: string;
+  onLinkClick?: () => void;
 }) {
   const pathname = usePathname();
-  const items = config.sidebarNav;
 
   return (
-    <div
-      className={cn(
-        "w-64 bg-background space-y-6 overflow-auto h-full py-2 ",
-        className
-      )}
-    >
-      {items.map((item, index) => (
+    <div className={cn("w-64 space-y-6 overflow-auto pb-2", className)}>
+      {docsLink.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md py-1 pl-1 text-xs tracking-wider text-muted-foreground uppercase">
+          <h4 className="py-1 pl-1 text-xs tracking-widest text-muted-foreground uppercase">
             {item.title}
           </h4>
-          {item?.items?.length && (
-            <DocsNavItems items={item.items} pathname={pathname} />
-          )}
+          <DocsNavItems
+            items={item.links}
+            pathname={pathname}
+            onLinkClick={onLinkClick}
+          />
         </div>
       ))}
     </div>
@@ -41,27 +37,29 @@ export function DocsNav({
 function DocsNavItems({
   items,
   pathname,
+  onLinkClick,
 }: {
-  items: NavItemWithChildren[];
-  pathname: string | null;
+  items: DocsLink[];
+  pathname: string;
+  onLinkClick?: () => void;
 }) {
-  return items?.length ? (
+  return (
     <div className="space-y-1 text-sm pl-2">
       {items.map(
         (item, index) =>
-          item.href && (
+          item.path && (
             <Link
               key={index}
-              href={item.href}
+              href={item.path}
               className={cn(
-                "group flex h-8 w-full items-center pl-4 font-normal text-foreground hover:bg-accent hover:text-accent-foreground transition-all border-l-2 border-muted",
-                pathname === item.href &&
-                  "bg-accent font-medium text-accent-foreground border-l-2 border-primary"
+                "group flex h-8 w-full items-center pl-4 text-foreground hover:bg-muted/80 transition-all border-l-2 border-muted hover:border-primary",
+                pathname === item.path && "bg-muted/80 border-primary"
               )}
+              onClick={onLinkClick}
             >
               {item.title}
               {item.label && (
-                <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] ">
+                <span className="ml-2 rounded bg-primary/80 px-1.5 py-0.5 text-xs leading-none ">
                   {item.label}
                 </span>
               )}
@@ -69,5 +67,5 @@ function DocsNavItems({
           )
       )}
     </div>
-  ) : null;
+  );
 }
