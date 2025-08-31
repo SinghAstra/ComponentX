@@ -10,6 +10,16 @@ import {
 } from "@/components/component-x/carousel";
 import Sidebar from "@/components/component-x/sidebar";
 import Tabs, { TabElem } from "@/components/component-x/tab";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/component-x/table";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -54,6 +64,45 @@ const HomePage = () => {
     {
       label: "Tab 3",
       content: <div className="p-4 text-center">Content For Tab 3.</div>,
+    },
+  ];
+
+  interface User {
+    id: number;
+    name: string;
+    email: string;
+    role: "Admin" | "Member" | "Guest";
+    avatar: string;
+  }
+
+  const users: User[] = [
+    {
+      id: 1,
+      name: "John Doe",
+      email: "john.doe@example.com",
+      role: "Admin",
+      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      email: "jane.smith@example.com",
+      role: "Member",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956",
+    },
+    {
+      id: 3,
+      name: "Peter Jones",
+      email: "peter.jones@example.com",
+      role: "Guest",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+    },
+    {
+      id: 4,
+      name: "Mary Williams",
+      email: "mary.williams@example.com",
+      role: "Admin",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
     },
   ];
   return (
@@ -310,13 +359,13 @@ const HomePage = () => {
             tabContentClassName="border p-6 bg-muted/40 text-muted-foreground w-full h-full"
           />
         </div>
-        <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
-          <Carousel>
+        <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex">
+          <Carousel className="w-full h-full">
             <CarouselContent>
               {Array.from({ length: 5 }, (_, i) => {
                 return (
-                  <CarouselItem key={i} className="pb-8">
-                    <div className="flex items-center justify-center border w-full min-h-[200px]">
+                  <CarouselItem key={i}>
+                    <div className="flex items-center justify-center border w-full ">
                       {i + 1}
                     </div>
                   </CarouselItem>
@@ -347,6 +396,40 @@ const HomePage = () => {
               <p>You can place Sidebar Content here.</p>
             </div>
           </Sidebar>
+        </div>
+        <div className="col-span-2 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex items-center justify-center">
+          <Table className="max-w-xl mx-auto">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Avatar</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {users.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell>
+                    <Avatar className="mx-auto">
+                      <AvatarImage src={user.avatar} alt={`@${user.name}`} />
+                      <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                  </TableCell>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell className="text-center">
+                    <Badge
+                      className="rounded"
+                      variant={user.role === "Admin" ? "default" : "outline"}
+                    >
+                      {user.role}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </div>
       <Footer />

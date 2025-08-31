@@ -31,9 +31,11 @@ export interface TableRowProps {
 }
 
 const Table = ({ children, className }: TableProps) => (
-  <div className="relative w-full overflow-auto border">
-    <table className={cn("w-full text-sm", className)}>{children}</table>
-  </div>
+  <table
+    className={cn("w-full text-sm relative overflow-auto border", className)}
+  >
+    {children}
+  </table>
 );
 const TableHeader = ({ children, className }: TableHeaderProps) => {
   return (

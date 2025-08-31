@@ -82,7 +82,7 @@ function CarouselProvider({ children }: CarouselProviderProps) {
 function Carousel({ children, className }: CarouselProps) {
   return (
     <CarouselProvider>
-      <div className={cn("group/hover relative", className)}>
+      <div className={cn("relative", className)}>
         <div className="overflow-hidden">{children}</div>
       </div>
     </CarouselProvider>
@@ -230,7 +230,10 @@ function CarouselContent({ children, className }: CarouselContentProps) {
 function CarouselItem({ children, className }: CarouselItemProps) {
   return (
     <motion.div
-      className={cn("w-full min-w-0 shrink-0 overflow-hidden", className)}
+      className={cn(
+        "w-full min-w-0 shrink-0 overflow-hidden border",
+        className
+      )}
     >
       {children}
     </motion.div>
@@ -265,7 +268,7 @@ function CarouselBottomNavigation() {
 }
 
 function CarouselFooter({ children }: { children: ReactNode }) {
-  return <div className="absolute bottom-0 z-10 w-full flex">{children}</div>;
+  return <div className="w-full z-10 flex">{children}</div>;
 }
 
 export {
