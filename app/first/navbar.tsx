@@ -1,5 +1,6 @@
 "use client";
 
+import HoverPopOver from "@/components/component-x/hover-popover";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -25,7 +26,6 @@ import {
   Workflow,
 } from "lucide-react";
 import Link from "next/link";
-import HoverPopOver from "../ui/hover-popover";
 
 const navItems = [
   {

@@ -1,8 +1,8 @@
 "use client";
 
+import BorderHoverLink from "@/components/component-x/border-hover-link";
 import { siteConfig } from "@/config/site";
 import { containerVariant, fadeInVariant } from "@/lib/variants";
-import { BorderHoverLink } from "@component-x/ui";
 import { motion } from "framer-motion";
 import Link from "next/link";
 

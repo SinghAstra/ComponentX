@@ -1,4 +1,5 @@
 "use client";
+import BorderHoverLink from "@/components/component-x/border-hover-link";
 import Tabs, { TabElem } from "@/components/component-x/tab";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -7,7 +8,6 @@ import {
   containerVariant,
   scaleInVariant,
 } from "@/lib/variants";
-import { BorderHoverLink } from "@component-x/ui";
 import { motion } from "framer-motion";
 import { ArrowRightIcon, Menu, X } from "lucide-react";
 import Link from "next/link";
