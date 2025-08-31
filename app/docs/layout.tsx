@@ -47,7 +47,6 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
         className="hidden md:block fixed border-r left-0 bottom-0 top-24"
       />
       <Sidebar
-        title={siteConfig.name}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       >
