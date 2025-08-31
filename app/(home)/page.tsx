@@ -1,5 +1,13 @@
 "use client";
 import BorderHoverLink from "@/components/component-x/border-hover-link";
+import {
+  Carousel,
+  CarouselBottomNavigation,
+  CarouselContent,
+  CarouselFooter,
+  CarouselIndicatorLabel,
+  CarouselItem,
+} from "@/components/component-x/carousel";
 import Tabs, { TabElem } from "@/components/component-x/tab";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -299,6 +307,27 @@ const HomePage = () => {
             tabs={tabs}
             tabContentClassName="border p-6 bg-muted/40 text-muted-foreground w-full h-full"
           />
+        </div>
+        <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
+          <Carousel>
+            <CarouselContent>
+              {Array.from({ length: 5 }, (_, i) => {
+                return (
+                  <CarouselItem key={i} className="pb-8">
+                    <div className="flex items-center justify-center border w-full min-h-[200px]">
+                      {i + 1}
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselFooter>
+              <CarouselIndicatorLabel
+                labels={["First", "Second", "Third", "Fourth", "Fifth"]}
+              />
+              <CarouselBottomNavigation />
+            </CarouselFooter>
+          </Carousel>
         </div>
       </div>
       <Footer />
