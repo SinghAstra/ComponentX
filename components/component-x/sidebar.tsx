@@ -14,9 +14,9 @@ const Sidebar = ({
   setIsSidebarOpen,
 }: SidebarProps) => {
   return (
-    <div className="z-50">
+    <div className={`${isSidebarOpen && "z-[999] fixed inset-0"}`}>
       <div
-        className={`fixed inset-0 bg-muted/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0  bg-muted/60 backdrop-blur-sm transition-opacity duration-300 ${
           isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}

@@ -1,6 +1,5 @@
 "use client";
 
-import { siteConfig } from "@/config/site";
 import { DocsLink, DocsSectionLink } from "@/interfaces/docs-link";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -18,8 +17,7 @@ export function DocsNav({
   const pathname = usePathname();
 
   return (
-    <div className={cn("w-64 space-y-6 overflow-auto pb-2", className)}>
-      <div className="text-primary text-2xl">{siteConfig.name}</div>
+    <div className={cn("w-64 space-y-6 overflow-auto pl-1", className)}>
       {docsLink.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="py-1 pl-1 text-xs tracking-widest text-muted-foreground uppercase">
@@ -46,7 +44,7 @@ function DocsNavItems({
   onLinkClick?: () => void;
 }) {
   return (
-    <div className="space-y-1 text-sm pl-2">
+    <div className="space-y-1 text-sm pl-3">
       {items.map(
         (item, index) =>
           item.path && (
