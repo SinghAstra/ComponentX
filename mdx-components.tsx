@@ -91,7 +91,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     ol: ({ className, ...props }) => (
       <ol
-        className={cn("my-2 ml-6 list-decimal [&>li]:mt-1", className)}
+        className={cn(
+          "my-2 ml-6 list-decimal marker:text-primary [&>li]:mt-1",
+          className
+        )}
         {...props}
       />
     ),
@@ -101,7 +104,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: ({ className, ...props }) => (
       <blockquote
         className={cn(
-          "mt-6 border-l-2 border-primary pl-6 text-muted-foreground",
+          "my-4 border-l-4 border-primary pl-6 text-muted-foreground bg-muted/40 pr-2 py-2",
           className
         )}
         {...props}
@@ -110,7 +113,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ className, ...props }) => (
       <code
         className={cn(
-          "relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm border z-1",
+          "relative rounded px-[0.3rem] py-[0.2rem] text-sm border z-1",
           className
         )}
         {...props}
