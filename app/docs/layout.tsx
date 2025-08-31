@@ -8,8 +8,8 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import Sidebar from "../../components/component-x/sidebar";
 import TableOfContents from "../../components/component-x/toc";
-import Sidebar from "../sidebar/sidebar";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

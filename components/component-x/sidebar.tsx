@@ -3,14 +3,12 @@
 import React, { Dispatch } from "react";
 
 interface SidebarProps {
-  title: string;
   children: React.ReactNode;
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<boolean>;
 }
 
 const Sidebar = ({
-  title,
   children,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -28,10 +26,7 @@ const Sidebar = ({
         className={`fixed z-[3] border-r top-0 left-0 h-full shadow-xl transform transition-transform duration-300 ease-in-out bg-background
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="flex items-center justify-between px-1 py-3">
-          <h2 className="text-xl text-primary">{title}</h2>
-        </div>
-        <div>{children}</div>
+        {children}
       </div>
     </div>
   );

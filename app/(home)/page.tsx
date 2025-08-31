@@ -8,6 +8,7 @@ import {
   CarouselIndicatorLabel,
   CarouselItem,
 } from "@/components/component-x/carousel";
+import Sidebar from "@/components/component-x/sidebar";
 import Tabs, { TabElem } from "@/components/component-x/tab";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -40,6 +41,7 @@ import Navbar from "./navbar";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const tabs: TabElem[] = [
     {
       label: "Tab 1",
@@ -328,6 +330,23 @@ const HomePage = () => {
               <CarouselBottomNavigation />
             </CarouselFooter>
           </Carousel>
+        </div>
+        <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex items-center justify-center">
+          <Button
+            variant={"outline"}
+            className="hover:bg-muted/40 transition-all duration-300 font-normal rounded"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          >
+            Toggle Sidebar
+          </Button>
+          <Sidebar
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          >
+            <div className="flex items-center justify-center w-64 h-full text-center">
+              <p>You can place Sidebar Content here.</p>
+            </div>
+          </Sidebar>
         </div>
       </div>
       <Footer />
