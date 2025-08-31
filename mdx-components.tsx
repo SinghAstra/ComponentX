@@ -25,7 +25,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
-        <h1 id={id} data-heading="1" {...props}>
+        <h1
+          id={id}
+          className="text-4xl text-primary my-4"
+          data-heading="1"
+          {...props}
+        >
           {children}
         </h1>
       );
@@ -33,61 +38,54 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
-        <h2 id={id} data-heading="2" {...props}>
+        <h2
+          id={id}
+          data-heading="2"
+          className="text-3xl text-primary my-4"
+          {...props}
+        >
           {children}
         </h2>
-      );
-    },
-    h3: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
-      const id = generateId(children?.toString() || "");
-      return (
-        <h3 id={id} data-heading="3" {...props}>
-          {children}
-        </h3>
-      );
-    },
-    h4: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
-      const id = generateId(children?.toString() || "");
-      return (
-        <h4 id={id} data-heading="4" {...props}>
-          {children}
-        </h4>
       );
     },
     p: ({ className, ...props }) => (
       <p className={cn("leading-7", className)} {...props} />
     ),
-    a: ({ className, href, ...props }) => {
-      // Use Next.js Link for internal links
-      if (href?.startsWith("/") || href?.startsWith("#")) {
+    Link: ({ className, href, children, ...props }) => {
+      const baseClasses =
+        "text-primary underline underline-offset-4 hover:text-primary/80 transition-colors duration-300";
+      const combinedClassName = cn(baseClasses, className);
+
+      const isInternal =
+        href &&
+        (href.startsWith("/") || href.startsWith("#") || !href.includes("://"));
+
+      if (isInternal) {
         return (
-          <Link
-            href={href}
-            className={cn(
-              "text-primary underline underline-offset-4 hover:text-primary/80 transition-colors duration-300",
-              className
-            )}
-            {...props}
-          />
+          <Link href={href} className={combinedClassName}>
+            {children}
+          </Link>
         );
       }
-      // External links
+
       return (
         <a
           href={href}
-          className={cn(
-            "text-primary underline underline-offset-4 hover:text-primary/80 transition-colors duration-300",
-            className
-          )}
+          className={combinedClassName}
           target="_blank"
           rel="noopener noreferrer"
           {...props}
-        />
+        >
+          {children}
+        </a>
       );
     },
     ul: ({ className, ...props }) => (
       <ul
-        className={cn("my-2 ml-6 list-disc [&>li]:mt-1", className)}
+        className={cn(
+          "my-2 ml-6 list-disc marker:text-primary [&>li]:mt-1",
+          className
+        )}
         {...props}
       />
     ),
@@ -142,7 +140,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: ({ className, ...props }) => (
       <TableCell className={className} {...props} />
     ),
-    hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
+    hr: ({ ...props }) => <hr className="my-2" {...props} />,
     strong: ({ className, ...props }) => (
       <strong className={cn("font-semibold", className)} {...props} />
     ),
