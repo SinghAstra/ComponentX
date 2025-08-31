@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Heading = {
   id: string;
@@ -14,8 +14,6 @@ function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const pathname = usePathname();
-  const [sliderStyle, setSliderStyle] = useState({ top: 0, height: 0 });
-  const listItemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
     const updateHeadings = () => {
@@ -70,19 +68,6 @@ function TableOfContents() {
       headingElements.forEach((element) => observer.unobserve(element));
     };
   }, [pathname, headings]);
-
-  useEffect(() => {
-    if (activeId && listItemRefs.current.length > 0) {
-      const activeItem = headings.findIndex((h) => h.link === activeId);
-      if (activeItem !== -1 && listItemRefs.current[activeItem]) {
-        const activeElement = listItemRefs.current[activeItem];
-        setSliderStyle({
-          top: activeElement.offsetTop,
-          height: activeElement.offsetHeight,
-        });
-      }
-    }
-  }, [activeId, headings]);
 
   if (headings.length === 0) return null;
 
