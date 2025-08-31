@@ -1,12 +1,12 @@
 "use client";
 
 import HomePage from "@/app/(home)/page";
-import ConicBackground from "@/app/ui/conic-background";
-import EllipseBackground from "@/app/ui/ellipse-background";
-import GridBackground from "@/app/ui/grid-background";
-import LampBackground from "@/app/ui/lamp-background";
-import MaskedGridBackground from "@/app/ui/masked-grid-background";
-import RadialBackground from "@/app/ui/radial-background";
+import ConicBackground from "@/components/component-x/conic-background";
+import EllipseBackground from "@/components/component-x/ellipse-background";
+import GridBackground from "@/components/component-x/grid-background";
+import LampBackground from "@/components/component-x/lamp-background";
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+import RadialBackground from "@/components/component-x/radial-background";
 import { notFound, redirect, useParams } from "next/navigation";
 import React from "react";
 
