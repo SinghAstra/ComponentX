@@ -9,7 +9,12 @@ import {
   CarouselItem,
 } from "@/components/component-x/carousel";
 import Sidebar from "@/components/component-x/sidebar";
-import Tabs, { TabElem } from "@/components/component-x/tab";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/component-x/tab";
 import {
   Table,
   TableBody,
@@ -52,20 +57,6 @@ import Navbar from "./navbar";
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const tabs: TabElem[] = [
-    {
-      label: "Tab 1",
-      content: <div className="p-4 text-center">Content for Tab 1</div>,
-    },
-    {
-      label: "Tab 2",
-      content: <div className="p-4 text-center">Content for Tab 2.</div>,
-    },
-    {
-      label: "Tab 3",
-      content: <div className="p-4 text-center">Content For Tab 3.</div>,
-    },
-  ];
 
   interface User {
     id: number;
@@ -354,20 +345,43 @@ const HomePage = () => {
           <h1 className="text-shine">{siteConfig.name}</h1>
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
-          <Tabs
-            tabs={tabs}
-            tabContentClassName="border p-6 bg-muted/40 text-muted-foreground w-full h-full"
-          />
+          <Tabs defaultIndex={0} className="h-full flex flex-col">
+            <TabsList>
+              <TabsTrigger index={0}>First</TabsTrigger>
+              <TabsTrigger index={1}>Second</TabsTrigger>
+              <TabsTrigger index={2}>Third</TabsTrigger>
+            </TabsList>
+
+            <TabsContent
+              className="flex items-center justify-center bg-muted/30 border flex-1"
+              index={0}
+            >
+              First
+            </TabsContent>
+            <TabsContent
+              className="flex items-center justify-center bg-muted/30 border flex-1"
+              index={1}
+            >
+              Second
+            </TabsContent>
+            <TabsContent
+              className="flex items-center justify-center bg-muted/30 border flex-1"
+              index={2}
+            >
+              Third
+            </TabsContent>
+          </Tabs>
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex">
-          <Carousel className="w-full h-full">
-            <CarouselContent>
+          <Carousel className="w-full h-full flex flex-col gap-4">
+            <CarouselContent className="flex-1">
               {Array.from({ length: 5 }, (_, i) => {
                 return (
-                  <CarouselItem key={i}>
-                    <div className="flex items-center justify-center border w-full ">
-                      {i + 1}
-                    </div>
+                  <CarouselItem
+                    key={i}
+                    className="w-full h-full flex items-center justify-center"
+                  >
+                    {i + 1}
                   </CarouselItem>
                 );
               })}

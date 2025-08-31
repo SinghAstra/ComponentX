@@ -82,8 +82,8 @@ function CarouselProvider({ children }: CarouselProviderProps) {
 function Carousel({ children, className }: CarouselProps) {
   return (
     <CarouselProvider>
-      <div className={cn("relative", className)}>
-        <div className="overflow-hidden">{children}</div>
+      <div className={cn("relative overflow-hidden", className)}>
+        {children}
       </div>
     </CarouselProvider>
   );
