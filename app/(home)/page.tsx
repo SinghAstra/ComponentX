@@ -8,6 +8,12 @@ import {
   CarouselIndicatorLabel,
   CarouselItem,
 } from "@/components/component-x/carousel";
+import {
+  FloatingNavbar,
+  FloatingNavbarContent,
+  FloatingNavbarItem,
+  FloatingNavbarSeparator,
+} from "@/components/component-x/floating-navbar";
 import Sidebar from "@/components/component-x/sidebar";
 import {
   Tabs,
@@ -33,12 +39,20 @@ import {
   scaleInVariant,
 } from "@/lib/variants";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, Menu, X } from "lucide-react";
+import {
+  ArrowRightIcon,
+  BookOpen,
+  Briefcase,
+  Home,
+  ImageIcon,
+  Info,
+  Menu,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import ConicBackground from "../../components/component-x/conic-background";
 import EllipseBackground from "../../components/component-x/ellipse-background";
-import { FloatingNavbar } from "../../components/component-x/floating-navbar";
 import GridBackground from "../../components/component-x/grid-background";
 import HoverPopOver from "../../components/component-x/hover-popover";
 import LampBackground from "../../components/component-x/lamp-background";
@@ -113,11 +127,31 @@ const HomePage = () => {
           whileInView="visible"
           className="bg-background col-span-1 sm:col-span-2 lg:col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border rounded"
         >
-          <FloatingNavbar showNavbar={showFloatingNavbar} />
+          <FloatingNavbar show={showFloatingNavbar}>
+            <FloatingNavbarContent>
+              <FloatingNavbarItem href="/" icon={Home} label="Home" />
+              <FloatingNavbarSeparator />
+              <FloatingNavbarItem
+                href="/background"
+                icon={Info}
+                label="About"
+              />
+              <FloatingNavbarSeparator />
+              <FloatingNavbarItem href="/work" icon={Briefcase} label="Work" />
+              <FloatingNavbarSeparator />
+              <FloatingNavbarItem href="/blog" icon={BookOpen} label="Blog" />
+              <FloatingNavbarSeparator />
+              <FloatingNavbarItem
+                href="/gallery"
+                icon={ImageIcon}
+                label="Gallery"
+              />
+            </FloatingNavbarContent>
+          </FloatingNavbar>
           <motion.div variants={scaleInVariant}>
             <Button
               variant="outline"
-              className="rounded font-normal bg-muted/50 hover:bg-muted/80 transition-all duration-200"
+              className="rounded font-normal bg-muted/20 hover:bg-muted/40 transition-all duration-300"
               onClick={() => setShowFloatingNavbar(!showFloatingNavbar)}
             >
               {showFloatingNavbar ? (
