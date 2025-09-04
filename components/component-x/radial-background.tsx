@@ -15,11 +15,6 @@ interface RadialBackgroundProps {
   colorOne?: string;
   colorTwo?: string;
   position?: RadialPosition;
-  /**
-   * Defines the type of radial gradient effect.
-   * 'fade': A simple fade from colorOne to colorTwo with an optional mask.
-   * 'glow': A multi-stop gradient with primary color opacities, typically used for a subtle glow.
-   */
   variant?: "fade" | "glow";
   animate?: boolean;
   radius?: number;
@@ -40,7 +35,7 @@ const RadialBackground = ({
   className,
   colorOne = "hsl(var(--primary))",
   colorTwo = "transparent",
-  position = "top-left", // Default position
+  position = "top-left",
   variant = "fade",
   radius = 60,
   animate = false,
