@@ -1,6 +1,10 @@
 "use client";
 
-import HoverPopOver from "@/components/component-x/hover-popover";
+import {
+  HoverPopOver,
+  HoverPopOverContent,
+  HoverPopOverTrigger,
+} from "@/components/component-x/hover-popover";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -30,7 +34,6 @@ import Link from "next/link";
 const navItems = [
   {
     name: "Product",
-    type: "popover",
     href: "#",
     content: [
       {
@@ -67,7 +70,6 @@ const navItems = [
   },
   {
     name: "Teams",
-    type: "popover",
     href: "#",
     content: [
       {
@@ -98,7 +100,6 @@ const navItems = [
   },
   {
     name: "Resources",
-    type: "popover",
     href: "#",
     content: [
       {
@@ -129,7 +130,6 @@ const navItems = [
   },
   {
     name: "Community",
-    type: "popover",
     href: "#",
     content: [
       {
@@ -160,7 +160,6 @@ const navItems = [
   },
   {
     name: "Help",
-    type: "popover",
     href: "#",
     content: [
       {
@@ -191,12 +190,10 @@ const navItems = [
   },
   {
     name: "Enterprise",
-    type: "link",
     href: "#",
   },
   {
     name: "Pricing",
-    type: "link",
     href: "#",
   },
 ];
@@ -211,23 +208,23 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((navItem) => (
             <div key={navItem.name} className="relative group">
-              {navItem.type === "popover" ? (
+              {navItem.content ? (
                 <HoverPopOver>
-                  <HoverPopOver.Trigger>
+                  <HoverPopOverTrigger>
                     <Link
                       href={navItem.href}
                       className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {navItem.name}
                     </Link>
-                  </HoverPopOver.Trigger>
-                  <HoverPopOver.Content>
-                    <div className="flex flex-col w-64 border bg-background/90 backdrop-blur-lg p-2 mt-5">
-                      {navItem.content?.map((item) => (
+                  </HoverPopOverTrigger>
+                  <HoverPopOverContent className="bg-background">
+                    <div className="flex flex-col w-64 border p-2 mt-5 shadow-xl">
+                      {navItem.content.map((item) => (
                         <Link
                           key={item.title}
                           href={item.href}
-                          className="flex items-center gap-3 rounded p-2 border border-transparent hover:border-border"
+                          className="flex items-center gap-3 rounded p-2 hover:bg-muted/30 transition-all duration-300"
                         >
                           <div className="bg-muted/60 rounded p-2 ">
                             <item.icon className="h-5 w-5 text-foreground " />
@@ -243,7 +240,7 @@ function Navbar() {
                         </Link>
                       ))}
                     </div>
-                  </HoverPopOver.Content>
+                  </HoverPopOverContent>
                 </HoverPopOver>
               ) : (
                 <Link

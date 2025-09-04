@@ -15,6 +15,11 @@ import {
   FloatingNavbarItem,
   FloatingNavbarSeparator,
 } from "@/components/component-x/floating-navbar";
+import {
+  HoverPopOver,
+  HoverPopOverContent,
+  HoverPopOverTrigger,
+} from "@/components/component-x/hover-popover";
 import Sidebar from "@/components/component-x/sidebar";
 import {
   TabItem,
@@ -55,7 +60,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import EllipseBackground from "../../components/component-x/ellipse-background";
 import GridBackground from "../../components/component-x/grid-background";
-import HoverPopOver from "../../components/component-x/hover-popover";
 import LampBackground from "../../components/component-x/lamp-background";
 import MaskedGridBackground from "../../components/component-x/masked-grid-background";
 import MovingBackground from "../../components/component-x/moving-background";
@@ -350,15 +354,15 @@ const HomePage = () => {
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
           <HoverPopOver>
-            <HoverPopOver.Trigger>
+            <HoverPopOverTrigger>
               <Button
                 variant="outline"
                 className="rounded transition-all duration-200"
               >
                 Pop Over
               </Button>
-            </HoverPopOver.Trigger>
-            <HoverPopOver.Content>
+            </HoverPopOverTrigger>
+            <HoverPopOverContent>
               <div className="mt-2 border bg-muted/40 w-64">
                 {[1, 2, 3].map((elem) => {
                   return (
@@ -371,7 +375,7 @@ const HomePage = () => {
                   );
                 })}
               </div>
-            </HoverPopOver.Content>
+            </HoverPopOverContent>
           </HoverPopOver>
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">

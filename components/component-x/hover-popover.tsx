@@ -3,8 +3,7 @@
 import { cn } from "@/lib/utils";
 import { fadeInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
-import type React from "react";
-import { Children, cloneElement, isValidElement, useState } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 type PopoverAlign =
   | "bottom-center"
@@ -35,84 +34,118 @@ const alignmentClasses = {
   "right-center": "left-[100%] top-[50%] -translate-y-1/2",
 };
 
-interface HoverPopOverProps {
+export type HoverPopOverContextType = {
+  isVisible: boolean;
+  setIsVisible: (visible: boolean) => void;
+  align: PopoverAlign;
+};
+
+export type HoverPopOverProviderProps = {
+  children: ReactNode;
   align?: PopoverAlign;
-  children: React.ReactNode;
-}
+};
 
-interface HoverPopOverTriggerProps {
-  children: React.ReactElement;
-}
-
-interface HoverPopOverContentProps {
-  children: React.ReactNode;
+export type HoverPopOverProps = {
+  children: ReactNode;
   className?: string;
+  align?: PopoverAlign;
+};
+
+export type HoverPopOverTriggerProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export type HoverPopOverContentProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+const HoverPopOverContext = createContext<HoverPopOverContextType | undefined>(
+  undefined
+);
+
+function useHoverPopOver() {
+  const context = useContext(HoverPopOverContext);
+  if (!context) {
+    throw new Error(
+      "useHoverPopOver must be used within a HoverPopOverProvider"
+    );
+  }
+  return context;
 }
 
-const HoverPopOverTrigger = ({ children }: HoverPopOverTriggerProps) => {
-  return children;
-};
-
-const HoverPopOverContent = ({
+function HoverPopOverProvider({
   children,
-  className,
-}: HoverPopOverContentProps) => {
-  return <div className={className}>{children}</div>;
-};
-
-const HoverPopOver = ({
   align = "bottom-center",
-  children,
-}: HoverPopOverProps) => {
-  const [isPopOverVisible, setIsPopOverVisible] = useState(false);
-
-  let triggerElement: React.ReactElement | null = null;
-  let contentElement: React.ReactNode | null = null;
-
-  // Iterate through children to find the Trigger and Content components
-  Children.forEach(children, (child) => {
-    if (isValidElement(child)) {
-      if (child.type === HoverPopOverTrigger) {
-        // Clone the trigger element and inject mouse event handlers
-        triggerElement = cloneElement(child.props.children, {
-          onMouseEnter: () => setIsPopOverVisible(true),
-        });
-      } else if (child.type === HoverPopOverContent) {
-        contentElement = child;
-      }
-    }
-  });
+}: HoverPopOverProviderProps) {
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <div
-      className="relative inline-block"
-      onMouseLeave={() => setIsPopOverVisible(false)} // Mouse leave on the whole container
+    <HoverPopOverContext.Provider
+      value={{
+        isVisible,
+        setIsVisible,
+        align,
+      }}
     >
-      {triggerElement}
-      {isPopOverVisible && contentElement && (
-        <motion.div
-          variants={fadeInVariant}
-          initial="hidden"
-          animate="visible"
-          className={cn(
-            "absolute z-50",
-            alignmentClasses[align],
-            (contentElement as React.ReactElement<HoverPopOverContentProps>)
-              .props.className
-          )}
-        >
-          {
-            (contentElement as React.ReactElement<HoverPopOverContentProps>)
-              .props.children
-          }
-        </motion.div>
-      )}
+      {children}
+    </HoverPopOverContext.Provider>
+  );
+}
+
+function HoverPopOver({
+  children,
+  align = "bottom-center",
+}: HoverPopOverProps) {
+  return (
+    <HoverPopOverProvider align={align}>
+      <HoverPopOverWrapper>{children}</HoverPopOverWrapper>
+    </HoverPopOverProvider>
+  );
+}
+
+function HoverPopOverWrapper({ children }: { children: ReactNode }) {
+  const { setIsVisible } = useHoverPopOver();
+  return <div onMouseLeave={() => setIsVisible(false)}>{children}</div>;
+}
+
+function HoverPopOverTrigger({
+  children,
+  className,
+}: HoverPopOverTriggerProps) {
+  const { setIsVisible } = useHoverPopOver();
+
+  return (
+    <div className={className} onMouseEnter={() => setIsVisible(true)}>
+      {children}
     </div>
   );
+}
+
+function HoverPopOverContent({
+  children,
+  className,
+}: HoverPopOverContentProps) {
+  const { isVisible, align } = useHoverPopOver();
+
+  if (!isVisible) return null;
+
+  return (
+    <motion.div
+      variants={fadeInVariant}
+      initial="hidden"
+      animate="visible"
+      className={cn("absolute z-50", alignmentClasses[align], className)}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export {
+  HoverPopOver,
+  HoverPopOverContent,
+  HoverPopOverTrigger,
+  useHoverPopOver,
 };
-
-// Attach sub-components to the main component for easy access
-HoverPopOver.Trigger = HoverPopOverTrigger;
-HoverPopOver.Content = HoverPopOverContent;
-
-export default HoverPopOver;

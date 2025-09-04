@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import ConicBackground from "../../components/component-x/conic-background";
 import MovingBorder from "../../components/component-x/moving-border";
 import Navbar from "./navbar";
 
@@ -8,7 +7,6 @@ function FirstPage() {
   return (
     <div className="px-4 sm:px-8 relative">
       <Navbar />
-      <ConicBackground backgroundSpan="medium" />
       <main className="flex flex-col items-center justify-center min-h-screen text-center ">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter max-w-4xl leading-tight">
           Design, prototype, and publish it with Framer
@@ -19,7 +17,7 @@ function FirstPage() {
         <div className="mt-8 flex gap-4">
           <Button
             size="lg"
-            className="group rounded relative flex items-center gap-1 text-md font-normal backdrop-blur-md  "
+            className="group rounded flex items-center gap-1 text-md font-normal"
           >
             Get Started
             <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
@@ -27,7 +25,7 @@ function FirstPage() {
           <div className="p-[2px] relative z-[2] overflow-hidden rounded">
             <MovingBorder color="hsl(var(--foreground))" />
             <Button
-              className="rounded bg-background hover:bg-background"
+              className="rounded border bg-background hover:bg-background font-normal"
               size="lg"
             >
               Watch video
