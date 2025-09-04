@@ -7,7 +7,7 @@ interface DialogProps {
   isDialogVisible: boolean;
   setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
-  keyToMakeDialogVisible: string;
+  keyToMakeDialogVisible?: string;
   className?: string;
 }
 

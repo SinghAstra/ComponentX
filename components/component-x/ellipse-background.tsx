@@ -15,11 +15,6 @@ interface EllipseBackgroundProps {
   colorOne?: string;
   colorTwo?: string;
   position?: RadialPosition;
-  /**
-   * Defines the type of radial gradient effect.
-   * 'fade': A simple fade from colorOne to colorTwo with an optional mask.
-   * 'glow': A multi-stop gradient with primary color opacities, typically used for a subtle glow.
-   */
   variant?: "fade" | "glow";
   animate?: boolean;
   radiusX?: number;
@@ -42,7 +37,7 @@ function EllipseBackground({
   className,
   colorOne = "hsl(var(--primary))",
   colorTwo = "transparent",
-  position = "top-center", // Default position for ellipse
+  position = "top-center",
   variant = "fade",
   radiusX = 60,
   radiusY = 100,
@@ -51,13 +46,9 @@ function EllipseBackground({
 }: EllipseBackgroundProps) {
   const gradientPosition = positionMap[position];
   let backgroundGradientValue;
-
-  // The mask image for ellipse gradient
-
   if (variant === "fade") {
     backgroundGradientValue = `radial-gradient(ellipse ${radiusX}% ${radiusY}% at ${gradientPosition}, ${colorOne} 0%, ${colorTwo} ${transition}%)`;
   } else {
-    // Glow variant logic, similar to RadialBackground
     backgroundGradientValue = `radial-gradient(ellipse  ${radiusX}% ${radiusY}% at ${gradientPosition}, ${colorOne} ${
       transition / 2
     }%, ${colorTwo} ${transition}%)`;
