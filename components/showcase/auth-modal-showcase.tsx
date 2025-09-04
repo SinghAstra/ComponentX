@@ -52,7 +52,7 @@ const AuthModalShowCase = () => {
     <>
       <motion.div variants={scaleInVariant} onClick={toggleDialog}>
         <Button
-          className="rounded px-1 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 font-normal"
+          className="rounded px-1 transition-all duration-300 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 font-normal"
           variant="outline"
           onClick={() => setIsDialogVisible(true)}
         >
@@ -68,7 +68,7 @@ const AuthModalShowCase = () => {
         setIsDialogVisible={setIsDialogVisible}
         keyToMakeDialogVisible="a"
       >
-        <div className="space-y-4 p-4 text-center bg-muted/20">
+        <div className="space-y-4 p-4 text-center bg-muted/10">
           <div className="space-y-1 mb-4">
             <h1 className="text-3xl tracking-wider">{siteConfig.name}</h1>
             <span className="text-sm text-muted-foreground">
@@ -79,7 +79,7 @@ const AuthModalShowCase = () => {
             onClick={handleGitHubSignIn}
             disabled={isGithubLoading}
             variant="outline"
-            className="w-full text-foreground rounded font-normal hover:bg-muted/40"
+            className="w-full transition-all duration-300 text-foreground rounded font-normal hover:bg-muted/40"
           >
             {isGithubLoading ? (
               <>
@@ -107,7 +107,7 @@ const AuthModalShowCase = () => {
           </div>
 
           <Button
-            className="w-full rounded tracking-wide relative"
+            className="w-full rounded tracking-wide relative bg-muted/20 hover:bg-muted/40 transition-all duration-300 border font-normal"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading}
           >

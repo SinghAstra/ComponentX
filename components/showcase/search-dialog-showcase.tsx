@@ -28,9 +28,7 @@ const SearchDialogShowCase = () => {
   const toggleDialog = () => {
     setIsDialogVisible(!isDialogVisible);
     setSelectedIndex(0);
-    if (!isDialogVisible) {
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
+    setTimeout(() => inputRef.current?.focus(), 100);
   };
 
   const commands = [
@@ -143,7 +141,7 @@ const SearchDialogShowCase = () => {
         className="w-full max-w-[300px]"
       >
         <Button
-          className="rounded px-1 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 font-normal"
+          className="rounded px-1 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 transition-all duration-300 font-normal"
           variant={"outline"}
           onClick={() => setIsDialogVisible(true)}
         >
@@ -183,13 +181,13 @@ const SearchDialogShowCase = () => {
                   transition={{ delay: index * 0.05 }}
                   onClick={() => handleSelectCommand(index)}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`flex items-center justify-between p-3 rounded cursor-pointer transition-all duration-200 ${
+                  className={`flex items-center justify-between p-3 rounded cursor-pointer transition-all duration-300 ${
                     selectedIndex === index && "bg-muted/30 "
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-8 h-8 rounded-md flex items-center justify-center transition-all duration-200 ${
+                      className={`w-8 h-8 rounded-md flex items-center justify-center transition-all duration-300 ${
                         selectedIndex === index ? "bg-muted/80" : "bg-muted/40 "
                       }`}
                     >
@@ -206,7 +204,7 @@ const SearchDialogShowCase = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <kbd
-                      className={`px-2 py-1 flex items-center gap-1 text-xs text-muted-foreground rounded border border-border transition-all duration-200 ${
+                      className={`px-2 py-1 flex items-center gap-1 text-xs text-muted-foreground rounded border border-border transition-all duration-300 ${
                         selectedIndex === index ? "bg-muted" : "bg-muted/40"
                       }`}
                     >

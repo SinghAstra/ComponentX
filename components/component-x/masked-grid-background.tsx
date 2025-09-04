@@ -15,7 +15,7 @@ const MaskedGridBackground = ({ className }: MaskedGridBackgroundProps) => {
             "linear-gradient(90deg,#161616 1px,transparent 1px),linear-gradient(180deg,#161616 1px,transparent 1px)",
           backgroundSize: "48px 48px",
           maskImage:
-            "radial-gradient(ellipse 60% 50% at 50% 0%,rgb(255,255,255) 70%,transparent 100%)",
+            "radial-gradient(ellipse 100% 100% at 50% 0%,rgba(255,255,255,0.8) 20%,rgba(255,255,255,0.2) 60%,transparent 100%)",
         }}
       />
     </div>

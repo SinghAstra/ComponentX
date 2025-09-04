@@ -12,7 +12,7 @@ const DialogBoilerPlateShowCase = () => {
     <>
       <motion.div variants={scaleInVariant}>
         <Button
-          className="rounded px-3 py-1 font-normal hover:bg-muted/40 transition-all duration-300"
+          className="rounded px-3 py-1 font-normal hover:bg-muted/40 transition-all duration-200"
           variant="outline"
           onClick={() => setIsDialogVisible(true)}
         >

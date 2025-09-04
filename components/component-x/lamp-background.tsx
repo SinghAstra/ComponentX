@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { CSSProperties } from "react"; // Import CSSProperties for type safety
+import type { CSSProperties } from "react";
 
 interface LampBackgroundProps {
   colorOne?: string;
@@ -13,8 +13,8 @@ function LampBackground({
   className,
   colorOne = "hsl(var(--primary))",
   colorTwo = "transparent",
-  position = "top", // Default position
-  angleSpan = "medium", // Default angleSpan
+  position = "top",
+  angleSpan = "medium",
 }: LampBackgroundProps) {
   let maskImageStyle: CSSProperties["maskImage"];
   let containerFlexClass: string;
@@ -23,7 +23,6 @@ function LampBackground({
   let div1SizeClass: string;
   let div2SizeClass: string;
 
-  // Determine the final colors based on the position
   let finalColorOne = colorOne;
   let finalColorTwo = colorTwo;
 

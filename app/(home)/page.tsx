@@ -287,7 +287,7 @@ const HomePage = () => {
         <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
           <div className="p-[2px] relative z-[2] overflow-hidden rounded">
             <MovingBorder />
-            <div className="w-full h-full px-3 py-1 bg-background border">
+            <div className="w-full h-full px-3 py-1 bg-background border rounded">
               Moving Border
             </div>
           </div>
