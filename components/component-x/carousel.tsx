@@ -152,33 +152,9 @@ function CarouselIndicatorLabel({
 
 function CarouselContent({ children, className }: CarouselContentProps) {
   const { index, setIndex, setItemsCount } = useCarousel();
-  const [visibleItemsCount, setVisibleItemsCount] = useState(1);
   const dragX = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsLength = Children.count(children);
-
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
-
-    const options = {
-      root: containerRef.current,
-      threshold: 0.5,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      const visibleCount = entries.filter(
-        (entry) => entry.isIntersecting
-      ).length;
-      setVisibleItemsCount(visibleCount);
-    }, options);
-
-    const childNodes = containerRef.current.children;
-    Array.from(childNodes).forEach((child) => observer.observe(child));
-
-    return () => observer.disconnect();
-  }, [children, setItemsCount]);
 
   useEffect(() => {
     setItemsCount(itemsLength);
@@ -206,7 +182,7 @@ function CarouselContent({ children, className }: CarouselContentProps) {
         x: dragX,
       }}
       animate={{
-        translateX: `-${index * (100 / visibleItemsCount)}%`,
+        translateX: `-${index * 100}%`,
       }}
       onDragEnd={onDragEnd}
       transition={{
@@ -231,7 +207,7 @@ function CarouselItem({ children, className }: CarouselItemProps) {
   return (
     <motion.div
       className={cn(
-        "w-full min-w-0 shrink-0 overflow-hidden border",
+        "w-full min-w-0 shrink-0 overflow-hidden border ",
         className
       )}
     >

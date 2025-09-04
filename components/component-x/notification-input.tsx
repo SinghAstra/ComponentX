@@ -15,13 +15,13 @@ const emailSchema = z
 const NotificationInput = () => {
   const { setToastMessage } = useToastContext();
   const [email, setEmail] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     // Clear error when user starts typing after an error has been displayed
-    if (error) {
-      setError(null);
+    if (message) {
+      setMessage(null);
     }
   };
 
@@ -31,20 +31,20 @@ const NotificationInput = () => {
     const validationResult = emailSchema.safeParse(email);
 
     if (!validationResult.success) {
-      setError(
+      setMessage(
         validationResult.error.errors[0]?.message || "Invalid email address"
       );
     } else {
-      setError(null); // Clear any previous errors
+      setMessage(null);
       setToastMessage(`Welcome ${email}`);
-      setEmail(""); // Reset email input after successful submission
+      setEmail("");
     }
   };
 
   return (
     <div className="space-y-2">
       <motion.div
-        whileInView={error ? { x: [-10, 10, -10, 10, 0] } : { x: 0 }}
+        whileInView={message ? { x: [-10, 10, -10, 10, 0] } : { x: 0 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className="flex flex-col gap-1 mx-4"
       >
@@ -53,7 +53,7 @@ const NotificationInput = () => {
             <input
               className={cn(
                 "flex max-w-[400px] w-full h-[50px] rounded border border-neutral-800 bg-transparent px-3 py-2 pr-32 text-3xl shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-md lg:text-xl",
-                error && "border-destructive focus-visible:ring-destructive"
+                message && "border-destructive focus-visible:ring-destructive"
               )}
               id="email"
               name="email"
@@ -71,13 +71,13 @@ const NotificationInput = () => {
             </div>
           </div>
         </form>
-        {error && (
+        {message && (
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-destructive font-medium"
+            className="text-sm text-destructive"
           >
-            {error}
+            {message}
           </motion.p>
         )}
       </motion.div>

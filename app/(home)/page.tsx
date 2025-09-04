@@ -17,6 +17,7 @@ import {
 } from "@/components/component-x/floating-navbar";
 import Sidebar from "@/components/component-x/sidebar";
 import {
+  TabItem,
   Tabs,
   TabsContent,
   TabsList,
@@ -377,30 +378,22 @@ const HomePage = () => {
           <h1 className="text-shine">{siteConfig.name}</h1>
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
-          <Tabs defaultIndex={0} className="h-full flex flex-col">
+          <Tabs className="h-full flex flex-col">
             <TabsList>
               <TabsTrigger index={0}>First</TabsTrigger>
               <TabsTrigger index={1}>Second</TabsTrigger>
               <TabsTrigger index={2}>Third</TabsTrigger>
             </TabsList>
-
-            <TabsContent
-              className="flex items-center justify-center bg-muted/30 border flex-1"
-              index={0}
-            >
-              First
-            </TabsContent>
-            <TabsContent
-              className="flex items-center justify-center bg-muted/30 border flex-1"
-              index={1}
-            >
-              Second
-            </TabsContent>
-            <TabsContent
-              className="flex items-center justify-center bg-muted/30 border flex-1"
-              index={2}
-            >
-              Third
+            <TabsContent className="flex-1">
+              <TabItem className="flex items-center justify-center bg-muted/10 border h-full ">
+                First
+              </TabItem>
+              <TabItem className="flex items-center justify-center bg-muted/10 border h-full">
+                Second
+              </TabItem>
+              <TabItem className="flex items-center justify-center bg-muted/10 border h-full">
+                Third
+              </TabItem>
             </TabsContent>
           </Tabs>
         </div>
@@ -443,7 +436,7 @@ const HomePage = () => {
             </div>
           </Sidebar>
         </div>
-        <div className="col-span-2 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex items-center justify-center">
+        <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto">
           <Table className="max-w-xl mx-auto">
             <TableHeader>
               <TableRow>
