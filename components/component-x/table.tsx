@@ -39,9 +39,7 @@ const Table = ({ children, className }: TableProps) => (
 );
 const TableHeader = ({ children, className }: TableHeaderProps) => {
   return (
-    <thead className={cn("[&_tr]:border-b bg-muted/30", className)}>
-      {children}
-    </thead>
+    <thead className={cn("border-b bg-muted/30", className)}>{children}</thead>
   );
 };
 const TableHead = ({ children, className }: TableHeadProps) => (
@@ -55,29 +53,16 @@ const TableHead = ({ children, className }: TableHeadProps) => (
   </th>
 );
 const TableBody = ({ children, className }: TableBodyProps) => {
-  return (
-    <tbody className={cn("[&_tr:last-child]:border-0", className)}>
-      {children}
-    </tbody>
-  );
+  return <tbody className={cn("", className)}>{children}</tbody>;
 };
 const TableFooter = ({ children, className }: TableFooterProps) => {
-  return (
-    <tbody
-      className={cn(
-        "[&_tr:last-child]:border-0 [&>tr]:last:border-b-0",
-        className
-      )}
-    >
-      {children}
-    </tbody>
-  );
+  return <tbody className={cn("", className)}>{children}</tbody>;
 };
 const TableRow = ({ children, className }: TableRowProps) => {
   return (
     <tr
       className={cn(
-        "border-b transition-colors hover:bg-muted/50 [&_td:last-child]:border-0",
+        "border-b transition-all duration-300 hover:bg-muted/20 ",
         className
       )}
     >
