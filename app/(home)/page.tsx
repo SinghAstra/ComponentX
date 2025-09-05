@@ -56,6 +56,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import EllipseBackground from "../../components/component-x/ellipse-background";
@@ -443,10 +444,12 @@ const HomePage = () => {
         <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto">
           <Table className="max-w-xl mx-auto">
             <TableHeader>
-              <TableHead>Avatar</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
+              <TableRow className="hover:bg-transparent">
+                <TableHead>Avatar</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
             </TableHeader>
             <TableBody>
               {users.map((user) => (
@@ -471,6 +474,19 @@ const HomePage = () => {
               ))}
             </TableBody>
           </Table>
+        </div>
+        <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto">
+          <div className="absolute inset-0 z-[-1] overflow-hidden">
+            <Image
+              src="/assets/gradient.avif"
+              alt="static asset"
+              width={1920}
+              height={480}
+              className="object-cover"
+            />
+          </div>
+
+          <h1 className="font-semibold text-6xl">Static Background</h1>
         </div>
       </div>
       <Footer />
