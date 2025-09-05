@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export function SecondSection() {
   return (
@@ -11,8 +12,12 @@ export function SecondSection() {
             </h1>
           </div>
           <div className="flex-shrink-0">
-            <Button size="lg" className="px-8 py-3 text-base font-medium">
+            <Button
+              size="lg"
+              className="group rounded flex items-center gap-1 text-md font-normal"
+            >
               Start for free
+              <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
             </Button>
           </div>
         </div>

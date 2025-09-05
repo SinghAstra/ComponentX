@@ -111,7 +111,7 @@ function Navbar() {
   }, [isMounted]);
   return (
     <nav
-      className={`fixed top-4 inset-x-4 z-[5] bg-background rounded-md border ${
+      className={`fixed top-4 inset-x-16 z-[5] bg-background rounded-xl border ${
         scrolled ? "border-border shadow-xl" : "border-transparent"
       }`}
     >
@@ -170,14 +170,13 @@ function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="#"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="font-normal text-muted-foreground hover:bg-muted/60 px-3 py-2 rounded hover:text-foreground transition-all duration-300"
           >
             Login
           </Link>
           <Button
-            className="rounded transition-colors"
+            className="rounded transition-colors font-normal "
             variant="default"
-            size="sm"
           >
             Sign up
           </Button>
