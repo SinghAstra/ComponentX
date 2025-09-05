@@ -86,44 +86,50 @@ function TestimonialCard({
   className?: string;
 }) {
   return (
-    <Card
+    <div
       className={cn(
-        "p-6 bg-card border border-border transition-all duration-300 hover:scale-[1.02] relative overflow-hidden group",
+        "border flex flex-col justify-between transition-all duration-300 hover:shadow-xl px-4 py-3 relative group",
         className
       )}
     >
-      {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div
+        className={cn(
+          "absolute inset-0 flex z-[-1]",
+          "bg-gradient-to-b from-background/40 via-background/10 to-primary/60 opacity-0 group-hover:opacity-100 ",
+          className
+        )}
+        style={{
+          maskImage:
+            "linear-gradient(0deg, rgba(255, 255, 255,0.2), rgb(255, 255, 255,0))",
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-4">
-          <Avatar className="h-10 w-10">
-            <AvatarImage
-              src={testimonial.avatar || "/placeholder.svg"}
-              alt={testimonial.name}
-            />
-            <AvatarFallback>
-              {testimonial.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <h4 className="font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
-              {testimonial.name}
-            </h4>
-            <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">
-              {testimonial.company}
-            </p>
-          </div>
+      <p className="text-foreground group-hover:text-primary-foreground transition-colors leading-relaxed">
+        {testimonial.content}
+      </p>
+      <div className="flex items-center gap-4 mt-4">
+        <Avatar className="h-10 w-10">
+          <AvatarImage
+            src={testimonial.avatar || "/placeholder.svg"}
+            alt={testimonial.name}
+          />
+          <AvatarFallback>
+            {testimonial.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </AvatarFallback>
+        </Avatar>
+        <div>
+          <h4 className="font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
+            {testimonial.name}
+          </h4>
+          <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">
+            {testimonial.company}
+          </p>
         </div>
-        <p className="text-foreground group-hover:text-primary-foreground transition-colors leading-relaxed">
-          {testimonial.content}
-        </p>
       </div>
-    </Card>
+    </div>
   );
 }
 
@@ -165,7 +171,6 @@ function AnimatedColumn({
 }
 
 export function TestimonialsSection() {
-  // Split testimonials into columns
   const column1 = testimonials.slice(0, 3);
   const column2 = testimonials.slice(3, 6);
   const column3 = testimonials.slice(6, 8);

@@ -88,20 +88,20 @@ function LampBackground({
   return (
     <div
       className={cn(
-        "absolute inset-0 flex z-[-1] bg-background",
+        "absolute inset-0 flex z-[-1]",
         containerFlexClass,
         className
       )}
+      style={{ gap: 0, maskImage: maskImageStyle }}
     >
       <div
-        className={div1SizeClass}
+        className={cn(div1SizeClass, "-mr-px")}
         style={{
           background: `conic-gradient(
             ${gradient1FromAt},
             ${finalColorOne} 0deg,
             ${finalColorTwo} ${angleSpread}deg
           )`,
-          maskImage: maskImageStyle,
         }}
       />
       <div
@@ -112,7 +112,6 @@ function LampBackground({
             ${finalColorTwo} ${angleOffset}deg,
             ${finalColorOne} 90deg
           )`,
-          maskImage: maskImageStyle,
         }}
       />
     </div>
