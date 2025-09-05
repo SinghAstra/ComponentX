@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 
 import { Activity, BookOpen, LayoutTemplate, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navItems = [
   {
@@ -92,11 +93,31 @@ const navItems = [
 ];
 
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMounted]);
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+    <nav
+      className={`fixed top-4 inset-x-4 z-[5] bg-background rounded-md border ${
+        scrolled ? "border-border shadow-xl" : "border-transparent"
+      }`}
+    >
+      <div className="flex items-center justify-between p-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 ">
-          <span className="text-2xl">SiteName</span>
+          <span className="text-2xl uppercase font-bold logo">SiteName</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((navItem) => (
@@ -106,13 +127,13 @@ function Navbar() {
                   <HoverPopOverTrigger>
                     <Link
                       href={navItem.href}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      className="px-3 py-1 rounded font-medium text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-all duration-300"
                     >
                       {navItem.name}
                     </Link>
                   </HoverPopOverTrigger>
-                  <HoverPopOverContent className="bg-background">
-                    <div className="flex flex-col w-64 border p-2 mt-5 shadow-xl">
+                  <HoverPopOverContent className="bg-background z-[10]">
+                    <div className="flex flex-col w-64 border p-2 mt-2 shadow-xl">
                       {navItem.content.map((item) => (
                         <Link
                           key={item.title}

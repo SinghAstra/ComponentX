@@ -8,7 +8,6 @@ import {
   ReactNode,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 
@@ -153,7 +152,6 @@ function CarouselIndicatorLabel({
 function CarouselContent({ children, className }: CarouselContentProps) {
   const { index, setIndex, setItemsCount } = useCarousel();
   const dragX = useMotionValue(0);
-  const containerRef = useRef<HTMLDivElement>(null);
   const itemsLength = Children.count(children);
 
   useEffect(() => {
@@ -196,7 +194,6 @@ function CarouselContent({ children, className }: CarouselContentProps) {
         "cursor-grab active:cursor-grabbing",
         className
       )}
-      ref={containerRef}
     >
       {children}
     </motion.div>
@@ -244,7 +241,7 @@ function CarouselBottomNavigation() {
 }
 
 function CarouselFooter({ children }: { children: ReactNode }) {
-  return <div className="w-full z-10 flex">{children}</div>;
+  return <div className="w-full flex">{children}</div>;
 }
 
 export {

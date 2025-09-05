@@ -16,6 +16,14 @@ export const scaleInVariant = {
   },
 };
 
+export const fadeScaleInVariant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
+};
+
 export const fadeInVariant = {
   hidden: { opacity: 0 },
   visible: {

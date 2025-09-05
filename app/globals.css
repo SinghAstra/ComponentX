@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "devicon/devicon.min.css";
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,10 @@
 
 body {
   font-family: "Space Grotesk", "Space Mono", monospace;
+}
+
+.logo {
+  font-family: "Funnel Display", sans-serif;
 }
 
 @layer base {

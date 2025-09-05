@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { fadeInVariant } from "@/lib/variants";
+import { fadeScaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { createContext, useContext, useState, type ReactNode } from "react";
 
@@ -107,7 +107,11 @@ function HoverPopOver({
 
 function HoverPopOverWrapper({ children }: { children: ReactNode }) {
   const { setIsVisible } = useHoverPopOver();
-  return <div onMouseLeave={() => setIsVisible(false)}>{children}</div>;
+  return (
+    <div className="relative" onMouseLeave={() => setIsVisible(false)}>
+      {children}
+    </div>
+  );
 }
 
 function HoverPopOverTrigger({
@@ -133,7 +137,7 @@ function HoverPopOverContent({
 
   return (
     <motion.div
-      variants={fadeInVariant}
+      variants={fadeScaleInVariant}
       initial="hidden"
       animate="visible"
       className={cn("absolute z-50", alignmentClasses[align], className)}

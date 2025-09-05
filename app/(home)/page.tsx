@@ -358,7 +358,7 @@ const HomePage = () => {
             <HoverPopOverTrigger>
               <Button
                 variant="outline"
-                className="rounded transition-all duration-200"
+                className="rounded transition-all duration-300 bg-muted/20 hover:bg-muted/40"
               >
                 Pop Over
               </Button>
