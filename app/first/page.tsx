@@ -1,25 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import MovingBorder from "../../components/component-x/moving-border";
 import FeaturesCarousel from "./features-carousel";
 import Navbar from "./navbar";
 import { SecondSection } from "./second-section";
+import { TestimonialsSection } from "./testimonial-section";
 
 function FirstPage() {
   return (
     <div className="relative flex flex-col p-4">
       <Navbar />
       <main className="flex flex-col items-center justify-center min-h-screen text-center relative mt-20 rounded-t-xl overflow-hidden">
-        <div className="absolute inset-0 z-[-1] overflow-hidden">
-          <Image
-            src="/assets/gradient.avif"
-            alt="static asset"
-            width={1920}
-            height={480}
-            className="object-cover"
-          />
-        </div>
+        <div
+          className={`absolute inset-0 z-[-1] overflow-hidden bg-[url(/assets/gradient.avif)] bg-cover bg-no-repeat bg-center rounded-t-3xl`}
+        ></div>
         <h1 className="text-5xl md:text-7xl lg:text-8xl  font-bold tracking-tighter">
           This is the Hero Heading
         </h1>
@@ -49,6 +43,7 @@ function FirstPage() {
       </main>
       <SecondSection />
       <FeaturesCarousel />
+      <TestimonialsSection />
     </div>
   );
 }
