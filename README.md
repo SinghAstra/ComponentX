@@ -1,1 +1,1 @@
-# ComponentX - WIP
+# ComponentX
