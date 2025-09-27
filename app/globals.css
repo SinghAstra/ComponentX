@@ -180,12 +180,12 @@ pre > code {
 }
 
 .text-shine {
-  color: hsl(var(--muted));
+  /* color: hsl(var(--muted)); */
   background: linear-gradient(
-    to right,
-    hsla(var(--muted)) 0%,
-    hsl(var(--foreground)) 10%,
-    hsl(var(--muted)) 20%
+    120deg,
+    hsl(var(--secondary)) 0%,
+    hsl(var(--primary)) 10%,
+    hsl(var(--secondary)) 20%
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;

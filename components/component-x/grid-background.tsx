@@ -16,7 +16,7 @@ const GridBackground = ({
         className="w-full h-full"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, hsl(var(--muted)) 1px,transparent 1px),linear-gradient(180deg, hsl(var(--muted)) 1px,transparent 1px)",
+            "linear-gradient(90deg, #161616 1px,transparent 1px),linear-gradient(180deg, #161616 1px,transparent 1px)",
           backgroundSize: `${gridDimension}px ${gridDimension}px`,
         }}
       />

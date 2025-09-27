@@ -1,6 +1,5 @@
 "use client";
 
-import LampBackground from "@/components/component-x/lamp-background";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -23,7 +22,6 @@ function Hero() {
       whileInView="visible"
       className="relative flex flex-col gap-4 items-center text-center min-h-screen justify-center p-4 sm:px-8 overflow-hidden"
     >
-      <LampBackground />
       <motion.div variants={scaleInVariant} className="z-[1]">
         <a href={siteConfig.links.buildInPublic} target="_blank">
           <Button

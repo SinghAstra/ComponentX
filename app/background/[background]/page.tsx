@@ -16,7 +16,7 @@ const BackgroundInAction = () => {
 
   const inActionComponents: { [key: string]: JSX.Element } = {
     ConicBackground: (
-      <ConicBackground className="fixed" position="top" angleSpan="large" />
+      <ConicBackground className="fixed" position="right" angleSpan="large" />
     ),
     RadialBackground: (
       <RadialBackground
@@ -50,7 +50,7 @@ const BackgroundInAction = () => {
   return (
     <div>
       {inActionComponents[componentName]}
-      <HomePage />
+      <HomePage showcase={true} />
     </div>
   );
 };

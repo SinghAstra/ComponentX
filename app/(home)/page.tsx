@@ -74,7 +74,11 @@ import SearchDialogShowCase from "../../components/showcase/search-dialog-showca
 import Footer from "./footer";
 import Hero from "./hero";
 
-const HomePage = () => {
+interface HomePageProps {
+  showcase?: boolean;
+}
+
+const HomePage = ({ showcase = false }: HomePageProps) => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
   const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
   const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
@@ -122,10 +126,13 @@ const HomePage = () => {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="min-h-screen flex flex-col  "
+      className="flex flex-col  "
     >
-      <Navbar />
-      <Hero />
+      <div className="min-h-screen">
+        {!showcase && <LampBackground />}
+        <Navbar />
+        <Hero />
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr px-2 mb-6">
         <motion.div
@@ -134,6 +141,27 @@ const HomePage = () => {
           whileInView="visible"
           className="bg-background col-span-1 sm:col-span-2 lg:col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border rounded"
         >
+          {showFloatingNavbar && (
+            <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-[10] flex items-center justify-center">
+              <Button
+                variant="outline"
+                className="rounded font-normal bg-muted/20 hover:bg-muted/40 transition-all duration-300"
+                onClick={() => setShowFloatingNavbar(!showFloatingNavbar)}
+              >
+                {showFloatingNavbar ? (
+                  <>
+                    <X className="h-5 w-5 mr-1" />
+                    <span>Hide Floating Navbar</span>
+                  </>
+                ) : (
+                  <>
+                    <Menu className="h-5 w-5 mr-1" />
+                    <span>View Floating Navbar</span>
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
           <FloatingNavbar show={showFloatingNavbar}>
             <FloatingNavbarContent>
               <FloatingNavbarItem href="/" icon={Home} label="Home" />
@@ -248,7 +276,7 @@ const HomePage = () => {
           variants={containerVariant}
           initial="hidden"
           whileInView="visible"
-          className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-200 hover:shadow-[inset_0_-5px_30px_0px_hsl(var(--muted)),inset_0px_5px_30px_0px_hsl(var(--muted))] hover:bg-background/60"
+          className="col-span-1 sm:col-span-2  row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-200 hover:shadow-[inset_0_-5px_30px_0px_hsl(var(--muted)),inset_0px_5px_30px_0px_hsl(var(--muted))] hover:bg-background/60"
         >
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center translate-y-5 group-hover:translate-y-0 transition-all duration-200 "
@@ -269,8 +297,9 @@ const HomePage = () => {
           variants={containerVariant}
           initial="hidden"
           whileInView="visible"
-          className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-200 hover:shadow-[inset_0_-5px_30px_0px_hsl(var(--muted)),inset_0px_5px_30px_0px_hsl(var(--muted))] hover:bg-background/60"
+          className="col-span-1 z-10  sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-200 hover:shadow-[inset_0_-5px_30px_0px_hsl(var(--muted)),inset_0px_5px_30px_0px_hsl(var(--muted))] hover:bg-background/60"
         >
+          <div className="absolute inset-0 bg-background z-[-2]"></div>
           <motion.h1
             className="text-2xl sm:text-4xl font-normal text-center translate-y-5 group-hover:translate-y-0 transition-all duration-200 "
             variants={blurInVariant}

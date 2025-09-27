@@ -8,7 +8,7 @@ import { slideFadeInVariantFromTopToBottom } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { ChevronDown, LucideIcon, Menu } from "lucide-react";
 import Link from "next/link";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import GridBackground from "../component-x/grid-background";
 import {
   HoverPopOver,
@@ -20,35 +20,16 @@ import MaxWidthWrapper from "../global/max-width-wrapper";
 import { Accordion, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
 const Navbar = () => {
-  const [scroll, setScroll] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   const handleClose = () => {
     setIsSidebarOpen(false);
   };
 
-  const handleScroll = () => {
-    if (window.scrollY > 8) {
-      setScroll(true);
-    } else {
-      setScroll(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
       <header
-        className={cn(
-          "sticky top-0 inset-x-0 py-3 w-full z-[9]",
-          scroll && "bg-background/40 backdrop-blur-md"
-        )}
+        className={cn("sticky top-0 inset-x-0 py-3 w-full z-[9] bg-background")}
       >
         <motion.div
           variants={slideFadeInVariantFromTopToBottom}
