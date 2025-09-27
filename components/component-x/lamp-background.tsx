@@ -95,7 +95,7 @@ function LampBackground({
       style={{ gap: 0, maskImage: maskImageStyle }}
     >
       <div
-        className={cn(div1SizeClass, "-mr-px")}
+        className={cn(div1SizeClass)}
         style={{
           background: `conic-gradient(
             ${gradient1FromAt},

@@ -36,6 +36,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/component-x/table";
+import Navbar from "@/components/navigation/navbar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -72,7 +73,6 @@ import DialogBoilerPlateShowCase from "../../components/showcase/dialog-boilerpl
 import SearchDialogShowCase from "../../components/showcase/search-dialog-showcase";
 import Footer from "./footer";
 import Hero from "./hero";
-import Navbar from "./navbar";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);

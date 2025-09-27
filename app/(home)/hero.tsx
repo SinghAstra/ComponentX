@@ -1,5 +1,6 @@
 "use client";
 
+import LampBackground from "@/components/component-x/lamp-background";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -20,38 +21,34 @@ function Hero() {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="relative flex flex-col gap-4 items-center text-center min-h-screen justify-center px-4 overflow-hidden"
+      className="relative flex flex-col gap-4 items-center text-center min-h-screen justify-center p-4 sm:px-8 overflow-hidden"
     >
-      <motion.div variants={scaleInVariant}>
+      <LampBackground />
+      <motion.div variants={scaleInVariant} className="z-[1]">
         <a href={siteConfig.links.buildInPublic} target="_blank">
-          <div className="p-1 relative rounded">
-            <Button
-              variant="outline"
-              className="rounded group relative font-normal bg-transparent hover:bg-muted/40"
-            >
-              <MovingBackground shineColor="hsl(var(--primary)/20)" />
-              <span className=" text-sm text-foreground flex items-center justify-center gap-2">
-                <FaTwitter className="size-3" /> Build in Public
-                <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
-              </span>
-            </Button>
-          </div>
+          <Button
+            variant="outline"
+            className="rounded group relative font-normal bg-transparent hover:bg-muted/40"
+          >
+            <MovingBackground shineColor="hsl(var(--primary)/20)" />
+            <span className=" text-sm text-foreground flex items-center justify-center gap-2">
+              <FaTwitter className="size-3" /> Build in Public
+              <ArrowRightIcon className="size-3 transform-all duration-300 group-hover:translate-x-1" />
+            </span>
+          </Button>
         </a>
       </motion.div>
 
       <motion.h1
         variants={blurInVariant}
-        className=" font-medium text-5xl tracking-tight md:text-6xl lg:text-7xl my-2 sm:my-4 "
+        className="font-medium text-5xl tracking-tight md:text-6xl lg:text-7xl my-2 sm:my-4 "
       >
         {siteConfig.name}
       </motion.h1>
 
       <motion.div variants={blurInVariant}>
-        <p className=" md:text-lg lg:text-xl text-foreground/80 text-balance max-w-2xl">
-          Collection of
-          <span className="text-primary font-medium mx-2">
-            beautiful, and customizable UI components.
-          </span>
+        <p className=" md:text-lg lg:text-xl text-muted-foreground text-balance max-w-2xl">
+          Collection of UI Components
         </p>
       </motion.div>
 
