@@ -138,14 +138,15 @@ const Navbar = () => {
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
+        direction="right"
       >
-        <div className="flex flex-col items-start w-full  p-4 h-full bg-background/60">
-          <Link href="/" className="text-lg font-bold logo mb-4 text-primary">
+        <div className="flex flex-col items-start w-60  p-4 h-full bg-background/60">
+          <Link href="/" className="text-lg font-bold logo mb-2 text-primary">
             {siteConfig.name}
           </Link>
 
-          <ul className="flex flex-1 flex-col items-start w-full">
-            <Accordion type="single" collapsible className="!w-full">
+          <ul className="flex flex-1 flex-col items-start">
+            <Accordion type="single" collapsible className="w-full">
               {navLinks.map((link) => (
                 <AccordionItem
                   key={link.title}
@@ -174,7 +175,7 @@ const Navbar = () => {
                     <Link
                       href={link.href}
                       onClick={handleClose}
-                      className="flex items-center w-full py-4 font-medium"
+                      className="flex items-center w-full p-2 font-normal"
                     >
                       <span>{link.title}</span>
                     </Link>

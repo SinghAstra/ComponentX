@@ -4,6 +4,7 @@ import React, { Dispatch } from "react";
 
 interface SidebarProps {
   children: React.ReactNode;
+  direction?: "left" | "right";
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<boolean>;
 }
@@ -11,6 +12,7 @@ interface SidebarProps {
 const Sidebar = ({
   children,
   isSidebarOpen,
+  direction = "left",
   setIsSidebarOpen,
 }: SidebarProps) => {
   return (
@@ -23,8 +25,18 @@ const Sidebar = ({
       ></div>
 
       <div
-        className={`fixed z-[3] border-r top-0 left-0 h-full shadow-xl transform transition-transform duration-300 ease-in-out bg-background
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed z-[3] border-r top-0  h-full shadow-xl transform transition-transform duration-300 ease-in-out bg-background
+          ${
+            direction === "left" &&
+            (isSidebarOpen ? "translate-x-0" : "-translate-x-full")
+          }
+          ${
+            direction === "right" &&
+            (isSidebarOpen ? "translate-x-0" : "translate-x-full")
+          }
+          ${direction === "left" && "left-0"}
+          ${direction === "right" && "right-0"}
+          `}
       >
         {children}
       </div>

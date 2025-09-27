@@ -76,7 +76,8 @@ import Hero from "./hero";
 
 const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
 
   interface User {
     id: number;
@@ -425,18 +426,37 @@ const HomePage = () => {
           </Carousel>
         </div>
         <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex items-center justify-center">
-          <Button
-            variant={"outline"}
-            className="hover:bg-muted/40 transition-all duration-300 font-normal rounded"
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          >
-            Toggle Sidebar
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button
+              variant={"outline"}
+              className="hover:bg-muted/40 transition-all duration-300 font-normal rounded"
+              onClick={() => setIsLeftSidebarOpen(!isLeftSidebarOpen)}
+            >
+              Left Sidebar
+            </Button>
+            <Button
+              variant={"outline"}
+              className="hover:bg-muted/40 transition-all duration-300 font-normal rounded"
+              onClick={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
+            >
+              Right Sidebar
+            </Button>
+          </div>
+
           <Sidebar
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
+            isSidebarOpen={isLeftSidebarOpen}
+            setIsSidebarOpen={setIsLeftSidebarOpen}
           >
-            <div className="flex items-center justify-center w-64 h-full text-center">
+            <div className="flex items-center justify-center w-72 h-full text-center p-4">
+              <p>You can place Sidebar Content here.</p>
+            </div>
+          </Sidebar>
+          <Sidebar
+            isSidebarOpen={isRightSidebarOpen}
+            setIsSidebarOpen={setIsRightSidebarOpen}
+            direction="right"
+          >
+            <div className="flex items-center justify-center w-72 h-full text-center p-4">
               <p>You can place Sidebar Content here.</p>
             </div>
           </Sidebar>
