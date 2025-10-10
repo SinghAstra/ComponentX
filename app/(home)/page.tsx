@@ -490,7 +490,7 @@ const HomePage = ({ showcase = false }: HomePageProps) => {
             </div>
           </Sidebar>
         </div>
-        <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto">
+        <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto bg-background">
           <Table className="max-w-xl mx-auto">
             <TableHeader>
               <TableRow className="hover:bg-transparent">
