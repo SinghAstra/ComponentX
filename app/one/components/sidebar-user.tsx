@@ -13,7 +13,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -62,7 +61,7 @@ export function SidebarUser({
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded m-2"
             side={isMobile ? "bottom" : "right"}
             align="start"
             sideOffset={4}
@@ -73,36 +72,32 @@ export function SidebarUser({
                   <AvatarImage src={user.avatar} alt={user.name} />
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
+                <div className="grid flex-1 text-left text-sm leading-tight text-muted-foreground">
                   <span className="truncate font-medium">{user.name}</span>
                   <span className="truncate text-xs">{user.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
+            <DropdownMenuItem className="focus:bg-muted/60 transition-all duration-300 cursor-pointer">
+              <Sparkles />
+              Upgrade to Pro
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
+            <DropdownMenuItem className="focus:bg-muted/60 transition-all duration-300 cursor-pointer">
+              <BadgeCheck />
+              Account
+            </DropdownMenuItem>
+            <DropdownMenuItem className="focus:bg-muted/60 transition-all duration-300 cursor-pointer">
+              <CreditCard />
+              Billing
+            </DropdownMenuItem>
+            <DropdownMenuItem className="focus:bg-muted/60 transition-all duration-300 cursor-pointer">
+              <Bell />
+              Notifications
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="focus:bg-muted/60 transition-all duration-300 cursor-pointer">
               <LogOut />
               Log out
             </DropdownMenuItem>
