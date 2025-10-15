@@ -46,6 +46,7 @@ export function DynamicEntryList({
     onChange(next);
   };
 
+  // Dynamic List
   const handleChange = (index: number, nextValue: string) => {
     const next = [...list];
     next[index] = nextValue;
