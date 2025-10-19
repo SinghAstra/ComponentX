@@ -1,0 +1,36 @@
+"use client";
+
+import { useState } from "react";
+import { TagInput } from "./components/tag-input";
+
+export default function Home() {
+  const [selectedClients, setSelectedClients] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState("");
+
+  return (
+    <main className="min-h-screen bg-background flex items-center justify-center">
+      <div className="space-y-4 max-w-2xl w-full">
+        <TagInput
+          label="Type Your Tag"
+          placeholder="Start Typing..."
+          value={selectedClients}
+          onChange={setSelectedClients}
+          onInputChange={setInputValue}
+          required
+        />
+        <div className="flex flex-col gap-1">
+          {inputValue && (
+            <p className="text-sm text-muted-foreground">
+              Input Value: {inputValue}
+            </p>
+          )}
+          {selectedClients.length > 0 && (
+            <p className="text-sm text-muted-foreground">
+              Selected : {selectedClients.join(", ")}
+            </p>
+          )}
+        </div>
+      </div>
+    </main>
+  );
+}

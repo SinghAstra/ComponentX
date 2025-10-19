@@ -6,7 +6,7 @@ import { useToastContext } from "@/components/providers/toast";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { CloudUpload, ExternalLink, Play, X } from "lucide-react";
+import { CloudUpload, ExternalLink, X } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
