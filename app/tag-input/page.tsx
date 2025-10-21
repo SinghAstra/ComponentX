@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TagInput } from "./components/tag-input";
 
 export default function Home() {
-  const [selectedClients, setSelectedClients] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -13,8 +13,8 @@ export default function Home() {
         <TagInput
           label="Type Your Tag"
           placeholder="Start Typing..."
-          value={selectedClients}
-          onChange={setSelectedClients}
+          value={selectedTags}
+          onChange={setSelectedTags}
           onInputChange={setInputValue}
           required
         />
@@ -24,9 +24,9 @@ export default function Home() {
               Input Value: {inputValue}
             </p>
           )}
-          {selectedClients.length > 0 && (
+          {selectedTags.length > 0 && (
             <p className="text-sm text-muted-foreground">
-              Selected : {selectedClients.join(", ")}
+              Selected : {selectedTags.join(", ")}
             </p>
           )}
         </div>

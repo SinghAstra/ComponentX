@@ -3,11 +3,8 @@
 import type React from "react";
 
 import { useToastContext } from "@/components/providers/toast";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { CloudUpload, ExternalLink, X } from "lucide-react";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CloudUpload, X } from "lucide-react";
 import { useRef, useState } from "react";
 
 interface VideoUploadProps {
@@ -17,13 +14,10 @@ interface VideoUploadProps {
 export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
   const [video, setVideo] = useState<{
     file?: File;
-    url?: string;
     preview?: string;
   } | null>(null);
   const { setToastMessage } = useToastContext();
   const [isDragging, setIsDragging] = useState(false);
-  const [urlInput, setUrlInput] = useState("");
-  const [showUrlInput, setShowUrlInput] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const supportedFormats = ["MP4", "MOV", "WebM", "AVI"];
@@ -68,21 +62,8 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
     }
   };
 
-  const handleUrlSubmit = () => {
-    if (!urlInput.trim()) {
-      setToastMessage("Please enter a valid URL");
-      return;
-    }
-
-    setVideo({ url: urlInput });
-    setUrlInput("");
-    setShowUrlInput(false);
-  };
-
   const handleClear = () => {
     setVideo(null);
-    setUrlInput("");
-    setShowUrlInput(false);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -110,15 +91,10 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <p className="font-medium text-foreground">
-                <span className="text-primary">Click to upload</span> or drag
-                and drop
-              </p>
-              <p className="text-xs text-muted-foreground">
-                MP4, MOV or URL (Youtube/Vimeo/Drive Link)
-              </p>
-            </div>
+            <p className="font-medium text-foreground">
+              <span className="text-primary">Click to upload</span> or drag and
+              drop
+            </p>
 
             <div className="flex gap-2 justify-center">
               <Button
@@ -132,43 +108,7 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
               >
                 Choose File
               </Button>
-              <Button
-                type="button"
-                variant="outline"
-                className="font-normal hover:bg-muted/20 transition-all duration-300 cursor-pointer rounded"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowUrlInput(!showUrlInput);
-                }}
-              >
-                Paste URL
-              </Button>
             </div>
-
-            {showUrlInput && (
-              <div className="flex gap-2 pt-2">
-                <Input
-                  placeholder="Enter YouTube, Vimeo, or Drive link..."
-                  value={urlInput}
-                  onChange={(e) => setUrlInput(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleUrlSubmit()}
-                  className="text-sm rounded"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                />
-                <Button
-                  type="button"
-                  className="rounded"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleUrlSubmit();
-                  }}
-                >
-                  Add
-                </Button>
-              </div>
-            )}
 
             <input
               ref={fileInputRef}
@@ -205,22 +145,6 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
               </div>
             )}
             <div className="flex gap-2 ">
-              {video.url && (
-                <Link
-                  href={video.url}
-                  className={cn(
-                    buttonVariants({ variant: "outline" }),
-                    "w-full hover:bg-muted/20 transition-all duration-300 font-normal rounded"
-                  )}
-                  target="_blank"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  View Video
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </Link>
-              )}
               <Button
                 type="button"
                 variant="outline"

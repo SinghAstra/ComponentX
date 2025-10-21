@@ -13,7 +13,7 @@ export function Tag({ label, onRemove }: TagProps) {
       <span>{label}</span>
       <button
         onClick={onRemove}
-        className="inline-flex items-center justify-center hover:opacity-70 transition-opacity cursor-pointer"
+        className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer"
         aria-label={`Remove ${label}`}
       >
         <X className="w-4 h-4" />
