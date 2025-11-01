@@ -75,14 +75,15 @@ import SearchDialogShowCase from "../../components/showcase/search-dialog-showca
 import Footer from "./footer";
 import Hero from "./hero";
 
-interface HomePageProps {
-  showcase?: boolean;
-}
+// interface HomePageProps {
+//   showcase?: boolean;
+// }
 
-const HomePage = ({ showcase = false }: HomePageProps) => {
+const HomePage = () => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
   const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
   const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
+  const showcase = false;
 
   interface User {
     id: number;
