@@ -5,7 +5,7 @@ const program = new Command();
 
 program
   .name("cx")
-  .description("ComponentX CLI - Install and manage reusable UI components")
+  .description("ComponentX (CLI) - Install and manage reusable UI components")
   .version("1.0.0");
 
 // Register all commands
