@@ -29,11 +29,11 @@ export const navLinks = [
   //       },
   //     ],
   //   },
-  {
-    title: "Documentation",
-    href: "/docs",
-    menu: [],
-  },
+  // {
+  //   title: "Documentation",
+  //   href: "/docs",
+  //   menu: [],
+  // },
   //   {
   //     title: "Resources",
   //     href: "/resources",

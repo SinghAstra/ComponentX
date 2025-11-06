@@ -2,29 +2,21 @@
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { navLinks } from "@/lib/nav-links";
 import { cn } from "@/lib/utils";
 import { slideFadeInVariantFromTopToBottom } from "@/lib/variants";
 import { motion } from "framer-motion";
-import { ChevronDown, LucideIcon, Menu } from "lucide-react";
+import { LucideIcon, Menu } from "lucide-react";
 import Link from "next/link";
 import React, { ReactNode, useState } from "react";
-import GridBackground from "../component-x/grid-background";
-import {
-  HoverPopOver,
-  HoverPopOverContent,
-  HoverPopOverTrigger,
-} from "../component-x/hover-popover";
 import Sidebar from "../component-x/sidebar";
 import MaxWidthWrapper from "../global/max-width-wrapper";
-import { Accordion, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
-  const handleClose = () => {
-    setIsSidebarOpen(false);
-  };
+  // const handleClose = () => {
+  //   setIsSidebarOpen(false);
+  // };
 
   return (
     <>
@@ -42,7 +34,7 @@ const Navbar = () => {
                 {siteConfig.name}
               </Link>
 
-              <div className="hidden lg:flex space-x-5">
+              {/* <div className="hidden lg:flex space-x-5">
                 {navLinks.map((navLink) => {
                   return navLink.menu.length > 0 ? (
                     <HoverPopOver key={navLink.title}>
@@ -79,7 +71,7 @@ const Navbar = () => {
                               </div>
                             </div>
                           )}
-                          {/* {navLink.menu.map((menuItem) => (
+                           {navLink.menu.map((menuItem) => (
                             <ListItem
                               key={menuItem.title}
                               title={menuItem.title}
@@ -88,7 +80,7 @@ const Navbar = () => {
                             >
                               {menuItem.tagline}
                             </ListItem>
-                          ))} */}
+                          ))} 
                         </div>
                       </HoverPopOverContent>
                     </HoverPopOver>
@@ -102,7 +94,7 @@ const Navbar = () => {
                     </Link>
                   );
                 })}
-              </div>
+              </div> */}
             </div>
 
             <Button
@@ -126,7 +118,7 @@ const Navbar = () => {
             {siteConfig.name}
           </Link>
 
-          <ul className="flex flex-1 flex-col items-start">
+          {/* <ul className="flex flex-1 flex-col items-start">
             <Accordion type="single" collapsible className="w-full">
               {navLinks.map((link) => (
                 <AccordionItem
@@ -137,7 +129,7 @@ const Navbar = () => {
                   {link.menu.length > 0 ? (
                     <>
                       <AccordionTrigger>{link.title}</AccordionTrigger>
-                      {/* <AccordionContent className="ml-4 pb-2">
+                       <AccordionContent className="ml-4 pb-2">
                         <ul onClick={handleClose} className={cn("w-full")}>
                           {link.menu.map((menuItem) => (
                             <ListItem
@@ -150,7 +142,7 @@ const Navbar = () => {
                             </ListItem>
                           ))}
                         </ul>
-                      </AccordionContent> */}
+                      </AccordionContent> 
                     </>
                   ) : (
                     <Link
@@ -164,7 +156,7 @@ const Navbar = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-          </ul>
+          </ul> */}
         </div>
       </Sidebar>
     </>
