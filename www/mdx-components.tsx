@@ -25,12 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
-        <h1
-          id={id}
-          className="text-4xl text-primary my-4"
-          data-heading="1"
-          {...props}
-        >
+        <h1 id={id} className="text-4xl  my-4" data-heading="1" {...props}>
           {children}
         </h1>
       );
@@ -38,12 +33,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
-        <h2
-          id={id}
-          data-heading="2"
-          className="text-3xl text-primary my-4"
-          {...props}
-        >
+        <h2 id={id} data-heading="2" className="text-3xl  my-4" {...props}>
           {children}
         </h2>
       );
