@@ -60,18 +60,16 @@ body {
     @apply bg-background text-foreground;
   }
 
-  /* Apply scrollbar styles globally */
   * {
     @apply border-border;
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--secondary)) transparent;
   }
 
-  /* Target all elements that can scroll */
   *::-webkit-scrollbar {
     width: 6px;
     border-radius: 3px;
-    height: 6px; /* For horizontal scrollbars */
+    height: 6px;
   }
 
   *::-webkit-scrollbar-track {
@@ -88,7 +86,6 @@ body {
     cursor: grab;
   }
 
-  /* Specific styling for horizontal scrollbars */
   *::-webkit-scrollbar-corner {
     background: transparent;
   }
@@ -97,19 +94,19 @@ body {
 /* Prism Syntax Highlight */
 
 .keyword {
-  color: #f97583; /* GitHub Light Red */
+  color: #f97583;
 }
 
 .function {
-  color: #d2a8ff; /* GitHub Light Purple */
+  color: #d2a8ff;
 }
 
 .punctuation {
-  color: #c9d1d9; /* GitHub Light Gray */
+  color: #c9d1d9;
 }
 
 .comment {
-  color: #8b949e; /* GitHub Muted Gray */
+  color: #8b949e;
 }
 
 .string,
@@ -117,24 +114,27 @@ body {
 .annotation,
 .boolean,
 .number {
-  color: #79c0ff; /* GitHub Light Blue */
+  color: #79c0ff;
 }
 
 .tag {
-  color: #a5d6ff; /* GitHub Cyan */
+  color: #a5d6ff;
 }
 
 .attr-name {
-  color: #d2a8ff; /* GitHub Light Purple */
+  color: #d2a8ff;
 }
 
 .attr-value {
-  color: #ffa657; /* GitHub Light Orange */
+  color: #ffa657;
 }
 
 pre > code {
   border: 0;
   padding: 0 !important;
+  background: transparent !important;
+  line-height: 24px !important;
+  letter-spacing: 0.7px !important;
 }
 
 .rehype-code-title {
@@ -229,7 +229,6 @@ pre > code {
   animation: scroll-down 30s linear infinite;
 }
 
-/* Pause animation on hover */
 .animate-scroll-up:hover,
 .animate-scroll-down:hover {
   animation-play-state: paused;

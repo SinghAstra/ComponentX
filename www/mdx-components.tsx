@@ -25,7 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
-        <h1 id={id} className="text-4xl  my-4" data-heading="1" {...props}>
+        <h1 id={id} data-heading="1" className="text-4xl my-4" {...props}>
           {children}
         </h1>
       );
@@ -33,17 +33,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
-        <h2 id={id} data-heading="2" className="text-3xl  my-4" {...props}>
+        <h2 id={id} data-heading="2" className="text-3xl my-4" {...props}>
           {children}
         </h2>
       );
     },
     p: ({ className, ...props }) => (
-      <p className={cn("leading-7", className)} {...props} />
+      <p className={cn("leading-9 tracking-wider", className)} {...props} />
     ),
     Link: ({ className, href, children, ...props }) => {
-      const baseClasses =
-        "text-primary underline underline-offset-4 hover:text-primary/80 transition-colors duration-300";
+      const baseClasses = "text-primary";
       const combinedClassName = cn(baseClasses, className);
 
       const isInternal =
@@ -89,7 +88,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     li: ({ className, ...props }) => (
-      <li className={cn("leading-7", className)} {...props} />
+      <li className={cn("leading-9 tracking-wider", className)} {...props} />
     ),
     blockquote: ({ className, ...props }) => (
       <blockquote
@@ -103,7 +102,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ className, ...props }) => (
       <code
         className={cn(
-          "relative rounded px-[0.3rem] py-[0.2rem] text-sm border z-1",
+          "relative rounded px-[0.3rem] py-[0.2rem] text-sm border z-1 bg-primary",
           className
         )}
         {...props}

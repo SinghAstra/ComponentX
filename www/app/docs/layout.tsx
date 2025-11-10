@@ -1,18 +1,15 @@
 "use client";
 
 import EllipseBackground from "@/components/component-x/ellipse-background";
-import LampBackground from "@/components/component-x/lamp-background";
 import DocsSidebar from "@/components/layout/docs-sidebar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { Menu } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { FaGithub } from "react-icons/fa";
 import TableOfContents from "../../components/component-x/toc";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div className="h-screen flex flex-col overflow-hidden w-full">
       <div className="sticky top-0 inset-x-0 flex items-center justify-between bg-deep-primary p-4 w-full border-b shadow-lg">
@@ -31,10 +28,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="flex flex-1 overflow-hidden relative ">
         <DocsSidebar />
-        <LampBackground
-          angleSpan="small"
-          colorOne="hsl(var(--subtle-primary))"
-        />
+        <EllipseBackground colorOne="hsl(var(--subtle-primary))" />
         <div className=" flex-1 overflow-hidden relative">
           <div className="w-full h-full p-4 sm:px-8 overflow-y-auto">
             {children}

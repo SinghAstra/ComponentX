@@ -53,12 +53,11 @@ function EllipseBackground({
       transition / 2
     }%, ${colorTwo} ${transition}%)`;
   }
-  const maskGradientValue = `radial-gradient(ellipse ${radiusX}% ${radiusY}% at ${gradientPosition}, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)`;
 
   return (
     <div
       className={cn(
-        "absolute inset-0 overflow-hidden bg-background z-[-1]",
+        "absolute inset-0 overflow-hidden z-[-1] bg-deep-primary",
         className
       )}
     >
@@ -66,7 +65,6 @@ function EllipseBackground({
         className={`w-full h-full ${animate && "animate-pulse"}`}
         style={{
           background: backgroundGradientValue,
-          maskImage: maskGradientValue,
         }}
       />
     </div>

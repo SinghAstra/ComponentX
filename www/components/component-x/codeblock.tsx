@@ -37,7 +37,7 @@ export const CodeBlock = ({
       <pre
         ref={codeRef}
         className={cn(
-          "my-4 overflow-x-auto rounded border bg-muted/10 p-4 pr-12",
+          "my-4 overflow-auto rounded border bg-muted/40 p-4 pr-12",
           className
         )}
         {...props}
