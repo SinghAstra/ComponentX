@@ -26,6 +26,214 @@ export const docsLink: DocsSectionLink[] = [
         title: "Forms",
         path: "/docs/components/forms",
       },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
+      {
+        title: "Buttons",
+        path: "/docs/components/buttons",
+      },
+      {
+        title: "Forms",
+        path: "/docs/components/forms",
+      },
     ],
   },
 ];

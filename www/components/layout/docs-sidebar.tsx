@@ -5,13 +5,12 @@ import { DocsLink } from "@/interfaces/docs-link";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Sidebar } from "../ui/sidebar";
 
 function DocsSidebar({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <Sidebar>
+    <div className="w-[256px] pt-4 bg-deep-primary h-full overflow-auto">
       {docsLink.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="py-1 pl-1 text-xs tracking-widest text-muted-foreground uppercase">
@@ -24,7 +23,7 @@ function DocsSidebar({ onLinkClick }: { onLinkClick?: () => void }) {
           />
         </div>
       ))}
-    </Sidebar>
+    </div>
   );
 }
 
