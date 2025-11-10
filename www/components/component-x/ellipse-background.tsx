@@ -20,6 +20,7 @@ interface EllipseBackgroundProps {
   radiusX?: number;
   radiusY?: number;
   transition?: number;
+  maskImage?: boolean;
 }
 
 const positionMap: Record<RadialPosition, string> = {
@@ -43,6 +44,7 @@ function EllipseBackground({
   radiusY = 100,
   transition = 80,
   animate = false,
+  maskImage = true,
 }: EllipseBackgroundProps) {
   const gradientPosition = positionMap[position];
   let backgroundGradientValue;
@@ -53,19 +55,22 @@ function EllipseBackground({
       transition / 2
     }%, ${colorTwo} ${transition}%)`;
   }
+  const maskGradientValue = `radial-gradient(ellipse ${radiusX}% ${radiusY}% at ${gradientPosition}, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)`;
+  const style = {
+    background: backgroundGradientValue,
+    ...(maskImage && { maskImage: maskGradientValue }),
+  };
 
   return (
     <div
       className={cn(
-        "absolute inset-0 overflow-hidden z-[-1] bg-deep-primary",
+        "absolute inset-0 overflow-hidden bg-background z-[-1]",
         className
       )}
     >
       <div
         className={`w-full h-full ${animate && "animate-pulse"}`}
-        style={{
-          background: backgroundGradientValue,
-        }}
+        style={style}
       />
     </div>
   );
