@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import type { CSSProperties } from "react";
 
 interface LampBackgroundProps {
   colorOne?: string;
@@ -12,11 +11,10 @@ interface LampBackgroundProps {
 function LampBackground({
   className,
   colorOne = "hsl(var(--primary))",
-  colorTwo = "transparent",
+  colorTwo = "hsl(var(--deep-primary))",
   position = "top",
   angleSpan = "medium",
 }: LampBackgroundProps) {
-  let maskImageStyle: CSSProperties["maskImage"];
   let containerFlexClass: string;
   let gradient1FromAt: string;
   let gradient2FromAt: string;
@@ -33,8 +31,6 @@ function LampBackground({
 
   switch (position) {
     case "top":
-      maskImageStyle =
-        "linear-gradient(0deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))";
       containerFlexClass = "flex-row";
       gradient1FromAt = "from 90deg at 0% 0%";
       gradient2FromAt = "from 180deg at 100% 0%";
@@ -42,8 +38,6 @@ function LampBackground({
       div2SizeClass = "flex-1 h-full";
       break;
     case "bottom":
-      maskImageStyle =
-        "linear-gradient(180deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))";
       containerFlexClass = "flex-row";
       gradient1FromAt = "from 0deg at 0% 100%";
       gradient2FromAt = "from 270deg at 100% 100%";
@@ -51,20 +45,16 @@ function LampBackground({
       div2SizeClass = "flex-1 h-full";
       break;
     case "left":
-      maskImageStyle =
-        "linear-gradient(90deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))";
       containerFlexClass = "flex-col";
-      gradient1FromAt = "from 90deg at 0% 0%"; // Top-left corner for first half
-      gradient2FromAt = "from 0deg at 0% 100%"; // Bottom-left corner for second half
+      gradient1FromAt = "from 90deg at 0% 0%";
+      gradient2FromAt = "from 0deg at 0% 100%";
       div1SizeClass = "w-full flex-1";
       div2SizeClass = "flex-1 w-full";
       break;
     case "right":
-      maskImageStyle =
-        "linear-gradient(270deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))";
       containerFlexClass = "flex-col";
-      gradient1FromAt = "from 180deg at 100% 0%"; // Top-right corner for first half
-      gradient2FromAt = "from 270deg at 100% 100%"; // Bottom-right corner for second half
+      gradient1FromAt = "from 180deg at 100% 0%";
+      gradient2FromAt = "from 270deg at 100% 100%";
       div1SizeClass = "w-full flex-1";
       div2SizeClass = "flex-1 w-full";
       break;
@@ -88,11 +78,11 @@ function LampBackground({
   return (
     <div
       className={cn(
-        "absolute inset-0 flex z-[-1]",
+        "absolute inset-0 z-[-1] flex",
         containerFlexClass,
         className
       )}
-      style={{ gap: 0, maskImage: maskImageStyle }}
+      style={{ gap: 0 }}
     >
       <div
         className={cn(div1SizeClass)}

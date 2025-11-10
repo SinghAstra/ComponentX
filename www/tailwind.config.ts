@@ -39,7 +39,7 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         "deep-primary": "hsl(var(--deep-primary))",
-        "subtle-surface": "hsl(var(--subtle-surface))",
+        "subtle-primary": "hsl(var(--subtle-primary))",
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",

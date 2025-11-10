@@ -86,7 +86,7 @@ function TableOfContents() {
   if (headings.length === 0) return null;
 
   return (
-    <>
+    <div className="hidden lg:block pt-4 bg-deep-primary h-full pl-8 w-64 right-0 inset-y-0 overflow-y-auto">
       <p className="mt-4 mb-2 text-sm">On this page</p>
       <div className="relative pl-0">
         <div
@@ -133,7 +133,7 @@ function TableOfContents() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,5 +1,7 @@
 "use client";
 
+import EllipseBackground from "@/components/component-x/ellipse-background";
+import LampBackground from "@/components/component-x/lamp-background";
 import DocsSidebar from "@/components/layout/docs-sidebar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -13,7 +15,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div className="h-screen flex flex-col overflow-hidden w-full">
-      <div className="sticky top-0 inset-x-0 flex items-center justify-between bg-deep-primary p-4 w-full">
+      <div className="sticky top-0 inset-x-0 flex items-center justify-between bg-deep-primary p-4 w-full border-b shadow-lg">
         <Link href="/" className="font-medium text-2xl text-primary">
           {siteConfig.name}
         </Link>
@@ -27,12 +29,18 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
           </Button>
         </a>
       </div>
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative ">
         <DocsSidebar />
-        {/* <div className="p-4 sm:px-8">{children}</div> */}
-        {/* <div className="hidden lg:block pl-8 fixed w-64 top-24 right-0 bottom-0 overflow-y-auto">
+        <LampBackground
+          angleSpan="small"
+          colorOne="hsl(var(--subtle-primary))"
+        />
+        <div className=" flex-1 overflow-hidden relative">
+          <div className="w-full h-full p-4 sm:px-8 overflow-y-auto">
+            {children}
+          </div>
+        </div>
         <TableOfContents />
-      </div> */}
       </div>
     </div>
   );
