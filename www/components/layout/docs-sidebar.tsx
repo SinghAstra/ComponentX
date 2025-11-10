@@ -1,23 +1,17 @@
 "use client";
 
-import { DocsLink, DocsSectionLink } from "@/interfaces/docs-link";
+import { docsLink } from "@/config/docs";
+import { DocsLink } from "@/interfaces/docs-link";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Sidebar } from "../ui/sidebar";
 
-export function DocsNav({
-  docsLink,
-  className,
-  onLinkClick,
-}: {
-  docsLink: DocsSectionLink[];
-  className?: string;
-  onLinkClick?: () => void;
-}) {
+function DocsSidebar({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <div className={cn("w-64 space-y-6 overflow-auto pl-1", className)}>
+    <Sidebar>
       {docsLink.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="py-1 pl-1 text-xs tracking-widest text-muted-foreground uppercase">
@@ -30,7 +24,7 @@ export function DocsNav({
           />
         </div>
       ))}
-    </div>
+    </Sidebar>
   );
 }
 
@@ -69,3 +63,5 @@ function DocsNavItems({
     </div>
   );
 }
+
+export default DocsSidebar;

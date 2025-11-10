@@ -2,6 +2,7 @@ import MaskedGridBackground from "@/components/component-x/masked-grid-backgroun
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import React, { ReactNode, Suspense } from "react";
+import { SidebarProvider } from "../ui/sidebar";
 import { ToastProvider } from "./toast";
 
 interface ProviderProps {
@@ -31,7 +32,9 @@ const LoadingFallback = () => {
 const Providers = ({ children }: ProviderProps) => {
   return (
     <Suspense fallback={<LoadingFallback />}>
-      <ToastProvider>{children}</ToastProvider>
+      <SidebarProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </SidebarProvider>
     </Suspense>
   );
 };
