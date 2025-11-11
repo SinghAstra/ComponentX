@@ -28,7 +28,11 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="flex flex-1 overflow-hidden relative ">
         <DocsSidebar />
-        <EllipseBackground colorOne="hsl(var(--subtle-primary))" />
+        <EllipseBackground
+          colorOne="hsl(var(--subtle-primary))"
+          colorTwo="hsl(var(--deep-primary))"
+          maskImage={false}
+        />
         <div className=" flex-1 overflow-hidden relative">
           <div className="w-full h-full p-4 sm:px-8 overflow-y-auto">
             {children}
