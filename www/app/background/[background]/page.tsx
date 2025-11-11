@@ -48,7 +48,7 @@ const BackgroundInAction = () => {
   }
 
   return (
-    <div>
+    <div className="w-full">
       {inActionComponents[componentName]}
       <HomePage showcase={true} />
     </div>

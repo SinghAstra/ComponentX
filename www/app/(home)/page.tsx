@@ -3,7 +3,11 @@ import React from "react";
 import ShowCasePage from "./showcase";
 
 const HomePage = () => {
-  return <ShowCasePage showcase={false} />;
+  return (
+    <div className="w-full">
+      <ShowCasePage showcase={false} />
+    </div>
+  );
 };
 
 export default HomePage;
