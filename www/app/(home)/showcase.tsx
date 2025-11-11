@@ -129,7 +129,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
       className="flex flex-col h-screen overflow-hidden"
     >
       <Navbar />
-      <div className="w-full h-full flex flex-col overflow-y-auto">
+      <div className="w-full h-full flex flex-col overflow-y-auto p-4 sm:px-8">
         <div className="min-h-screen">
           {!showcase && <LampBackground />}
           <Hero />
@@ -163,31 +163,33 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
                 </Button>
               </div>
             )}
-            <FloatingNavbar show={showFloatingNavbar}>
-              <FloatingNavbarContent>
-                <FloatingNavbarItem href="/" icon={Home} label="Home" />
-                <FloatingNavbarSeparator />
-                <FloatingNavbarItem
-                  href="/background"
-                  icon={Info}
-                  label="About"
-                />
-                <FloatingNavbarSeparator />
-                <FloatingNavbarItem
-                  href="/work"
-                  icon={Briefcase}
-                  label="Work"
-                />
-                <FloatingNavbarSeparator />
-                <FloatingNavbarItem href="/blog" icon={BookOpen} label="Blog" />
-                <FloatingNavbarSeparator />
-                <FloatingNavbarItem
-                  href="/gallery"
-                  icon={ImageIcon}
-                  label="Gallery"
-                />
-              </FloatingNavbarContent>
-            </FloatingNavbar>
+            {showFloatingNavbar && (
+              <FloatingNavbar>
+                <FloatingNavbarContent>
+                  <FloatingNavbarItem href="/" icon={Home} label="Home" />
+                  <FloatingNavbarSeparator />
+                  <FloatingNavbarItem href="/docs" icon={Info} label="About" />
+                  <FloatingNavbarSeparator />
+                  <FloatingNavbarItem
+                    href="/docs"
+                    icon={Briefcase}
+                    label="Work"
+                  />
+                  <FloatingNavbarSeparator />
+                  <FloatingNavbarItem
+                    href="/docs"
+                    icon={BookOpen}
+                    label="Blog"
+                  />
+                  <FloatingNavbarSeparator />
+                  <FloatingNavbarItem
+                    href="/docs"
+                    icon={ImageIcon}
+                    label="Gallery"
+                  />
+                </FloatingNavbarContent>
+              </FloatingNavbar>
+            )}
             <motion.div variants={scaleInVariant}>
               <Button
                 variant="outline"

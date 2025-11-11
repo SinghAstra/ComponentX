@@ -14,7 +14,7 @@ import React from "react";
 
 const BackgroundPage = () => {
   return (
-    <div className="px-4 sm:px-8">
+    <div className="p-4 sm:px-8 w-full">
       <motion.div
         variants={containerVariant}
         initial="hidden"

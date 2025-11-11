@@ -2,42 +2,38 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import type * as React from "react";
 
-export function FloatingNavbar({
-  show = true,
-  className,
-  children,
-}: {
-  show: boolean;
+interface FloatingNavbarProps {
   className?: string;
   children: React.ReactNode;
-}) {
-  if (!show) return null;
+}
+
+export function FloatingNavbar({ className, children }: FloatingNavbarProps) {
   return (
     <nav
-      className={cn(
-        "fixed bottom-6 md:bottom-auto md:top-6 left-1/2 -translate-x-1/2 z-50",
-        className
-      )}
+      className={cn("fixed top-6 left-1/2 -translate-x-1/2 z-10", className)}
     >
       {children}
     </nav>
   );
 }
 
+interface FloatingNavbarContentProps {
+  className?: string;
+  children: React.ReactNode;
+}
+
 export function FloatingNavbarContent({
   className,
   children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+}: FloatingNavbarContentProps) {
   return (
     <div
       className={cn(
-        "flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded px-2 py-1 shadow-lg",
+        "flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded p-2 shadow-lg",
         className
       )}
     >
@@ -46,17 +42,19 @@ export function FloatingNavbarContent({
   );
 }
 
+interface FloatingNavbarItemProps {
+  href: string;
+  icon?: LucideIcon;
+  label?: string;
+  className?: string;
+}
+
 export function FloatingNavbarItem({
   href,
   icon: Icon,
   label,
   className,
-}: {
-  href: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  label?: string;
-  className?: string;
-}) {
+}: FloatingNavbarItemProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
