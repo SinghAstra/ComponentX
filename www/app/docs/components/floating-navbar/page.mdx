@@ -1,67 +1,69 @@
----
-title: Floating Navbar
-description: A centered, fixed navigation component with a backdrop blur effect.
----
-
-# 🧭 Floating Navbar
+# Floating Navbar
 
 A centered, floating, fixed navigation component designed for modern web applications. It uses a backdrop blur effect for a sleek, non-intrusive appearance.
-
----
-
-## Installation
-
-This component relies on `lucide-react` for icons and the `Button` component (likely from a `shadcn/ui` setup).
-
-## Component Preview
 
 <ComponentPreviewWithCode
   code={`"use client";
 
-import { Home, Settings, User } from "lucide-react";
-import {
-  FloatingNavbar,
+import FloatingNavbar, {
   FloatingNavbarContent,
   FloatingNavbarItem,
   FloatingNavbarSeparator,
-} from "@/components/ui/floating-navbar"; // Adjust import path
+} from "@/components/component-x/floating-navbar";
+import { Button } from "@/components/ui/button";
+import { Menu, Settings, X } from "lucide-react";
+import { useState } from "react";
 
-export function NavbarPreview() {
-  return (
-    <div className="h-[200px] w-full relative">
-      <FloatingNavbar>
-        <FloatingNavbarContent>
-          <FloatingNavbarItem href="/" icon={Home} label="Home" />
-          <FloatingNavbarItem href="/projects" label="Projects" />
-          <FloatingNavbarSeparator />
-          <FloatingNavbarItem
-            href="/settings"
-            icon={Settings}
-            label="Settings"
-          />
-        </FloatingNavbarContent>
-      </FloatingNavbar>
-      <div className="h-full bg-gradient-to-br from-background to-muted/50 border rounded-lg flex items-center justify-center">
-        <p className="text-muted-foreground">
-          Scroll to see the fixed position
-        </p>
-      </div>
+export function FloatingNavbarPreview() {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+return (
+<div className="relative w-full h-full flex items-center justify-center">
+{isNavbarOpen && (
+<div
+className="fixed inset-0 bg-muted/30 backdrop-blur-sm z-[5] transition-opacity duration-300"
+onClick={() => setIsNavbarOpen(false)}
+aria-hidden="true"
+/>
+)}
+
+      {isNavbarOpen && (
+        <FloatingNavbar>
+          <FloatingNavbarContent className="bg-background">
+            <FloatingNavbarItem href="/" icon={Menu} label="Home" />
+            <FloatingNavbarSeparator />
+            <FloatingNavbarItem href="/projects" label="Projects" />
+            <FloatingNavbarSeparator />
+            <FloatingNavbarItem
+              href="/settings"
+              icon={Settings}
+              label="Settings"
+            />
+          </FloatingNavbarContent>
+        </FloatingNavbar>
+      )}
+
+      <Button
+        onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+        className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        size="icon"
+        variant={isNavbarOpen ? "default" : "outline"}
+      >
+        {isNavbarOpen ? (
+          <X className="h-5 w-5" />
+        ) : (
+          <Menu className="h-5 w-5" />
+        )}
+      </Button>
     </div>
-  );
-}
 
-// NOTE: For a real preview, ensure the component is rendered inside an actual
-// page with space around it, as the component uses \`fixed\` positioning.
+);
+}
 `}
 
-> {/* The content that actually renders the component for the preview */}
+>
 
-  <div className="h-[200px] w-full relative">
   <FloatingNavbarPreview/>
-    <div className="h-full bg-gradient-to-br from-background to-muted/50 border rounded-lg flex items-center justify-center">
-      <p className="text-muted-foreground">Component uses fixed positioning</p>
-    </div>
-  </div>
 </ComponentPreviewWithCode>
 
 ## Components

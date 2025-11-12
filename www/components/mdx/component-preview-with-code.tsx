@@ -39,14 +39,14 @@ export function ComponentPreviewWithCode({
     }
   };
   return (
-    <div>
+    <div className="my-8">
       <ComponentPreview>{children}</ComponentPreview>
-      <div className="relative">
+      <div className="relative h-[350px] overflow-y-auto border rounded-b-md bg-muted/40">
         <Button
           onClick={handleCopy}
           variant={"outline"}
           size={"sm"}
-          className="absolute top-2 right-2 z-10 bg-muted/80 border hover:bg-muted/30 transition-all duration-300 hover:scale-105 active:scale-95"
+          className="absolute top-2 right-2 z-10 bg-transparent border hover:bg-transparent transition-all duration-300 hover:scale-105 active:scale-95"
         >
           {hasCopied ? (
             <Check className="h-4 w-4 text-primary" />
@@ -60,9 +60,8 @@ export function ComponentPreviewWithCode({
           showLineNumbers={true}
           className=""
           customStyle={{
-            borderRadius: "0 0 8px 8px",
-            border: "1px solid hsl(var(--border))",
-            background: "hsl(var(--muted) / 0.4)",
+            borderBottom: "",
+            background: "transparent",
             margin: "0",
           }}
           lineNumberStyle={{

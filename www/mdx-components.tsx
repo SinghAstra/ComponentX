@@ -1,4 +1,4 @@
-import FloatingNavbarPreview from "@/app/docs/components/floating-navbar/floating-navbar-preview";
+import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
