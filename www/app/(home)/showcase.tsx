@@ -60,17 +60,17 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import AuthModalShowCase from "../../components/component-x/auth-modal";
-import EllipseBackground from "../../components/component-x/ellipse-background";
-import GridBackground from "../../components/component-x/grid-background";
-import LampBackground from "../../components/component-x/lamp-background";
-import MaskedGridBackground from "../../components/component-x/masked-grid-background";
-import MovingBackground from "../../components/component-x/moving-background";
-import MovingBorder from "../../components/component-x/moving-border";
-import NotificationInput from "../../components/component-x/notification-input";
-import RadialBackground from "../../components/component-x/radial-background";
-import DialogBoilerPlateShowCase from "../../components/showcase/dialog-boilerplate-showcase";
-import SearchDialogShowCase from "../../components/showcase/search-dialog-showcase";
+import AuthModalShowCase from "@/components/component-x/auth-modal";
+import EllipseBackground from "@/components/component-x/ellipse-background";
+import GridBackground from "@/components/component-x/grid-background";
+import LampBackground from "@/components/component-x/lamp-background";
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+import MovingBackground from "@/components/component-x/moving-background";
+import MovingBorder from "@/components/component-x/moving-border";
+import NotificationInput from "@/components/component-x/notification-input";
+import RadialBackground from "@/components/component-x/radial-background";
+import DialogBoilerPlateShowCase from "@/components/showcase/dialog-boilerplate-showcase";
+import SearchDialogShowCase from "@/components/showcase/search-dialog-showcase";
 import Footer from "./footer";
 import Hero from "./hero";
 

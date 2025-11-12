@@ -24,7 +24,6 @@ const LoadingFallback = () => {
       <p className="text-xl tracking-wide text-muted-foreground">
         {siteConfig.description}
       </p>
-      <MaskedGridBackground />
     </div>
   );
 };
