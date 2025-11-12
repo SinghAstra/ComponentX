@@ -3,6 +3,11 @@ import { ConicBackgroundPositions } from "@/app/docs/components/conic-background
 import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
 import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
+import { RadialBackgroundAnimated } from "@/app/docs/components/radial-background/radial-animated-background";
+import { RadialBackgroundPositions } from "@/app/docs/components/radial-background/radial-background-positions";
+import { RadialBackgroundPreview } from "@/app/docs/components/radial-background/radial-background-preview";
+import { RadialBackgroundRadius } from "@/app/docs/components/radial-background/radial-background-radius";
+import { RadialBackgroundVariants } from "@/app/docs/components/radial-background/radial-background-variants";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
@@ -36,6 +41,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ConicBackgroundPreview,
     ConicBackgroundPositions,
     ConicAngleSpans,
+    RadialBackgroundAnimated,
+    RadialBackgroundPositions,
+    RadialBackgroundPreview,
+    RadialBackgroundRadius,
+    RadialBackgroundVariants,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
