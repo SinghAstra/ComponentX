@@ -1,3 +1,4 @@
+import FloatingNavbarPreview from "@/app/docs/components/floating-navbar/floating-navbar-preview";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
@@ -23,7 +24,9 @@ const generateId = (text: string) => {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
+
     ComponentPreviewWithCode,
+    FloatingNavbarPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

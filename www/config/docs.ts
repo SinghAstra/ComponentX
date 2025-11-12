@@ -19,8 +19,8 @@ export const docsLink: DocsSectionLink[] = [
     title: "Components",
     links: [
       {
-        title: "Buttons",
-        path: "/docs/components/buttons",
+        title: "Floating Navbar",
+        path: "/docs/components/floating-navbar",
       },
       {
         title: "Forms",

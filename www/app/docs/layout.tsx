@@ -1,13 +1,13 @@
 "use client";
 
 import EllipseBackground from "@/components/component-x/ellipse-background";
+import TableOfContents from "@/components/component-x/toc";
 import DocsSidebar from "@/components/layout/docs-sidebar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import TableOfContents from "../../components/component-x/toc";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   return (

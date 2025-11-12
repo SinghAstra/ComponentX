@@ -1,0 +1,80 @@
+---
+title: Floating Navbar
+description: A centered, fixed navigation component with a backdrop blur effect.
+---
+
+# 🧭 Floating Navbar
+
+A centered, floating, fixed navigation component designed for modern web applications. It uses a backdrop blur effect for a sleek, non-intrusive appearance.
+
+---
+
+## Installation
+
+This component relies on `lucide-react` for icons and the `Button` component (likely from a `shadcn/ui` setup).
+
+## Component Preview
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import { Home, Settings, User } from "lucide-react";
+import {
+  FloatingNavbar,
+  FloatingNavbarContent,
+  FloatingNavbarItem,
+  FloatingNavbarSeparator,
+} from "@/components/ui/floating-navbar"; // Adjust import path
+
+export function NavbarPreview() {
+  return (
+    <div className="h-[200px] w-full relative">
+      <FloatingNavbar>
+        <FloatingNavbarContent>
+          <FloatingNavbarItem href="/" icon={Home} label="Home" />
+          <FloatingNavbarItem href="/projects" label="Projects" />
+          <FloatingNavbarSeparator />
+          <FloatingNavbarItem
+            href="/settings"
+            icon={Settings}
+            label="Settings"
+          />
+        </FloatingNavbarContent>
+      </FloatingNavbar>
+      <div className="h-full bg-gradient-to-br from-background to-muted/50 border rounded-lg flex items-center justify-center">
+        <p className="text-muted-foreground">
+          Scroll to see the fixed position
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// NOTE: For a real preview, ensure the component is rendered inside an actual
+// page with space around it, as the component uses \`fixed\` positioning.
+`}
+
+> {/* The content that actually renders the component for the preview */}
+
+  <div className="h-[200px] w-full relative">
+  <FloatingNavbarPreview/>
+    <div className="h-full bg-gradient-to-br from-background to-muted/50 border rounded-lg flex items-center justify-center">
+      <p className="text-muted-foreground">Component uses fixed positioning</p>
+    </div>
+  </div>
+</ComponentPreviewWithCode>
+
+## Components
+
+The Floating Navbar is composed of four exported components:
+
+### 1. FloatingNavbar
+
+The main container. It applies the fixed positioning (`fixed top-6 left-1/2 -translate-x-1/2 z-10`).
+
+| Prop        | Type              | Description                                                   |
+| :---------- | :---------------- | :------------------------------------------------------------ |
+| `className` | `string`          | Optional class name to customize the outer `<nav>` container. |
+| `children`  | `React.ReactNode` | Typically an instance of `<FloatingNavbarContent>`.           |
+
+### 2. FloatingNavbar
