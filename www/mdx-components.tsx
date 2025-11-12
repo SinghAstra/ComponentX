@@ -13,6 +13,7 @@ import {
 } from "./components/component-x/table";
 import { CodeBlock } from "./components/mdx/codeblock";
 import { ComponentPreviewWithCode } from "./components/mdx/component-preview-with-code";
+import { Installation } from "./components/mdx/installation";
 
 const generateId = (text: string) => {
   return text
@@ -24,7 +25,7 @@ const generateId = (text: string) => {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-
+    Installation,
     ComponentPreviewWithCode,
     FloatingNavbarPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
