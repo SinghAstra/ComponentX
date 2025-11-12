@@ -1,3 +1,7 @@
+import { ConicBackgroundColors } from "@/app/docs/components/conic-background/conic-background-custom-colors";
+import { ConicBackgroundPositions } from "@/app/docs/components/conic-background/conic-background-positions";
+import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
+import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
@@ -28,6 +32,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Installation,
     ComponentPreviewWithCode,
     FloatingNavbarPreview,
+    ConicBackgroundSpans,
+    ConicBackgroundPreview,
+    ConicBackgroundPositions,
+    ConicBackgroundColors,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
@@ -40,6 +48,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const id = generateId(children?.toString() || "");
       return (
         <h2 id={id} data-heading="2" className="text-3xl my-4" {...props}>
+          {children}
+        </h2>
+      );
+    },
+    h3: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
+      const id = generateId(children?.toString() || "");
+      return (
+        <h2 id={id} data-heading="3" className="text-2xl my-4" {...props}>
           {children}
         </h2>
       );

@@ -1,4 +1,5 @@
 "use client";
+import AuthModalShowCase from "@/components/component-x/auth-modal";
 import BorderHoverLink from "@/components/component-x/border-hover-link";
 import {
   Carousel,
@@ -9,17 +10,25 @@ import {
   CarouselItem,
 } from "@/components/component-x/carousel";
 import ConicBackground from "@/components/component-x/conic-background";
+import EllipseBackground from "@/components/component-x/ellipse-background";
 import {
   FloatingNavbar,
   FloatingNavbarContent,
   FloatingNavbarItem,
   FloatingNavbarSeparator,
 } from "@/components/component-x/floating-navbar";
+import GridBackground from "@/components/component-x/grid-background";
 import {
   HoverPopOver,
   HoverPopOverContent,
   HoverPopOverTrigger,
 } from "@/components/component-x/hover-popover";
+import LampBackground from "@/components/component-x/lamp-background";
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+import MovingBackground from "@/components/component-x/moving-background";
+import MovingBorder from "@/components/component-x/moving-border";
+import NotificationInput from "@/components/component-x/notification-input";
+import RadialBackground from "@/components/component-x/radial-background";
 import Sidebar from "@/components/component-x/sidebar";
 import {
   TabItem,
@@ -37,6 +46,8 @@ import {
   TableRow,
 } from "@/components/component-x/table";
 import Navbar from "@/components/navigation/navbar";
+import DialogBoilerPlateShowCase from "@/components/showcase/dialog-boilerplate-showcase";
+import SearchDialogShowCase from "@/components/showcase/search-dialog-showcase";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -60,17 +71,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import AuthModalShowCase from "@/components/component-x/auth-modal";
-import EllipseBackground from "@/components/component-x/ellipse-background";
-import GridBackground from "@/components/component-x/grid-background";
-import LampBackground from "@/components/component-x/lamp-background";
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
-import MovingBackground from "@/components/component-x/moving-background";
-import MovingBorder from "@/components/component-x/moving-border";
-import NotificationInput from "@/components/component-x/notification-input";
-import RadialBackground from "@/components/component-x/radial-background";
-import DialogBoilerPlateShowCase from "@/components/showcase/dialog-boilerplate-showcase";
-import SearchDialogShowCase from "@/components/showcase/search-dialog-showcase";
 import Footer from "./footer";
 import Hero from "./hero";
 
@@ -140,8 +140,20 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="bg-background col-span-1 sm:col-span-2 lg:col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border rounded"
+            className="bg-background col-span-1 sm:col-span-2 lg:col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border rounded relative"
           >
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/floating-navbar">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
+
             {showFloatingNavbar && (
               <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-[10] flex items-center justify-center">
                 <Button

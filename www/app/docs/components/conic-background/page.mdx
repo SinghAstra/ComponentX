@@ -1,0 +1,226 @@
+# Conic Background
+
+A versatile, gradient-based background component that uses conic gradients to create smooth, directional color transitions. Perfect for adding subtle depth and visual interest to your layouts.
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import ConicBackground from "@/components/component-x/conic-background";
+
+export function ConicBackgroundPreview() {
+  return (
+    <div className="relative w-full h-96 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
+      <ConicBackground 
+        position="right" 
+        backgroundSpan="large"
+        angleSpan="medium"
+        colorOne="hsl(var(--primary)/0.4)"
+        colorTwo="hsl(var(--primary))"
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-foreground">Conic Background</h3>
+          <p className="text-muted-foreground mt-2">Smooth gradient transitions</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+`}
+>
+  <ConicBackgroundPreview />
+</ComponentPreviewWithCode>
+
+## Installation
+
+<Installation
+  command="npx cx add conic-background"
+  code={`import { cn } from "@/lib/utils";
+  
+  interface ConicBackgroundProps {
+    className?: string;
+    position?: "right" | "top" | "left" | "bottom";
+    backgroundSpan?: "small" | "medium" | "large";
+    angleSpan?: "small" | "medium" | "large";
+    colorOne?: string;
+    colorTwo?: string;
+  }
+  
+  const ConicBackground = ({
+    className,
+    position = "right",
+    angleSpan = "medium",
+    colorOne = "hsl(var(--primary)/0.4)",
+    colorTwo = "hsl(var(--primary))",
+    backgroundSpan = "large",
+  }: ConicBackgroundProps) => {
+    const backgroundStops = {
+      small:
+        "rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.1) 100%",
+      medium:
+        "rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0.1) 100%",
+      large:
+        "rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.1) 100%",
+    }[backgroundSpan];
+  
+    const positionVal = {
+      right: { from: "180deg", positionX: "100%", positionY: "50%" },
+      top: { from: "90deg", positionX: "50%", positionY: "0%" },
+      left: { from: "0deg", positionX: "0%", positionY: "50%" },
+      bottom: { from: "270deg", positionX: "50%", positionY: "100%" },
+    }[position];
+  
+    const angleStops = {
+      small: { start: 45, mid: 90, end: 135 },
+      medium: { start: 30, mid: 90, end: 150 },
+      large: { start: 15, mid: 90, end: 165 },
+    }[angleSpan];
+  
+    const conicGradientValue = \`conic-gradient(from \${positionVal.from} at \${positionVal.positionX} \${positionVal.positionY}, \${colorOne} \${angleStops.start}deg, \${colorTwo} \${angleStops.mid}deg, \${colorOne} \${angleStops.end}deg)\`;
+    const maskImageValue = \`radial-gradient(circle at \${positionVal.positionX} \${positionVal.positionY}, \${backgroundStops})\`;
+
+    return (
+      <div
+        className={cn(
+          "absolute inset-0 overflow-hidden z-[-1] bg-background",
+          className
+        )}
+      >
+        <div
+          className="w-full h-full"
+          style={{
+            background: conicGradientValue,
+            maskImage: maskImageValue,
+          }}
+        />
+      </div>
+    );
+
+};
+
+export default ConicBackground;
+`}
+/>
+
+## All Positions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import ConicBackground, {
+  type ConicBackgroundPositions,
+} from "@/components/component-x/conic-background";
+
+function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function ConicBackgroundPositions() {
+  const conicBackgroundPositions: ConicBackgroundPositions[] = [
+    "right",
+    "top",
+    "left",
+    "bottom",
+  ];
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col">
+      {conicBackgroundPositions.map((pos) => (
+        <div
+          key={pos}
+          className="relative flex-none w-full h-[350px] overflow-hidden border flex items-center justify-center"
+        >
+          <ConicBackground
+            position={pos}
+            backgroundSpan="large"
+            angleSpan="medium"
+            colorOne="hsl(var(--primary)/0.4)"
+            colorTwo="hsl(var(--primary))"
+          />
+          <div className="relative z-10 flex items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">
+              {capitalizeFirstLetter(pos)}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <ConicBackgroundPositions />
+</ComponentPreviewWithCode>
+
+## Background Spans
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import ConicBackground from "@/components/conic-background";
+
+export function ConicBackgroundSpans() {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {["small", "medium", "large"].map((span) => (
+        <div key={span} className="relative h-48 bg-muted rounded-lg overflow-hidden border">
+          <ConicBackground 
+            position="right"
+            backgroundSpan={span as any}
+            colorOne="hsl(var(--primary)/0.4)"
+            colorTwo="hsl(var(--primary))"
+          />
+          <div className="relative z-10 flex items-center justify-center h-full">
+            <span className="text-sm font-medium text-foreground capitalize">{span}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <ConicBackgroundSpans />
+</ComponentPreviewWithCode>
+
+## Custom Colors
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import ConicBackground from "@/components/conic-background";
+
+export function ConicBackgroundColors() {
+  const colorSchemes = [
+    { colorOne: "rgba(59, 130, 246, 0.4)", colorTwo: "rgba(59, 130, 246, 1)" },
+    { colorOne: "rgba(168, 85, 247, 0.4)", colorTwo: "rgba(168, 85, 247, 1)" },
+    { colorOne: "rgba(236, 72, 153, 0.4)", colorTwo: "rgba(236, 72, 153, 1)" },
+  ];
+
+return (
+
+<div className="grid grid-cols-3 gap-4">
+  {colorSchemes.map((scheme, idx) => (
+    <div
+      key={idx}
+      className="relative h-48 bg-muted rounded-lg overflow-hidden border"
+    >
+      <ConicBackground
+        position="right"
+        colorOne={scheme.colorOne}
+        colorTwo={scheme.colorTwo}
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <span className="text-xs font-medium text-foreground">
+          Custom {idx + 1}
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <ConicBackgroundColors />
+</ComponentPreviewWithCode>

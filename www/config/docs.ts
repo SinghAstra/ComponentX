@@ -19,13 +19,14 @@ export const docsLink: DocsSectionLink[] = [
     title: "Components",
     links: [
       {
+        title: "Conic Background",
+        path: "/docs/components/conic-background",
+      },
+      {
         title: "Floating Navbar",
         path: "/docs/components/floating-navbar",
       },
-      {
-        title: "Forms",
-        path: "/docs/components/forms",
-      },
+
       {
         title: "Buttons",
         path: "/docs/components/buttons",

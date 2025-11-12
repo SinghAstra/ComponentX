@@ -1,9 +1,12 @@
 import { cn } from "@/lib/utils";
 
+export type ConicBackgroundPositions = "right" | "top" | "left" | "bottom";
+export type ConicBackgroundSpans = "small" | "medium" | "large";
+
 interface ConicBackgroundProps {
   className?: string;
-  position?: "right" | "top" | "left" | "bottom";
-  backgroundSpan?: "small" | "medium" | "large";
+  position?: ConicBackgroundPositions;
+  backgroundSpan?: ConicBackgroundSpans;
   angleSpan?: "small" | "medium" | "large";
   colorOne?: string;
   colorTwo?: string;
