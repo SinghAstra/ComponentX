@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
-import { CodeBlock } from "./components/component-x/codeblock";
 import {
   Table,
   TableBody,
@@ -11,6 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "./components/component-x/table";
+import { CodeBlock } from "./components/mdx/codeblock";
+import { ComponentPreviewWithCode } from "./components/mdx/component-preview-with-code";
 
 const generateId = (text: string) => {
   return text
@@ -22,6 +23,7 @@ const generateId = (text: string) => {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
+    ComponentPreviewWithCode,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
