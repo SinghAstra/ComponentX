@@ -1,7 +1,7 @@
 "use client";
 
 import ConicBackground, {
-  type ConicBackgroundSpans,
+  type ConicAngleSpans,
 } from "@/components/component-x/conic-background";
 
 function capitalizeFirstLetter(str: string): string {
@@ -9,20 +9,20 @@ function capitalizeFirstLetter(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function ConicBackgroundSpans() {
-  const backgroundSpans: ConicBackgroundSpans[] = ["small", "medium", "large"];
+export function ConicAngleSpans() {
+  const angleSpans: ConicAngleSpans[] = ["small", "medium", "large"];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col">
-      {backgroundSpans.map((span) => (
+      {angleSpans.map((span) => (
         <div
           key={span}
           className="relative flex-none w-full h-[350px] overflow-hidden border flex items-center justify-center"
         >
           <ConicBackground
             position="right"
-            backgroundSpan={span}
-            angleSpan="medium"
+            backgroundSpan="large"
+            angleSpan={span}
             colorOne="hsl(var(--primary)/0.4)"
             colorTwo="hsl(var(--primary))"
           />

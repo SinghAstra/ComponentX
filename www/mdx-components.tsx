@@ -1,4 +1,4 @@
-import { ConicBackgroundColors } from "@/app/docs/components/conic-background/conic-background-custom-colors";
+import { ConicAngleSpans } from "@/app/docs/components/conic-background/conic-angle-spans";
 import { ConicBackgroundPositions } from "@/app/docs/components/conic-background/conic-background-positions";
 import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
 import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
@@ -35,7 +35,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ConicBackgroundSpans,
     ConicBackgroundPreview,
     ConicBackgroundPositions,
-    ConicBackgroundColors,
+    ConicAngleSpans,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

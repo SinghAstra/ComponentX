@@ -2,6 +2,8 @@
 
 A versatile, gradient-based background component that uses conic gradients to create smooth, directional color transitions. Perfect for adding subtle depth and visual interest to your layouts.
 
+<div className="w-full h-32"></div>
+
 <ComponentPreviewWithCode
   code={`"use client";
 
@@ -30,6 +32,8 @@ export function ConicBackgroundPreview() {
 >
   <ConicBackgroundPreview />
 </ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
 
 ## Installation
 
@@ -102,7 +106,9 @@ export default ConicBackground;
 `}
 />
 
-## All Positions
+<div className="w-full h-32"></div>
+
+## Background Positions
 
 <ComponentPreviewWithCode
   code={`"use client";
@@ -112,8 +118,8 @@ import ConicBackground, {
 } from "@/components/component-x/conic-background";
 
 function capitalizeFirstLetter(str: string): string {
-  if (!str) return str;
-  return str.charAt(0).toUpperCase() + str.slice(1);
+if (!str) return str;
+return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function ConicBackgroundPositions() {
@@ -152,68 +158,44 @@ export function ConicBackgroundPositions() {
   <ConicBackgroundPositions />
 </ComponentPreviewWithCode>
 
-## Background Spans
+<div className="w-full h-32"></div>
+
+## Background Opacity Spans
 
 <ComponentPreviewWithCode
   code={`"use client";
 
-import ConicBackground from "@/components/conic-background";
+import ConicBackground, {
+  type ConicBackgroundSpans,
+} from "@/components/component-x/conic-background";
+
+function capitalizeFirstLetter(str: string): string {
+if (!str) return str;
+return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 export function ConicBackgroundSpans() {
-  return (
-    <div className="grid grid-cols-3 gap-4">
-      {["small", "medium", "large"].map((span) => (
-        <div key={span} className="relative h-48 bg-muted rounded-lg overflow-hidden border">
-          <ConicBackground 
-            position="right"
-            backgroundSpan={span as any}
-            colorOne="hsl(var(--primary)/0.4)"
-            colorTwo="hsl(var(--primary))"
-          />
-          <div className="relative z-10 flex items-center justify-center h-full">
-            <span className="text-sm font-medium text-foreground capitalize">{span}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-`}
->
-  <ConicBackgroundSpans />
-</ComponentPreviewWithCode>
-
-## Custom Colors
-
-<ComponentPreviewWithCode
-  code={`"use client";
-
-import ConicBackground from "@/components/conic-background";
-
-export function ConicBackgroundColors() {
-  const colorSchemes = [
-    { colorOne: "rgba(59, 130, 246, 0.4)", colorTwo: "rgba(59, 130, 246, 1)" },
-    { colorOne: "rgba(168, 85, 247, 0.4)", colorTwo: "rgba(168, 85, 247, 1)" },
-    { colorOne: "rgba(236, 72, 153, 0.4)", colorTwo: "rgba(236, 72, 153, 1)" },
-  ];
+  const backgroundSpans: ConicBackgroundSpans[] = ["small", "medium", "large"];
 
 return (
 
-<div className="grid grid-cols-3 gap-4">
-  {colorSchemes.map((scheme, idx) => (
+<div className="w-full h-full overflow-y-auto flex flex-col">
+  {backgroundSpans.map((span) => (
     <div
-      key={idx}
-      className="relative h-48 bg-muted rounded-lg overflow-hidden border"
+      key={span}
+      className="relative flex-none w-full h-[350px] overflow-hidden border flex items-center justify-center"
     >
       <ConicBackground
         position="right"
-        colorOne={scheme.colorOne}
-        colorTwo={scheme.colorTwo}
+        backgroundSpan={span}
+        angleSpan="medium"
+        colorOne="hsl(var(--primary)/0.4)"
+        colorTwo="hsl(var(--primary))"
       />
       <div className="relative z-10 flex items-center justify-center h-full">
-        <span className="text-xs font-medium text-foreground">
-          Custom {idx + 1}
-        </span>
+        <h3 className="text-2xl text-foreground">
+          {capitalizeFirstLetter(span)}
+        </h3>
       </div>
     </div>
   ))}
@@ -222,5 +204,53 @@ return (
 
 >
 
-  <ConicBackgroundColors />
+  <ConicBackgroundSpans />
 </ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Background Angle Spans
+
+<ComponentPreviewWithCode  code={`"use client";
+
+import ConicBackground, {
+  type ConicAngleSpans,
+} from "@/components/component-x/conic-background";
+
+function capitalizeFirstLetter(str: string): string {
+if (!str) return str;
+return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function ConicAngleSpans() {
+  const angleSpans: ConicAngleSpans[] = ["small", "medium", "large"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col">
+  {angleSpans.map((span) => (
+    <div
+      key={span}
+      className="relative flex-none w-full h-[350px] overflow-hidden border flex items-center justify-center"
+    >
+      <ConicBackground
+        position="right"
+        backgroundSpan="large"
+        angleSpan={span}
+        colorOne="hsl(var(--primary)/0.4)"
+        colorTwo="hsl(var(--primary))"
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">
+          {capitalizeFirstLetter(span)}
+        </h3>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+<ConicAngleSpans/>
+ </ComponentPreviewWithCode>
