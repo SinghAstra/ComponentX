@@ -27,12 +27,12 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/floating-navbar",
       },
       {
-        title: "Radial Background",
-        path: "/docs/components/radial-background",
+        title: "Moving Background",
+        path: "/docs/components/moving-background",
       },
       {
-        title: "Forms",
-        path: "/docs/components/forms",
+        title: "Radial Background",
+        path: "/docs/components/radial-background",
       },
       {
         title: "Buttons",

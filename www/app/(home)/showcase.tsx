@@ -255,13 +255,23 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <ConicBackground />
           </motion.div>
-
           <motion.div
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-200 hover:shadow-[inset_0_-5px_30px_0px_hsl(var(--muted)),inset_0px_5px_30px_0px_hsl(var(--muted))] hover:bg-background/60"
+            className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-300 hover:shadow-[inset_0_-1px_1px_0px_hsl(var(--muted)),inset_0px_1px_1px_0px_hsl(var(--muted))] hover:bg-background/60"
           >
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/radial-background">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
             <motion.h1
               className="text-2xl sm:text-4xl font-normal text-center translate-y-5 group-hover:translate-y-0 transition-all duration-200 "
               variants={blurInVariant}
@@ -277,13 +287,23 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <RadialBackground animate={true} position="left-center" />
           </motion.div>
-
           <motion.div
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="bg-background col-span-1 row-span-1  min-h-[250px] flex items-center justify-center border  rounded"
+            className="bg-background relative col-span-1 row-span-1  min-h-[250px] flex items-center justify-center border rounded"
           >
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/moving-background">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
             <motion.div variants={scaleInVariant}>
               <Button
                 variant="outline"

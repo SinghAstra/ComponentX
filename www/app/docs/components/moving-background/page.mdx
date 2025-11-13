@@ -1,0 +1,342 @@
+# Moving Background
+
+A dynamic, animated gradient background component that creates a smooth directional shine effect across your layout. Perfect for adding visual movement and depth with customizable animation speed, angle, and colors.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBackground from "@/components/component-x/moving-background";
+
+export function MovingBackgroundPreview() {
+  return (
+    <div className="relative w-full h-96 overflow-hidden border flex items-center justify-center bg-background rounded-lg">
+      <MovingBackground
+        backgroundColor="hsl(var(--muted)/0.4)"
+        shineColor="hsl(var(--primary)/0.4)"
+        animationDuration={6000}
+        gradientAngle={110}
+      />
+      <h3 className="text-2xl text-foreground relative z-10">Moving Background</h3>
+    </div>
+  );
+}
+`}
+>
+  <MovingBackgroundPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add moving-background"
+  code={`import { cn } from "@/lib/utils";
+
+interface MovingBackgroundProps {
+backgroundColor?: string;
+shineColor?: string;
+
+animationDuration?: number;
+animationDelay?: number;
+animated?: boolean;
+gradientAngle?: number;
+shineWidth?: number;
+zIndex?: number;
+opacity?: number;
+className?: string;
+position?: "absolute" | "fixed" | "relative";
+}
+
+function MovingBackground({
+backgroundColor = "hsl(var(--muted)/0.4)",
+shineColor = "hsl(var(--primary)/0.4)",
+animationDuration = 6000,
+animationDelay = 0,
+animated = true,
+gradientAngle = 110,
+shineWidth = 10,
+zIndex = -1,
+opacity = 1,
+className,
+position = "absolute",
+}: MovingBackgroundProps) {
+const shineStart = 50 - shineWidth / 2;
+const shineEnd = 50 + shineWidth / 2;
+
+const positionClass = {
+absolute: "absolute",
+fixed: "fixed",
+relative: "relative",
+}[position];
+
+return (
+
+<>
+{animated && (
+<style>{\`
+@keyframes moveShine {
+0% { background-position: 200% 0; }
+100% { background-position: 0% 0; }
+}
+\`}</style>
+)}
+
+      <div
+        className={cn(positionClass, "inset-0 overflow-hidden", className)}
+        style={{
+          zIndex,
+          opacity,
+          background: \`linear-gradient(\${gradientAngle}deg, \${backgroundColor} \${shineStart}%, \${shineColor} 50%, \${backgroundColor} \${shineEnd}%)\`,
+          backgroundSize: "400% 100%",
+          animation: animated
+            ? \`moveShine \${animationDuration}ms infinite linear \${animationDelay}ms\`
+            : "none",
+        }}
+      />
+    </>
+
+);
+}
+
+export default MovingBackground;
+
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Animation Durations
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBackground from "@/components/component-x/moving-background";
+
+export function MovingBackgroundDurations() {
+  const durations = [
+    { label: "Fast", value: 3000 },
+    { label: "Normal", value: 6000 },
+    { label: "Slow", value: 10000 },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {durations.map(({ label, value }) => (
+    <div
+      key={value}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
+    >
+      <MovingBackground
+        backgroundColor="hsl(var(--muted)/0.4)"
+        shineColor="hsl(var(--primary)/0.4)"
+        animationDuration={value}
+        gradientAngle={110}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          {value}ms duration
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <MovingBackgroundDurations />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Gradient Angles
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBackground from "@/components/component-x/moving-background";
+
+export function MovingBackgroundAngles() {
+  const angles = [
+    { label: "45°", value: 45 },
+    { label: "90°", value: 90 },
+    { label: "110°", value: 110 },
+    { label: "180°", value: 180 },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {angles.map(({ label, value }) => (
+    <div
+      key={value}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
+    >
+      <MovingBackground
+        backgroundColor="hsl(var(--muted)/0.4)"
+        shineColor="hsl(var(--primary)/0.4)"
+        animationDuration={6000}
+        gradientAngle={value}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">Gradient angle</p>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <MovingBackgroundAngles />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Shine Width
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBackground from "@/components/component-x/moving-background";
+
+export function MovingBackgroundShineWidth() {
+  const widths = [
+    { label: "Narrow", value: 5 },
+    { label: "Medium", value: 10 },
+    { label: "Wide", value: 20 },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {widths.map(({ label, value }) => (
+    <div
+      key={value}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
+    >
+      <MovingBackground
+        backgroundColor="hsl(var(--muted)/0.4)"
+        shineColor="hsl(var(--primary)/0.4)"
+        animationDuration={6000}
+        gradientAngle={110}
+        shineWidth={value}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          Width: {value}%
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <MovingBackgroundShineWidth />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Color Variations
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBackground from "@/components/component-x/moving-background";
+
+export function MovingBackgroundColors() {
+  const colorSchemes = [
+    {
+      label: "Primary",
+      bg: "hsl(var(--muted)/0.4)",
+      shine: "hsl(var(--primary)/0.4)",
+    },
+    {
+      label: "Accent",
+      bg: "hsl(var(--muted)/0.3)",
+      shine: "hsl(var(--accent)/0.5)",
+    },
+    {
+      label: "Destructive",
+      bg: "hsl(var(--muted)/0.4)",
+      shine: "hsl(var(--destructive)/0.3)",
+    },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {colorSchemes.map(({ label, bg, shine }) => (
+    <div
+      key={label}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
+    >
+      <MovingBackground
+        backgroundColor={bg}
+        shineColor={shine}
+        animationDuration={6000}
+        gradientAngle={110}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          Color variation
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <MovingBackgroundColors />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Animation Control
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import { useState } from "react";
+import MovingBackground from "@/components/component-x/moving-background";
+import { Button } from "@/components/ui/button";
+
+export function MovingBackgroundControl() {
+  const [animated, setAnimated] = useState(true);
+
+return (
+
+<div className="relative w-full h-96 overflow-hidden border flex flex-col items-center justify-center bg-background rounded-lg gap-4">
+  <MovingBackground
+    backgroundColor="hsl(var(--muted)/0.4)"
+    shineColor="hsl(var(--primary)/0.4)"
+    animationDuration={6000}
+    animated={animated}
+  />
+  <div className="relative z-10 flex flex-col items-center justify-center gap-4">
+    <h3 className="text-2xl text-foreground">Animation Control</h3>
+    <Button onClick={() => setAnimated(!animated)} variant="outline">
+      {animated ? "Pause" : "Play"}
+    </Button>
+  </div>
+</div>
+); } `}
+
+>
+
+  <MovingBackgroundControl />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-64"></div>

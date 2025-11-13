@@ -3,6 +3,12 @@ import { ConicBackgroundPositions } from "@/app/docs/components/conic-background
 import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
 import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
+import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
+import { MovingBackgroundColors } from "@/app/docs/components/moving-background/moving-background-colors";
+import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
+import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
+import { MovingBackgroundPreview } from "@/app/docs/components/moving-background/moving-background-preview";
+import { MovingBackgroundShineWidth } from "@/app/docs/components/moving-background/moving-background-shine-width";
 import { RadialBackgroundAnimated } from "@/app/docs/components/radial-background/radial-animated-background";
 import { RadialBackgroundPositions } from "@/app/docs/components/radial-background/radial-background-positions";
 import { RadialBackgroundPreview } from "@/app/docs/components/radial-background/radial-background-preview";
@@ -46,6 +52,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RadialBackgroundPreview,
     RadialBackgroundRadius,
     RadialBackgroundVariants,
+    MovingBackgroundPreview,
+    MovingBackgroundAngles,
+    MovingBackgroundColors,
+    MovingBackgroundControl,
+    MovingBackgroundDurations,
+    MovingBackgroundShineWidth,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
