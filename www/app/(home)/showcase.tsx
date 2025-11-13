@@ -1,5 +1,7 @@
 "use client";
-import AuthModalShowCase from "@/components/component-x/auth-modal";
+import AuthModalShowCase from "@/app/docs/components/dialog/auth-dialog";
+import DialogWrapper from "@/app/docs/components/dialog/dialog-wrapper";
+import SearchDialogShowCase from "@/app/docs/components/dialog/search-dialog";
 import BorderHoverLink from "@/components/component-x/border-hover-link";
 import {
   Carousel,
@@ -46,8 +48,6 @@ import {
   TableRow,
 } from "@/components/component-x/table";
 import Navbar from "@/components/navigation/navbar";
-import DialogBoilerPlateShowCase from "@/components/showcase/dialog-boilerplate-showcase";
-import SearchDialogShowCase from "@/components/showcase/search-dialog-showcase";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -321,7 +321,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             whileInView="visible"
             className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background"
           >
-            <DialogBoilerPlateShowCase />
+            <DialogWrapper />
           </motion.div>
           <motion.div
             variants={containerVariant}

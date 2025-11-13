@@ -1,22 +1,24 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { scaleInVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import { Command } from "lucide-react";
 import React, { useState } from "react";
-import Dialog from "../component-x/dialog";
+import Dialog from "../../../../components/component-x/dialog";
 
-const DialogBoilerPlateShowCase = () => {
+export const DialogWrapper = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
 
   return (
     <>
       <motion.div variants={scaleInVariant}>
         <Button
-          className="rounded px-3 py-1 font-normal hover:bg-muted/40 transition-all duration-200"
+          className="rounded px-3 py-1 font-normal hover:bg-muted/40 transition-all duration-300"
           variant="outline"
           onClick={() => setIsDialogVisible(true)}
         >
-          <span className="text-muted-foreground">Dialog Skeleton</span>
+          <span className="text-muted-foreground">Dialog Wrapper</span>
           <span className="flex items-center gap-1 bg-muted/60 p-1 rounded mr-[-0.5rem]">
             <Command />K
           </span>
@@ -35,5 +37,3 @@ const DialogBoilerPlateShowCase = () => {
     </>
   );
 };
-
-export default DialogBoilerPlateShowCase;

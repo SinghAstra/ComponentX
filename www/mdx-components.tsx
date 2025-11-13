@@ -2,6 +2,13 @@ import { ConicAngleSpans } from "@/app/docs/components/conic-background/conic-an
 import { ConicBackgroundPositions } from "@/app/docs/components/conic-background/conic-background-positions";
 import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
 import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
+import { AuthDialog } from "@/app/docs/components/dialog/auth-dialog";
+import { BasicDialog } from "@/app/docs/components/dialog/basic-dialog";
+import { DialogCustomSize } from "@/app/docs/components/dialog/dialog-custom-size";
+import { DialogPreview } from "@/app/docs/components/dialog/dialog-preview";
+import { DialogWithShortcut } from "@/app/docs/components/dialog/dialog-with-shortcut";
+import { DialogWrapper } from "@/app/docs/components/dialog/dialog-wrapper";
+import { SearchDialog } from "@/app/docs/components/dialog/search-dialog";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
 import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
 import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
@@ -56,6 +63,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     MovingBackgroundControl,
     MovingBackgroundDurations,
     MovingBackgroundShineWidth,
+    DialogPreview,
+    AuthDialog,
+    BasicDialog,
+    DialogCustomSize,
+    DialogWithShortcut,
+    DialogWrapper,
+    SearchDialog,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

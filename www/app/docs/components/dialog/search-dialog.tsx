@@ -1,5 +1,6 @@
 "use client";
 
+import Dialog from "@/components/component-x/dialog";
 import { useToastContext } from "@/components/providers/toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,9 +17,8 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import Dialog from "../component-x/dialog";
 
-const SearchDialogShowCase = () => {
+export const SearchDialog = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -70,7 +70,6 @@ const SearchDialogShowCase = () => {
       command.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Reset selected index when search results change
   useEffect(() => {
     setSelectedIndex(0);
   }, [searchQuery]);
@@ -260,5 +259,3 @@ const SearchDialogShowCase = () => {
     </>
   );
 };
-
-export default SearchDialogShowCase;

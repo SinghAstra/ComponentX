@@ -1,3 +1,6 @@
+"use client";
+
+import Dialog from "@/components/component-x/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
@@ -7,9 +10,8 @@ import { Command, Loader } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import Dialog from "./dialog";
 
-const AuthModalShowCase = () => {
+export const AuthDialog = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isGithubLoading, setIsGithubLoading] = useState(false);
@@ -68,7 +70,7 @@ const AuthModalShowCase = () => {
         setIsDialogVisible={setIsDialogVisible}
         keyToMakeDialogVisible="a"
       >
-        <div className="space-y-4 p-4 text-center bg-muted/10">
+        <div className="space-y-4 p-4 text-center bg-muted/20">
           <div className="space-y-1 mb-4">
             <h1 className="text-3xl tracking-wider">{siteConfig.name}</h1>
             <span className="text-sm text-muted-foreground">
@@ -79,7 +81,7 @@ const AuthModalShowCase = () => {
             onClick={handleGitHubSignIn}
             disabled={isGithubLoading}
             variant="outline"
-            className="w-full transition-all duration-300 text-foreground rounded font-normal hover:bg-muted/40"
+            className="rounded w-full font-normal bg-muted/40 hover:bg-muted/20 transition-all duration-300 border shadow-md"
           >
             {isGithubLoading ? (
               <>
@@ -107,7 +109,7 @@ const AuthModalShowCase = () => {
           </div>
 
           <Button
-            className="w-full rounded tracking-wide relative bg-muted/20 hover:bg-muted/40 transition-all duration-300 border font-normal"
+            className="rounded w-full font-normal bg-muted/40 hover:bg-muted/20 transition-all duration-300 border shadow-md"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading}
           >
@@ -136,5 +138,3 @@ const AuthModalShowCase = () => {
     </>
   );
 };
-
-export default AuthModalShowCase;
