@@ -19,6 +19,7 @@ interface RadialBackgroundProps {
   position?: RadialPosition;
   variant?: RadialVariant;
   animate?: boolean;
+  time?: string;
   radius?: number;
 }
 
@@ -41,6 +42,7 @@ const RadialBackground = ({
   variant = "fade",
   radius = 60,
   animate = false,
+  time = "2s",
 }: RadialBackgroundProps) => {
   const gradientPosition = positionMap[position];
   let backgroundGradientValue;
@@ -53,6 +55,12 @@ const RadialBackground = ({
     }%, ${colorTwo} ${radius}%,${colorTwo} 100%)`;
   }
 
+  const animationStyle = animate
+    ? {
+        animation: `pulse ${time} cubic-bezier(0.4, 0, 0.6, 1) infinite`,
+      }
+    : {};
+
   return (
     <div
       className={cn(
@@ -61,10 +69,11 @@ const RadialBackground = ({
       )}
     >
       <div
-        className={`w-full h-full ${animate && "animate-pulse"}`}
+        className={`w-full h-full`}
         style={{
           background: backgroundGradientValue,
           maskImage: maskImageValue,
+          ...animationStyle,
         }}
       />
     </div>
