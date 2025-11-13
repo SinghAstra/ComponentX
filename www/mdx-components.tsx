@@ -4,7 +4,6 @@ import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/c
 import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
 import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
-import { MovingBackgroundColors } from "@/app/docs/components/moving-background/moving-background-colors";
 import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
 import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
 import { MovingBackgroundPreview } from "@/app/docs/components/moving-background/moving-background-preview";
@@ -54,7 +53,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RadialBackgroundVariants,
     MovingBackgroundPreview,
     MovingBackgroundAngles,
-    MovingBackgroundColors,
     MovingBackgroundControl,
     MovingBackgroundDurations,
     MovingBackgroundShineWidth,
