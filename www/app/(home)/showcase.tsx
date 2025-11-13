@@ -1,7 +1,5 @@
 "use client";
-import AuthModalShowCase from "@/app/docs/components/dialog/auth-dialog";
-import DialogWrapper from "@/app/docs/components/dialog/dialog-wrapper";
-import SearchDialogShowCase from "@/app/docs/components/dialog/search-dialog";
+
 import BorderHoverLink from "@/components/component-x/border-hover-link";
 import {
   Carousel,
@@ -71,6 +69,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { AuthDialog } from "../docs/components/dialog/auth-dialog";
+import { DialogWrapper } from "../docs/components/dialog/dialog-wrapper";
+import { SearchDialog } from "../docs/components/dialog/search-dialog";
 import Footer from "./footer";
 import Hero from "./hero";
 
@@ -319,8 +320,19 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background"
+            className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 relative rounded bg-background"
           >
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/dialog">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
             <DialogWrapper />
           </motion.div>
           <motion.div
@@ -367,8 +379,20 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <LampBackground />
           </motion.div>
 
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
-            <SearchDialogShowCase />
+          <div className="col-span-1 row-span-1 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded bg-background">
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/dialog#search-dialog">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
+
+            <SearchDialog />
           </div>
 
           <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
@@ -424,7 +448,18 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
           </motion.div>
 
           <div className="col-span-1  row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
-            <AuthModalShowCase />
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/dialog#authentication-dialog">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
+            <AuthDialog />
           </div>
           <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
             <NotificationInput />
