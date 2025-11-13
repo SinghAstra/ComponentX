@@ -4,7 +4,6 @@ import EllipseBackground from "@/components/component-x/ellipse-background";
 
 export function EllipseBackgroundDimensions() {
   const dimensions = [
-    { label: "Tall Ellipse", radiusX: 40, radiusY: 120 },
     { label: "Wide Ellipse", radiusX: 120, radiusY: 40 },
     { label: "Balanced", radiusX: 60, radiusY: 60 },
   ];

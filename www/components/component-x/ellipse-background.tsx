@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export type RadialPosition =
+export type EllipsePosition =
   | "top-left"
   | "top-center"
   | "top-right"
@@ -10,14 +10,14 @@ export type RadialPosition =
   | "bottom-center"
   | "bottom-right";
 
-export type RadialVariant = "fade" | "glow";
+export type EllipseVariant = "fade" | "glow";
 
 interface EllipseBackgroundProps {
   className?: string;
   colorOne?: string;
   colorTwo?: string;
-  position?: RadialPosition;
-  variant?: RadialVariant;
+  position?: EllipsePosition;
+  variant?: EllipseVariant;
   animate?: boolean;
   radiusX?: number;
   radiusY?: number;
@@ -25,7 +25,7 @@ interface EllipseBackgroundProps {
   maskImage?: boolean;
 }
 
-const positionMap: Record<RadialPosition, string> = {
+const positionMap: Record<EllipsePosition, string> = {
   "top-left": "0% 0%",
   "top-center": "50% 0%",
   "top-right": "100% 0%",

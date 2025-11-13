@@ -37,7 +37,7 @@ export function EllipseBackgroundPreview() {
   command="npx cx add ellipse-background"
   code={`import { cn } from "@/lib/utils";
 
-export type RadialPosition =
+export type EllipsePosition =
   | "top-left"
   | "top-center"
   | "top-right"
@@ -47,14 +47,14 @@ export type RadialPosition =
   | "bottom-center"
   | "bottom-right";
 
-export type RadialVariant = "fade" | "glow";
+export type EllipseVariant = "fade" | "glow";
 
 interface EllipseBackgroundProps {
 className?: string;
 colorOne?: string;
 colorTwo?: string;
-position?: RadialPosition;
-variant?: RadialVariant;
+position?: EllipsePosition;
+variant?: EllipseVariant;
 animate?: boolean;
 radiusX?: number;
 radiusY?: number;
@@ -62,7 +62,7 @@ transition?: number;
 maskImage?: boolean;
 }
 
-const positionMap: Record<RadialPosition, string> = {
+const positionMap: Record<EllipsePosition, string> = {
 "top-left": "0% 0%",
 "top-center": "50% 0%",
 "top-right": "100% 0%",
@@ -101,6 +101,7 @@ background: backgroundGradientValue,
 };
 
 return (
+
 <div
 className={cn(
 "absolute inset-0 overflow-hidden bg-background z-[-1]",
@@ -115,6 +116,7 @@ style={style}
 }
 
 export default EllipseBackground;
+
 `}
 />
 
@@ -243,38 +245,36 @@ import EllipseBackground from "@/components/component-x/ellipse-background";
 
 export function EllipseBackgroundDimensions() {
   const dimensions = [
-    { label: "Tall Ellipse", radiusX: 40, radiusY: 120 },
     { label: "Wide Ellipse", radiusX: 120, radiusY: 40 },
     { label: "Balanced", radiusX: 60, radiusY: 60 },
   ];
 
 return (
+
 <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-{dimensions.map(({ label, radiusX, radiusY }, index) => (
-<div
-          key={index}
-          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
-        >
-<EllipseBackground
-            position="top-center"
-            variant="fade"
-            colorOne="hsl(var(--primary)/0.6)"
-            colorTwo="transparent"
-            radiusX={radiusX}
-            radiusY={radiusY}
-          />
-<div className="relative z-10 flex flex-col items-center justify-center h-full">
-<h3 className="text-2xl text-foreground">{label}</h3>
-<p className="text-sm text-muted-foreground mt-[1px]">
-X: {radiusX}% × Y: {radiusY}%
-</p>
+  {dimensions.map(({ label, radiusX, radiusY }, index) => (
+    <div
+      key={index}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <EllipseBackground
+        position="top-center"
+        variant="fade"
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+        radiusX={radiusX}
+        radiusY={radiusY}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          X: {radiusX}% × Y: {radiusY}%
+        </p>
+      </div>
+    </div>
+  ))}
 </div>
-</div>
-))}
-</div>
-);
-}
-`}
+); } `}
 
 >
 
@@ -298,33 +298,32 @@ export function EllipseBackgroundTransition() {
   ];
 
 return (
+
 <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-{transitions.map(({ label, value }) => (
-<div
-          key={value}
-          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
-        >
-<EllipseBackground
-            position="top-center"
-            variant="fade"
-            colorOne="hsl(var(--primary)/0.6)"
-            colorTwo="transparent"
-            radiusX={60}
-            radiusY={100}
-            transition={value}
-          />
-<div className="relative z-10 flex flex-col items-center justify-center h-full">
-<h3 className="text-2xl text-foreground">{label}</h3>
-<p className="text-sm text-muted-foreground mt-[1px]">
-Transition: {value}%
-</p>
+  {transitions.map(({ label, value }) => (
+    <div
+      key={value}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <EllipseBackground
+        position="top-center"
+        variant="fade"
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+        radiusX={60}
+        radiusY={100}
+        transition={value}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          Transition: {value}%
+        </p>
+      </div>
+    </div>
+  ))}
 </div>
-</div>
-))}
-</div>
-);
-}
-`}
+); } `}
 
 >
 

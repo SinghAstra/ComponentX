@@ -4,7 +4,7 @@ import EllipseBackground from "@/components/component-x/ellipse-background";
 
 export function EllipseBackgroundAnimated() {
   return (
-    <div className="relative w-full h-96 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
+    <div className="relative w-full h-full overflow-hidden border">
       <EllipseBackground
         position="top-center"
         variant="glow"
@@ -16,9 +16,7 @@ export function EllipseBackgroundAnimated() {
       />
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-foreground">
-            Animated Ellipse
-          </h3>
+          <h3 className="text-2xl text-foreground">Animated Ellipse</h3>
           <p className="text-muted-foreground mt-2">Pulse animation effect</p>
         </div>
       </div>
