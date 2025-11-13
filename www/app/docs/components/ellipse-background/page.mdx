@@ -1,0 +1,371 @@
+# Ellipse Background
+
+A versatile, elliptical gradient-based background component that creates smooth, elongated color transitions from a specified position. Perfect for adding depth and visual interest to your layouts with organic, directional gradient effects featuring independent X and Y radius control.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import EllipseBackground from "@/components/component-x/ellipse-background";
+
+export function EllipseBackgroundPreview() {
+  return (
+    <div className="relative w-full h-full overflow-hidden border flex items-center justify-center">
+      <EllipseBackground
+        position="top-center"
+        variant="fade"
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+        radiusX={60}
+        radiusY={100}
+      />
+      <h3 className="text-2xl text-foreground">Ellipse Background</h3>
+    </div>
+  );
+}
+`}
+>
+  <EllipseBackgroundPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add ellipse-background"
+  code={`import { cn } from "@/lib/utils";
+
+export type RadialPosition =
+  | "top-left"
+  | "top-center"
+  | "top-right"
+  | "left-center"
+  | "right-center"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right";
+
+export type RadialVariant = "fade" | "glow";
+
+interface EllipseBackgroundProps {
+className?: string;
+colorOne?: string;
+colorTwo?: string;
+position?: RadialPosition;
+variant?: RadialVariant;
+animate?: boolean;
+radiusX?: number;
+radiusY?: number;
+transition?: number;
+maskImage?: boolean;
+}
+
+const positionMap: Record<RadialPosition, string> = {
+"top-left": "0% 0%",
+"top-center": "50% 0%",
+"top-right": "100% 0%",
+"left-center": "0% 50%",
+"right-center": "100% 50%",
+"bottom-left": "0% 100%",
+"bottom-center": "50% 100%",
+"bottom-right": "100% 100%",
+};
+
+function EllipseBackground({
+className,
+colorOne = "hsl(var(--primary))",
+colorTwo = "transparent",
+position = "top-center",
+variant = "fade",
+radiusX = 60,
+radiusY = 100,
+transition = 80,
+animate = false,
+maskImage = true,
+}: EllipseBackgroundProps) {
+const gradientPosition = positionMap[position];
+let backgroundGradientValue;
+if (variant === "fade") {
+backgroundGradientValue = \`radial-gradient(ellipse \${radiusX}% \${radiusY}% at \${gradientPosition}, \${colorOne} 0%, \${colorTwo} \${transition}%)\`;
+} else {
+backgroundGradientValue = \`radial-gradient(ellipse \${radiusX}% \${radiusY}% at \${gradientPosition}, \${colorOne} \${
+transition / 2
+}%, \${colorTwo} \${transition}%)\`;
+}
+const maskGradientValue = \`radial-gradient(ellipse \${radiusX}% \${radiusY}% at \${gradientPosition}, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)\`;
+const style = {
+background: backgroundGradientValue,
+...(maskImage && { maskImage: maskGradientValue }),
+};
+
+return (
+<div
+className={cn(
+"absolute inset-0 overflow-hidden bg-background z-[-1]",
+className
+)} >
+<div
+className={\`w-full h-full \${animate && "animate-pulse"}\`}
+style={style}
+/>
+</div>
+);
+}
+
+export default EllipseBackground;
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Background Positions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import EllipseBackground, {
+  type RadialPosition,
+} from "@/components/component-x/ellipse-background";
+
+function capitalizeFirstLetter(str: string): string {
+if (!str) return str;
+return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function EllipseBackgroundPositions() {
+  const radialPositions: RadialPosition[] = [
+    "top-left",
+    "top-center",
+    "top-right",
+    "left-center",
+    "right-center",
+    "bottom-left",
+    "bottom-center",
+    "bottom-right",
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {radialPositions.map((pos) => (
+    <div
+      key={pos}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <EllipseBackground
+        position={pos}
+        variant="fade"
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+        radiusX={60}
+        radiusY={100}
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">
+          {pos.split("-").map(capitalizeFirstLetter).join(" ")}
+        </h3>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <EllipseBackgroundPositions />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Variants
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import EllipseBackground, {
+  type RadialVariant,
+} from "@/components/component-x/ellipse-background";
+
+function capitalizeFirstLetter(str: string): string {
+if (!str) return str;
+return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function EllipseBackgroundVariants() {
+  const variants: RadialVariant[] = ["fade", "glow"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {variants.map((variant) => (
+    <div
+      key={variant}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <EllipseBackground
+        position="top-center"
+        variant={variant}
+        colorOne="hsl(var(--primary)/0.7)"
+        colorTwo="transparent"
+        radiusX={60}
+        radiusY={100}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">
+          {capitalizeFirstLetter(variant)}
+        </h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          {variant === "fade"
+            ? "Smooth gradient fade"
+            : "Bright glowing effect"}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <EllipseBackgroundVariants />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Ellipse Dimensions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import EllipseBackground from "@/components/component-x/ellipse-background";
+
+export function EllipseBackgroundDimensions() {
+  const dimensions = [
+    { label: "Tall Ellipse", radiusX: 40, radiusY: 120 },
+    { label: "Wide Ellipse", radiusX: 120, radiusY: 40 },
+    { label: "Balanced", radiusX: 60, radiusY: 60 },
+  ];
+
+return (
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{dimensions.map(({ label, radiusX, radiusY }, index) => (
+<div
+          key={index}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+<EllipseBackground
+            position="top-center"
+            variant="fade"
+            colorOne="hsl(var(--primary)/0.6)"
+            colorTwo="transparent"
+            radiusX={radiusX}
+            radiusY={radiusY}
+          />
+<div className="relative z-10 flex flex-col items-center justify-center h-full">
+<h3 className="text-2xl text-foreground">{label}</h3>
+<p className="text-sm text-muted-foreground mt-[1px]">
+X: {radiusX}% × Y: {radiusY}%
+</p>
+</div>
+</div>
+))}
+</div>
+);
+}
+`}
+
+>
+
+  <EllipseBackgroundDimensions />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Transition Settings
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import EllipseBackground from "@/components/component-x/ellipse-background";
+
+export function EllipseBackgroundTransition() {
+  const transitions = [
+    { label: "Sharp", value: 40 },
+    { label: "Medium", value: 80 },
+    { label: "Smooth", value: 120 },
+  ];
+
+return (
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{transitions.map(({ label, value }) => (
+<div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+<EllipseBackground
+            position="top-center"
+            variant="fade"
+            colorOne="hsl(var(--primary)/0.6)"
+            colorTwo="transparent"
+            radiusX={60}
+            radiusY={100}
+            transition={value}
+          />
+<div className="relative z-10 flex flex-col items-center justify-center h-full">
+<h3 className="text-2xl text-foreground">{label}</h3>
+<p className="text-sm text-muted-foreground mt-[1px]">
+Transition: {value}%
+</p>
+</div>
+</div>
+))}
+</div>
+);
+}
+`}
+
+>
+
+  <EllipseBackgroundTransition />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Animated Background
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import EllipseBackground from "@/components/component-x/ellipse-background";
+
+export function EllipseBackgroundAnimated() {
+  return (
+    <div className="relative w-full h-96 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
+      <EllipseBackground
+        position="top-center"
+        variant="glow"
+        colorOne="hsl(var(--primary)/0.8)"
+        colorTwo="transparent"
+        animate={true}
+        radiusX={60}
+        radiusY={100}
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-foreground">
+            Animated Ellipse
+          </h3>
+          <p className="text-muted-foreground mt-2">Pulse animation effect</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+`}
+>
+  <EllipseBackgroundAnimated />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-64"></div>

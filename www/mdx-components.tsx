@@ -9,6 +9,12 @@ import { DialogPreview } from "@/app/docs/components/dialog/dialog-preview";
 import { DialogWithShortcut } from "@/app/docs/components/dialog/dialog-with-shortcut";
 import { DialogWrapper } from "@/app/docs/components/dialog/dialog-wrapper";
 import { SearchDialog } from "@/app/docs/components/dialog/search-dialog";
+import { EllipseBackgroundAnimated } from "@/app/docs/components/ellipse-background/ellipse-background-animated";
+import { EllipseBackgroundDimensions } from "@/app/docs/components/ellipse-background/ellipse-background-dimensions";
+import { EllipseBackgroundPositions } from "@/app/docs/components/ellipse-background/ellipse-background-positions";
+import { EllipseBackgroundPreview } from "@/app/docs/components/ellipse-background/ellipse-background-preview";
+import { EllipseBackgroundTransition } from "@/app/docs/components/ellipse-background/ellipse-background-transition";
+import { EllipseBackgroundVariants } from "@/app/docs/components/ellipse-background/ellipse-background-variants";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
 import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
 import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
@@ -70,6 +76,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DialogWithShortcut,
     DialogWrapper,
     SearchDialog,
+    EllipseBackgroundAnimated,
+    EllipseBackgroundDimensions,
+    EllipseBackgroundPositions,
+    EllipseBackgroundPreview,
+    EllipseBackgroundTransition,
+    EllipseBackgroundVariants,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

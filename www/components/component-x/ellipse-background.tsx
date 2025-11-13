@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-type RadialPosition =
+export type RadialPosition =
   | "top-left"
   | "top-center"
   | "top-right"
@@ -10,12 +10,14 @@ type RadialPosition =
   | "bottom-center"
   | "bottom-right";
 
+export type RadialVariant = "fade" | "glow";
+
 interface EllipseBackgroundProps {
   className?: string;
   colorOne?: string;
   colorTwo?: string;
   position?: RadialPosition;
-  variant?: "fade" | "glow";
+  variant?: RadialVariant;
   animate?: boolean;
   radiusX?: number;
   radiusY?: number;
