@@ -4,25 +4,19 @@ import MovingBorder from "@/components/component-x/moving-border";
 
 export function MovingBorderColors() {
   const colors = [
-    { label: "Primary", color: "hsl(var(--primary))" },
-    { label: "Destructive", color: "hsl(var(--destructive))" },
-    { label: "Chart 1", color: "hsl(var(--chart-1))" },
-    { label: "Chart 2", color: "hsl(var(--chart-2))" },
+    { label: "Primary", value: "hsl(var(--primary))" },
+    { label: "Destructive", value: "hsl(var(--destructive))" },
+    { label: "Success", value: "hsl(142, 71%, 45%)" },
+    { label: "Warning", value: "hsl(38, 92%, 50%)" },
   ];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {colors.map(({ label, color }) => (
-        <div
-          key={label}
-          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
-        >
-          <MovingBorder color={color} borderWidth={2} type="both" duration={3}>
-            <div className="relative z-10 bg-background p-6 rounded-lg text-center">
-              <h3 className="text-xl font-bold text-foreground">{label}</h3>
-              <p className="text-sm text-muted-foreground mt-1">
-                Color: {label}
-              </p>
+      {colors.map(({ label, value }) => (
+        <div key={label} className="flex-none w-full h-40">
+          <MovingBorder color={value} className="rounded-lg h-full">
+            <div className="w-full h-full bg-background rounded-md flex items-center justify-center">
+              <h3 className="text-xl text-foreground">{label} Color</h3>
             </div>
           </MovingBorder>
         </div>

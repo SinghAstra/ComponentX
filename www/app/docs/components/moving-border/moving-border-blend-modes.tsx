@@ -4,8 +4,14 @@ import MovingBorder, {
   type MovingBorderBlendMode,
 } from "@/components/component-x/moving-border";
 
+function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export function MovingBorderBlendModes() {
-  const modes: MovingBorderBlendMode[] = [
+  const blendModes: MovingBorderBlendMode[] = [
+    "normal",
     "screen",
     "overlay",
     "multiply",
@@ -14,25 +20,18 @@ export function MovingBorderBlendModes() {
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {modes.map((mode) => (
-        <div
-          key={mode}
-          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
-        >
-          <MovingBorder
-            color="hsl(var(--primary))"
-            borderWidth={2}
-            blendMode={mode}
-            type="glow"
-            duration={3}
-          >
-            <div className="relative z-10 bg-background p-6 rounded-lg text-center">
-              <h3 className="text-xl font-bold text-foreground capitalize">
-                {mode}
-              </h3>
-              <p className="text-sm text-muted-foreground mt-1">
-                Blend Mode: {mode}
-              </p>
+      {blendModes.map((blendMode) => (
+        <div key={blendMode} className="flex-none w-full h-48">
+          <MovingBorder blendMode={blendMode} className="rounded-lg h-full">
+            <div className="w-full h-full bg-background rounded-md flex items-center justify-center">
+              <div className="text-center">
+                <h3 className="text-2xl text-foreground">
+                  {capitalizeFirstLetter(blendMode)}
+                </h3>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Blend mode: {blendMode}
+                </p>
+              </div>
             </div>
           </MovingBorder>
         </div>

@@ -43,12 +43,12 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/moving-background",
       },
       {
-        title: "Radial Background",
-        path: "/docs/components/radial-background",
+        title: "Moving Border",
+        path: "/docs/components/moving-border",
       },
       {
-        title: "Forms",
-        path: "/docs/components/forms",
+        title: "Radial Background",
+        path: "/docs/components/radial-background",
       },
       {
         title: "Buttons",
