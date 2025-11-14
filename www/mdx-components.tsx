@@ -16,6 +16,11 @@ import { EllipseBackgroundPreview } from "@/app/docs/components/ellipse-backgrou
 import { EllipseBackgroundTransition } from "@/app/docs/components/ellipse-background/ellipse-background-transition";
 import { EllipseBackgroundVariants } from "@/app/docs/components/ellipse-background/ellipse-background-variants";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
+import { LampBackgroundAngleSpan } from "@/app/docs/components/lamp-background/lamp-background-angle-span";
+import { LampBackgroundColors } from "@/app/docs/components/lamp-background/lamp-background-colors";
+import { LampBackgroundMultiPosition } from "@/app/docs/components/lamp-background/lamp-background-multi-positions";
+import { LampBackgroundPositions } from "@/app/docs/components/lamp-background/lamp-background-positions";
+import { LampBackgroundPreview } from "@/app/docs/components/lamp-background/lamp-background-preview";
 import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
 import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
 import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
@@ -82,6 +87,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     EllipseBackgroundPreview,
     EllipseBackgroundTransition,
     EllipseBackgroundVariants,
+    LampBackgroundMultiPosition,
+    LampBackgroundAngleSpan,
+    LampBackgroundColors,
+    LampBackgroundPositions,
+    LampBackgroundPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

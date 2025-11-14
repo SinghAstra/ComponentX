@@ -1,12 +1,15 @@
 import { cn } from "@/lib/utils";
 import type { CSSProperties } from "react";
 
+export type LampBackgroundPosition = "top" | "right" | "bottom" | "left";
+export type LampAngleSpan = "small" | "medium" | "large";
+
 interface LampBackgroundProps {
   colorOne?: string;
   colorTwo?: string;
   className?: string;
-  position?: "top" | "right" | "bottom" | "left";
-  angleSpan?: "small" | "medium" | "large";
+  position?: LampBackgroundPosition;
+  angleSpan?: LampAngleSpan;
 }
 
 function LampBackground({
@@ -54,8 +57,8 @@ function LampBackground({
       maskImageStyle =
         "linear-gradient(90deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))";
       containerFlexClass = "flex-col";
-      gradient1FromAt = "from 90deg at 0% 0%"; // Top-left corner for first half
-      gradient2FromAt = "from 0deg at 0% 100%"; // Bottom-left corner for second half
+      gradient1FromAt = "from 90deg at 0% 0%";
+      gradient2FromAt = "from 0deg at 0% 100%";
       div1SizeClass = "w-full flex-1";
       div2SizeClass = "flex-1 w-full";
       break;
@@ -63,8 +66,8 @@ function LampBackground({
       maskImageStyle =
         "linear-gradient(270deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))";
       containerFlexClass = "flex-col";
-      gradient1FromAt = "from 180deg at 100% 0%"; // Top-right corner for first half
-      gradient2FromAt = "from 270deg at 100% 100%"; // Bottom-right corner for second half
+      gradient1FromAt = "from 180deg at 100% 0%";
+      gradient2FromAt = "from 270deg at 100% 100%";
       div1SizeClass = "w-full flex-1";
       div2SizeClass = "flex-1 w-full";
       break;

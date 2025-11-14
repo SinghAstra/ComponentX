@@ -1,0 +1,357 @@
+# Lamp Background
+
+A directional gradient-based background component that creates a spotlight or lamp effect from specified edges. Perfect for adding focused lighting effects to your layouts with directional conic gradients and customizable beam angles.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import LampBackground from "@/components/component-x/lamp-background";
+
+export function LampBackgroundPreview() {
+  return (
+    <div className="relative w-full h-full overflow-hidden border flex items-center justify-center">
+      <LampBackground
+        position="top"
+        angleSpan="medium"
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+      />
+      <h3 className="text-2xl text-foreground">Lamp Background</h3>
+    </div>
+  );
+}
+`}
+>
+  <LampBackgroundPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add lamp-background"
+  code={`import { cn } from "@/lib/utils";
+import type { CSSProperties } from "react";
+
+export type LampBackgroundPosition = "top" | "right" | "bottom" | "left";
+export type LampAngleSpan = "small" | "medium" | "large";
+
+interface LampBackgroundProps {
+colorOne?: string;
+colorTwo?: string;
+className?: string;
+position?: LampBackgroundPosition;
+angleSpan?: LampAngleSpan;
+}
+
+function LampBackground({
+className,
+colorOne = "hsl(var(--primary))",
+colorTwo = "transparent",
+position = "top",
+angleSpan = "medium",
+}: LampBackgroundProps) {
+let maskImageStyle: CSSProperties["maskImage"];
+let containerFlexClass: string;
+let gradient1FromAt: string;
+let gradient2FromAt: string;
+let div1SizeClass: string;
+let div2SizeClass: string;
+
+let finalColorOne = colorOne;
+let finalColorTwo = colorTwo;
+
+if (position === "left" || position === "bottom") {
+finalColorOne = colorTwo;
+finalColorTwo = colorOne;
+}
+
+switch (position) {
+case "top":
+maskImageStyle =
+"linear-gradient(0deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))";
+containerFlexClass = "flex-row";
+gradient1FromAt = "from 90deg at 0% 0%";
+gradient2FromAt = "from 180deg at 100% 0%";
+div1SizeClass = "h-full flex-1";
+div2SizeClass = "flex-1 h-full";
+break;
+case "bottom":
+maskImageStyle =
+"linear-gradient(180deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))";
+containerFlexClass = "flex-row";
+gradient1FromAt = "from 0deg at 0% 100%";
+gradient2FromAt = "from 270deg at 100% 100%";
+div1SizeClass = "h-full flex-1";
+div2SizeClass = "flex-1 h-full";
+break;
+case "left":
+maskImageStyle =
+"linear-gradient(90deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))";
+containerFlexClass = "flex-col";
+gradient1FromAt = "from 90deg at 0% 0%";
+gradient2FromAt = "from 0deg at 0% 100%";
+div1SizeClass = "w-full flex-1";
+div2SizeClass = "flex-1 w-full";
+break;
+case "right":
+maskImageStyle =
+"linear-gradient(270deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))";
+containerFlexClass = "flex-col";
+gradient1FromAt = "from 180deg at 100% 0%";
+gradient2FromAt = "from 270deg at 100% 100%";
+div1SizeClass = "w-full flex-1";
+div2SizeClass = "flex-1 w-full";
+break;
+}
+
+let angleSpread: number;
+let angleOffset: number;
+switch (angleSpan) {
+case "small":
+angleSpread = 60;
+angleOffset = 30;
+break;
+case "medium":
+angleSpread = 80;
+angleOffset = 10;
+break;
+case "large":
+angleSpread = 100;
+angleOffset = 0;
+break;
+}
+
+return (
+
+<div
+className={cn(
+"absolute inset-0 flex z-[-1]",
+containerFlexClass,
+className
+)}
+style={{ gap: 0, maskImage: maskImageStyle }} >
+<div
+className={cn(div1SizeClass)}
+style={{
+          background: \`conic-gradient(
+            \${gradient1FromAt},
+            \${finalColorOne} 0deg,
+            \${finalColorTwo} \${angleSpread}deg
+          )\`,
+        }}
+/>
+<div
+className={div2SizeClass}
+style={{
+          background: \`conic-gradient(
+            \${gradient2FromAt},
+            \${finalColorTwo} \${angleOffset}deg,
+            \${finalColorOne} 90deg
+          )\`,
+        }}
+/>
+</div>
+);
+}
+
+export default LampBackground;
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Background Positions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import LampBackground, {
+  type LampBackgroundPosition,
+} from "@/components/component-x/lamp-background";
+
+export function LampBackgroundPositions() {
+  const positions: LampBackgroundPosition[] = ["top", "right", "bottom", "left"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {positions.map((pos) => (
+    <div
+      key={pos}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <LampBackground
+        position={pos}
+        angleSpan="medium"
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground capitalize">{pos}</h3>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <LampBackgroundPositions />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Angle Span
+
+Control the spread and focus of the lamp beam with different angle span settings.
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import LampBackground, {
+  type LampAngleSpan,
+} from "@/components/component-x/lamp-background";
+
+export function LampBackgroundAngleSpan() {
+  const angleSpans: LampAngleSpan[] = ["small", "medium", "large"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {angleSpans.map((span) => (
+    <div
+      key={span}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <LampBackground
+        position="top"
+        angleSpan={span}
+        colorOne="hsl(var(--primary)/0.6)"
+        colorTwo="transparent"
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground capitalize">{span}</h3>
+        <p className="text-sm text-muted-foreground mt-[1px]">
+          {span === "small" && "60° beam angle"}
+          {span === "medium" && "80° beam angle"}
+          {span === "large" && "100° beam angle"}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <LampBackgroundAngleSpan />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Color Combinations
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import LampBackground from "@/components/component-x/lamp-background";
+
+export function LampBackgroundColors() {
+  const colorCombos = [
+    {
+      label: "Primary",
+      colorOne: "hsl(var(--primary)/0.6)",
+      colorTwo: "transparent",
+    },
+    {
+      label: "Accent",
+      colorOne: "hsl(var(--accent)/0.6)",
+      colorTwo: "transparent",
+    },
+    {
+      label: "Secondary",
+      colorOne: "hsl(200, 100%, 50%)",
+      colorTwo: "transparent",
+    },
+    {
+      label: "Warm",
+      colorOne: "hsl(30, 100%, 50%)",
+      colorTwo: "transparent",
+    },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {colorCombos.map(({ label, colorOne, colorTwo }) => (
+    <div
+      key={label}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <LampBackground
+        position="top"
+        angleSpan="medium"
+        colorOne={colorOne}
+        colorTwo={colorTwo}
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">{label}</h3>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <LampBackgroundColors />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Multi Position Layout
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import LampBackground from "@/components/component-x/lamp-background";
+
+export function LampBackgroundMultiPosition() {
+  return (
+    <div className="relative w-full h-full overflow-hidden border rounded">
+      <LampBackground
+        position="top"
+        angleSpan="medium"
+        colorOne="hsl(var(--primary)/0.4)"
+        colorTwo="transparent"
+      />
+      <LampBackground
+        position="bottom"
+        angleSpan="medium"
+        colorOne="hsl(var(--accent)/0.4)"
+        colorTwo="transparent"
+      />
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-foreground">
+            Multi Position Lamps
+          </h3>
+          <p className="text-muted-foreground mt-2">Top and bottom lighting</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+`}
+
+>
+
+  <LampBackgroundMultiPosition />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-64"></div>
