@@ -26,6 +26,14 @@ import { MovingBackgroundControl } from "@/app/docs/components/moving-background
 import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
 import { MovingBackgroundPreview } from "@/app/docs/components/moving-background/moving-background-preview";
 import { MovingBackgroundShineWidth } from "@/app/docs/components/moving-background/moving-background-shine-width";
+import { MovingBorderBackground } from "@/app/docs/components/moving-border/moving-border-background";
+import { MovingBorderBlendModes } from "@/app/docs/components/moving-border/moving-border-blend-modes";
+import { MovingBorderColors } from "@/app/docs/components/moving-border/moving-border-colors";
+import { MovingBorderDirections } from "@/app/docs/components/moving-border/moving-border-directions";
+import { MovingBorderPreview } from "@/app/docs/components/moving-border/moving-border-preview";
+import { MovingBorderSizes } from "@/app/docs/components/moving-border/moving-border-sizes";
+import { MovingBorderSpeeds } from "@/app/docs/components/moving-border/moving-border-speeds";
+import { MovingBorderTypes } from "@/app/docs/components/moving-border/moving-border-types";
 import { RadialBackgroundAnimated } from "@/app/docs/components/radial-background/radial-animated-background";
 import { RadialBackgroundPositions } from "@/app/docs/components/radial-background/radial-background-positions";
 import { RadialBackgroundPreview } from "@/app/docs/components/radial-background/radial-background-preview";
@@ -92,6 +100,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     LampBackgroundColors,
     LampBackgroundPositions,
     LampBackgroundPreview,
+    MovingBorderBackground,
+    MovingBorderBlendModes,
+    MovingBorderColors,
+    MovingBorderDirections,
+    MovingBorderPreview,
+    MovingBorderSizes,
+    MovingBorderSpeeds,
+    MovingBorderTypes,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

@@ -1,0 +1,551 @@
+# Moving Border
+
+An animated border component that creates a rotating, glowing effect around elements. Perfect for highlighting important UI components with dynamic, eye-catching animations that draw user attention with customizable colors, speeds, and effects.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder from "@/components/component-x/moving-border";
+
+export function MovingBorderPreview() {
+  return (
+    <div className="relative w-full h-96 overflow-hidden border rounded-lg flex items-center justify-center bg-background">
+      <MovingBorder
+        color="hsl(var(--primary))"
+        borderWidth={2}
+        duration={3}
+        speed="normal"
+        direction="clockwise"
+        type="both"
+      >
+        <div className="relative z-10 bg-background p-8 rounded-lg text-center">
+          <h3 className="text-2xl font-bold text-foreground">
+            Moving Border
+          </h3>
+          <p className="text-muted-foreground mt-2">
+            Animated rotating effect
+          </p>
+        </div>
+      </MovingBorder>
+    </div>
+  );
+}
+`}
+>
+  <MovingBorderPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add moving-border"
+  code={`"use client";
+
+import type React from "react";
+import { CSSProperties } from "react";
+
+export type MovingBorderSpeed = "slow" | "normal" | "fast";
+export type MovingBorderDirection = "clockwise" | "counterclockwise";
+export type MovingBorderSize = "small" | "medium" | "large" | "custom";
+export type MovingBorderBlendMode =
+  | "normal"
+  | "screen"
+  | "overlay"
+  | "multiply"
+  | "lighten";
+export type MovingBorderType = "glow" | "border" | "both";
+export type MovingBorderPositioning = "absolute" | "relative" | "fixed";
+
+export interface MovingBorderCustomSize {
+  width: string;
+  height: string;
+}
+
+export interface MovingBorderProps {
+  // Color & appearance
+  color?: string;
+  glowColor?: string;
+  borderWidth?: number;
+
+// Animation
+duration?: number;
+speed?: MovingBorderSpeed;
+direction?: MovingBorderDirection;
+
+// Size & positioning
+size?: MovingBorderSize;
+customSize?: MovingBorderCustomSize;
+
+// Content
+children?: React.ReactNode;
+
+// Styling
+className?: string;
+blendMode?: MovingBorderBlendMode;
+opacity?: number;
+blur?: number;
+
+// Effect type
+type?: MovingBorderType;
+
+// Positioning
+position?: MovingBorderPositioning;
+}
+
+const MovingBorder = ({
+color = "hsl(var(--primary))",
+glowColor,
+borderWidth = 2,
+duration = 3,
+speed = "normal",
+direction = "clockwise",
+size = "large",
+customSize,
+children,
+className = "",
+blendMode = "screen",
+opacity = 1,
+blur = 10,
+type = "glow",
+position = "absolute",
+}: MovingBorderProps) => {
+// Calculate animation duration based on speed
+const speedMap = {
+slow: duration _ 1.5,
+normal: duration,
+fast: duration _ 0.6,
+};
+
+const animationDuration = speedMap[speed];
+const rotation = direction === "clockwise" ? "360deg" : "-360deg";
+
+const sizeMap = {
+small: { width: "300%", height: "300%" },
+medium: { width: "800%", height: "800%" },
+large: { width: "2000%", height: "2000%" },
+custom: customSize || { width: "2000%", height: "2000%" },
+};
+
+const dimensions = sizeMap[size];
+
+const glowStyle: CSSProperties = {
+background: \`conic-gradient(from 0deg at 50% 50%, transparent 0deg, \${color} 20deg, transparent 90deg)\`,
+animation: \`rotate \${animationDuration}s linear infinite\`,
+filter: \`blur(\${blur}px)\`,
+opacity,
+mixBlendMode: blendMode,
+};
+
+const borderStyle: CSSProperties = {
+background: \`conic-gradient(from 0deg at 50% 50%, transparent 0deg, \${
+glowColor || color
+} 30deg, transparent 90deg)\`,
+animation: \`rotate-border \${animationDuration _ 0.8}s linear infinite\`,
+opacity: opacity _ 0.8,
+mixBlendMode: "normal",
+};
+
+return (
+
+<>
+<style>{\`
+@keyframes rotate {
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(\${rotation});
+}
+}
+
+        @keyframes rotate-border {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(\${rotation});
+          }
+        }
+      \`}</style>
+
+      {children ? (
+        <div className={\`relative \${className}\`}>
+          {(type === "glow" || type === "both") && (
+            <div
+              className={\`\${position} pointer-events-none z-[-1]\`}
+              style={{
+                width: dimensions.width,
+                height: dimensions.height,
+                ...glowStyle,
+              }}
+            />
+          )}
+
+          {(type === "border" || type === "both") && (
+            <div
+              className={\`\${position} pointer-events-none z-[-1]\`}
+              style={{
+                width: dimensions.width,
+                height: dimensions.height,
+                borderWidth: \`\${borderWidth}px\`,
+                borderStyle: "solid",
+                borderColor: glowColor || color,
+                ...borderStyle,
+              }}
+            />
+          )}
+
+          <div className="relative z-10">{children}</div>
+        </div>
+      ) : (
+        <div
+          className={\`\${position} z-[-1] pointer-events-none \${className}\`}
+          style={{
+            width: dimensions.width,
+            height: dimensions.height,
+            ...glowStyle,
+          }}
+        />
+      )}
+    </>
+
+);
+};
+
+export default MovingBorder;
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Animation Speeds
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder, {
+  type MovingBorderSpeed,
+} from "@/components/component-x/moving-border";
+
+export function MovingBorderSpeeds() {
+  const speeds: MovingBorderSpeed[] = ["slow", "normal", "fast"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{speeds.map((speed) => (
+<div
+          key={speed}
+          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
+        >
+<MovingBorder
+            color="hsl(var(--primary))"
+            borderWidth={2}
+            speed={speed}
+            type="both"
+            duration={3}
+          >
+<div className="relative z-10 bg-background p-6 rounded-lg text-center">
+<h3 className="text-xl font-bold text-foreground capitalize">
+{speed}
+</h3>
+<p className="text-sm text-muted-foreground mt-1">
+Animation Speed: {speed}
+</p>
+</div>
+</MovingBorder>
+</div>
+))}
+</div>
+);
+}
+`}
+>
+  <MovingBorderSpeeds />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Rotation Directions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder, {
+  type MovingBorderDirection,
+} from "@/components/component-x/moving-border";
+
+export function MovingBorderDirections() {
+  const directions: MovingBorderDirection[] = ["clockwise", "counterclockwise"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{directions.map((direction) => (
+<div
+          key={direction}
+          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
+        >
+<MovingBorder
+            color="hsl(var(--primary))"
+            borderWidth={2}
+            direction={direction}
+            type="both"
+            duration={3}
+          >
+<div className="relative z-10 bg-background p-6 rounded-lg text-center">
+<h3 className="text-xl font-bold text-foreground capitalize">
+{direction.split("-").join(" ")}
+</h3>
+<p className="text-sm text-muted-foreground mt-1">
+Rotation: {direction}
+</p>
+</div>
+</MovingBorder>
+</div>
+))}
+</div>
+);
+}
+`}
+>
+  <MovingBorderDirections />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Border Types
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder, {
+  type MovingBorderType,
+} from "@/components/component-x/moving-border";
+
+export function MovingBorderTypes() {
+  const types: MovingBorderType[] = ["glow", "border", "both"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{types.map((type) => (
+<div
+          key={type}
+          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
+        >
+<MovingBorder
+            color="hsl(var(--primary))"
+            borderWidth={2}
+            type={type}
+            duration={3}
+          >
+<div className="relative z-10 bg-background p-6 rounded-lg text-center">
+<h3 className="text-xl font-bold text-foreground capitalize">
+{type}
+</h3>
+<p className="text-sm text-muted-foreground mt-1">
+Effect Type: {type}
+</p>
+</div>
+</MovingBorder>
+</div>
+))}
+</div>
+);
+}
+`}
+>
+  <MovingBorderTypes />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Size Variations
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder, {
+  type MovingBorderSize,
+} from "@/components/component-x/moving-border";
+
+export function MovingBorderSizes() {
+  const sizes: MovingBorderSize[] = ["small", "medium", "large"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{sizes.map((size) => (
+<div
+          key={size}
+          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
+        >
+<MovingBorder
+            color="hsl(var(--primary))"
+            borderWidth={2}
+            size={size}
+            type="both"
+            duration={3}
+          >
+<div className="relative z-10 bg-background p-6 rounded-lg text-center">
+<h3 className="text-xl font-bold text-foreground capitalize">
+{size}
+</h3>
+<p className="text-sm text-muted-foreground mt-1">
+Size: {size}
+</p>
+</div>
+</MovingBorder>
+</div>
+))}
+</div>
+);
+}
+`}
+>
+  <MovingBorderSizes />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Color Variations
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder from "@/components/component-x/moving-border";
+
+export function MovingBorderColors() {
+  const colors = [
+    { label: "Primary", color: "hsl(var(--primary))" },
+    { label: "Destructive", color: "hsl(var(--destructive))" },
+    { label: "Chart 1", color: "hsl(var(--chart-1))" },
+    { label: "Chart 2", color: "hsl(var(--chart-2))" },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{colors.map(({ label, color }) => (
+<div
+          key={label}
+          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
+        >
+<MovingBorder
+            color={color}
+            borderWidth={2}
+            type="both"
+            duration={3}
+          >
+<div className="relative z-10 bg-background p-6 rounded-lg text-center">
+<h3 className="text-xl font-bold text-foreground">
+{label}
+</h3>
+<p className="text-sm text-muted-foreground mt-1">
+Color: {label}
+</p>
+</div>
+</MovingBorder>
+</div>
+))}
+</div>
+);
+}
+`}
+>
+  <MovingBorderColors />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Blend Modes
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder, {
+  type MovingBorderBlendMode,
+} from "@/components/component-x/moving-border";
+
+export function MovingBorderBlendModes() {
+  const modes: MovingBorderBlendMode[] = ["screen", "overlay", "multiply", "lighten"];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{modes.map((mode) => (
+<div
+          key={mode}
+          className="relative flex-none w-full h-72 overflow-hidden border rounded-lg flex items-center justify-center bg-background"
+        >
+<MovingBorder
+            color="hsl(var(--primary))"
+            borderWidth={2}
+            blendMode={mode}
+            type="glow"
+            duration={3}
+          >
+<div className="relative z-10 bg-background p-6 rounded-lg text-center">
+<h3 className="text-xl font-bold text-foreground capitalize">
+{mode}
+</h3>
+<p className="text-sm text-muted-foreground mt-1">
+Blend Mode: {mode}
+</p>
+</div>
+</MovingBorder>
+</div>
+))}
+</div>
+);
+}
+`}
+>
+  <MovingBorderBlendModes />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Without Children
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MovingBorder from "@/components/component-x/moving-border";
+
+export function MovingBorderBackground() {
+  return (
+    <div className="relative w-full h-96 overflow-hidden border rounded-lg bg-background flex items-center justify-center">
+      <MovingBorder
+        color="hsl(var(--primary)/0.8)"
+        glowColor="hsl(var(--primary)/0.5)"
+        borderWidth={0}
+        size="large"
+        type="glow"
+        position="fixed"
+        duration={4}
+        blur={20}
+        opacity={0.6}
+      />
+      <div className="relative z-10 text-center">
+        <h3 className="text-2xl font-bold text-foreground">
+          Background Glow
+        </h3>
+        <p className="text-muted-foreground mt-2">
+          Use as a background effect without wrapping content
+        </p>
+      </div>
+    </div>
+  );
+}
+`}
+>
+  <MovingBorderBackground />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-64"></div>
