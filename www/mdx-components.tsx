@@ -16,6 +16,10 @@ import { EllipseBackgroundPreview } from "@/app/docs/components/ellipse-backgrou
 import { EllipseBackgroundTransition } from "@/app/docs/components/ellipse-background/ellipse-background-transition";
 import { EllipseBackgroundVariants } from "@/app/docs/components/ellipse-background/ellipse-background-variants";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
+import { GridBackgroundDimensions } from "@/app/docs/components/grid-background/grid-background-dimensions";
+import { GridBackgroundLineWidths } from "@/app/docs/components/grid-background/grid-background-line-widths";
+import { GridBackgroundOpacity } from "@/app/docs/components/grid-background/grid-background-opacity";
+import { GridBackgroundPreview } from "@/app/docs/components/grid-background/grid-background-preview";
 import { LampBackgroundAngleSpan } from "@/app/docs/components/lamp-background/lamp-background-angle-span";
 import { LampBackgroundColors } from "@/app/docs/components/lamp-background/lamp-background-colors";
 import { LampBackgroundMultiPosition } from "@/app/docs/components/lamp-background/lamp-background-multi-positions";
@@ -104,6 +108,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     MovingBorderSpeeds,
     MovingBorderDuration,
     MovingBorderEffects,
+    GridBackgroundDimensions,
+    GridBackgroundLineWidths,
+    GridBackgroundOpacity,
+    GridBackgroundPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

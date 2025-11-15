@@ -1,0 +1,234 @@
+# Grid Background
+
+A versatile, grid-based background component that creates customizable grid patterns with adjustable dimensions, colors, and opacity. Perfect for adding structure and visual interest to your layouts with precise, geometric grid effects.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import GridBackground from "@/components/component-x/grid-background";
+
+export function GridBackgroundPreview() {
+  return (
+    <div className="relative w-full h-full overflow-hidden border flex items-center justify-center">
+      <GridBackground
+        gridDimension="48"
+        gridColor="#161616"
+        backgroundColor="bg-background"
+        gridOpacity={1}
+        lineWidth={1}
+      />
+      <h3 className="text-2xl text-foreground">Grid Background</h3>
+    </div>
+  );
+}
+`}
+>
+  <GridBackgroundPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add grid-background"
+  code={`import { cn } from "@/lib/utils";
+import React from "react";
+
+interface GridBackgroundProps {
+className?: string;
+gridDimension?: string;
+gridColor?: string;
+backgroundColor?: string;
+gridOpacity?: number;
+lineWidth?: number;
+absolute?: boolean;
+}
+
+const GridBackground = ({
+className,
+gridDimension = "48",
+gridColor = "#161616",
+backgroundColor = "bg-background",
+gridOpacity = 1,
+lineWidth = 1,
+absolute = true,
+}: GridBackgroundProps) => {
+const containerClasses = cn(
+absolute && "absolute inset-0 z-[-1]",
+backgroundColor,
+className
+);
+
+const backgroundImage = \`
+linear-gradient(90deg, \${gridColor} \${lineWidth}px, transparent \${lineWidth}px),
+linear-gradient(180deg, \${gridColor} \${lineWidth}px, transparent \${lineWidth}px)
+\`;
+
+return (
+
+<div className={containerClasses}>
+<div
+className="w-full h-full"
+style={{
+          backgroundImage,
+          backgroundSize: \`\${gridDimension}px \${gridDimension}px\`,
+          opacity: gridOpacity,
+        }}
+/>
+</div>
+);
+};
+
+export default GridBackground;
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Grid Dimensions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import GridBackground from "@/components/component-x/grid-background";
+
+export function GridBackgroundDimensions() {
+  const dimensions = [
+    { label: "Small", value: "24" },
+    { label: "Medium", value: "48" },
+    { label: "Large", value: "96" },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+  {dimensions.map(({ label, value }) => (
+    <div
+      key={value}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <GridBackground
+        gridDimension={value}
+        gridColor="#161616"
+        backgroundColor="bg-background"
+        gridOpacity={0.8}
+        lineWidth={1}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">
+          {label} <span className="text-muted-foreground">{value}px</span>
+        </h3>
+      </div>
+    </div>
+  ))}
+</div>
+); } `}
+
+>
+
+  <GridBackgroundDimensions />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Grid Opacity
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import GridBackground from "@/components/component-x/grid-background";
+
+export function GridBackgroundOpacity() {
+  const opacities = [
+    { label: "Subtle", value: 0.3 },
+    { label: "Medium", value: 0.6 },
+    { label: "Strong", value: 1 },
+  ];
+
+return (
+
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{opacities.map(({ label, value }) => (
+<div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+<GridBackground
+            gridDimension="48"
+            gridColor="#161616"
+            backgroundColor="bg-background"
+            gridOpacity={value}
+            lineWidth={1}
+          />
+<div className="relative z-10 flex flex-col items-center justify-center h-full">
+<h3 className="text-2xl text-foreground">
+{label}{" "}
+<span className="text-muted-foreground">
+{(value \* 100).toFixed(0)}%
+</span>
+</h3>
+</div>
+</div>
+))}
+</div>
+);
+}
+
+`}
+
+>
+
+  <GridBackgroundOpacity />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Line Widths
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import GridBackground from "@/components/component-x/grid-background";
+
+export function GridBackgroundLineWidths() {
+  const lineWidths = [
+    { label: "Thin", value: 1 },
+    { label: "Medium", value: 2 },
+    { label: "Thick", value: 3 },
+  ];
+
+return (
+<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+{lineWidths.map(({ label, value }) => (
+<div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+<GridBackground
+            gridDimension="48"
+            gridColor="#161616"
+            backgroundColor="bg-background"
+            gridOpacity={1}
+            lineWidth={value}
+          />
+<div className="relative z-10 flex flex-col items-center justify-center h-full">
+<h3 className="text-2xl text-foreground">
+{label} <span className="text-muted-foreground">{value}px</span>
+</h3>
+</div>
+</div>
+))}
+</div>
+);
+}
+`}
+
+>
+
+  <GridBackgroundLineWidths />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-64"></div>
