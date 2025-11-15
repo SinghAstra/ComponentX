@@ -1,0 +1,346 @@
+# Masked Grid Background
+
+A sophisticated grid-based background component with radial gradient masking that creates elegant fading effects. Perfect for hero sections and attention-grabbing areas where you want the grid to fade naturally from the center point outward or vice versa.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+
+export function MaskedGridBackgroundPreview() {
+  return (
+    <div className="relative w-full h-full overflow-hidden border flex items-center justify-center">
+      <MaskedGridBackground
+        gridSize={48}
+        gridLineColor="#161616"
+        gridLineOpacity={1}
+        maskPosition="center"
+        maskSize={100}
+        maskOpacity={{ start: 0.8, middle: 0.2, end: 0 }}
+      />
+      <h3 className="text-2xl text-foreground">Masked Grid Background</h3>
+    </div>
+  );
+}
+`}
+>
+  <MaskedGridBackgroundPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add masked-grid-background"
+  code={`import { cn } from "@/lib/utils";
+import React from "react";
+
+interface MaskedGridBackgroundProps {
+  className?: string;
+  gridSize?: number;
+  gridLineColor?: string;
+  gridLineOpacity?: number;
+  maskPosition?: "top" | "center" | "bottom";
+  maskSize?: number;
+  maskOpacity?: {
+    start?: number;
+    middle?: number;
+    end?: number;
+  };
+}
+
+const MaskedGridBackground = ({
+  className,
+  gridSize = 48,
+  gridLineColor = "#161616",
+  gridLineOpacity = 1,
+  maskPosition = "top",
+  maskSize = 100,
+  maskOpacity = { start: 0.8, middle: 0.2, end: 0 },
+}: MaskedGridBackgroundProps) => {
+  const getRgbColor = (hexColor: string) => {
+    const hex = hexColor.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return \`\${r}, \${g}, \${b}\`;
+  };
+
+  const rgbColor = getRgbColor(gridLineColor);
+  const gridLineColorWithOpacity = \`rgba(\${rgbColor}, \${gridLineOpacity})\`;
+
+  const maskPositionValue = {
+    top: "50% 0%",
+    center: "50% 50%",
+    bottom: "50% 100%",
+  }[maskPosition];
+
+  const { start = 0.8, middle = 0.2, end = 0 } = maskOpacity;
+
+  return (
+    <div className={cn("absolute inset-0 z-[-1] bg-background", className)}>
+      <div
+        className="w-full h-full"
+        style={{
+          backgroundImage: \`linear-gradient(90deg,\${gridLineColorWithOpacity} 1px,transparent 1px),linear-gradient(180deg,\${gridLineColorWithOpacity} 1px,transparent 1px)\`,
+          backgroundSize: \`\${gridSize}px \${gridSize}px\`,
+          maskImage: \`radial-gradient(ellipse \${maskSize}% \${maskSize}% at \${maskPositionValue},rgba(255,255,255,\${start}) 20%,rgba(255,255,255,\${middle}) 60%,rgba(255,255,255,\${end}) 100%)\`,
+        }}
+      />
+    </div>
+  );
+};
+
+export default MaskedGridBackground;
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Mask Positions
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+
+export function MaskedGridBackgroundPositions() {
+  const positions = [
+    { label: "Top", value: "top" as const },
+    { label: "Center", value: "center" as const },
+    { label: "Bottom", value: "bottom" as const },
+  ];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {positions.map(({ label, value }) => (
+        <div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <MaskedGridBackground
+            gridSize={48}
+            gridLineColor="#161616"
+            gridLineOpacity={0.8}
+            maskPosition={value}
+            maskSize={100}
+            maskOpacity={{ start: 0.8, middle: 0.2, end: 0 }}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              Mask position: {value}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <MaskedGridBackgroundPositions />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Grid Size
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+
+export function MaskedGridBackgroundSizes() {
+  const sizes = [
+    { label: "Small (24px)", value: 24 },
+    { label: "Medium (48px)", value: 48 },
+    { label: "Large (96px)", value: 96 },
+  ];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {sizes.map(({ label, value }) => (
+        <div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <MaskedGridBackground
+            gridSize={value}
+            gridLineColor="#161616"
+            gridLineOpacity={0.8}
+            maskPosition="center"
+            maskSize={100}
+            maskOpacity={{ start: 0.8, middle: 0.2, end: 0 }}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              Grid cell size: {value}px
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <MaskedGridBackgroundSizes />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Grid Colors
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+
+export function MaskedGridBackgroundColors() {
+  const colors = [
+    { label: "Dark Gray", color: "#161616" },
+    { label: "Primary", color: "hsl(var(--primary))" },
+    { label: "Muted", color: "hsl(var(--muted-foreground))" },
+  ];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {colors.map(({ label, color }) => (
+        <div
+          key={label}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <MaskedGridBackground
+            gridSize={48}
+            gridLineColor={color}
+            gridLineOpacity={0.8}
+            maskPosition="center"
+            maskSize={100}
+            maskOpacity={{ start: 0.8, middle: 0.2, end: 0 }}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <div
+              className="w-8 h-8 rounded mt-2 border"
+              style={{ backgroundColor: color }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <MaskedGridBackgroundColors />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Mask Size
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+
+export function MaskedGridBackgroundMaskSizes() {
+  const maskSizes = [
+    { label: "Small (50%)", value: 50 },
+    { label: "Medium (100%)", value: 100 },
+    { label: "Large (150%)", value: 150 },
+  ];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {maskSizes.map(({ label, value }) => (
+        <div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <MaskedGridBackground
+            gridSize={48}
+            gridLineColor="#161616"
+            gridLineOpacity={0.8}
+            maskPosition="center"
+            maskSize={value}
+            maskOpacity={{ start: 0.8, middle: 0.2, end: 0 }}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              Mask size: {value}%
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <MaskedGridBackgroundMaskSizes />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Mask Opacity Control
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+
+export function MaskedGridBackgroundMaskOpacity() {
+  const opacityConfigs = [
+    {
+      label: "Subtle Fade",
+      opacity: { start: 0.4, middle: 0.2, end: 0 },
+    },
+    {
+      label: "Medium Fade",
+      opacity: { start: 0.8, middle: 0.2, end: 0 },
+    },
+    {
+      label: "Aggressive Fade",
+      opacity: { start: 1, middle: 0, end: 0 },
+    },
+  ];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {opacityConfigs.map(({ label, opacity }) => (
+        <div
+          key={label}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <MaskedGridBackground
+            gridSize={48}
+            gridLineColor="#161616"
+            gridLineOpacity={1}
+            maskPosition="center"
+            maskSize={100}
+            maskOpacity={opacity}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              Start: {opacity.start}, Middle: {opacity.middle}, End: {opacity.end}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <MaskedGridBackgroundMaskOpacity />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-64"></div>

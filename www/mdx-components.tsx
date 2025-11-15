@@ -25,6 +25,12 @@ import { LampBackgroundColors } from "@/app/docs/components/lamp-background/lamp
 import { LampBackgroundMultiPosition } from "@/app/docs/components/lamp-background/lamp-background-multi-positions";
 import { LampBackgroundPositions } from "@/app/docs/components/lamp-background/lamp-background-positions";
 import { LampBackgroundPreview } from "@/app/docs/components/lamp-background/lamp-background-preview";
+import { MaskedGridBackgroundColors } from "@/app/docs/components/masked-grid-background/masked-grid-background-colors";
+import { MaskedGridBackgroundMaskOpacity } from "@/app/docs/components/masked-grid-background/masked-grid-background-mask-opacity";
+import { MaskedGridBackgroundMaskSizes } from "@/app/docs/components/masked-grid-background/masked-grid-background-mask-sizes";
+import { MaskedGridBackgroundPositions } from "@/app/docs/components/masked-grid-background/masked-grid-background-positions";
+import { MaskedGridBackgroundPreview } from "@/app/docs/components/masked-grid-background/masked-grid-background-preview";
+import { MaskedGridBackgroundSizes } from "@/app/docs/components/masked-grid-background/masked-grid-background-sizes";
 import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
 import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
 import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
@@ -112,6 +118,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     GridBackgroundLineWidths,
     GridBackgroundOpacity,
     GridBackgroundPreview,
+    MaskedGridBackgroundColors,
+    MaskedGridBackgroundMaskOpacity,
+    MaskedGridBackgroundMaskSizes,
+    MaskedGridBackgroundPositions,
+    MaskedGridBackgroundPreview,
+    MaskedGridBackgroundSizes,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

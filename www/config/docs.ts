@@ -43,6 +43,10 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/lamp-background",
       },
       {
+        title: "Masked Grid Background",
+        path: "/docs/components/masked-grid-background",
+      },
+      {
         title: "Moving Background",
         path: "/docs/components/moving-background",
       },
