@@ -25,9 +25,9 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="flex flex-1 overflow-hidden relative">
         <DocsSidebar />
-        <div className="flex-1 p-2">
-          <div className="w-full h-full flex overflow-hidden border rounded bg-muted/10">
-            <div className="w-full h-full p-4 sm:px-8 flex-1 overflow-y-auto">
+        <div className="flex-1 flex overflow-hidden p-2">
+          <div className="flex-1 h-full flex overflow-hidden border rounded bg-muted/10">
+            <div className="h-full p-4 sm:px-8 flex-1 overflow-y-auto">
               {children}
             </div>
             <TableOfContents />

@@ -10,7 +10,7 @@ function DocsSidebar({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <div className="w-[256px] py-4 bg-deep-primary h-full overflow-auto">
+    <div className="w-[256px] py-4 bg-deep-primary h-full overflow-y-auto flex-nowrap">
       {docsLink.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="py-1 pl-1 text-xs tracking-widest text-muted-foreground uppercase">
