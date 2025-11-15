@@ -26,7 +26,6 @@ import { MovingBackgroundControl } from "@/app/docs/components/moving-background
 import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
 import { MovingBackgroundPreview } from "@/app/docs/components/moving-background/moving-background-preview";
 import { MovingBackgroundShineWidth } from "@/app/docs/components/moving-background/moving-background-shine-width";
-import { MovingBorderBlendModes } from "@/app/docs/components/moving-border/moving-border-blend-modes";
 import { MovingBorderColors } from "@/app/docs/components/moving-border/moving-border-colors";
 import { MovingBorderCustomization } from "@/app/docs/components/moving-border/moving-border-customisation";
 import { MovingBorderDirections } from "@/app/docs/components/moving-border/moving-border-directions";
@@ -100,7 +99,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     LampBackgroundColors,
     LampBackgroundPositions,
     LampBackgroundPreview,
-    MovingBorderBlendModes,
     MovingBorderColors,
     MovingBorderDirections,
     MovingBorderPreview,

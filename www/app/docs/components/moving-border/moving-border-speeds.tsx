@@ -13,7 +13,7 @@ export function MovingBorderSpeeds() {
   const speeds: MovingBorderSpeed[] = ["slow", "normal", "fast"];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
       <div className="flex flex-col gap-4 w-fit">
         {speeds.map((speed) => (
           <MovingBorder key={speed} speed={speed} className="rounded w-full">

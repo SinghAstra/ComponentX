@@ -13,23 +13,25 @@ export function MovingBorderDirections() {
   const directions: MovingBorderDirection[] = ["clockwise", "counterclockwise"];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {directions.map((direction) => (
-        <div key={direction} className="flex-none w-full h-48">
-          <MovingBorder direction={direction} className="rounded-lg h-full">
-            <div className="w-full h-full bg-background rounded-md flex items-center justify-center">
-              <div className="text-center">
-                <h3 className="text-2xl text-foreground">
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {directions.map((direction) => (
+          <MovingBorder
+            key={direction}
+            direction={direction}
+            className="rounded w-full"
+          >
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border{" "}
+                <span className="text-muted-foreground">
                   {capitalizeFirstLetter(direction)}
-                </h3>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Rotation: {direction}
-                </p>
-              </div>
+                </span>
+              </h3>
             </div>
           </MovingBorder>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

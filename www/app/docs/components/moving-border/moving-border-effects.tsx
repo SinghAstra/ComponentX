@@ -11,25 +11,24 @@ export function MovingBorderEffects() {
   ];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {effects.map(({ label, blur, opacity }) => (
-        <div key={label} className="flex-none w-full h-40">
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {effects.map((effect) => (
           <MovingBorder
-            blur={blur}
-            opacity={opacity}
-            className="rounded-lg h-full"
+            key={effect.label}
+            blur={effect.blur}
+            opacity={effect.opacity}
+            className="rounded w-full"
           >
-            <div className="w-full h-full bg-background rounded-md flex items-center justify-center">
-              <div className="text-center">
-                <h3 className="text-xl text-foreground">{label}</h3>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Blur: {blur}px | Opacity: {opacity}
-                </p>
-              </div>
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border{" "}
+                <span className="text-muted-foreground">{effect.label}</span>
+              </h3>
             </div>
           </MovingBorder>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
