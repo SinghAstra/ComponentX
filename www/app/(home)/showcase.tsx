@@ -430,7 +430,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </div>
             <div className="p-[2px] relative z-[2] overflow-hidden rounded">
               <MovingBorder>
-                <div className="w-full h-full px-3 py-1 bg-background border rounded">
+                <div className="w-full h-full px-3 py-1 rounded">
                   Moving Border
                 </div>
               </MovingBorder>

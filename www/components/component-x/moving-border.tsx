@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import type React from "react";
 import { CSSProperties } from "react";
@@ -67,7 +68,12 @@ const MovingBorder = ({
   };
 
   return (
-    <div className={`relative ${className} border p-[4px] overflow-hidden `}>
+    <div
+      className={cn(
+        "relative border p-[2px] overflow-hidden rounded",
+        className
+      )}
+    >
       <motion.div
         className="absolute top-1/2 left-1/2 pointer-events-none z-[-1]"
         style={{

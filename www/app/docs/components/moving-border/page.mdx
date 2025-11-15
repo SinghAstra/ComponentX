@@ -11,9 +11,9 @@ import MovingBorder from "@/components/component-x/moving-border";
 
 export function MovingBorderPreview() {
   return (
-    <MovingBorder className="rounded-lg">
-      <div className="w-full h-48 bg-background rounded-md flex items-center justify-center">
-        <h3 className="text-2xl text-foreground">Moving Border</h3>
+    <MovingBorder className="rounded">
+      <div className="w-full rounded flex items-center justify-center px-3 py-1">
+        <h3 className="text-foreground">Moving Border</h3>
       </div>
     </MovingBorder>
   );
@@ -31,6 +31,7 @@ export function MovingBorderPreview() {
   command="npx cx add moving-border"
   code={`"use client";
 
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import type React from "react";
 import { CSSProperties } from "react";
@@ -99,7 +100,11 @@ height: \`\${dimensions.height}%\`,
 
 return (
 
-<div className={\`relative \${className} border p-[4px] \`}>
+<div
+className={cn(
+"relative border p-[2px] overflow-hidden rounded",
+className
+)} >
 <motion.div
 className="absolute top-1/2 left-1/2 pointer-events-none z-[-1]"
 style={{
@@ -122,6 +127,7 @@ transition={{
 };
 
 export default MovingBorder;
+
 `}
 />
 
