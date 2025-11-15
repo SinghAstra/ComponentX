@@ -1,12 +1,14 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
+export type MaskPosition = "top" | "center" | "bottom";
+
 interface MaskedGridBackgroundProps {
   className?: string;
   gridSize?: number;
   gridLineColor?: string;
   gridLineOpacity?: number;
-  maskPosition?: "top" | "center" | "bottom";
+  maskPosition?: MaskPosition;
   maskSize?: number;
   maskOpacity?: {
     start?: number;

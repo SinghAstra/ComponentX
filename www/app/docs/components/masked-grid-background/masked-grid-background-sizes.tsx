@@ -4,9 +4,9 @@ import MaskedGridBackground from "@/components/component-x/masked-grid-backgroun
 
 export function MaskedGridBackgroundSizes() {
   const sizes = [
-    { label: "Small (24px)", value: 24 },
-    { label: "Medium (48px)", value: 48 },
-    { label: "Large (96px)", value: 96 },
+    { label: "Small", value: 24 },
+    { label: "Medium", value: 48 },
+    { label: "Large", value: 96 },
   ];
 
   return (
@@ -25,10 +25,9 @@ export function MaskedGridBackgroundSizes() {
             maskOpacity={{ start: 0.8, middle: 0.2, end: 0 }}
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
-            <h3 className="text-2xl text-foreground">{label}</h3>
-            <p className="text-sm text-muted-foreground mt-[1px]">
-              Grid cell size: {value}px
-            </p>
+            <h3 className="text-2xl text-foreground">
+              {label} <span className="text-muted-foreground">{value}px</span>
+            </h3>
           </div>
         </div>
       ))}
