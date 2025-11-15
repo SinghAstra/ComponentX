@@ -1,44 +1,36 @@
 "use client";
 
-import EllipseBackground from "@/components/component-x/ellipse-background";
 import TableOfContents from "@/components/component-x/toc";
 import DocsSidebar from "@/components/layout/docs-sidebar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import React from "react";
-import { FaGithub } from "react-icons/fa";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-screen flex flex-col overflow-hidden w-full">
-      <div className="sticky top-0 inset-x-0 flex items-center justify-between bg-deep-primary p-4 w-full border-b shadow-lg">
-        <Link href="/" className="font-medium text-2xl text-primary">
+    <div className="h-dvh flex flex-col overflow-hidden w-full">
+      <div className="sticky top-0 inset-x-0 flex items-center justify-between p-4 py-3 w-full">
+        <Link href="/" className="text-xl text-primary">
           {siteConfig.name}
         </Link>
-        <a href={siteConfig.links.github} target="_blank">
+        <a href={siteConfig.links.githubRepo} target="_blank">
           <Button
             variant={"outline"}
-            size={"sm"}
-            className="bg-transparent hover:bg-muted/20 transition-all duration-300 p-2"
+            className="bg-transparent hover:bg-muted/20 transition-all duration-300 px-3 py-2"
           >
-            <FaGithub className="h-4 w-4" />
+            Github
           </Button>
         </a>
       </div>
-      <div className="flex flex-1 overflow-hidden relative ">
+      <div className="flex flex-1 overflow-hidden relative p-2">
         <DocsSidebar />
-        <EllipseBackground
-          colorOne="hsl(var(--subtle-primary))"
-          colorTwo="hsl(var(--deep-primary))"
-          maskImage={false}
-        />
-        <div className=" flex-1 overflow-hidden relative">
-          <div className="w-full h-full p-4 sm:px-8 overflow-y-auto">
+        <div className="flex-1 flex overflow-hidden border rounded bg-muted/10">
+          <div className="w-full h-full p-4 sm:px-8 flex-1 overflow-y-auto">
             {children}
           </div>
+          <TableOfContents />
         </div>
-        <TableOfContents />
       </div>
     </div>
   );
