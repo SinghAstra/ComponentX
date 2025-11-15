@@ -1,7 +1,7 @@
 "use client";
 
 import EllipseBackground, {
-  type RadialVariant,
+  EllipseVariant,
 } from "@/components/component-x/ellipse-background";
 
 function capitalizeFirstLetter(str: string): string {
@@ -10,7 +10,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function EllipseBackgroundVariants() {
-  const variants: RadialVariant[] = ["fade", "glow"];
+  const variants: EllipseVariant[] = ["fade", "glow"];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
