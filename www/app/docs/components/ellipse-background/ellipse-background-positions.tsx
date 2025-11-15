@@ -1,7 +1,7 @@
 "use client";
 
 import EllipseBackground, {
-  type RadialPosition,
+  EllipsePosition,
 } from "@/components/component-x/ellipse-background";
 
 function capitalizeFirstLetter(str: string): string {
@@ -10,7 +10,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function EllipseBackgroundPositions() {
-  const radialPositions: RadialPosition[] = [
+  const radialPositions: EllipsePosition[] = [
     "top-left",
     "top-center",
     "top-right",
