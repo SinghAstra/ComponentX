@@ -1,5 +1,7 @@
 "use client";
 
+import MovingBackground from "@/components/component-x/moving-background";
+import MovingBorder from "@/components/component-x/moving-border";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -11,8 +13,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import MovingBackground from "@/components/component-x/moving-background";
-import MovingBorder from "@/components/component-x/moving-border";
 
 function Hero() {
   return (
@@ -63,9 +63,8 @@ function Hero() {
           </motion.div>
         </Link>
         <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
-          <a href={siteConfig.links.githubRepo} target="_blank">
-            <div className="p-[2px] relative z-[2] overflow-hidden rounded">
-              <MovingBorder />
+          <MovingBorder>
+            <a href={siteConfig.links.githubRepo} target="_blank">
               <Button
                 variant={"outline"}
                 size="lg"
@@ -74,8 +73,8 @@ function Hero() {
                 <FaGithub className=" h-4 w-4" />
                 GitHub
               </Button>
-            </div>
-          </a>
+            </a>
+          </MovingBorder>
         </motion.div>
       </div>
     </motion.div>
