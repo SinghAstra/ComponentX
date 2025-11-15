@@ -10,22 +10,20 @@ export function MovingBorderDuration() {
     { label: "10s", value: 10 },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {durations.map(({ label, value }) => (
-    <div key={label} className="flex-none w-full h-40">
-      <MovingBorder duration={value} className="rounded-lg h-full">
-        <div className="w-full h-full bg-background rounded-md flex items-center justify-center">
-          <div className="text-center">
-            <h3 className="text-xl text-foreground">{label} Duration</h3>
-            <p className="text-xs text-muted-foreground mt-1">
-              One full rotation: {label}
-            </p>
-          </div>
-        </div>
-      </MovingBorder>
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {durations.map(({ label, value }) => (
+          <MovingBorder key={label} duration={value} className="rounded w-full">
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border{" "}
+                <span className="text-muted-foreground">{label}</span>
+              </h3>
+            </div>
+          </MovingBorder>
+        ))}
+      </div>
     </div>
-  ))}
-</div>
-); } 
+  );
+}

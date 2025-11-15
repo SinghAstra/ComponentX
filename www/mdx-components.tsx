@@ -27,7 +27,6 @@ import { MovingBackgroundDurations } from "@/app/docs/components/moving-backgrou
 import { MovingBackgroundPreview } from "@/app/docs/components/moving-background/moving-background-preview";
 import { MovingBackgroundShineWidth } from "@/app/docs/components/moving-background/moving-background-shine-width";
 import { MovingBorderColors } from "@/app/docs/components/moving-border/moving-border-colors";
-import { MovingBorderCustomization } from "@/app/docs/components/moving-border/moving-border-customisation";
 import { MovingBorderDirections } from "@/app/docs/components/moving-border/moving-border-directions";
 import { MovingBorderDuration } from "@/app/docs/components/moving-border/moving-border-duration";
 import { MovingBorderEffects } from "@/app/docs/components/moving-border/moving-border-effects";
@@ -105,7 +104,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     MovingBorderSpeeds,
     MovingBorderDuration,
     MovingBorderEffects,
-    MovingBorderCustomization,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
