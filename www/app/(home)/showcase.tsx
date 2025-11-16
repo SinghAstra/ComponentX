@@ -511,9 +511,25 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <AuthDialog />
           </div>
 
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
-            <BorderHoverLink className="text-muted-foreground hover:text-foreground transition-all duration-200">
-              Hover me
+          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background relative">
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/border-hover-link">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
+            <BorderHoverLink
+              borderPosition="bottom"
+              borderColor="hsl(var(--primary))"
+              duration={700}
+              className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden"
+            >
+              Hover over me
             </BorderHoverLink>
           </div>
           <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">

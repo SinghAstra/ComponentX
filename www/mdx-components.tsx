@@ -1,3 +1,9 @@
+import { BorderHoverColors } from "@/app/docs/components/border-hover-link/border-hover-colors";
+import { BorderHoverDirections } from "@/app/docs/components/border-hover-link/border-hover-directions";
+import { BorderHoverLinkPreview } from "@/app/docs/components/border-hover-link/border-hover-link-preview";
+import { BorderHoverPositions } from "@/app/docs/components/border-hover-link/border-hover-positions";
+import { BorderHoverVertical } from "@/app/docs/components/border-hover-link/border-hover-vertical";
+import { BorderHoverDurations } from "@/app/docs/components/border-hover-link/border-hover-durations";
 import { ConicAngleSpans } from "@/app/docs/components/conic-background/conic-angle-spans";
 import { ConicBackgroundPositions } from "@/app/docs/components/conic-background/conic-background-positions";
 import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
@@ -122,6 +128,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     MaskedGridBackgroundPositions,
     MaskedGridBackgroundPreview,
     MaskedGridBackgroundSizes,
+    BorderHoverColors,
+    BorderHoverDirections,
+    BorderHoverLinkPreview,
+    BorderHoverPositions,
+    BorderHoverVertical,
+    BorderHoverDurations,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

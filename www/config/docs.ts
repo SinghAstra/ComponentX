@@ -19,6 +19,10 @@ export const docsLink: DocsSectionLink[] = [
     title: "Components",
     links: [
       {
+        title: "Border Hover Link",
+        path: "/docs/components/border-hover-link",
+      },
+      {
         title: "Conic Background",
         path: "/docs/components/conic-background",
       },
