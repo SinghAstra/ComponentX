@@ -27,7 +27,6 @@ import LampBackground from "@/components/component-x/lamp-background";
 import MaskedGridBackground from "@/components/component-x/masked-grid-background";
 import MovingBackground from "@/components/component-x/moving-background";
 import MovingBorder from "@/components/component-x/moving-border";
-import NotificationInput from "@/components/component-x/notification-input";
 import RadialBackground from "@/components/component-x/radial-background";
 import Sidebar from "@/components/component-x/sidebar";
 import {
@@ -122,6 +121,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
     },
   ];
+
   return (
     <motion.div
       variants={containerVariant}
@@ -397,7 +397,6 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <LampBackground />
           </motion.div>
-
           <div className="col-span-1 row-span-1 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded bg-background">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog#search-dialog">
@@ -413,7 +412,6 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
 
             <SearchDialog />
           </div>
-
           <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/moving-border">
@@ -466,7 +464,6 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <GridBackground />
           </motion.div>
-
           <motion.div
             variants={containerVariant}
             initial="hidden"
@@ -499,7 +496,6 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <MaskedGridBackground />
           </motion.div>
-
           <div className="col-span-1  row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog#authentication-dialog">
@@ -514,9 +510,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </div>
             <AuthDialog />
           </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
-            <NotificationInput />
-          </div>
+
           <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
             <BorderHoverLink className="text-muted-foreground hover:text-foreground transition-all duration-200">
               Hover me
