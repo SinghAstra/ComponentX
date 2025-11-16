@@ -43,10 +43,6 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/grid-background",
       },
       {
-        title: "Hover Popover",
-        path: "/docs/components/hover-popover",
-      },
-      {
         title: "Lamp Background",
         path: "/docs/components/lamp-background",
       },

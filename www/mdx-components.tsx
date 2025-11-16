@@ -36,12 +36,6 @@ import {
   GridBackgroundPreview,
 } from "@/app/docs/components/grid-background";
 import {
-  HoverPopOverAlignments,
-  HoverPopOverCustomContent,
-  HoverPopOverMultiple,
-  HoverPopOverPreview,
-} from "@/app/docs/components/hover-popover";
-import {
   LampBackgroundAngleSpan,
   LampBackgroundColors,
   LampBackgroundMultiPosition,
@@ -80,15 +74,6 @@ import {
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "./components/component-x/table";
 import { CodeBlock } from "./components/mdx/codeblock";
 import { ComponentPreviewWithCode } from "./components/mdx/component-preview-with-code";
 import { Installation } from "./components/mdx/installation";
@@ -158,10 +143,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BorderHoverLinkPreview,
     BorderHoverPositions,
     BorderHoverDurations,
-    HoverPopOverAlignments,
-    HoverPopOverCustomContent,
-    HoverPopOverMultiple,
-    HoverPopOverPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
@@ -258,27 +239,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     pre: ({ className, ...props }) => (
       <CodeBlock className={className} {...props} />
-    ),
-    table: ({ className, ...props }) => (
-      <Table className={className} {...props} />
-    ),
-    thead: ({ className, ...props }) => (
-      <TableHeader className={className} {...props} />
-    ),
-    tbody: ({ className, ...props }) => (
-      <TableBody className={className} {...props} />
-    ),
-    tfoot: ({ className, ...props }) => (
-      <TableFooter className={className} {...props} />
-    ),
-    tr: ({ className, ...props }) => (
-      <TableRow className={className} {...props} />
-    ),
-    th: ({ className, ...props }) => (
-      <TableHead className={className} {...props} />
-    ),
-    td: ({ className, ...props }) => (
-      <TableCell className={className} {...props} />
     ),
     hr: ({ ...props }) => <hr className="my-2" {...props} />,
     strong: ({ className, ...props }) => (

@@ -18,17 +18,11 @@ import {
   FloatingNavbarSeparator,
 } from "@/components/component-x/floating-navbar";
 import GridBackground from "@/components/component-x/grid-background";
-import {
-  HoverPopOver,
-  HoverPopOverContent,
-  HoverPopOverTrigger,
-} from "@/components/component-x/hover-popover";
 import LampBackground from "@/components/component-x/lamp-background";
 import MaskedGridBackground from "@/components/component-x/masked-grid-background";
 import MovingBackground from "@/components/component-x/moving-background";
 import MovingBorder from "@/components/component-x/moving-border";
 import RadialBackground from "@/components/component-x/radial-background";
-import Sidebar from "@/components/component-x/sidebar";
 import {
   TabItem,
   Tabs,
@@ -36,17 +30,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/component-x/tab";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/component-x/table";
 import Navbar from "@/components/navigation/navbar";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -65,7 +49,6 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AuthDialog } from "../docs/components/dialog/auth-dialog";
@@ -80,47 +63,6 @@ interface ShowCasePageProps {
 
 const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
-  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
-  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
-
-  interface User {
-    id: number;
-    name: string;
-    email: string;
-    role: "Admin" | "Member" | "Guest";
-    avatar: string;
-  }
-
-  const users: User[] = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john.doe@example.com",
-      role: "Admin",
-      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      role: "Member",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956",
-    },
-    {
-      id: 3,
-      name: "Peter Jones",
-      email: "peter.jones@example.com",
-      role: "Guest",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-    },
-    {
-      id: 4,
-      name: "Mary Williams",
-      email: "mary.williams@example.com",
-      role: "Admin",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    },
-  ];
 
   return (
     <motion.div
@@ -134,12 +76,12 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
         {!showcase && <LampBackground />}
         <Hero />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4 mb-8">
           <motion.div
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="bg-background col-span-1 sm:col-span-2 lg:col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border rounded relative"
+            className="bg-background col-span-1 sm:col-span-2 lg:col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border rounded relative"
           >
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/floating-navbar">
@@ -290,7 +232,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="bg-background relative col-span-1 row-span-1  min-h-[250px] flex items-center justify-center border rounded"
+            className="bg-background relative col-span-1 row-span-1  min-h-[400px] flex items-center justify-center border rounded"
           >
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/moving-background">
@@ -318,7 +260,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
-            className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 relative rounded bg-background"
+            className="col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 relative rounded bg-background"
           >
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog">
@@ -397,7 +339,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <LampBackground />
           </motion.div>
-          <div className="col-span-1 row-span-1 min-h-[250px] relative flex items-center justify-center border border-neutral-800 rounded bg-background">
+          <div className="col-span-1 row-span-1 min-h-[400px] relative flex items-center justify-center border border-neutral-800 rounded bg-background">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog#search-dialog">
                 <Button
@@ -412,7 +354,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
 
             <SearchDialog />
           </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
+          <div className="col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/moving-border">
                 <Button
@@ -496,7 +438,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </Link>
             <MaskedGridBackground />
           </motion.div>
-          <div className="col-span-1  row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
+          <div className="col-span-1  row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 rounded relative bg-background">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog#authentication-dialog">
                 <Button
@@ -511,7 +453,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <AuthDialog />
           </div>
 
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background relative">
+          <div className="col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 rounded bg-background relative">
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/border-hover-link">
                 <Button
@@ -532,47 +474,11 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
               Hover over me
             </BorderHoverLink>
           </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background relative">
-            <div className="absolute top-2 right-2">
-              <Link href="/docs/components/hover-popover">
-                <Button
-                  variant={"outline"}
-                  size={"sm"}
-                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
-                >
-                  View Docs
-                </Button>
-              </Link>
-            </div>
-            <HoverPopOver>
-              <HoverPopOverTrigger>
-                <Button
-                  variant="outline"
-                  className="rounded transition-all duration-300 bg-muted/20 hover:bg-muted/40"
-                >
-                  Pop Over
-                </Button>
-              </HoverPopOverTrigger>
-              <HoverPopOverContent>
-                <div className="mt-2 border bg-muted/40 w-64">
-                  {[1, 2, 3].map((elem) => {
-                    return (
-                      <div
-                        key={elem}
-                        className="px-3 py-1 hover:bg-muted/60 cursor-pointer"
-                      >
-                        This is Pop Over {elem}
-                      </div>
-                    );
-                  })}
-                </div>
-              </HoverPopOverContent>
-            </HoverPopOver>
-          </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] flex items-center justify-center border border-neutral-800 rounded bg-background">
+
+          <div className="col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 rounded bg-background">
             <h1 className="text-shine">{siteConfig.name}</h1>
           </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2">
+          <div className="col-span-1 row-span-1 min-h-[400px] border border-neutral-800 rounded bg-background p-2">
             <Tabs className="h-full flex flex-col">
               <TabsList>
                 <TabsTrigger index={0}>First</TabsTrigger>
@@ -592,7 +498,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
               </TabsContent>
             </Tabs>
           </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex">
+          <div className="col-span-1 row-span-1 min-h-[400px] border border-neutral-800 rounded bg-background p-2 flex">
             <Carousel className="w-full h-full flex flex-col gap-4">
               <CarouselContent className="flex-1">
                 {Array.from({ length: 5 }, (_, i) => {
@@ -613,89 +519,6 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
                 <CarouselBottomNavigation />
               </CarouselFooter>
             </Carousel>
-          </div>
-          <div className="col-span-1 row-span-1 min-h-[250px] border border-neutral-800 rounded bg-background p-2 flex items-center justify-center">
-            <div className="flex flex-col gap-2">
-              <Button
-                variant={"outline"}
-                className="hover:bg-muted/40 transition-all duration-300 font-normal rounded"
-                onClick={() => setIsLeftSidebarOpen(!isLeftSidebarOpen)}
-              >
-                Left Sidebar
-              </Button>
-              <Button
-                variant={"outline"}
-                className="hover:bg-muted/40 transition-all duration-300 font-normal rounded"
-                onClick={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
-              >
-                Right Sidebar
-              </Button>
-            </div>
-
-            <Sidebar
-              isSidebarOpen={isLeftSidebarOpen}
-              setIsSidebarOpen={setIsLeftSidebarOpen}
-            >
-              <div className="flex items-center justify-center w-72 h-full text-center p-4">
-                <p>You can place Sidebar Content here.</p>
-              </div>
-            </Sidebar>
-            <Sidebar
-              isSidebarOpen={isRightSidebarOpen}
-              setIsSidebarOpen={setIsRightSidebarOpen}
-              direction="right"
-            >
-              <div className="flex items-center justify-center w-72 h-full text-center p-4">
-                <p>You can place Sidebar Content here.</p>
-              </div>
-            </Sidebar>
-          </div>
-          <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto bg-background">
-            <Table className="max-w-xl mx-auto">
-              <TableHeader>
-                <TableRow className="hover:bg-transparent">
-                  <TableHead>Avatar</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Role</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {users.map((user) => (
-                  <TableRow key={user.id}>
-                    <TableCell>
-                      <Avatar className="mx-auto">
-                        <AvatarImage src={user.avatar} alt={`@${user.name}`} />
-                        <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-                      </Avatar>
-                    </TableCell>
-                    <TableCell>{user.name}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell className="text-center">
-                      <Badge
-                        className="rounded"
-                        variant={user.role === "Admin" ? "default" : "outline"}
-                      >
-                        {user.role}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          <div className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative overflow-x-auto">
-            <div className="absolute inset-0 z-[-1] overflow-hidden">
-              <Image
-                src="/assets/gradient.avif"
-                alt="static asset"
-                width={1920}
-                height={480}
-                className="object-cover"
-              />
-            </div>
-
-            <h1 className="font-semibold text-6xl">Static Background</h1>
           </div>
         </div>
         <Footer />
