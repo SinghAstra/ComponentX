@@ -20,7 +20,7 @@ function Hero() {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="relative flex flex-col gap-4 items-center text-center min-h-screen justify-center p-4 sm:px-8 overflow-hidden"
+      className="relative flex flex-col gap-4 items-center text-center justify-center min-h-[80vh] mb-8 sm:px-8 overflow-hidden"
     >
       <motion.div variants={scaleInVariant} className="z-[1]">
         <a href={siteConfig.links.buildInPublic} target="_blank">
@@ -51,17 +51,17 @@ function Hero() {
       </motion.div>
 
       <div className="flex flex-col sm:flex-row gap-4 sm:mt-4 items-center ">
-        <Link href="/docs">
-          <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
+        <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
+          <Link href="/docs">
             <Button
               size="lg"
-              className="group rounded relative flex items-center gap-1 text-md font-normal backdrop-blur-md  "
+              className="group rounded relative flex items-center gap-1 text-md font-normal backdrop-blur-md w-full  "
             >
               Docs
               <ArrowRight className="ml-2 h-4 w-4 transition-all duration-200 group-hover:translate-x-1" />
             </Button>
-          </motion.div>
-        </Link>
+          </Link>
+        </motion.div>
         <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
           <MovingBorder>
             <a href={siteConfig.links.githubRepo} target="_blank">

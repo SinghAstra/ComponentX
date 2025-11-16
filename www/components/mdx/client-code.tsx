@@ -43,7 +43,7 @@ const ClientCode = ({
   return (
     <div
       className={cn(
-        "relative h-[350px] overflow-hidden border rounded-md bg-muted/40",
+        "relative h-[350px] overflow-hidden border rounded-md bg-transparent",
         className
       )}
     >

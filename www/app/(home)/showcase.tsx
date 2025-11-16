@@ -131,10 +131,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
     >
       <Navbar />
       <div className="w-full h-full flex flex-col overflow-y-auto p-4 sm:px-8">
-        <div className="min-h-screen">
-          {!showcase && <LampBackground />}
-          <Hero />
-        </div>
+        {!showcase && <LampBackground />}
+        <Hero />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4">
           <motion.div

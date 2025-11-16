@@ -6,7 +6,7 @@ interface ComponentPreviewProps {
 
 function ComponentPreview({ children }: ComponentPreviewProps) {
   return (
-    <div className="flex border border-b-0 h-[350px] overflow-hidden w-full items-center justify-center rounded-t-md bg-muted/40">
+    <div className="flex border border-b-0 h-[350px] overflow-hidden w-full items-center justify-center rounded-t-md bg-transparent">
       {children}
     </div>
   );
