@@ -1,57 +1,77 @@
-import { BorderHoverColors } from "@/app/docs/components/border-hover-link/border-hover-colors";
-import { BorderHoverDirections } from "@/app/docs/components/border-hover-link/border-hover-directions";
-import { BorderHoverLinkPreview } from "@/app/docs/components/border-hover-link/border-hover-link-preview";
-import { BorderHoverPositions } from "@/app/docs/components/border-hover-link/border-hover-positions";
-import { BorderHoverVertical } from "@/app/docs/components/border-hover-link/border-hover-vertical";
-import { BorderHoverDurations } from "@/app/docs/components/border-hover-link/border-hover-durations";
-import { ConicAngleSpans } from "@/app/docs/components/conic-background/conic-angle-spans";
-import { ConicBackgroundPositions } from "@/app/docs/components/conic-background/conic-background-positions";
-import { ConicBackgroundPreview } from "@/app/docs/components/conic-background/conic-background-preview";
-import { ConicBackgroundSpans } from "@/app/docs/components/conic-background/conic-background-spans";
-import { AuthDialog } from "@/app/docs/components/dialog/auth-dialog";
-import { BasicDialog } from "@/app/docs/components/dialog/basic-dialog";
-import { DialogCustomSize } from "@/app/docs/components/dialog/dialog-custom-size";
-import { DialogPreview } from "@/app/docs/components/dialog/dialog-preview";
-import { DialogWithShortcut } from "@/app/docs/components/dialog/dialog-with-shortcut";
-import { DialogWrapper } from "@/app/docs/components/dialog/dialog-wrapper";
-import { SearchDialog } from "@/app/docs/components/dialog/search-dialog";
-import { EllipseBackgroundAnimated } from "@/app/docs/components/ellipse-background/ellipse-background-animated";
-import { EllipseBackgroundDimensions } from "@/app/docs/components/ellipse-background/ellipse-background-dimensions";
-import { EllipseBackgroundPositions } from "@/app/docs/components/ellipse-background/ellipse-background-positions";
-import { EllipseBackgroundPreview } from "@/app/docs/components/ellipse-background/ellipse-background-preview";
-import { EllipseBackgroundTransition } from "@/app/docs/components/ellipse-background/ellipse-background-transition";
-import { EllipseBackgroundVariants } from "@/app/docs/components/ellipse-background/ellipse-background-variants";
-import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar/floating-navbar-preview";
-import { GridBackgroundDimensions } from "@/app/docs/components/grid-background/grid-background-dimensions";
-import { GridBackgroundLineWidths } from "@/app/docs/components/grid-background/grid-background-line-widths";
-import { GridBackgroundOpacity } from "@/app/docs/components/grid-background/grid-background-opacity";
-import { GridBackgroundPreview } from "@/app/docs/components/grid-background/grid-background-preview";
-import { LampBackgroundAngleSpan } from "@/app/docs/components/lamp-background/lamp-background-angle-span";
-import { LampBackgroundColors } from "@/app/docs/components/lamp-background/lamp-background-colors";
-import { LampBackgroundMultiPosition } from "@/app/docs/components/lamp-background/lamp-background-multi-positions";
-import { LampBackgroundPositions } from "@/app/docs/components/lamp-background/lamp-background-positions";
-import { LampBackgroundPreview } from "@/app/docs/components/lamp-background/lamp-background-preview";
-import { MaskedGridBackgroundMaskOpacity } from "@/app/docs/components/masked-grid-background/masked-grid-background-mask-opacity";
-import { MaskedGridBackgroundMaskSizes } from "@/app/docs/components/masked-grid-background/masked-grid-background-mask-sizes";
-import { MaskedGridBackgroundPositions } from "@/app/docs/components/masked-grid-background/masked-grid-background-positions";
-import { MaskedGridBackgroundPreview } from "@/app/docs/components/masked-grid-background/masked-grid-background-preview";
-import { MaskedGridBackgroundSizes } from "@/app/docs/components/masked-grid-background/masked-grid-background-sizes";
-import { MovingBackgroundAngles } from "@/app/docs/components/moving-background/moving-background-angles";
-import { MovingBackgroundControl } from "@/app/docs/components/moving-background/moving-background-control";
-import { MovingBackgroundDurations } from "@/app/docs/components/moving-background/moving-background-durations";
-import { MovingBackgroundPreview } from "@/app/docs/components/moving-background/moving-background-preview";
-import { MovingBackgroundShineWidth } from "@/app/docs/components/moving-background/moving-background-shine-width";
-import { MovingBorderColors } from "@/app/docs/components/moving-border/moving-border-colors";
-import { MovingBorderDirections } from "@/app/docs/components/moving-border/moving-border-directions";
-import { MovingBorderDuration } from "@/app/docs/components/moving-border/moving-border-duration";
-import { MovingBorderEffects } from "@/app/docs/components/moving-border/moving-border-effects";
-import { MovingBorderPreview } from "@/app/docs/components/moving-border/moving-border-preview";
-import { MovingBorderSpeeds } from "@/app/docs/components/moving-border/moving-border-speeds";
-import { RadialBackgroundAnimated } from "@/app/docs/components/radial-background/radial-animated-background";
-import { RadialBackgroundPositions } from "@/app/docs/components/radial-background/radial-background-positions";
-import { RadialBackgroundPreview } from "@/app/docs/components/radial-background/radial-background-preview";
-import { RadialBackgroundRadius } from "@/app/docs/components/radial-background/radial-background-radius";
-import { RadialBackgroundVariants } from "@/app/docs/components/radial-background/radial-background-variants";
+import {
+  BorderHoverColors,
+  BorderHoverDirections,
+  BorderHoverDurations,
+  BorderHoverLinkPreview,
+  BorderHoverPositions,
+  BorderHoverVertical,
+} from "@/app/docs/components/border-hover-link";
+import {
+  ConicAngleSpans,
+  ConicBackgroundPositions,
+  ConicBackgroundPreview,
+  ConicBackgroundSpans,
+} from "@/app/docs/components/conic-background";
+import {
+  AuthDialog,
+  BasicDialog,
+  DialogCustomSize,
+  DialogPreview,
+  DialogWithShortcut,
+  DialogWrapper,
+  SearchDialog,
+} from "@/app/docs/components/dialog";
+import {
+  EllipseBackgroundAnimated,
+  EllipseBackgroundDimensions,
+  EllipseBackgroundPositions,
+  EllipseBackgroundPreview,
+  EllipseBackgroundTransition,
+  EllipseBackgroundVariants,
+} from "@/app/docs/components/ellipse-background";
+import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar";
+import {
+  GridBackgroundDimensions,
+  GridBackgroundLineWidths,
+  GridBackgroundOpacity,
+  GridBackgroundPreview,
+} from "@/app/docs/components/grid-background";
+import {
+  LampBackgroundAngleSpan,
+  LampBackgroundColors,
+  LampBackgroundMultiPosition,
+  LampBackgroundPositions,
+  LampBackgroundPreview,
+} from "@/app/docs/components/lamp-background";
+import {
+  MaskedGridBackgroundMaskOpacity,
+  MaskedGridBackgroundMaskSizes,
+  MaskedGridBackgroundPositions,
+  MaskedGridBackgroundPreview,
+  MaskedGridBackgroundSizes,
+} from "@/app/docs/components/masked-grid-background";
+import {
+  MovingBackgroundAngles,
+  MovingBackgroundControl,
+  MovingBackgroundDurations,
+  MovingBackgroundPreview,
+  MovingBackgroundShineWidth,
+} from "@/app/docs/components/moving-background";
+import {
+  MovingBorderColors,
+  MovingBorderDirections,
+  MovingBorderDuration,
+  MovingBorderEffects,
+  MovingBorderPreview,
+  MovingBorderSpeeds,
+} from "@/app/docs/components/moving-border";
+import {
+  RadialBackgroundAnimated,
+  RadialBackgroundPositions,
+  RadialBackgroundPreview,
+  RadialBackgroundRadius,
+  RadialBackgroundVariants,
+} from "@/app/docs/components/radial-background";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";

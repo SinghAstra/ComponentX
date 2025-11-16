@@ -20,22 +20,21 @@ export function BorderHoverDirections() {
       {directions.map((dir) => (
         <div
           key={dir.value}
-          className="relative flex-none w-full h-32 overflow-hidden border flex items-center justify-center bg-muted/30"
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
         >
           <BorderHoverLink
             borderPosition="bottom"
             borderColor="hsl(var(--primary))"
             animationDirection={dir.value}
             duration={700}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
-            <div className="text-center">
-              <p className="text-foreground font-medium">{dir.label}</p>
-              <p className="text-sm text-muted-foreground">
-                {dir.value === "ltr"
-                  ? "Animates from left to right"
-                  : "Animates from right to left"}
-              </p>
-            </div>
+            <p className="text-foreground">
+              Hover me{" "}
+              <span className="text-sm text-muted-foreground">
+                {dir.value === "ltr" ? "left to right" : "right to left"}
+              </span>
+            </p>
           </BorderHoverLink>
         </div>
       ))}

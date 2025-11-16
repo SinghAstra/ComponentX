@@ -62,10 +62,6 @@ export const docsLink: DocsSectionLink[] = [
         title: "Radial Background",
         path: "/docs/components/radial-background",
       },
-      {
-        title: "Subscribe Input",
-        path: "/docs/components/subscribe-input",
-      },
     ],
   },
 ];

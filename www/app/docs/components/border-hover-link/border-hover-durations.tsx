@@ -14,17 +14,18 @@ export function BorderHoverDurations() {
       {durations.map(({ label, value }) => (
         <div
           key={value}
-          className="relative flex-none w-full h-32 overflow-hidden border flex items-center justify-center bg-muted/30"
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
         >
           <BorderHoverLink
             borderPosition="bottom"
             borderColor="hsl(var(--primary))"
             duration={value}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
-            <div className="text-center">
-              <p className="text-foreground font-medium">{label}</p>
-              <p className="text-sm text-muted-foreground">{value}ms</p>
-            </div>
+            <p className="text-foreground">
+              Hover me{" "}
+              <span className="text-sm text-muted-foreground">{label}</span>
+            </p>
           </BorderHoverLink>
         </div>
       ))}

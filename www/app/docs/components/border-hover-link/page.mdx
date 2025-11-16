@@ -11,7 +11,7 @@ import BorderHoverLink from "@/components/component-x/border-hover-link";
 
 export function BorderHoverLinkPreview() {
   return (
-    <div className="flex items-center justify-center w-full h-full py-12">
+    <div className="flex items-center justify-center w-full h-full">
       <BorderHoverLink
         borderPosition="bottom"
         borderColor="hsl(var(--primary))"
@@ -120,31 +120,43 @@ export function BorderHoverLinkPreview() {
 
 <ComponentPreviewWithCode
   code={`"use client";
-
-import BorderHoverLink from "@/components/border-hover-link";
-
-export function BorderHoverPositions() {
-  const positions = ["top", "bottom", "left", "right"] as const;
-
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {positions.map((pos) => (
-    <div
-      key={pos}
-      className="relative flex-none w-full h-32 overflow-hidden border flex items-center justify-center bg-muted/30"
-    >
-      <BorderHoverLink
-        borderPosition={pos}
-        borderColor="hsl(var(--primary))"
-        duration={700}
-      >
-        <span className="text-foreground capitalize">{pos} border</span>
-      </BorderHoverLink>
-    </div>
-  ))}
-</div>
-); } `}
+  
+  import BorderHoverLink, {
+    BorderPosition,
+  } from "@/components/component-x/border-hover-link";
+  
+  function capitalizeFirstLetter(str: string): string {
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  
+  export function BorderHoverPositions() {
+    const positions: BorderPosition[] = ["top", "bottom", "left", "right"];
+  
+    return (
+      <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+        {positions.map((pos) => (
+          <div
+            key={pos}
+            className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
+          >
+            <BorderHoverLink
+              borderPosition={pos}
+              borderColor="hsl(var(--primary))"
+              duration={700}
+              className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden"
+            >
+              Hover me{" "}
+              <span className="text-muted-foreground text-sm">
+                {capitalizeFirstLetter(pos)}
+              </span>
+            </BorderHoverLink>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  `}
 
 >
 
@@ -158,36 +170,43 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import BorderHoverLink from "@/components/border-hover-link";
+import BorderHoverLink, {
+BorderHoverAnimationDirection,
+} from "@/components/component-x/border-hover-link";
+
+interface BorderItem {
+label: string;
+value: BorderHoverAnimationDirection;
+}
 
 export function BorderHoverDirections() {
-  const directions = [
-    { label: "Left to Right", value: "ltr" },
-    { label: "Right to Left", value: "rtl" },
-  ] as const;
+const directions: BorderItem[] = [
+{ label: "Left to Right", value: "ltr" },
+{ label: "Right to Left", value: "rtl" },
+];
 
 return (
 
+{" "}
 <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
   {directions.map((dir) => (
     <div
       key={dir.value}
-      className="relative flex-none w-full h-32 overflow-hidden border flex items-center justify-center bg-muted/30"
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
     >
       <BorderHoverLink
         borderPosition="bottom"
         borderColor="hsl(var(--primary))"
         animationDirection={dir.value}
         duration={700}
+        className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
       >
-        <div className="text-center">
-          <p className="text-foreground font-medium">{dir.label}</p>
-          <p className="text-sm text-muted-foreground">
-            {dir.value === "ltr"
-              ? "Animates from left to right"
-              : "Animates from right to left"}
-          </p>
-        </div>
+        <p className="text-foreground">
+          Hover me{" "}
+          <span className="text-sm text-muted-foreground">
+            {dir.value === "ltr" ? "left to right" : "right to left"}
+          </span>
+        </p>
       </BorderHoverLink>
     </div>
   ))}
@@ -204,39 +223,42 @@ return (
 ## Animation Duration
 
 <ComponentPreviewWithCode
-  code={`"use client";
+  code={`
+  "use client";
 
-import BorderHoverLink from "@/components/border-hover-link";
+import BorderHoverLink from "@/components/component-x/border-hover-link";
 
 export function BorderHoverDurations() {
-  const durations = [
-    { label: "Fast", value: 300 },
-    { label: "Normal", value: 700 },
-    { label: "Slow", value: 1200 },
-  ];
+const durations = [
+{ label: "Fast", value: 300 },
+{ label: "Normal", value: 700 },
+{ label: "Slow", value: 1200 },
+];
 
-return (
+    return (
+      <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+        {durations.map(({ label, value }) => (
+          <div
+            key={value}
+            className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
+          >
+            <BorderHoverLink
+              borderPosition="bottom"
+              borderColor="hsl(var(--primary))"
+              duration={value}
+              className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
+            >
+              <p className="text-foreground">
+                Hover me{" "}
+                <span className="text-sm text-muted-foreground">{label}</span>
+              </p>
+            </BorderHoverLink>
+          </div>
+        ))}
+      </div>
+    );
 
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {durations.map(({ label, value }) => (
-    <div
-      key={value}
-      className="relative flex-none w-full h-32 overflow-hidden border flex items-center justify-center bg-muted/30"
-    >
-      <BorderHoverLink
-        borderPosition="bottom"
-        borderColor="hsl(var(--primary))"
-        duration={value}
-      >
-        <div className="text-center">
-          <p className="text-foreground font-medium">{label}</p>
-          <p className="text-sm text-muted-foreground">{value}ms</p>
-        </div>
-      </BorderHoverLink>
-    </div>
-  ))}
-</div>
-); } `}
+}`}
 
 >
 
@@ -255,8 +277,9 @@ import BorderHoverLink from "@/components/border-hover-link";
 export function BorderHoverColors() {
   const colors = [
     { label: "Primary", value: "hsl(var(--primary))" },
-    { label: "Destructive", value: "hsl(var(--destructive))" },
     { label: "Muted", value: "hsl(var(--muted-foreground))" },
+        { label: "Success", value: "hsl(142, 71%, 45%)" },
+    { label: "Warning", value: "hsl(38, 92%, 50%)" },
   ];
 
 return (

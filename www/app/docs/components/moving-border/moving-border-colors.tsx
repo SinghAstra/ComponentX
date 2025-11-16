@@ -5,7 +5,7 @@ import MovingBorder from "@/components/component-x/moving-border";
 export function MovingBorderColors() {
   const colors = [
     { label: "Primary", value: "hsl(var(--primary))" },
-    { label: "Destructive", value: "hsl(var(--destructive))" },
+    { label: "Muted", value: "hsl(var(--muted-foreground))" },
     { label: "Success", value: "hsl(142, 71%, 45%)" },
     { label: "Warning", value: "hsl(38, 92%, 50%)" },
   ];
