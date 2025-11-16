@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { scaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import { Command } from "lucide-react";
-import React, { useState } from "react";
-import Dialog from "../../../../components/component-x/dialog";
+import { Button } from '@/components/ui/button';
+import { scaleInVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import { Command } from 'lucide-react';
+import React, { useState } from 'react';
+import Dialog from '../../../../components/component-x/dialog';
 
 export const DialogWrapper = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);

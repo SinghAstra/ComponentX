@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { forwardRef, type InputHTMLAttributes } from "react";
+import { cn } from '@/lib/utils';
+import { forwardRef, type InputHTMLAttributes } from 'react';
 
 export const InputField = forwardRef<
   HTMLInputElement,
@@ -9,13 +9,13 @@ export const InputField = forwardRef<
     <input
       ref={ref}
       className={cn(
-        "flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground",
-        "min-w-[120px]",
-        className
+        'flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground',
+        'min-w-[120px]',
+        className,
       )}
       {...props}
     />
   );
 });
 
-InputField.displayName = "InputField";
+InputField.displayName = 'InputField';

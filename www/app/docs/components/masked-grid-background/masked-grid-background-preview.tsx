@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
 
 export function MaskedGridBackgroundPreview() {
   return (

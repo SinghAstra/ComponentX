@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundPreview() {
   return (

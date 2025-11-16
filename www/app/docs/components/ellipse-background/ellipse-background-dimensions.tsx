@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import EllipseBackground from "@/components/component-x/ellipse-background";
+import EllipseBackground from '@/components/component-x/ellipse-background';
 
 export function EllipseBackgroundDimensions() {
   const dimensions = [
-    { label: "Wide Ellipse", radiusX: 120, radiusY: 40 },
-    { label: "Balanced", radiusX: 60, radiusY: 60 },
+    { label: 'Wide Ellipse', radiusX: 120, radiusY: 40 },
+    { label: 'Balanced', radiusX: 60, radiusY: 60 },
   ];
 
   return (

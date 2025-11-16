@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
 
 export function MaskedGridBackgroundSizes() {
   const sizes = [
-    { label: "Small", value: 24 },
-    { label: "Medium", value: 48 },
-    { label: "Large", value: 96 },
+    { label: 'Small', value: 24 },
+    { label: 'Medium', value: 48 },
+    { label: 'Large', value: 96 },
   ];
 
   return (

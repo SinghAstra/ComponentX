@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import React from "react";
+import { cn } from '@/lib/utils';
+import React from 'react';
 
 interface GridBackgroundProps {
   className?: string;
@@ -13,17 +13,17 @@ interface GridBackgroundProps {
 
 const GridBackground = ({
   className,
-  gridDimension = "48",
-  gridColor = "#161616",
-  backgroundColor = "bg-background",
+  gridDimension = '48',
+  gridColor = '#161616',
+  backgroundColor = 'bg-background',
   gridOpacity = 1,
   lineWidth = 1,
   absolute = true,
 }: GridBackgroundProps) => {
   const containerClasses = cn(
-    absolute && "absolute inset-0 z-[-1]",
+    absolute && 'absolute inset-0 z-[-1]',
     backgroundColor,
-    className
+    className,
   );
 
   const backgroundImage = `

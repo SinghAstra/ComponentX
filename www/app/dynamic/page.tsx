@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { DynamicEntryList } from "./dynamic-entry-list";
+import { useState } from 'react';
+import { DynamicEntryList } from './dynamic-entry-list';
 
 function DynamicPage() {
-  const [emails, setEmails] = useState<string[]>([""]);
+  const [emails, setEmails] = useState<string[]>(['']);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

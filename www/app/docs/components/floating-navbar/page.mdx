@@ -11,10 +11,10 @@ import FloatingNavbar, {
   FloatingNavbarContent,
   FloatingNavbarItem,
   FloatingNavbarSeparator,
-} from "@/components/component-x/floating-navbar";
-import { Button } from "@/components/ui/button";
-import { Menu, Settings, X } from "lucide-react";
-import { useState } from "react";
+} from '@/components/component-x/floating-navbar';
+import { Button } from '@/components/ui/button';
+import { Menu, Settings, X } from 'lucide-react';
+import { useState } from 'react';
 
 export function FloatingNavbarPreview() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -141,9 +141,9 @@ return (
   variant="ghost"
   asChild
   className={cn(
-    "hover:bg-primary transition-all duration-300 rounded font-normal",
-    isActive ? "bg-primary text-primary-foreground" : "text-muted-foreground",
-    className
+    'hover:bg-primary transition-all duration-300 rounded font-normal',
+    isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground',
+    className,
   )}
 >
   <a href={href}>

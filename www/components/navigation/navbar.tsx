@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { navLinks } from "@/lib/nav-links";
-import { Menu } from "lucide-react";
-import Link from "next/link";
-import React, { useState } from "react";
-import Sidebar from "../component-x/sidebar";
+import { Button } from '@/components/ui/button';
+import { siteConfig } from '@/config/site';
+import { navLinks } from '@/lib/nav-links';
+import { Menu } from 'lucide-react';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import Sidebar from '../component-x/sidebar';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);

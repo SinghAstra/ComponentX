@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import ConicBackground from "@/components/component-x/conic-background";
-import EllipseBackground from "@/components/component-x/ellipse-background";
-import GridBackground from "@/components/component-x/grid-background";
-import LampBackground from "@/components/component-x/lamp-background";
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
-import RadialBackground from "@/components/component-x/radial-background";
-import { blurInVariant, containerVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import ConicBackground from '@/components/component-x/conic-background';
+import EllipseBackground from '@/components/component-x/ellipse-background';
+import GridBackground from '@/components/component-x/grid-background';
+import LampBackground from '@/components/component-x/lamp-background';
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
+import RadialBackground from '@/components/component-x/radial-background';
+import { blurInVariant, containerVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import { ArrowRightIcon } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
 const BackgroundPage = () => {
   return (

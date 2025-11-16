@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import HomePage from "@/app/(home)/showcase";
-import ConicBackground from "@/components/component-x/conic-background";
-import EllipseBackground from "@/components/component-x/ellipse-background";
-import GridBackground from "@/components/component-x/grid-background";
-import LampBackground from "@/components/component-x/lamp-background";
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
-import RadialBackground from "@/components/component-x/radial-background";
-import { notFound, redirect, useParams } from "next/navigation";
-import React from "react";
+import HomePage from '@/app/(home)/showcase';
+import ConicBackground from '@/components/component-x/conic-background';
+import EllipseBackground from '@/components/component-x/ellipse-background';
+import GridBackground from '@/components/component-x/grid-background';
+import LampBackground from '@/components/component-x/lamp-background';
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
+import RadialBackground from '@/components/component-x/radial-background';
+import { notFound, redirect, useParams } from 'next/navigation';
+import React from 'react';
 
 const BackgroundInAction = () => {
   const params = useParams();
@@ -35,16 +35,16 @@ const BackgroundInAction = () => {
     LampBackground: <LampBackground position="right" />,
   };
 
-  if (!background || typeof background !== "string") {
+  if (!background || typeof background !== 'string') {
     notFound();
   }
   const componentName = background
-    .split("-")
+    .split('-')
     .map((str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase())
-    .join("");
+    .join('');
 
   if (!inActionComponents[componentName]) {
-    redirect("/background");
+    redirect('/background');
   }
 
   return (

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import ConicBackground, {
   type ConicBackgroundSpans,
-} from "@/components/component-x/conic-background";
+} from '@/components/component-x/conic-background';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -10,7 +10,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function ConicBackgroundSpans() {
-  const backgroundSpans: ConicBackgroundSpans[] = ["small", "medium", "large"];
+  const backgroundSpans: ConicBackgroundSpans[] = ['small', 'medium', 'large'];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col">

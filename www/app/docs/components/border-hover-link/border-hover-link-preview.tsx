@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import BorderHoverLink from "@/components/component-x/border-hover-link";
+import BorderHoverLink from '@/components/component-x/border-hover-link';
 
 export function BorderHoverLinkPreview() {
   return (

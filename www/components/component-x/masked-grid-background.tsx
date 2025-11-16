@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
-import React from "react";
+import { cn } from '@/lib/utils';
+import React from 'react';
 
-export type MaskPosition = "top" | "center" | "bottom";
+export type MaskPosition = 'top' | 'center' | 'bottom';
 
 interface MaskedGridBackgroundProps {
   className?: string;
@@ -20,14 +20,14 @@ interface MaskedGridBackgroundProps {
 const MaskedGridBackground = ({
   className,
   gridSize = 48,
-  gridLineColor = "#161616",
+  gridLineColor = '#161616',
   gridLineOpacity = 1,
-  maskPosition = "top",
+  maskPosition = 'top',
   maskSize = 100,
   maskOpacity = { start: 0.8, middle: 0.2, end: 0 },
 }: MaskedGridBackgroundProps) => {
   const getRgbColor = (hexColor: string) => {
-    const hex = hexColor.replace("#", "");
+    const hex = hexColor.replace('#', '');
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
@@ -38,15 +38,15 @@ const MaskedGridBackground = ({
   const gridLineColorWithOpacity = `rgba(${rgbColor}, ${gridLineOpacity})`;
 
   const maskPositionValue = {
-    top: "50% 0%",
-    center: "50% 50%",
-    bottom: "50% 100%",
+    top: '50% 0%',
+    center: '50% 50%',
+    bottom: '50% 100%',
   }[maskPosition];
 
   const { start = 0.8, middle = 0.2, end = 0 } = maskOpacity;
 
   return (
-    <div className={cn("absolute inset-0 z-[-1] bg-background", className)}>
+    <div className={cn('absolute inset-0 z-[-1] bg-background', className)}>
       <div
         className="w-full h-full"
         style={{

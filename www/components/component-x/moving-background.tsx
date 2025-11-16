@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface MovingBackgroundProps {
   backgroundColor?: string;
@@ -12,12 +12,12 @@ interface MovingBackgroundProps {
   zIndex?: number;
   opacity?: number;
   className?: string;
-  position?: "absolute" | "fixed" | "relative";
+  position?: 'absolute' | 'fixed' | 'relative';
 }
 
 function MovingBackground({
-  backgroundColor = "hsl(var(--muted)/0.4)",
-  shineColor = "hsl(var(--primary)/0.4)",
+  backgroundColor = 'hsl(var(--muted)/0.4)',
+  shineColor = 'hsl(var(--primary)/0.4)',
   animationDuration = 6000,
   animationDelay = 0,
   animated = true,
@@ -26,15 +26,15 @@ function MovingBackground({
   zIndex = -1,
   opacity = 1,
   className,
-  position = "absolute",
+  position = 'absolute',
 }: MovingBackgroundProps) {
   const shineStart = 50 - shineWidth / 2;
   const shineEnd = 50 + shineWidth / 2;
 
   const positionClass = {
-    absolute: "absolute",
-    fixed: "fixed",
-    relative: "relative",
+    absolute: 'absolute',
+    fixed: 'fixed',
+    relative: 'relative',
   }[position];
 
   return (
@@ -49,15 +49,15 @@ function MovingBackground({
       )}
 
       <div
-        className={cn(positionClass, "inset-0 overflow-hidden", className)}
+        className={cn(positionClass, 'inset-0 overflow-hidden', className)}
         style={{
           zIndex,
           opacity,
           background: `linear-gradient(${gradientAngle}deg, ${backgroundColor} ${shineStart}%, ${shineColor} 50%, ${backgroundColor} ${shineEnd}%)`,
-          backgroundSize: "400% 100%",
+          backgroundSize: '400% 100%',
           animation: animated
             ? `moveShine ${animationDuration}ms infinite linear ${animationDelay}ms`
-            : "none",
+            : 'none',
         }}
       />
     </>

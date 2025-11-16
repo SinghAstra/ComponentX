@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { FileOrLinkUpload, UploadItem } from "./file-or-link-upload";
+import React, { useState } from 'react';
+import { FileOrLinkUpload, UploadItem } from './file-or-link-upload';
 
 function UploadPage() {
   const [items, setItems] = useState<UploadItem[]>([]);
@@ -10,8 +10,8 @@ function UploadPage() {
   >([]);
 
   const myLinkValidator = (url: string) => {
-    if (!url.startsWith("http")) return "URL must start with http/https";
-    if (url.length < 10) return "URL is too short";
+    if (!url.startsWith('http')) return 'URL must start with http/https';
+    if (url.length < 10) return 'URL is too short';
     return true;
   };
 
@@ -20,7 +20,7 @@ function UploadPage() {
       <FileOrLinkUpload
         label="Files & Links"
         description="Upload images, documents, or paste external links."
-        accept={["image/*", ".pdf", ".docx"]}
+        accept={['image/*', '.pdf', '.docx']}
         maxFiles={5}
         maxSize={10 * 1024 * 1024}
         value={items}
@@ -41,9 +41,9 @@ function UploadPage() {
                 className="text-sm text-muted-foreground"
               >
                 <span className="font-semibold">
-                  {typeof r.item === "string" ? r.item : r.item.name}
+                  {typeof r.item === 'string' ? r.item : r.item.name}
                 </span>
-                {" — "}
+                {' — '}
                 {r.reason}
               </li>
             ))}

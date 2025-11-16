@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import BorderHoverLink from "@/components/component-x/border-hover-link";
+import BorderHoverLink from '@/components/component-x/border-hover-link';
 
 export function BorderHoverColors() {
   const colors = [
-    { label: "Primary", value: "hsl(var(--primary))" },
-    { label: "Muted", value: "hsl(var(--muted-foreground))" },
-    { label: "Success", value: "hsl(142, 71%, 45%)" },
-    { label: "Warning", value: "hsl(38, 92%, 50%)" },
+    { label: 'Primary', value: 'hsl(var(--primary))' },
+    { label: 'Muted', value: 'hsl(var(--muted-foreground))' },
+    { label: 'Success', value: 'hsl(142, 71%, 45%)' },
+    { label: 'Warning', value: 'hsl(38, 92%, 50%)' },
   ];
 
   return (
@@ -22,14 +22,14 @@ export function BorderHoverColors() {
             className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
             <p className="text-foreground ">
-              Hover me{" "}
+              Hover me{' '}
               <span
                 style={{
                   color: value,
                 }}
               >
                 {label}
-              </span>{" "}
+              </span>{' '}
             </p>
           </BorderHoverLink>
         ))}

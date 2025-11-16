@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function DialogCustomSize() {
   const [smallOpen, setSmallOpen] = useState(false);
@@ -30,7 +30,7 @@ export function DialogCustomSize() {
           <div className="w-full flex items-center justify-end">
             <Button
               size="sm"
-              variant={"outline"}
+              variant={'outline'}
               className="rounded font-normal mt-4 bg-muted/30 hover:bg-muted/20 transition-all duration-300 border shadow-md"
               onClick={() => setSmallOpen(false)}
             >
@@ -60,7 +60,7 @@ export function DialogCustomSize() {
           </p>
           <div className="w-full flex items-center justify-end">
             <Button
-              variant={"outline"}
+              variant={'outline'}
               className="rounded font-normal mt-4 bg-muted/30 hover:bg-muted/20 transition-all duration-300 border shadow-md"
               onClick={() => setLargeOpen(false)}
             >

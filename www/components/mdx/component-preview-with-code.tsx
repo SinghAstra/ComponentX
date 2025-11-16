@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import ClientCode from "./client-code";
-import ComponentPreview from "./component-preview";
+import ClientCode from './client-code';
+import ComponentPreview from './component-preview';
 
 interface ComponentPreviewWithCodeProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ interface ComponentPreviewWithCodeProps {
 export function ComponentPreviewWithCode({
   children,
   code,
-  language = "tsx",
+  language = 'tsx',
 }: ComponentPreviewWithCodeProps) {
   return (
     <div className="my-8">

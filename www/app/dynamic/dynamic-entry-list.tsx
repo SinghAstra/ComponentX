@@ -1,9 +1,9 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
-import { PlusIcon, Trash } from "lucide-react";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils';
+import { PlusIcon, Trash } from 'lucide-react';
 
 type DynamicEntryListProps = {
   value: string[];
@@ -23,8 +23,8 @@ export function DynamicEntryList({
   onChange,
   required,
   label,
-  placeholder = "Enter a value",
-  addButtonLabel = "Add",
+  placeholder = 'Enter a value',
+  addButtonLabel = 'Add',
   name,
   minRows = 0,
   maxRows,
@@ -32,12 +32,12 @@ export function DynamicEntryList({
 }: DynamicEntryListProps) {
   const list = value ?? [];
 
-  const canAdd = typeof maxRows === "number" ? list.length < maxRows : true;
+  const canAdd = typeof maxRows === 'number' ? list.length < maxRows : true;
   const canDelete = () => list.length > minRows;
 
   const handleAdd = () => {
     if (!canAdd) return;
-    onChange([...list, ""]);
+    onChange([...list, '']);
   };
 
   const handleDelete = (index: number) => {
@@ -54,7 +54,7 @@ export function DynamicEntryList({
   };
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn('w-full', className)}>
       <div className="mb-2 flex justify-between items-center w-full">
         <Label className="text-sm">
           {label}
@@ -72,7 +72,7 @@ export function DynamicEntryList({
 
       <ul className="flex flex-col gap-2">
         {list.map((entry, idx) => {
-          const id = `${name || "entry"}-${idx}`;
+          const id = `${name || 'entry'}-${idx}`;
           return (
             <li key={id} className="flex items-center gap-2 rounded border p-2">
               <div className="flex-1">

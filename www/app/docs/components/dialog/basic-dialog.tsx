@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function BasicDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { Check, Copy } from "lucide-react";
-import React, { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { useToastContext } from "../providers/toast";
-import { Button } from "../ui/button";
+import { cn } from '@/lib/utils';
+import { Check, Copy } from 'lucide-react';
+import React, { useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useToastContext } from '../providers/toast';
+import { Button } from '../ui/button';
 
 interface ClientCodeProps {
   code: string;
@@ -17,7 +17,7 @@ interface ClientCodeProps {
 
 const ClientCode = ({
   code,
-  language = "tsx",
+  language = 'tsx',
   className,
   showLineNumbers = true,
 }: ClientCodeProps) => {
@@ -34,23 +34,23 @@ const ClientCode = ({
       }, 2000);
     } catch (error) {
       if (error instanceof Error) {
-        console.log("error.stack is ", error.stack);
-        console.log("error.message is ", error.message);
+        console.log('error.stack is ', error.stack);
+        console.log('error.message is ', error.message);
       }
-      setToastMessage("Failed to Copy!");
+      setToastMessage('Failed to Copy!');
     }
   };
   return (
     <div
       className={cn(
-        "relative h-[350px] overflow-hidden border rounded-md bg-transparent",
-        className
+        'relative h-[350px] overflow-hidden border rounded-md bg-transparent',
+        className,
       )}
     >
       <Button
         onClick={handleCopy}
-        variant={"outline"}
-        size={"sm"}
+        variant={'outline'}
+        size={'sm'}
         className="absolute top-2 right-3 z-10 bg-transparent border hover:bg-transparent transition-all duration-300 hover:scale-105 active:scale-95"
       >
         {hasCopied ? (
@@ -66,12 +66,12 @@ const ClientCode = ({
           showLineNumbers={showLineNumbers}
           className=""
           customStyle={{
-            borderBottom: "",
-            background: "transparent",
-            margin: "0",
+            borderBottom: '',
+            background: 'transparent',
+            margin: '0',
           }}
           lineNumberStyle={{
-            color: "hsl(var(--primary))",
+            color: 'hsl(var(--primary))',
           }}
         >
           {code}

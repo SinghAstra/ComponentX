@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundPreview() {
   return (

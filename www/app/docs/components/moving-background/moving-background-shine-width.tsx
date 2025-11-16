@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundShineWidth() {
   const widths = [
-    { label: "Narrow", value: 5 },
-    { label: "Medium", value: 10 },
-    { label: "Wide", value: 20 },
+    { label: 'Narrow', value: 5 },
+    { label: 'Medium', value: 10 },
+    { label: 'Wide', value: 20 },
   ];
 
   return (

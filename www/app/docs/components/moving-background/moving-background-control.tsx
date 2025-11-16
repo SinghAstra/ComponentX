@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import MovingBackground from "@/components/component-x/moving-background";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import MovingBackground from '@/components/component-x/moving-background';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function MovingBackgroundControl() {
   const [animated, setAnimated] = useState(true);
@@ -26,7 +26,7 @@ export function MovingBackgroundControl() {
           variant="outline"
           className="w-full rounded font-normal bg-muted/40 hover:bg-muted/20 transition-all duration-300"
         >
-          {animated ? "Pause" : "Play"}
+          {animated ? 'Pause' : 'Play'}
         </Button>
       </div>
     </div>

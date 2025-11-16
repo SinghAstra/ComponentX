@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { useToastContext } from "@/components/providers/toast";
-import { Button } from "@/components/ui/button";
-import { CloudUpload, X } from "lucide-react";
-import { useRef, useState } from "react";
+import { useToastContext } from '@/components/providers/toast';
+import { Button } from '@/components/ui/button';
+import { CloudUpload, X } from 'lucide-react';
+import { useRef, useState } from 'react';
 
 interface VideoUploadProps {
   maxSize?: number;
@@ -20,18 +20,18 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const supportedFormats = ["MP4", "MOV", "WebM", "AVI"];
+  const supportedFormats = ['MP4', 'MOV', 'WebM', 'AVI'];
 
   const validateFile = (file: File): boolean => {
     const validTypes = [
-      "video/mp4",
-      "video/quicktime",
-      "video/webm",
-      "video/x-msvideo",
+      'video/mp4',
+      'video/quicktime',
+      'video/webm',
+      'video/x-msvideo',
     ];
     if (!validTypes.includes(file.type)) {
       setToastMessage(
-        `Invalid file type. Supported formats: ${supportedFormats.join(", ")}`
+        `Invalid file type. Supported formats: ${supportedFormats.join(', ')}`,
       );
       return false;
     }
@@ -65,7 +65,7 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
   const handleClear = () => {
     setVideo(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = "";
+      fileInputRef.current.value = '';
     }
   };
 
@@ -74,7 +74,7 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
       {!video ? (
         <div
           className={`border rounded border-dashed hover:bg-muted/20 transition-all duration-300 cursor-pointer ${
-            isDragging && "bg-muted/20"
+            isDragging && 'bg-muted/20'
           }`}
           onDragOver={(e) => {
             e.preventDefault();

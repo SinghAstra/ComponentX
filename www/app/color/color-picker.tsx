@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 type ColorPickerInputProps = {
   value?: string;
@@ -17,36 +17,36 @@ type ColorPickerInputProps = {
 };
 
 const presets = [
-  "#111827",
-  "#374151",
-  "#6B7280",
-  "#9CA3AF",
-  "#D1D5DB",
-  "#F3F4F6",
-  "#EF4444",
-  "#F59E0B",
-  "#FBBF24",
-  "#FCD34D",
-  "#34D399",
-  "#10B981",
-  "#06B6D4",
-  "#0EA5E9",
-  "#3B82F6",
-  "#6366F1",
-  "#8B5CF6",
-  "#EC4899",
-  "#F97316",
-  "#22C55E",
-  "#84CC16",
-  "#14B8A6",
-  "#A855F7",
-  "#E11D48",
+  '#111827',
+  '#374151',
+  '#6B7280',
+  '#9CA3AF',
+  '#D1D5DB',
+  '#F3F4F6',
+  '#EF4444',
+  '#F59E0B',
+  '#FBBF24',
+  '#FCD34D',
+  '#34D399',
+  '#10B981',
+  '#06B6D4',
+  '#0EA5E9',
+  '#3B82F6',
+  '#6366F1',
+  '#8B5CF6',
+  '#EC4899',
+  '#F97316',
+  '#22C55E',
+  '#84CC16',
+  '#14B8A6',
+  '#A855F7',
+  '#E11D48',
 ];
 
 function normalizeHex(input: string): string | null {
   let v = input.trim();
   if (!v) return null;
-  if (v[0] !== "#") v = `#${v}`;
+  if (v[0] !== '#') v = `#${v}`;
   const short = /^#([0-9a-fA-F]{3})$/;
   const long = /^#([0-9a-fA-F]{6})$/;
   if (short.test(v)) {
@@ -61,9 +61,9 @@ function normalizeHex(input: string): string | null {
 export function ColorPickerInput({ value, onChange }: ColorPickerInputProps) {
   const [open, setOpen] = useState(false);
   const [internal, setInternal] = useState<string>(
-    normalizeHex(value || "#3B82F6") || "#3B82F6"
+    normalizeHex(value || '#3B82F6') || '#3B82F6',
   );
-  const current = normalizeHex(value ?? internal) ?? "#3B82F6";
+  const current = normalizeHex(value ?? internal) ?? '#3B82F6';
 
   function commit(next: string) {
     const normalized = normalizeHex(next);
@@ -112,8 +112,8 @@ export function ColorPickerInput({ value, onChange }: ColorPickerInputProps) {
                     key={hex}
                     type="button"
                     className={cn(
-                      "h-7 w-7 rounded-full border hover:ring-1 hover:ring-ring transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-ring",
-                      selected ? "ring-1 ring-ring" : ""
+                      'h-7 w-7 rounded-full border hover:ring-1 hover:ring-ring transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-ring',
+                      selected ? 'ring-1 ring-ring' : '',
                     )}
                     style={{
                       backgroundColor: hex,
@@ -135,7 +135,7 @@ export function ColorPickerInput({ value, onChange }: ColorPickerInputProps) {
           inputMode="text"
           spellCheck={false}
           placeholder="#000000"
-          className={cn("font-mono")}
+          className={cn('font-mono')}
           value={internal}
           onChange={(e) => setInternal(e.target.value)}
           onBlur={(e) => {

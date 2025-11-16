@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-export type ConicBackgroundPositions = "right" | "top" | "left" | "bottom";
-export type ConicBackgroundSpans = "small" | "medium" | "large";
-export type ConicAngleSpans = "small" | "medium" | "large";
+export type ConicBackgroundPositions = 'right' | 'top' | 'left' | 'bottom';
+export type ConicBackgroundSpans = 'small' | 'medium' | 'large';
+export type ConicAngleSpans = 'small' | 'medium' | 'large';
 
 interface ConicBackgroundProps {
   className?: string;
@@ -15,26 +15,26 @@ interface ConicBackgroundProps {
 
 const ConicBackground = ({
   className,
-  position = "right",
-  angleSpan = "medium",
-  colorOne = "hsl(var(--primary)/0.4)",
-  colorTwo = "hsl(var(--primary))",
-  backgroundSpan = "large",
+  position = 'right',
+  angleSpan = 'medium',
+  colorOne = 'hsl(var(--primary)/0.4)',
+  colorTwo = 'hsl(var(--primary))',
+  backgroundSpan = 'large',
 }: ConicBackgroundProps) => {
   const backgroundStops = {
     small:
-      "rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.1) 100%",
+      'rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.1) 100%',
     medium:
-      "rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0.1) 100%",
+      'rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0.1) 100%',
     large:
-      "rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.1) 100%",
+      'rgba(255, 255, 255,0.7) 0%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.1) 100%',
   }[backgroundSpan];
 
   const positionVal = {
-    right: { from: "180deg", positionX: "100%", positionY: "50%" },
-    top: { from: "90deg", positionX: "50%", positionY: "0%" },
-    left: { from: "0deg", positionX: "0%", positionY: "50%" },
-    bottom: { from: "270deg", positionX: "50%", positionY: "100%" },
+    right: { from: '180deg', positionX: '100%', positionY: '50%' },
+    top: { from: '90deg', positionX: '50%', positionY: '0%' },
+    left: { from: '0deg', positionX: '0%', positionY: '50%' },
+    bottom: { from: '270deg', positionX: '50%', positionY: '100%' },
   }[position];
 
   const angleStops = {
@@ -49,8 +49,8 @@ const ConicBackground = ({
   return (
     <div
       className={cn(
-        "absolute inset-0 overflow-hidden z-[-1] bg-background",
-        className
+        'absolute inset-0 overflow-hidden z-[-1] bg-background',
+        className,
       )}
     >
       <div

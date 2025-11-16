@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundAngles() {
   const angles = [
-    { label: "45°", value: 45 },
-    { label: "135°", value: 135 },
+    { label: '45°', value: 45 },
+    { label: '135°', value: 135 },
   ];
 
   return (

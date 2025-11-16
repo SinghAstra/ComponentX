@@ -1,6 +1,6 @@
 export const navLinks = [
   {
-    title: "Documentation",
-    href: "/docs",
+    title: 'Documentation',
+    href: '/docs',
   },
 ];

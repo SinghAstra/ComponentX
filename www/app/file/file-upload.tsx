@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ImageUp, X } from "lucide-react";
-import Image from "next/image";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { ImageUp, X } from 'lucide-react';
+import Image from 'next/image';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type Accept = string | string[];
 
@@ -31,8 +31,8 @@ export function FileUploader({
   onChange,
   disabled,
   className,
-  label = "Upload files",
-  description = "Drag and drop files here, or click to browse.",
+  label = 'Upload files',
+  description = 'Drag and drop files here, or click to browse.',
   onReject,
 }: FileUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -45,14 +45,14 @@ export function FileUploader({
       if (onChange) onChange(next);
       else setInternalFiles(next);
     },
-    [onChange]
+    [onChange],
   );
 
   const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
   useEffect(() => {
     const urls: Record<string, string> = {};
     for (const f of files) {
-      if (f.type.startsWith("image/")) {
+      if (f.type.startsWith('image/')) {
         urls[getFileKey(f)] = URL.createObjectURL(f);
       }
     }
@@ -75,13 +75,13 @@ export function FileUploader({
 
   const acceptAttr = useMemo(() => {
     if (!normalizeAccept) return undefined;
-    return normalizeAccept.join(",");
+    return normalizeAccept.join(',');
   }, [normalizeAccept]);
 
   function formatSize(bytes: number) {
-    if (bytes === 0) return "0 B";
+    if (bytes === 0) return '0 B';
     const k = 1024;
-    const sizes = ["B", "KB", "MB", "GB", "TB"];
+    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return `${(bytes / Math.pow(k, i)).toFixed(i === 0 ? 0 : 1)} ${sizes[i]}`;
   }
@@ -94,17 +94,17 @@ export function FileUploader({
     (f: File) => {
       if (!normalizeAccept || normalizeAccept.length === 0) return true;
       return normalizeAccept.some((rule) => {
-        if (rule.endsWith("/*")) {
+        if (rule.endsWith('/*')) {
           const base = rule.slice(0, -1);
           return f.type.startsWith(base);
         }
-        if (rule.startsWith(".")) {
+        if (rule.startsWith('.')) {
           return f.name.toLowerCase().endsWith(rule.toLowerCase());
         }
         return f.type === rule;
       });
     },
-    [normalizeAccept]
+    [normalizeAccept],
   );
 
   const validate = useCallback(
@@ -116,11 +116,11 @@ export function FileUploader({
       for (const file of newFiles) {
         const key = getFileKey(file);
         if (existingKeys.has(key)) {
-          rejections.push({ file, reason: "Duplicate file" });
+          rejections.push({ file, reason: 'Duplicate file' });
           continue;
         }
         if (!isAccepted(file)) {
-          rejections.push({ file, reason: "File type not accepted" });
+          rejections.push({ file, reason: 'File type not accepted' });
           continue;
         }
         if (file.size > maxSize) {
@@ -149,13 +149,13 @@ export function FileUploader({
       } else {
         finalAccepted = accepted.slice(0, 1);
         accepted.slice(1).forEach((file) => {
-          rejections.push({ file, reason: "Multiple files not allowed" });
+          rejections.push({ file, reason: 'Multiple files not allowed' });
         });
       }
 
       return { finalAccepted, rejections };
     },
-    [isAccepted, maxFiles, maxSize, multiple]
+    [isAccepted, maxFiles, maxSize, multiple],
   );
 
   const addFiles = useCallback(
@@ -170,12 +170,12 @@ export function FileUploader({
       const next = multiple ? [...files, ...finalAccepted] : finalAccepted;
       setFiles(next);
     },
-    [disabled, files, multiple, onReject, setFiles, validate]
+    [disabled, files, multiple, onReject, setFiles, validate],
   );
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     addFiles(e.target.files);
-    if (inputRef.current) inputRef.current.value = "";
+    if (inputRef.current) inputRef.current.value = '';
   };
 
   const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -208,14 +208,14 @@ export function FileUploader({
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (disabled) return;
-    if (e.key === "Enter" || e.key === " ") {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       handleBrowseClick();
     }
   };
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn('w-full', className)}>
       <label className="block text-sm font-medium text-foreground mb-2">
         {label}
       </label>
@@ -231,13 +231,13 @@ export function FileUploader({
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         className={cn(
-          "relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300",
-          "bg-background text-foreground",
-          "outline-none",
-          isDragging ? "ring-1 ring-offset-2 ring-primary" : "ring-0",
+          'relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300',
+          'bg-background text-foreground',
+          'outline-none',
+          isDragging ? 'ring-1 ring-offset-2 ring-primary' : 'ring-0',
           disabled
-            ? "opacity-60 cursor-not-allowed"
-            : "cursor-pointer hover:bg-muted/30"
+            ? 'opacity-60 cursor-not-allowed'
+            : 'cursor-pointer hover:bg-muted/30',
         )}
       >
         <input
@@ -254,10 +254,10 @@ export function FileUploader({
         <div className="flex flex-col items-center gap-2 text-center">
           <div
             className={cn(
-              "mx-auto h-12 w-12 rounded flex items-center justify-center",
+              'mx-auto h-12 w-12 rounded flex items-center justify-center',
               isDragging
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground"
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground',
             )}
             aria-hidden="true"
           >
@@ -267,19 +267,19 @@ export function FileUploader({
           <div className="text-xs text-muted-foreground">
             {normalizeAccept ? (
               <span>
-                {"Accepted: "}
-                {normalizeAccept.join(", ")}
+                {'Accepted: '}
+                {normalizeAccept.join(', ')}
               </span>
             ) : (
-              <span>{"Any file type"}</span>
+              <span>{'Any file type'}</span>
             )}
             <span>
-              {" • Max size: "}
+              {' • Max size: '}
               {formatSize(maxSize)}
             </span>
             {multiple && (
               <span>
-                {" • Max files: "}
+                {' • Max files: '}
                 {maxFiles}
               </span>
             )}
@@ -323,7 +323,7 @@ export function FileUploader({
                   }}
                 >
                   <span className="sr-only">
-                    {"Remove "}
+                    {'Remove '}
                     {file.name}
                   </span>
                   <X />

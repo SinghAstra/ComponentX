@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import RadialBackground from "@/components/component-x/radial-background";
+import RadialBackground from '@/components/component-x/radial-background';
 
 export function RadialBackgroundAnimated() {
   return (

@@ -1,7 +1,7 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { motion, useMotionValue } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+'use client';
+import { cn } from '@/lib/utils';
+import { motion, useMotionValue } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   Children,
   createContext,
@@ -9,7 +9,7 @@ import {
   useContext,
   useEffect,
   useState,
-} from "react";
+} from 'react';
 
 export type CarouselContextType = {
   index: number;
@@ -49,13 +49,13 @@ export type CarouselItemProps = {
 };
 
 const CarouselContext = createContext<CarouselContextType | undefined>(
-  undefined
+  undefined,
 );
 
 function useCarousel() {
   const context = useContext(CarouselContext);
   if (!context) {
-    throw new Error("useCarousel must be used within an CarouselProvider");
+    throw new Error('useCarousel must be used within an CarouselProvider');
   }
   return context;
 }
@@ -81,7 +81,7 @@ function CarouselProvider({ children }: CarouselProviderProps) {
 function Carousel({ children, className }: CarouselProps) {
   return (
     <CarouselProvider>
-      <div className={cn("relative overflow-hidden", className)}>
+      <div className={cn('relative overflow-hidden', className)}>
         {children}
       </div>
     </CarouselProvider>
@@ -97,8 +97,8 @@ function CarouselIndicatorRoundedIcon({
   return (
     <div
       className={cn(
-        "absolute bottom-0 z-10 flex w-full items-center justify-center ",
-        className
+        'absolute bottom-0 z-10 flex w-full items-center justify-center ',
+        className,
       )}
     >
       <div className="flex space-x-2">
@@ -107,9 +107,9 @@ function CarouselIndicatorRoundedIcon({
             key={i}
             onClick={() => setIndex(i)}
             className={cn(
-              "h-2 w-2 rounded-full transition-opacity duration-300",
-              index === i ? "bg-muted-foreground" : "bg-muted-foreground/60",
-              classNameButton
+              'h-2 w-2 rounded-full transition-opacity duration-300',
+              index === i ? 'bg-muted-foreground' : 'bg-muted-foreground/60',
+              classNameButton,
             )}
           />
         ))}
@@ -130,15 +130,15 @@ function CarouselIndicatorLabel({
   }
 
   return (
-    <div className={cn("flex w-full items-center justify-center ", className)}>
+    <div className={cn('flex w-full items-center justify-center ', className)}>
       <div className="flex space-x-2">
         {Array.from({ length: itemsCount }, (_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
             className={cn(
-              index === i ? "text-foreground" : "text-muted-foreground/60",
-              classNameButton
+              index === i ? 'text-foreground' : 'text-muted-foreground/60',
+              classNameButton,
             )}
           >
             {labels[i]}
@@ -186,13 +186,13 @@ function CarouselContent({ children, className }: CarouselContentProps) {
       transition={{
         damping: 18,
         stiffness: 90,
-        type: "spring",
+        type: 'spring',
         duration: 0.2,
       }}
       className={cn(
-        "flex items-center",
-        "cursor-grab active:cursor-grabbing",
-        className
+        'flex items-center',
+        'cursor-grab active:cursor-grabbing',
+        className,
       )}
     >
       {children}
@@ -204,8 +204,8 @@ function CarouselItem({ children, className }: CarouselItemProps) {
   return (
     <motion.div
       className={cn(
-        "w-full min-w-0 shrink-0 overflow-hidden border ",
-        className
+        'w-full min-w-0 shrink-0 overflow-hidden border ',
+        className,
       )}
     >
       {children}

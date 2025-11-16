@@ -1,5 +1,5 @@
-import { type LucideIcon } from "lucide-react";
-import * as React from "react";
+import { type LucideIcon } from 'lucide-react';
+import * as React from 'react';
 
 import {
   SidebarGroup,
@@ -7,8 +7,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import Link from "next/link";
+} from '@/components/ui/sidebar';
+import Link from 'next/link';
 
 export function SidebarBottomNav({
   items,

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { Check, Copy } from "lucide-react";
-import React, { useRef, useState } from "react";
+import { cn } from '@/lib/utils';
+import { Check, Copy } from 'lucide-react';
+import React, { useRef, useState } from 'react';
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children?: React.ReactNode;
@@ -17,17 +17,17 @@ export const CodeBlock = ({
   const codeRef = useRef<HTMLPreElement>(null);
 
   const copyToClipboard = async () => {
-    const text = codeRef.current?.textContent || "";
+    const text = codeRef.current?.textContent || '';
 
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.log("Failed to copy text.");
+      console.log('Failed to copy text.');
       if (error instanceof Error) {
-        console.log("error.stack is ", error.stack);
-        console.log("error.message is ", error.message);
+        console.log('error.stack is ', error.stack);
+        console.log('error.message is ', error.message);
       }
     }
   };
@@ -37,8 +37,8 @@ export const CodeBlock = ({
       <pre
         ref={codeRef}
         className={cn(
-          "my-4 overflow-auto rounded border bg-muted/40 p-4 pr-12",
-          className
+          'my-4 overflow-auto rounded border bg-muted/40 p-4 pr-12',
+          className,
         )}
         {...props}
       >
@@ -47,9 +47,9 @@ export const CodeBlock = ({
       <button
         onClick={copyToClipboard}
         className={cn(
-          "absolute top-3 right-3 p-2 rounded transition-all duration-300",
-          "bg-background/80 hover:bg-background border",
-          "hover:scale-105 active:scale-95"
+          'absolute top-3 right-3 p-2 rounded transition-all duration-300',
+          'bg-background/80 hover:bg-background border',
+          'hover:scale-105 active:scale-95',
         )}
         aria-label="Copy code to clipboard"
       >

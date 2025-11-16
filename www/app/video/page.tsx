@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { VideoUpload } from "./video-upload";
+import { VideoUpload } from './video-upload';
 
 export default function Home() {
   return (

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import MovingBorder, {
   type MovingBorderDirection,
-} from "@/components/component-x/moving-border";
+} from '@/components/component-x/moving-border';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -10,7 +10,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function MovingBorderDirections() {
-  const directions: MovingBorderDirection[] = ["clockwise", "counterclockwise"];
+  const directions: MovingBorderDirection[] = ['clockwise', 'counterclockwise'];
 
   return (
     <div className="w-full h-full overflow-y-auto flex items-center justify-center">
@@ -23,7 +23,7 @@ export function MovingBorderDirections() {
           >
             <div className="rounded flex items-center justify-center px-3 py-1 w-full">
               <h3 className="text-foreground text-sm">
-                Moving Border{" "}
+                Moving Border{' '}
                 <span className="text-muted-foreground">
                   {capitalizeFirstLetter(direction)}
                 </span>

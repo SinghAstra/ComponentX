@@ -7,7 +7,7 @@ A versatile, grid-based background component that creates customizable grid patt
 <ComponentPreviewWithCode
   code={`"use client";
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundPreview() {
   return (
@@ -93,7 +93,7 @@ export default GridBackground;
 <ComponentPreviewWithCode
   code={`"use client";
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundDimensions() {
   const dimensions = [
@@ -139,7 +139,7 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundOpacity() {
   const opacities = [
@@ -191,7 +191,7 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundLineWidths() {
   const lineWidths = [
@@ -201,30 +201,29 @@ export function GridBackgroundLineWidths() {
   ];
 
 return (
+
 <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-{lineWidths.map(({ label, value }) => (
-<div
-          key={value}
-          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
-        >
-<GridBackground
-            gridDimension="48"
-            gridColor="#161616"
-            backgroundColor="bg-background"
-            gridOpacity={1}
-            lineWidth={value}
-          />
-<div className="relative z-10 flex flex-col items-center justify-center h-full">
-<h3 className="text-2xl text-foreground">
-{label} <span className="text-muted-foreground">{value}px</span>
-</h3>
+  {lineWidths.map(({ label, value }) => (
+    <div
+      key={value}
+      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+    >
+      <GridBackground
+        gridDimension="48"
+        gridColor="#161616"
+        backgroundColor="bg-background"
+        gridOpacity={1}
+        lineWidth={value}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">
+          {label} <span className="text-muted-foreground">{value}px</span>
+        </h3>
+      </div>
+    </div>
+  ))}
 </div>
-</div>
-))}
-</div>
-);
-}
-`}
+); } `}
 
 >
 

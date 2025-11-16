@@ -7,7 +7,7 @@ A dynamic, animated gradient background component that creates a smooth directio
 <ComponentPreviewWithCode
   code={`"use client";
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundPreview() {
   return (
@@ -117,7 +117,7 @@ export default MovingBackground;
 <ComponentPreviewWithCode
   code={`"use client";
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundDurations() {
   const durations = [
@@ -163,7 +163,7 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundAngles() {
   const angles = [
@@ -207,7 +207,7 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundShineWidth() {
   const widths = [
@@ -254,9 +254,9 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import { useState } from "react";
-import MovingBackground from "@/components/component-x/moving-background";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import MovingBackground from '@/components/component-x/moving-background';
+import { Button } from '@/components/ui/button';
 
 export function MovingBackgroundControl() {
   const [animated, setAnimated] = useState(true);
@@ -273,7 +273,7 @@ return (
   <div className="relative z-10 flex flex-col items-center justify-center gap-4">
     <h3 className="text-2xl text-foreground">Animation Control</h3>
     <Button onClick={() => setAnimated(!animated)} variant="outline">
-      {animated ? "Pause" : "Play"}
+      {animated ? 'Pause' : 'Play'}
     </Button>
   </div>
 </div>

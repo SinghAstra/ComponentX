@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { FileUploader } from "./file-upload";
+import React, { useState } from 'react';
+import { FileUploader } from './file-upload';
 
 function UploadPage() {
   const [files, setFiles] = useState<File[]>([]);
@@ -13,7 +13,7 @@ function UploadPage() {
       <FileUploader
         label="Images"
         description="Drag and drop images here, or click to browse."
-        accept={["image/*", ".png", ".jpg", ".jpeg", ".gif", ".webp"]}
+        accept={['image/*', '.png', '.jpg', '.jpeg', '.gif', '.webp']}
         multiple
         maxFiles={6}
         maxSize={8 * 1024 * 1024}
@@ -32,7 +32,7 @@ function UploadPage() {
                 className="text-sm text-muted-foreground"
               >
                 <span>{r.file.name}</span>
-                {" — "}
+                {' — '}
                 {r.reason}
               </li>
             ))}

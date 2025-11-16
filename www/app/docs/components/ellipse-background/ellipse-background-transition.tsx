@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import EllipseBackground from "@/components/component-x/ellipse-background";
+import EllipseBackground from '@/components/component-x/ellipse-background';
 
 export function EllipseBackgroundTransition() {
   const transitions = [
-    { label: "Sharp", value: 40 },
-    { label: "Medium", value: 80 },
-    { label: "Smooth", value: 120 },
+    { label: 'Sharp', value: 40 },
+    { label: 'Medium', value: 80 },
+    { label: 'Smooth', value: 120 },
   ];
 
   return (

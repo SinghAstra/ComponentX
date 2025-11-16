@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { CloudUpload, Link2, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
+import { CloudUpload, Link2, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, {
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
 export type UploadItem =
-  | { type: "file"; file: File }
-  | { type: "link"; url: string; displayUrl: string };
+  | { type: 'file'; file: File }
+  | { type: 'link'; url: string; displayUrl: string };
 
 function getFileKey(f: File) {
   return `${f.name}-${f.size}-${f.lastModified}`;
@@ -27,9 +27,9 @@ function getLinkKey(url: string) {
 }
 
 function formatSize(bytes: number) {
-  if (bytes === 0) return "0 B";
+  if (bytes === 0) return '0 B';
   const k = 1024;
-  const sizes = ["B", "KB", "MB", "GB", "TB"];
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return `${(bytes / Math.pow(k, i)).toFixed(i === 0 ? 0 : 1)} ${sizes[i]}`;
 }
@@ -58,20 +58,20 @@ export function FileOrLinkUpload({
   onChange,
   disabled,
   className,
-  label = "Upload files or paste links",
-  description = "Drag and drop files, click to browse, or paste a link.",
+  label = 'Upload files or paste links',
+  description = 'Drag and drop files, click to browse, or paste a link.',
   onReject,
   linkValidator = (url) =>
-    url.startsWith("http://") || url.startsWith("https://")
+    url.startsWith('http://') || url.startsWith('https://')
       ? true
-      : "Invalid URL format",
+      : 'Invalid URL format',
 }: FileOrLinkUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [internalItems, setInternalItems] = useState<UploadItem[]>([]);
   const items = value ?? internalItems;
 
-  const [urlInput, setUrlInput] = useState("");
+  const [urlInput, setUrlInput] = useState('');
   const [showUrlInput, setShowUrlInput] = useState(false);
 
   const setFilesAndLinks = useCallback(
@@ -79,17 +79,17 @@ export function FileOrLinkUpload({
       if (onChange) onChange(next);
       else setInternalItems(next);
     },
-    [onChange]
+    [onChange],
   );
 
   const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
   useEffect(() => {
     const urls: Record<string, string> = {};
     const currentFileUrls = items.filter(
-      (item) => item.type === "file" && item.file.type.startsWith("image/")
+      (item) => item.type === 'file' && item.file.type.startsWith('image/'),
     );
     for (const item of currentFileUrls) {
-      if (item.type === "file") {
+      if (item.type === 'file') {
         urls[getFileKey(item.file)] = URL.createObjectURL(item.file);
       }
     }
@@ -107,24 +107,24 @@ export function FileOrLinkUpload({
 
   const acceptAttr = useMemo(() => {
     if (!normalizeAccept) return undefined;
-    return normalizeAccept.join(",");
+    return normalizeAccept.join(',');
   }, [normalizeAccept]);
 
   const isAccepted = useCallback(
     (f: File) => {
       if (!normalizeAccept || normalizeAccept.length === 0) return true;
       return normalizeAccept.some((rule) => {
-        if (rule.endsWith("/*")) {
+        if (rule.endsWith('/*')) {
           const base = rule.slice(0, -1);
           return f.type.startsWith(base);
         }
-        if (rule.startsWith(".")) {
+        if (rule.startsWith('.')) {
           return f.name.toLowerCase().endsWith(rule.toLowerCase());
         }
         return f.type === rule;
       });
     },
-    [normalizeAccept]
+    [normalizeAccept],
   );
 
   const validateFiles = useCallback(
@@ -133,18 +133,18 @@ export function FileOrLinkUpload({
       const rejections: { item: File; reason: string }[] = [];
       const existingFileKeys = new Set(
         currentItems
-          .filter((item) => item.type === "file")
-          .map((item) => getFileKey(item.file))
+          .filter((item) => item.type === 'file')
+          .map((item) => getFileKey(item.file)),
       );
 
       for (const file of newFiles) {
         const key = getFileKey(file);
         if (existingFileKeys.has(key)) {
-          rejections.push({ item: file, reason: "Duplicate file" });
+          rejections.push({ item: file, reason: 'Duplicate file' });
           continue;
         }
         if (!isAccepted(file)) {
-          rejections.push({ item: file, reason: "File type not accepted" });
+          rejections.push({ item: file, reason: 'File type not accepted' });
           continue;
         }
         if (file.size > maxSize) {
@@ -158,7 +158,7 @@ export function FileOrLinkUpload({
       }
       return { accepted, rejections };
     },
-    [isAccepted, maxSize]
+    [isAccepted, maxSize],
   );
 
   const addFiles = useCallback(
@@ -167,7 +167,7 @@ export function FileOrLinkUpload({
       const newFiles = Array.from(list);
       const { accepted, rejections: fileRejections } = validateFiles(
         newFiles,
-        items
+        items,
       );
 
       const totalItemsAfterAdd = items.length + accepted.length;
@@ -188,19 +188,19 @@ export function FileOrLinkUpload({
       if (!finalFiles.length) return;
 
       const newItems: UploadItem[] = finalFiles.map((file) => ({
-        type: "file",
+        type: 'file',
         file,
       }));
       const next = [...items, ...newItems];
       setFilesAndLinks(next);
     },
-    [disabled, items, maxFiles, onReject, setFilesAndLinks, validateFiles]
+    [disabled, items, maxFiles, onReject, setFilesAndLinks, validateFiles],
   );
 
   const handleUrlSubmit = () => {
     const url = urlInput.trim();
     if (!url) {
-      if (onReject) onReject([{ item: "", reason: "Please enter a URL" }]);
+      if (onReject) onReject([{ item: '', reason: 'Please enter a URL' }]);
       return;
     }
 
@@ -219,23 +219,23 @@ export function FileOrLinkUpload({
 
     const existingLinkKeys = new Set(
       items
-        .filter((item) => item.type === "link")
-        .map((item) => getLinkKey(item.url))
+        .filter((item) => item.type === 'link')
+        .map((item) => getLinkKey(item.url)),
     );
 
     const key = getLinkKey(url);
     if (existingLinkKeys.has(key)) {
-      if (onReject) onReject([{ item: url, reason: "Duplicate link" }]);
+      if (onReject) onReject([{ item: url, reason: 'Duplicate link' }]);
       return;
     }
 
     const newItem: UploadItem = {
-      type: "link",
+      type: 'link',
       url,
-      displayUrl: url.length > 50 ? url.substring(0, 47) + "..." : url,
+      displayUrl: url.length > 50 ? url.substring(0, 47) + '...' : url,
     };
     setFilesAndLinks([...items, newItem]);
-    setUrlInput("");
+    setUrlInput('');
     setShowUrlInput(false);
   };
 
@@ -246,7 +246,7 @@ export function FileOrLinkUpload({
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     addFiles(e.target.files);
-    if (inputRef.current) inputRef.current.value = "";
+    if (inputRef.current) inputRef.current.value = '';
   };
 
   const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -274,8 +274,8 @@ export function FileOrLinkUpload({
 
   const removeItem = (key: string) => {
     const next = items.filter((item) => {
-      if (item.type === "file") return getFileKey(item.file) !== key;
-      if (item.type === "link") return getLinkKey(item.url) !== key;
+      if (item.type === 'file') return getFileKey(item.file) !== key;
+      if (item.type === 'link') return getLinkKey(item.url) !== key;
       return true;
     });
     setFilesAndLinks(next);
@@ -283,14 +283,14 @@ export function FileOrLinkUpload({
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (disabled) return;
-    if (e.key === "Enter" || e.key === " ") {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       handleBrowseClick();
     }
   };
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn('w-full', className)}>
       <label className="block text-sm font-medium text-foreground mb-2">
         {label}
       </label>
@@ -305,13 +305,13 @@ export function FileOrLinkUpload({
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         className={cn(
-          "relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300",
-          "bg-background text-foreground",
-          "outline-none",
-          isDragging ? "ring-1 ring-offset-2 ring-primary" : "ring-0",
+          'relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300',
+          'bg-background text-foreground',
+          'outline-none',
+          isDragging ? 'ring-1 ring-offset-2 ring-primary' : 'ring-0',
           disabled
-            ? "opacity-60 cursor-not-allowed"
-            : "cursor-pointer hover:bg-muted/30"
+            ? 'opacity-60 cursor-not-allowed'
+            : 'cursor-pointer hover:bg-muted/30',
         )}
       >
         <input
@@ -328,10 +328,10 @@ export function FileOrLinkUpload({
         <div className="flex flex-col items-center gap-2 text-center">
           <div
             className={cn(
-              "mx-auto h-12 w-12 rounded flex items-center justify-center",
+              'mx-auto h-12 w-12 rounded flex items-center justify-center',
               isDragging
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground"
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground',
             )}
             aria-hidden="true"
           >
@@ -340,11 +340,11 @@ export function FileOrLinkUpload({
           <p className="text-sm">{description}</p>
           <div className="text-xs text-muted-foreground">
             <span>
-              {"Max items: "}
+              {'Max items: '}
               {maxFiles}
             </span>
             <span>
-              {" • Max size per file: "}
+              {' • Max size per file: '}
               {formatSize(maxSize)}
             </span>
           </div>
@@ -385,7 +385,7 @@ export function FileOrLinkUpload({
                 placeholder="Enter link (e.g., website, drive link)"
                 value={urlInput}
                 onChange={(e) => setUrlInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleUrlSubmit()}
+                onKeyDown={(e) => e.key === 'Enter' && handleUrlSubmit()}
                 className="text-sm rounded"
               />
               <Button
@@ -405,7 +405,7 @@ export function FileOrLinkUpload({
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map((item) => {
             const key =
-              item.type === "file"
+              item.type === 'file'
                 ? getFileKey(item.file)
                 : getLinkKey(item.url);
 
@@ -413,14 +413,14 @@ export function FileOrLinkUpload({
               <div
                 key={key}
                 className={cn(
-                  "relative rounded border h-24 overflow-hidden",
-                  item.type === "file" && item.file.type.startsWith("image/")
-                    ? "p-0"
-                    : "flex items-center justify-start p-3"
+                  'relative rounded border h-24 overflow-hidden',
+                  item.type === 'file' && item.file.type.startsWith('image/')
+                    ? 'p-0'
+                    : 'flex items-center justify-start p-3',
                 )}
               >
-                {item.type === "file" ? (
-                  item.file.type.startsWith("image/") && previewUrls[key] ? (
+                {item.type === 'file' ? (
+                  item.file.type.startsWith('image/') && previewUrls[key] ? (
                     <Image
                       src={previewUrls[key]}
                       alt={`${item.file.name} preview`}
@@ -458,8 +458,8 @@ export function FileOrLinkUpload({
                   }}
                 >
                   <span className="sr-only">
-                    {"Remove "}
-                    {item.type === "file" ? item.file.name : item.url}
+                    {'Remove '}
+                    {item.type === 'file' ? item.file.name : item.url}
                   </span>
                   <X className="w-4 h-4" />
                 </Button>

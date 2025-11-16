@@ -1,37 +1,37 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { fadeScaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { cn } from '@/lib/utils';
+import { fadeScaleInVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 
 type PopoverAlign =
-  | "bottom-center"
-  | "bottom-left"
-  | "bottom-right"
-  | "top-center"
-  | "top-left"
-  | "top-right"
-  | "left-center"
-  | "left-top"
-  | "left-bottom"
-  | "right-center"
-  | "right-top"
-  | "right-bottom";
+  | 'bottom-center'
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'top-center'
+  | 'top-left'
+  | 'top-right'
+  | 'left-center'
+  | 'left-top'
+  | 'left-bottom'
+  | 'right-center'
+  | 'right-top'
+  | 'right-bottom';
 
 const alignmentClasses = {
-  "bottom-left": "top-[100%] left-0",
-  "bottom-right": "top-[100%] right-0",
-  "bottom-center": "top-[100%] left-[50%] -translate-x-1/2",
-  "top-left": "bottom-[100%] left-0",
-  "top-right": "bottom-[100%] right-0",
-  "top-center": "bottom-[100%] left-[50%] -translate-x-1/2",
-  "left-top": "right-[100%] top-0",
-  "left-bottom": "right-[100%] bottom-0",
-  "left-center": "right-[100%] top-[50%] -translate-y-1/2",
-  "right-top": "left-[100%] top-0",
-  "right-bottom": "left-[100%] bottom-0",
-  "right-center": "left-[100%] top-[50%] -translate-y-1/2",
+  'bottom-left': 'top-[100%] left-0',
+  'bottom-right': 'top-[100%] right-0',
+  'bottom-center': 'top-[100%] left-[50%] -translate-x-1/2',
+  'top-left': 'bottom-[100%] left-0',
+  'top-right': 'bottom-[100%] right-0',
+  'top-center': 'bottom-[100%] left-[50%] -translate-x-1/2',
+  'left-top': 'right-[100%] top-0',
+  'left-bottom': 'right-[100%] bottom-0',
+  'left-center': 'right-[100%] top-[50%] -translate-y-1/2',
+  'right-top': 'left-[100%] top-0',
+  'right-bottom': 'left-[100%] bottom-0',
+  'right-center': 'left-[100%] top-[50%] -translate-y-1/2',
 };
 
 export type HoverPopOverContextType = {
@@ -62,14 +62,14 @@ export type HoverPopOverContentProps = {
 };
 
 const HoverPopOverContext = createContext<HoverPopOverContextType | undefined>(
-  undefined
+  undefined,
 );
 
 function useHoverPopOver() {
   const context = useContext(HoverPopOverContext);
   if (!context) {
     throw new Error(
-      "useHoverPopOver must be used within a HoverPopOverProvider"
+      'useHoverPopOver must be used within a HoverPopOverProvider',
     );
   }
   return context;
@@ -77,7 +77,7 @@ function useHoverPopOver() {
 
 function HoverPopOverProvider({
   children,
-  align = "bottom-center",
+  align = 'bottom-center',
 }: HoverPopOverProviderProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -96,7 +96,7 @@ function HoverPopOverProvider({
 
 function HoverPopOver({
   children,
-  align = "bottom-center",
+  align = 'bottom-center',
 }: HoverPopOverProps) {
   return (
     <HoverPopOverProvider align={align}>
@@ -140,7 +140,7 @@ function HoverPopOverContent({
       variants={fadeScaleInVariant}
       initial="hidden"
       animate="visible"
-      className={cn("absolute z-50", alignmentClasses[align], className)}
+      className={cn('absolute z-50', alignmentClasses[align], className)}
     >
       {children}
     </motion.div>

@@ -1,32 +1,32 @@
-"use client";
+'use client';
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-} from "@/components/ui/sidebar";
-import { LifeBuoy, Send } from "lucide-react";
-import * as React from "react";
-import { SidebarBottomNav } from "./sidebar-bottom-nav";
-import SidebarNav from "./sidebar-nav";
-import { SidebarUser } from "./sidebar-user";
+} from '@/components/ui/sidebar';
+import { LifeBuoy, Send } from 'lucide-react';
+import * as React from 'react';
+import { SidebarBottomNav } from './sidebar-bottom-nav';
+import SidebarNav from './sidebar-nav';
+import { SidebarUser } from './sidebar-user';
 
 const data = {
   user: {
-    name: "UserName",
-    email: "user@email.com",
-    avatar: "/favicon.ico",
+    name: 'UserName',
+    email: 'user@email.com',
+    avatar: '/favicon.ico',
   },
 
   sidebarBottomNav: [
     {
-      title: "Support",
-      url: "/support",
+      title: 'Support',
+      url: '/support',
       icon: LifeBuoy,
     },
     {
-      title: "Feedback",
-      url: "/feedback",
+      title: 'Feedback',
+      url: '/feedback',
       icon: Send,
     },
   ],

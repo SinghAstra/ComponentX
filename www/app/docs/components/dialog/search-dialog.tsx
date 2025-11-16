@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Dialog from "@/components/component-x/dialog";
-import { useToastContext } from "@/components/providers/toast";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { fadeInVariant, scaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
+import Dialog from '@/components/component-x/dialog';
+import { useToastContext } from '@/components/providers/toast';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { fadeInVariant, scaleInVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Command,
@@ -15,12 +15,12 @@ import {
   Settings,
   User,
   Zap,
-} from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+} from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export const SearchDialog = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const { setToastMessage } = useToastContext();
@@ -34,40 +34,40 @@ export const SearchDialog = () => {
   const commands = [
     {
       icon: Search,
-      label: "Search",
-      description: "Find anything quickly",
-      shortcut: "F",
+      label: 'Search',
+      description: 'Find anything quickly',
+      shortcut: 'F',
     },
     {
       icon: Zap,
-      label: "Quick Actions",
-      description: "Perform common tasks",
-      shortcut: "A",
+      label: 'Quick Actions',
+      description: 'Perform common tasks',
+      shortcut: 'A',
     },
     {
       icon: Settings,
-      label: "Settings",
-      description: "Configure your preferences",
-      shortcut: "S",
+      label: 'Settings',
+      description: 'Configure your preferences',
+      shortcut: 'S',
     },
     {
       icon: User,
-      label: "Profile",
-      description: "Manage your account",
-      shortcut: "P",
+      label: 'Profile',
+      description: 'Manage your account',
+      shortcut: 'P',
     },
     {
       icon: HelpCircle,
-      label: "Help",
-      description: "Get support and documentation",
-      shortcut: "H",
+      label: 'Help',
+      description: 'Get support and documentation',
+      shortcut: 'H',
     },
   ];
 
   const filteredCommands = commands.filter(
     (command) =>
       command.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      command.description.toLowerCase().includes(searchQuery.toLowerCase())
+      command.description.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   useEffect(() => {
@@ -87,19 +87,19 @@ export const SearchDialog = () => {
       if (!isDialogVisible) return;
 
       switch (event.key) {
-        case "ArrowDown":
+        case 'ArrowDown':
           event.preventDefault();
           setSelectedIndex((prev) =>
-            prev < filteredCommands.length - 1 ? prev + 1 : 0
+            prev < filteredCommands.length - 1 ? prev + 1 : 0,
           );
           break;
-        case "ArrowUp":
+        case 'ArrowUp':
           event.preventDefault();
           setSelectedIndex((prev) =>
-            prev > 0 ? prev - 1 : filteredCommands.length - 1
+            prev > 0 ? prev - 1 : filteredCommands.length - 1,
           );
           break;
-        case "Enter":
+        case 'Enter':
           event.preventDefault();
           const command = filteredCommands[selectedIndex];
           if (command) {
@@ -109,7 +109,7 @@ export const SearchDialog = () => {
           break;
         default:
           const matchedIndex = filteredCommands.findIndex(
-            (cmd) => cmd.shortcut.toLowerCase() === event.key.toLowerCase()
+            (cmd) => cmd.shortcut.toLowerCase() === event.key.toLowerCase(),
           );
           if (matchedIndex !== -1) {
             event.preventDefault();
@@ -124,11 +124,11 @@ export const SearchDialog = () => {
     };
 
     if (isDialogVisible) {
-      document.addEventListener("keydown", handleDialogKeyDown);
+      document.addEventListener('keydown', handleDialogKeyDown);
     }
 
     return () => {
-      document.removeEventListener("keydown", handleDialogKeyDown);
+      document.removeEventListener('keydown', handleDialogKeyDown);
     };
   }, [isDialogVisible, filteredCommands, selectedIndex, setToastMessage]);
 
@@ -141,7 +141,7 @@ export const SearchDialog = () => {
       >
         <Button
           className="rounded px-1 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 transition-all duration-300 font-normal"
-          variant={"outline"}
+          variant={'outline'}
           onClick={() => setIsDialogVisible(true)}
         >
           <span className="text-muted-foreground mx-2">Search</span>
@@ -181,13 +181,13 @@ export const SearchDialog = () => {
                   onClick={() => handleSelectCommand(index)}
                   onMouseEnter={() => setSelectedIndex(index)}
                   className={`flex items-center justify-between p-3 rounded cursor-pointer transition-all duration-300 ${
-                    selectedIndex === index && "bg-muted/30 "
+                    selectedIndex === index && 'bg-muted/30 '
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-8 h-8 rounded-md flex items-center justify-center transition-all duration-300 ${
-                        selectedIndex === index ? "bg-muted/80" : "bg-muted/40 "
+                        selectedIndex === index ? 'bg-muted/80' : 'bg-muted/40 '
                       }`}
                     >
                       <command.icon className="w-4 h-4 text-muted-foreground" />
@@ -204,7 +204,7 @@ export const SearchDialog = () => {
                   <div className="flex items-center gap-2">
                     <kbd
                       className={`px-2 py-1 flex items-center gap-1 text-xs text-muted-foreground rounded border border-border transition-all duration-300 ${
-                        selectedIndex === index ? "bg-muted" : "bg-muted/40"
+                        selectedIndex === index ? 'bg-muted' : 'bg-muted/40'
                       }`}
                     >
                       <CommandIcon className="h-3 w-3" />
@@ -213,8 +213,8 @@ export const SearchDialog = () => {
                     <ArrowRight
                       className={`w-3 h-3 text-muted-foreground transition-all duration-200 ${
                         selectedIndex === index
-                          ? "opacity-100"
-                          : "opacity-0 group-hover:opacity-100"
+                          ? 'opacity-100'
+                          : 'opacity-0 group-hover:opacity-100'
                       }`}
                     />
                   </div>

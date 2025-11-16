@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import MovingBorder from "@/components/component-x/moving-border";
+import MovingBorder from '@/components/component-x/moving-border';
 
 export function MovingBorderPreview() {
   return (

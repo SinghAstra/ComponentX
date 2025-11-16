@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundDimensions() {
   const dimensions = [
-    { label: "Small", value: "24" },
-    { label: "Medium", value: "48" },
-    { label: "Large", value: "96" },
+    { label: 'Small', value: '24' },
+    { label: 'Medium', value: '48' },
+    { label: 'Large', value: '96' },
   ];
 
   return (

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import LampBackground, {
   type LampBackgroundPosition,
-} from "@/components/component-x/lamp-background";
+} from '@/components/component-x/lamp-background';
 
 export function LampBackgroundPositions() {
   const positions: LampBackgroundPosition[] = [
-    "top",
-    "right",
-    "bottom",
-    "left",
+    'top',
+    'right',
+    'bottom',
+    'left',
   ];
 
   return (

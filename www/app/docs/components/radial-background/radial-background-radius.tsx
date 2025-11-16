@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import RadialBackground from "@/components/component-x/radial-background";
+import RadialBackground from '@/components/component-x/radial-background';
 
 export function RadialBackgroundRadius() {
   const radiusSizes = [
-    { label: "Small", value: 30 },
-    { label: "Medium", value: 60 },
-    { label: "Large", value: 100 },
+    { label: 'Small', value: 30 },
+    { label: 'Medium', value: 60 },
+    { label: 'Large', value: 100 },
   ];
 
   return (

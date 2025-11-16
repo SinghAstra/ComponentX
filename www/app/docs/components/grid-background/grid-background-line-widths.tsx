@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundLineWidths() {
   const lineWidths = [
-    { label: "Thin", value: 1 },
-    { label: "Medium", value: 2 },
-    { label: "Thick", value: 3 },
+    { label: 'Thin', value: 1 },
+    { label: 'Medium', value: 2 },
+    { label: 'Thick', value: 3 },
   ];
 
   return (

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import BorderHoverLink from "@/components/component-x/border-hover-link";
+import BorderHoverLink from '@/components/component-x/border-hover-link';
 
 export function BorderHoverDurations() {
   const durations = [
-    { label: "Fast", value: 300 },
-    { label: "Normal", value: 700 },
-    { label: "Slow", value: 1200 },
+    { label: 'Fast', value: 300 },
+    { label: 'Normal', value: 700 },
+    { label: 'Slow', value: 1200 },
   ];
 
   return (
@@ -21,7 +21,7 @@ export function BorderHoverDurations() {
             className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
             <p className="text-foreground">
-              Hover me{" "}
+              Hover me{' '}
               <span className="text-sm text-muted-foreground">{label}</span>
             </p>
           </BorderHoverLink>

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { Command } from "lucide-react";
-import { useState } from "react";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { Command } from 'lucide-react';
+import { useState } from 'react';
 
 export function DialogWithShortcut() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);

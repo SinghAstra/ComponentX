@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { cn } from "@/lib/utils";
-import { useCallback, useRef, useState } from "react";
-import { InputField } from "./input-field";
-import { Tag } from "./tag";
+import { cn } from '@/lib/utils';
+import { useCallback, useRef, useState } from 'react';
+import { InputField } from './input-field';
+import { Tag } from './tag';
 
 export interface TagInputProps {
   label?: string;
@@ -18,13 +18,13 @@ export interface TagInputProps {
 
 export function TagInput({
   label,
-  placeholder = "Add items...",
+  placeholder = 'Add items...',
   value,
   onChange,
   onInputChange,
   required = false,
 }: TagInputProps) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,25 +39,25 @@ export function TagInput({
       const trimmedItem = item.trim();
       if (trimmedItem && !value.includes(trimmedItem)) {
         onChange([...value, trimmedItem]);
-        setInputValue("");
+        setInputValue('');
         inputRef.current?.focus();
       }
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   const handleRemoveItem = useCallback(
     (item: string) => {
       onChange(value.filter((v) => v !== item));
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleAddItem(inputValue);
-    } else if (e.key === "Backspace" && inputValue === "" && value.length > 0) {
+    } else if (e.key === 'Backspace' && inputValue === '' && value.length > 0) {
       handleRemoveItem(value[value.length - 1]);
     }
   };
@@ -74,9 +74,9 @@ export function TagInput({
       <div
         ref={containerRef}
         className={cn(
-          "flex flex-wrap items-center gap-2 px-3 py-2 rounded",
-          "border border-input bg-background",
-          "transition-all duration-300"
+          'flex flex-wrap items-center gap-2 px-3 py-2 rounded',
+          'border border-input bg-background',
+          'transition-all duration-300',
         )}
       >
         {value.map((item) => (
@@ -90,7 +90,7 @@ export function TagInput({
         <InputField
           ref={inputRef}
           type="text"
-          placeholder={value.length === 0 ? placeholder : ""}
+          placeholder={value.length === 0 ? placeholder : ''}
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}

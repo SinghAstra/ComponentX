@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import ColorPickerInput from "./color-picker";
+import { useState } from 'react';
+import ColorPickerInput from './color-picker';
 
 function ColorPickerPage() {
-  const [hex, setHex] = useState("#2688EB");
+  const [hex, setHex] = useState('#2688EB');
 
   return (
     <main className="min-h-screen bg-background text-foreground p-6">

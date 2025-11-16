@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import GridBackground from "@/components/component-x/grid-background";
+import GridBackground from '@/components/component-x/grid-background';
 
 export function GridBackgroundOpacity() {
   const opacities = [
-    { label: "Subtle", value: 0.3 },
-    { label: "Medium", value: 0.6 },
-    { label: "Strong", value: 1 },
+    { label: 'Subtle', value: 0.3 },
+    { label: 'Medium', value: 0.6 },
+    { label: 'Strong', value: 1 },
   ];
 
   return (
@@ -25,7 +25,7 @@ export function GridBackgroundOpacity() {
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <h3 className="text-2xl text-foreground">
-              {label}{" "}
+              {label}{' '}
               <span className="text-muted-foreground">
                 {(value * 100).toFixed(0)}%
               </span>

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { toast } from "sonner";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 type ToastContextType = {
   setToastMessage: (message: string) => void;
@@ -12,7 +12,7 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 export const useToastContext = () => {
   const context = useContext(ToastContext);
   if (!context) {
-    throw new Error("useToastContext must be used within ToastProvider");
+    throw new Error('useToastContext must be used within ToastProvider');
   }
   return context;
 };

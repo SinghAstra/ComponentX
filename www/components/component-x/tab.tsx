@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { motion, useMotionValue } from "framer-motion";
+import { cn } from '@/lib/utils';
+import { motion, useMotionValue } from 'framer-motion';
 import React, {
   createContext,
   ReactNode,
@@ -9,7 +9,7 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
 type TabsCtx = {
   activeIndex: number;
@@ -27,7 +27,7 @@ const TabsContext = createContext<TabsCtx | null>(null);
 
 function useTabs() {
   const ctx = useContext(TabsContext);
-  if (!ctx) throw new Error("Tabs components must be used within <Tabs>");
+  if (!ctx) throw new Error('Tabs components must be used within <Tabs>');
   return ctx;
 }
 
@@ -44,7 +44,7 @@ export function Tabs({ className, children }: TabsProps) {
 
   const registerTabLabelRef = (
     index: number,
-    element: HTMLButtonElement | null
+    element: HTMLButtonElement | null,
   ) => {
     if (element) tabRefs.current[index] = element;
   };
@@ -67,7 +67,7 @@ export function Tabs({ className, children }: TabsProps) {
         activeTabBorderBottomPosition,
       }}
     >
-      <div className={cn("w-full overflow-hidden", className)}>{children}</div>
+      <div className={cn('w-full overflow-hidden', className)}>{children}</div>
     </TabsContext.Provider>
   );
 }
@@ -80,7 +80,7 @@ type TabsListProps = {
 export function TabsList({ className, children }: TabsListProps) {
   const { activeTabBorderBottomPosition } = useTabs();
   return (
-    <div className={cn("relative flex", className)} role="tablist">
+    <div className={cn('relative flex', className)} role="tablist">
       {children}
       <motion.div
         className="absolute bottom-0 h-0.5 bg-foreground"
@@ -88,7 +88,7 @@ export function TabsList({ className, children }: TabsListProps) {
           width: activeTabBorderBottomPosition.width,
           left: activeTabBorderBottomPosition.left,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       />
     </div>
   );
@@ -110,9 +110,9 @@ export function TabsTrigger({ index, className, children }: TabsTriggerProps) {
       onClick={() => setActiveIndex(index)}
       role="tab"
       className={cn(
-        "px-4 py-2 text-sm cursor-pointer",
-        isActive ? "text-foreground" : "text-muted-foreground",
-        className
+        'px-4 py-2 text-sm cursor-pointer',
+        isActive ? 'text-foreground' : 'text-muted-foreground',
+        className,
       )}
     >
       {children}
@@ -160,13 +160,13 @@ export function TabsContent({ children, className }: TabsContentProps) {
       transition={{
         damping: 18,
         stiffness: 90,
-        type: "spring",
+        type: 'spring',
         duration: 0.2,
       }}
       className={cn(
-        "flex items-center",
-        "cursor-grab active:cursor-grabbing",
-        className
+        'flex items-center',
+        'cursor-grab active:cursor-grabbing',
+        className,
       )}
       ref={containerRef}
     >
@@ -179,8 +179,8 @@ export function TabItem({ children, className }: TabItemProps) {
   return (
     <motion.div
       className={cn(
-        "w-full min-w-0 shrink-0 overflow-hidden border",
-        className
+        'w-full min-w-0 shrink-0 overflow-hidden border',
+        className,
       )}
     >
       {children}

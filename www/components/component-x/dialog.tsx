@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { scaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import { cn } from '@/lib/utils';
+import { scaleInVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
 interface DialogProps {
   isDialogVisible: boolean;
@@ -37,21 +37,21 @@ const Dialog = ({
         e.preventDefault();
         setIsDialogVisible(true);
       }
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setIsDialogVisible(false);
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
     if (isDialogVisible) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "hidden";
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "unset";
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
     };
   }, [isDialogVisible, setIsDialogVisible, keyToMakeDialogVisible]);
 
@@ -65,8 +65,8 @@ const Dialog = ({
         initial="hidden"
         animate="visible"
         className={cn(
-          "w-full max-w-xl mx-4 bg-background border rounded shadow-2xl relative cursor-pointer z-[1000]",
-          className
+          'w-full max-w-xl mx-4 bg-background border rounded shadow-2xl relative cursor-pointer z-[1000]',
+          className,
         )}
         ref={dialogRef}
       >

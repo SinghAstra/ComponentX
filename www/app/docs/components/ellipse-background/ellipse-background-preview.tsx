@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import EllipseBackground from "@/components/component-x/ellipse-background";
+import EllipseBackground from '@/components/component-x/ellipse-background';
 
 export function EllipseBackgroundPreview() {
   return (

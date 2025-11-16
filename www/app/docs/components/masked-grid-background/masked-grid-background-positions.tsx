@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import MaskedGridBackground, {
   MaskPosition,
-} from "@/components/component-x/masked-grid-background";
+} from '@/components/component-x/masked-grid-background';
 
 export function MaskedGridBackgroundPositions() {
-  const positions: MaskPosition[] = ["top", "center", "bottom"];
+  const positions: MaskPosition[] = ['top', 'center', 'bottom'];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-4">

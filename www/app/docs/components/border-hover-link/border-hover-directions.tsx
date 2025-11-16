@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import BorderHoverLink, {
   BorderHoverAnimationDirection,
-} from "@/components/component-x/border-hover-link";
+} from '@/components/component-x/border-hover-link';
 
 interface BorderItem {
   label: string;
@@ -11,8 +11,8 @@ interface BorderItem {
 
 export function BorderHoverDirections() {
   const directions: BorderItem[] = [
-    { label: "Left to Right", value: "ltr" },
-    { label: "Right to Left", value: "rtl" },
+    { label: 'Left to Right', value: 'ltr' },
+    { label: 'Right to Left', value: 'rtl' },
   ];
 
   return (
@@ -28,9 +28,9 @@ export function BorderHoverDirections() {
             className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center w-full"
           >
             <p className="text-foreground">
-              Hover me{" "}
+              Hover me{' '}
               <span className="text-sm text-muted-foreground">
-                {dir.value === "ltr" ? "left to right" : "right to left"}
+                {dir.value === 'ltr' ? 'left to right' : 'right to left'}
               </span>
             </p>
           </BorderHoverLink>

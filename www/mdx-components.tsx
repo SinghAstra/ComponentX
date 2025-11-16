@@ -36,6 +36,12 @@ import {
   GridBackgroundPreview,
 } from "@/app/docs/components/grid-background";
 import {
+  HoverPopOverAlignments,
+  HoverPopOverCustomContent,
+  HoverPopOverMultiple,
+  HoverPopOverPreview,
+} from "@/app/docs/components/hover-popover";
+import {
   LampBackgroundAngleSpan,
   LampBackgroundColors,
   LampBackgroundMultiPosition,
@@ -152,6 +158,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BorderHoverLinkPreview,
     BorderHoverPositions,
     BorderHoverDurations,
+    HoverPopOverAlignments,
+    HoverPopOverCustomContent,
+    HoverPopOverMultiple,
+    HoverPopOverPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

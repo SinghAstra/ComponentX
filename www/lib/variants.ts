@@ -1,8 +1,8 @@
 export const blurInVariant = {
-  hidden: { opacity: 0, filter: "blur(20px)" },
+  hidden: { opacity: 0, filter: 'blur(20px)' },
   visible: {
     opacity: 1,
-    filter: "blur(0px)",
+    filter: 'blur(0px)',
     transition: { duration: 0.4 },
   },
 };

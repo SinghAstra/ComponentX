@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import EllipseBackground, {
   EllipseVariant,
-} from "@/components/component-x/ellipse-background";
+} from '@/components/component-x/ellipse-background';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -10,7 +10,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function EllipseBackgroundVariants() {
-  const variants: EllipseVariant[] = ["fade", "glow"];
+  const variants: EllipseVariant[] = ['fade', 'glow'];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
@@ -32,9 +32,9 @@ export function EllipseBackgroundVariants() {
               {capitalizeFirstLetter(variant)}
             </h3>
             <p className="text-sm text-muted-foreground mt-[1px]">
-              {variant === "fade"
-                ? "Smooth gradient fade"
-                : "Bright glowing effect"}
+              {variant === 'fade'
+                ? 'Smooth gradient fade'
+                : 'Bright glowing effect'}
             </p>
           </div>
         </div>

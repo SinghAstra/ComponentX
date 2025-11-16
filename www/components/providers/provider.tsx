@@ -1,9 +1,9 @@
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
-import { siteConfig } from "@/config/site";
-import Image from "next/image";
-import React, { ReactNode, Suspense } from "react";
-import { SidebarProvider } from "../ui/sidebar";
-import { ToastProvider } from "./toast";
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
+import { siteConfig } from '@/config/site';
+import Image from 'next/image';
+import React, { ReactNode, Suspense } from 'react';
+import { SidebarProvider } from '../ui/sidebar';
+import { ToastProvider } from './toast';
 
 interface ProviderProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ const LoadingFallback = () => {
       <MaskedGridBackground />
       <div className="flex gap-4">
         <Image
-          src={"/favicon.ico"}
+          src={'/favicon.ico'}
           width={48}
           height={48}
           alt={siteConfig.name}

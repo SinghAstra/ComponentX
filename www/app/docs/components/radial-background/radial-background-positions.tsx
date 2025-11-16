@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import RadialBackground, {
   type RadialPosition,
-} from "@/components/component-x/radial-background";
+} from '@/components/component-x/radial-background';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -11,14 +11,14 @@ function capitalizeFirstLetter(str: string): string {
 
 export function RadialBackgroundPositions() {
   const radialPositions: RadialPosition[] = [
-    "top-left",
-    "top-center",
-    "top-right",
-    "left-center",
-    "right-center",
-    "bottom-left",
-    "bottom-center",
-    "bottom-right",
+    'top-left',
+    'top-center',
+    'top-right',
+    'left-center',
+    'right-center',
+    'bottom-left',
+    'bottom-center',
+    'bottom-right',
   ];
 
   return (
@@ -37,7 +37,7 @@ export function RadialBackgroundPositions() {
           />
           <div className="relative z-10 flex items-center justify-center h-full">
             <h3 className="text-2xl text-foreground">
-              {pos.split("-").map(capitalizeFirstLetter).join(" ")}
+              {pos.split('-').map(capitalizeFirstLetter).join(' ')}
             </h3>
           </div>
         </div>

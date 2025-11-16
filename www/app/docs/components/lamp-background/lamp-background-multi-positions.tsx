@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import LampBackground from "@/components/component-x/lamp-background";
+import LampBackground from '@/components/component-x/lamp-background';
 
 export function LampBackgroundMultiPosition() {
   return (

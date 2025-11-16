@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import type React from "react";
-import { CSSProperties } from "react";
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import type React from 'react';
+import { CSSProperties } from 'react';
 
-export type MovingBorderSpeed = "slow" | "normal" | "fast";
-export type MovingBorderDirection = "clockwise" | "counterclockwise";
+export type MovingBorderSpeed = 'slow' | 'normal' | 'fast';
+export type MovingBorderDirection = 'clockwise' | 'counterclockwise';
 export type MovingBorderBlendMode =
-  | "normal"
-  | "screen"
-  | "overlay"
-  | "multiply"
-  | "lighten";
+  | 'normal'
+  | 'screen'
+  | 'overlay'
+  | 'multiply'
+  | 'lighten';
 
 export interface MovingBorderProps {
   // Color & appearance
@@ -34,13 +34,13 @@ export interface MovingBorderProps {
 }
 
 const MovingBorder = ({
-  color = "hsl(var(--primary))",
+  color = 'hsl(var(--primary))',
   duration = 3,
-  speed = "normal",
-  direction = "clockwise",
+  speed = 'normal',
+  direction = 'clockwise',
   children,
-  className = "",
-  blendMode = "normal",
+  className = '',
+  blendMode = 'normal',
   opacity = 1,
   blur = 0,
 }: MovingBorderProps) => {
@@ -51,7 +51,7 @@ const MovingBorder = ({
   };
 
   const animationDuration = speedMap[speed];
-  const rotation = direction === "clockwise" ? 360 : -360;
+  const rotation = direction === 'clockwise' ? 360 : -360;
 
   const dimensions = {
     width: 1000,
@@ -70,22 +70,22 @@ const MovingBorder = ({
   return (
     <div
       className={cn(
-        "relative border p-[2px] overflow-hidden rounded",
-        className
+        'relative border p-[2px] overflow-hidden rounded',
+        className,
       )}
     >
       <motion.div
         className="absolute top-1/2 left-1/2 pointer-events-none z-[-1]"
         style={{
           ...glowStyle,
-          x: "-50%",
-          y: "-50%",
+          x: '-50%',
+          y: '-50%',
         }}
         animate={{ rotate: rotation }}
         transition={{
           duration: animationDuration,
           repeat: Infinity,
-          ease: "linear",
+          ease: 'linear',
         }}
       />
 

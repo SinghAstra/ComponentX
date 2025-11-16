@@ -7,9 +7,9 @@ A flexible, customizable modal dialog component with keyboard shortcuts, backdro
 <ComponentPreviewWithCode
   code={`"use client";
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function DialogPreview() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -47,10 +47,10 @@ return (
   command="npx cx add dialog"
   code={`"use client";
 
-import { cn } from "@/lib/utils";
-import { scaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import { cn } from '@/lib/utils';
+import { scaleInVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
 interface DialogProps {
 isDialogVisible: boolean;
@@ -138,9 +138,9 @@ export default Dialog;
 <ComponentPreviewWithCode
   code={`"use client";
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function BasicDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -183,10 +183,10 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
 import { Command } from 'lucide-react';
-import { useState } from "react";
+import { useState } from 'react';
 
 export function DialogWithShortcut() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -232,9 +232,9 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function DialogCustomSize() {
   const [smallOpen, setSmallOpen] = useState(false);
@@ -308,11 +308,11 @@ Close
 <ComponentPreviewWithCode
   code={`"use client";
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Command, Search } from 'lucide-react';
-import { useState } from "react";
+import { useState } from 'react';
 
 export function SearchDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -382,13 +382,13 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import { Command } from 'lucide-react';
-import { useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import Image from "next/image";
+import { useState } from 'react';
+import { FaGithub } from 'react-icons/fa';
+import Image from 'next/image';
 
 export function AuthDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -430,7 +430,7 @@ return (
         className="w-full bg-transparent"
       >
         <FaGithub className="mr-2 h-4 w-4" />
-        {isLoading ? "Signing in..." : "Continue with GitHub"}
+        {isLoading ? 'Signing in...' : 'Continue with GitHub'}
       </Button>
       <div className="relative flex gap-1">
         <span className="flex-1 flex items-center">
@@ -449,7 +449,7 @@ return (
           height={16}
           className="mr-2"
         />
-        {isLoading ? "Signing in..." : "Continue with Google"}
+        {isLoading ? 'Signing in...' : 'Continue with Google'}
       </Button>
     </div>
   </Dialog>

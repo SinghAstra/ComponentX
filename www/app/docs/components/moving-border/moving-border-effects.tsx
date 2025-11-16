@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import MovingBorder from "@/components/component-x/moving-border";
+import MovingBorder from '@/components/component-x/moving-border';
 
 export function MovingBorderEffects() {
   const effects = [
-    { label: "No Blur", blur: 0, opacity: 1 },
-    { label: "Light Blur", blur: 4, opacity: 0.8 },
-    { label: "Medium Blur", blur: 8, opacity: 0.6 },
-    { label: "Heavy Blur", blur: 16, opacity: 0.4 },
+    { label: 'No Blur', blur: 0, opacity: 1 },
+    { label: 'Light Blur', blur: 4, opacity: 0.8 },
+    { label: 'Medium Blur', blur: 8, opacity: 0.6 },
+    { label: 'Heavy Blur', blur: 16, opacity: 0.4 },
   ];
 
   return (
@@ -22,7 +22,7 @@ export function MovingBorderEffects() {
           >
             <div className="rounded flex items-center justify-center px-3 py-1 w-full">
               <h3 className="text-foreground text-sm">
-                Moving Border{" "}
+                Moving Border{' '}
                 <span className="text-muted-foreground">{effect.label}</span>
               </h3>
             </div>

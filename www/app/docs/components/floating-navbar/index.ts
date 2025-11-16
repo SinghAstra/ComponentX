@@ -1,1 +1,1 @@
-export * from "./floating-navbar-preview";
+export * from './floating-navbar-preview';

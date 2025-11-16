@@ -1,6 +1,6 @@
-import { containerVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import React, { ReactNode } from "react";
+import { containerVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import React, { ReactNode } from 'react';
 
 const ShowCase = ({ children }: { children: ReactNode }) => {
   return (

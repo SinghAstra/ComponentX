@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import MovingBackground from "@/components/component-x/moving-background";
+import MovingBackground from '@/components/component-x/moving-background';
 
 export function MovingBackgroundDurations() {
   const durations = [
-    { label: "Fast", value: 3000 },
-    { label: "Normal", value: 6000 },
-    { label: "Slow", value: 9000 },
+    { label: 'Fast', value: 3000 },
+    { label: 'Normal', value: 6000 },
+    { label: 'Slow', value: 9000 },
   ];
 
   return (

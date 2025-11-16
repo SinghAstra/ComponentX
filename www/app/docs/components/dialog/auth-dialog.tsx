@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import Dialog from "@/components/component-x/dialog";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { siteConfig } from "@/config/site";
-import { scaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import { Command, Loader } from "lucide-react";
-import Image from "next/image";
-import React, { useState } from "react";
-import { FaGithub } from "react-icons/fa";
+import Dialog from '@/components/component-x/dialog';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { siteConfig } from '@/config/site';
+import { scaleInVariant } from '@/lib/variants';
+import { motion } from 'framer-motion';
+import { Command, Loader } from 'lucide-react';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 export const AuthDialog = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -22,8 +22,8 @@ export const AuthDialog = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (error) {
       if (error instanceof Error) {
-        console.log("error.stack is ", error.stack);
-        console.log("error.message is ", error.message);
+        console.log('error.stack is ', error.stack);
+        console.log('error.message is ', error.message);
       }
     } finally {
       setIsGithubLoading(false);
@@ -37,8 +37,8 @@ export const AuthDialog = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (error) {
       if (error instanceof Error) {
-        console.log("error.stack is ", error.stack);
-        console.log("error.message is ", error.message);
+        console.log('error.stack is ', error.stack);
+        console.log('error.message is ', error.message);
       }
     } finally {
       setIsGoogleLoading(false);

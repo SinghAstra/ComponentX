@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
-import type * as React from "react";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { LucideIcon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import type * as React from 'react';
 
 interface FloatingNavbarProps {
   className?: string;
@@ -14,7 +14,7 @@ interface FloatingNavbarProps {
 export function FloatingNavbar({ className, children }: FloatingNavbarProps) {
   return (
     <nav
-      className={cn("fixed top-6 left-1/2 -translate-x-1/2 z-10", className)}
+      className={cn('fixed top-6 left-1/2 -translate-x-1/2 z-10', className)}
     >
       {children}
     </nav>
@@ -33,8 +33,8 @@ export function FloatingNavbarContent({
   return (
     <div
       className={cn(
-        "flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded p-2 shadow-lg",
-        className
+        'flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded p-2 shadow-lg',
+        className,
       )}
     >
       {children}
@@ -63,11 +63,11 @@ export function FloatingNavbarItem({
       variant="ghost"
       asChild
       className={cn(
-        "hover:bg-primary transition-all duration-300 rounded font-normal",
+        'hover:bg-primary transition-all duration-300 rounded font-normal',
         isActive
-          ? "bg-primary text-primary-foreground"
-          : "text-muted-foreground",
-        className
+          ? 'bg-primary text-primary-foreground'
+          : 'text-muted-foreground',
+        className,
       )}
     >
       <a href={href}>
@@ -82,7 +82,7 @@ export function FloatingNavbarSeparator({ className }: { className?: string }) {
   return (
     <span
       aria-hidden="true"
-      className={cn("h-5 w-px bg-muted/50", className)}
+      className={cn('h-5 w-px bg-muted/50', className)}
     />
   );
 }

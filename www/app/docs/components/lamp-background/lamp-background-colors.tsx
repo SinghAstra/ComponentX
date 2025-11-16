@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import LampBackground from "@/components/component-x/lamp-background";
+import LampBackground from '@/components/component-x/lamp-background';
 
 export function LampBackgroundColors() {
   const colorCombos = [
     {
-      label: "Primary",
-      colorOne: "hsl(var(--primary)/0.6)",
-      colorTwo: "transparent",
+      label: 'Primary',
+      colorOne: 'hsl(var(--primary)/0.6)',
+      colorTwo: 'transparent',
     },
     {
-      label: "Accent",
-      colorOne: "hsl(var(--accent)/0.6)",
-      colorTwo: "transparent",
+      label: 'Accent',
+      colorOne: 'hsl(var(--accent)/0.6)',
+      colorTwo: 'transparent',
     },
     {
-      label: "Secondary",
-      colorOne: "hsl(200, 100%, 50%)",
-      colorTwo: "transparent",
+      label: 'Secondary',
+      colorOne: 'hsl(200, 100%, 50%)',
+      colorTwo: 'transparent',
     },
     {
-      label: "Warm",
-      colorOne: "hsl(30, 100%, 50%)",
-      colorTwo: "transparent",
+      label: 'Warm',
+      colorOne: 'hsl(30, 100%, 50%)',
+      colorTwo: 'transparent',
     },
   ];
 

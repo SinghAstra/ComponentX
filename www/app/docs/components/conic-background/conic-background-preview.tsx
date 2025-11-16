@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import ConicBackground from "@/components/component-x/conic-background";
+import ConicBackground from '@/components/component-x/conic-background';
 
 export function ConicBackgroundPreview() {
   return (

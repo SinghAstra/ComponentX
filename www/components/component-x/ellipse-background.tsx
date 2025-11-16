@@ -1,16 +1,16 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 export type EllipsePosition =
-  | "top-left"
-  | "top-center"
-  | "top-right"
-  | "left-center"
-  | "right-center"
-  | "bottom-left"
-  | "bottom-center"
-  | "bottom-right";
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'left-center'
+  | 'right-center'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
 
-export type EllipseVariant = "fade" | "glow";
+export type EllipseVariant = 'fade' | 'glow';
 
 interface EllipseBackgroundProps {
   className?: string;
@@ -26,22 +26,22 @@ interface EllipseBackgroundProps {
 }
 
 const positionMap: Record<EllipsePosition, string> = {
-  "top-left": "0% 0%",
-  "top-center": "50% 0%",
-  "top-right": "100% 0%",
-  "left-center": "0% 50%",
-  "right-center": "100% 50%",
-  "bottom-left": "0% 100%",
-  "bottom-center": "50% 100%",
-  "bottom-right": "100% 100%",
+  'top-left': '0% 0%',
+  'top-center': '50% 0%',
+  'top-right': '100% 0%',
+  'left-center': '0% 50%',
+  'right-center': '100% 50%',
+  'bottom-left': '0% 100%',
+  'bottom-center': '50% 100%',
+  'bottom-right': '100% 100%',
 };
 
 function EllipseBackground({
   className,
-  colorOne = "hsl(var(--primary))",
-  colorTwo = "transparent",
-  position = "top-center",
-  variant = "fade",
+  colorOne = 'hsl(var(--primary))',
+  colorTwo = 'transparent',
+  position = 'top-center',
+  variant = 'fade',
   radiusX = 60,
   radiusY = 100,
   transition = 80,
@@ -50,7 +50,7 @@ function EllipseBackground({
 }: EllipseBackgroundProps) {
   const gradientPosition = positionMap[position];
   let backgroundGradientValue;
-  if (variant === "fade") {
+  if (variant === 'fade') {
     backgroundGradientValue = `radial-gradient(ellipse ${radiusX}% ${radiusY}% at ${gradientPosition}, ${colorOne} 0%, ${colorTwo} ${transition}%)`;
   } else {
     backgroundGradientValue = `radial-gradient(ellipse  ${radiusX}% ${radiusY}% at ${gradientPosition}, ${colorOne} ${
@@ -66,12 +66,12 @@ function EllipseBackground({
   return (
     <div
       className={cn(
-        "absolute inset-0 overflow-hidden bg-background z-[-1]",
-        className
+        'absolute inset-0 overflow-hidden bg-background z-[-1]',
+        className,
       )}
     >
       <div
-        className={`w-full h-full ${animate && "animate-pulse"}`}
+        className={`w-full h-full ${animate && 'animate-pulse'}`}
         style={style}
       />
     </div>

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from '@/components/ui/collapsible';
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -13,21 +13,21 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { ChevronRight, FolderClosedIcon, Home } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+} from '@/components/ui/sidebar';
+import { ChevronRight, FolderClosedIcon, Home } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const items = [
   {
-    name: "Page 1 ",
+    name: 'Page 1 ',
     count: 18,
-    href: "/pages/page-1",
+    href: '/pages/page-1',
   },
-  { name: "Page 2", count: 8, href: "/pages/page-2" },
-  { name: "Page 3", count: 4, href: "/pages/page-3" },
-  { name: "Page 4", count: 4, href: "/pages/page-4" },
-  { name: "Page 5", count: 4, href: "/pages/page-5" },
+  { name: 'Page 2', count: 8, href: '/pages/page-2' },
+  { name: 'Page 3', count: 4, href: '/pages/page-3' },
+  { name: 'Page 4', count: 4, href: '/pages/page-4' },
+  { name: 'Page 5', count: 4, href: '/pages/page-5' },
 ];
 
 function SidebarNav() {
@@ -66,8 +66,8 @@ function SidebarNav() {
                       href={item.href}
                       className={`flex justify-between px-2 py-1 group rounded hover:text-foreground hover:bg-muted/60 transition-all duration-300 ${
                         pathName.includes(item.href)
-                          ? "bg-muted/60 text-foreground"
-                          : "text-muted-foreground"
+                          ? 'bg-muted/60 text-foreground'
+                          : 'text-muted-foreground'
                       }`}
                     >
                       {item.name}

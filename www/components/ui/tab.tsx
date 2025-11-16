@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface TabElem {
   label: string;
@@ -42,7 +42,7 @@ const Tabs = ({ tabs, tabContentClassName }: TabsProps) => {
             }}
             onClick={() => setActiveTab(index)}
             className={`px-4 py-2 text-sm font-medium cursor-pointer ${
-              activeTab === index ? "text-foreground" : "text-muted-foreground"
+              activeTab === index ? 'text-foreground' : 'text-muted-foreground'
             }`}
           >
             {tab.label}
@@ -56,13 +56,13 @@ const Tabs = ({ tabs, tabContentClassName }: TabsProps) => {
             left: indicatorStyle.left,
           }}
           transition={{
-            type: "spring",
+            type: 'spring',
             stiffness: 300,
             damping: 30,
           }}
         />
       </div>
-      <div className={cn("mt-4", tabContentClassName)}>
+      <div className={cn('mt-4', tabContentClassName)}>
         {tabs[activeTab].content}
       </div>
     </div>

@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
 
 export function MaskedGridBackgroundMaskOpacity() {
   const opacityConfigs = [
     {
-      label: "Subtle Fade",
+      label: 'Subtle Fade',
       opacity: { start: 0.4, middle: 0.2, end: 0 },
     },
     {
-      label: "Medium Fade",
+      label: 'Medium Fade',
       opacity: { start: 0.8, middle: 0.2, end: 0 },
     },
     {
-      label: "Aggressive Fade",
+      label: 'Aggressive Fade',
       opacity: { start: 1, middle: 0, end: 0 },
     },
   ];

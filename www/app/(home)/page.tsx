@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import ShowCasePage from "./showcase";
+'use client';
+import React from 'react';
+import ShowCasePage from './showcase';
 
 const HomePage = () => {
   return (

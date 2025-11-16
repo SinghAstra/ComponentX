@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 import FloatingNavbar, {
   FloatingNavbarContent,
   FloatingNavbarItem,
   FloatingNavbarSeparator,
-} from "@/components/component-x/floating-navbar";
-import { Button } from "@/components/ui/button";
-import { Menu, Settings, X } from "lucide-react";
-import { useState } from "react";
+} from '@/components/component-x/floating-navbar';
+import { Button } from '@/components/ui/button';
+import { Menu, Settings, X } from 'lucide-react';
+import { useState } from 'react';
 
 export function FloatingNavbarPreview() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -42,7 +42,7 @@ export function FloatingNavbarPreview() {
         onClick={() => setIsNavbarOpen(!isNavbarOpen)}
         className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
         size="icon"
-        variant={isNavbarOpen ? "default" : "outline"}
+        variant={isNavbarOpen ? 'default' : 'outline'}
       >
         {isNavbarOpen ? (
           <X className="h-5 w-5" />
