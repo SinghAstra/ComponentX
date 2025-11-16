@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import 'devicon/devicon.min.css';
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import "devicon/devicon.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Space Grotesk', 'Space Mono', monospace;
+  font-family: "Space Grotesk", "Space Mono", monospace;
 }
 
 .logo {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: "Funnel Display", sans-serif;
 }
 
 @layer base {
@@ -146,19 +146,6 @@ pre > code {
   padding: 7px 14px;
   border-radius: 4px;
   background-color: hsl(var(--muted) / 0.2);
-}
-
-@keyframes shine {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -400% 0;
-  }
-}
-
-.shine {
-  animation: shine 6s linear infinite;
 }
 
 @keyframes moving-glow {

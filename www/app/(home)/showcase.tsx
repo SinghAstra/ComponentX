@@ -30,6 +30,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/component-x/tab";
+import { TextShine } from "@/components/component-x/text-shine";
 import Navbar from "@/components/navigation/navbar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -475,8 +476,19 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </BorderHoverLink>
           </div>
 
-          <div className="col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 rounded bg-background">
-            <h1 className="text-shine">{siteConfig.name}</h1>
+          <div className="col-span-1 row-span-1 min-h-[400px] flex items-center justify-center border border-neutral-800 rounded bg-background relative">
+            <div className="absolute top-2 right-2">
+              <Link href="/docs/components/text-shine">
+                <Button
+                  variant={"outline"}
+                  size={"sm"}
+                  className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+                >
+                  View Docs
+                </Button>
+              </Link>
+            </div>
+            <TextShine shineColor="text-primary">{siteConfig.name}</TextShine>
           </div>
           <div className="col-span-1 row-span-1 min-h-[400px] border border-neutral-800 rounded bg-background p-2">
             <Tabs className="h-full flex flex-col">
