@@ -527,7 +527,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
               borderPosition="bottom"
               borderColor="hsl(var(--primary))"
               duration={700}
-              className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden"
+              className="bg-muted/40 hover:bg-muted/20 transition-all duration-300 px-3 py-1 cursor-pointer rounded overflow-hidden"
             >
               Hover over me
             </BorderHoverLink>
