@@ -16,18 +16,16 @@ export function BorderHoverDirections() {
   ];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {directions.map((dir) => (
-        <div
-          key={dir.value}
-          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
-        >
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4">
+        {directions.map((dir) => (
           <BorderHoverLink
+            key={dir.label}
             borderPosition="bottom"
             borderColor="hsl(var(--primary))"
             animationDirection={dir.value}
             duration={700}
-            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center w-full"
           >
             <p className="text-foreground">
               Hover me{" "}
@@ -36,8 +34,8 @@ export function BorderHoverDirections() {
               </span>
             </p>
           </BorderHoverLink>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

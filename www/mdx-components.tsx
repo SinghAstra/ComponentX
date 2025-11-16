@@ -4,7 +4,6 @@ import {
   BorderHoverDurations,
   BorderHoverLinkPreview,
   BorderHoverPositions,
-  BorderHoverVertical,
 } from "@/app/docs/components/border-hover-link";
 import {
   ConicAngleSpans,
@@ -152,7 +151,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BorderHoverDirections,
     BorderHoverLinkPreview,
     BorderHoverPositions,
-    BorderHoverVertical,
     BorderHoverDurations,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");

@@ -11,21 +11,29 @@ export function BorderHoverColors() {
   ];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {colors.map(({ label, value }) => (
-        <div
-          key={label}
-          className="relative flex-none w-full h-32 overflow-hidden border flex items-center justify-center bg-muted/30"
-        >
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {colors.map(({ label, value }) => (
           <BorderHoverLink
+            key={label}
             borderPosition="bottom"
             borderColor={value}
             duration={700}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
-            <p className="text-foreground font-medium">{label} Border</p>
+            <p className="text-foreground ">
+              Hover me{" "}
+              <span
+                style={{
+                  color: value,
+                }}
+              >
+                {label}
+              </span>{" "}
+            </p>
           </BorderHoverLink>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

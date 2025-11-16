@@ -10,13 +10,11 @@ export function BorderHoverDurations() {
   ];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-      {durations.map(({ label, value }) => (
-        <div
-          key={value}
-          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center "
-        >
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4">
+        {durations.map(({ label, value }) => (
           <BorderHoverLink
+            key={label}
             borderPosition="bottom"
             borderColor="hsl(var(--primary))"
             duration={value}
@@ -27,8 +25,8 @@ export function BorderHoverDurations() {
               <span className="text-sm text-muted-foreground">{label}</span>
             </p>
           </BorderHoverLink>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
