@@ -63,6 +63,10 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/radial-background",
       },
       {
+        title: "Slider",
+        path: "/docs/components/slider",
+      },
+      {
         title: "Tabs",
         path: "/docs/components/tabs",
       },

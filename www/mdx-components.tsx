@@ -72,6 +72,14 @@ import {
   RadialBackgroundVariants,
 } from "@/app/docs/components/radial-background";
 import {
+  SliderDotIndicators,
+  SliderIndicators,
+  SliderLabelIndicators,
+  SliderPreview,
+  SliderWithButtons,
+  SliderWithNav,
+} from "@/app/docs/components/slider";
+import {
   TextShineColors,
   TextShineDuration,
   TextShinePreview,
@@ -151,6 +159,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TextShineDuration,
     TextShinePreview,
     TextShineColors,
+    SliderDotIndicators,
+    SliderIndicators,
+    SliderLabelIndicators,
+    SliderPreview,
+    SliderWithButtons,
+    SliderWithNav,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
