@@ -77,7 +77,7 @@ import {
   SliderLabelIndicators,
   SliderPreview,
   SliderWithButtons,
-  SliderWithNav,
+  SliderWithTab,
 } from "@/app/docs/components/slider";
 import {
   TextShineColors,
@@ -164,7 +164,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     SliderLabelIndicators,
     SliderPreview,
     SliderWithButtons,
-    SliderWithNav,
+    SliderWithTab,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

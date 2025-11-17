@@ -10,34 +10,35 @@ A flexible, composable slider component with drag support, keyboard navigation, 
 import {
   Slider,
   SliderContent,
-  SliderItem,
   SliderIndicatorDots,
-} from "@/components/slider";
+  SliderItem,
+} from "@/components/component-x/slider";
 
 export function SliderPreview() {
   return (
-    <div className="w-full space-y-4">
-      <div className="relative w-full h-64 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
-        <Slider className="h-full">
-          <SliderContent>
-            <SliderItem className="bg-primary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 1</span>
-            </SliderItem>
-            <SliderItem className="bg-secondary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 2</span>
-            </SliderItem>
-            <SliderItem className="bg-accent/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 3</span>
-            </SliderItem>
-          </SliderContent>
-        </Slider>
-      </div>
-      <SliderIndicatorDots />
+    <div className="w-full h-full p-2">
+      <Slider className="w-full h-full flex flex-col">
+        <SliderContent className="flex-1">
+          <SliderItem className="flex items-center justify-center border h-full">
+            <span className="text-2xl text-foreground">Slide 1</span>
+          </SliderItem>
+          <SliderItem className="flex items-center justify-center border h-full">
+            <span className="text-2xl text-foreground">Slide 2</span>
+          </SliderItem>
+          <SliderItem className="flex items-center justify-center border h-full">
+            <span className="text-2xl text-foreground">Slide 3</span>
+          </SliderItem>
+        </SliderContent>
+        <SliderIndicatorDots />
+      </Slider>
     </div>
   );
 }
+
 `}
+
 >
+
   <SliderPreview />
 </ComponentPreviewWithCode>
 
@@ -89,20 +90,21 @@ export function Slider({ children, className, initialIndex = 0 }: SliderProps) {
   const dragX = useMotionValue(0);
 
 return (
+
 <SliderContext.Provider
-value={{
-        activeIndex,
-        setActiveIndex,
-        itemsCount,
-        setItemsCount,
-        dragX,
-      }} >
-<div className={cn("relative overflow-hidden w-full", className)}>
-{children}
-</div>
+  value={{
+    activeIndex,
+    setActiveIndex,
+    itemsCount,
+    setItemsCount,
+    dragX,
+  }}
+>
+  <div className={cn("relative overflow-hidden w-full", className)}>
+    {children}
+  </div>
 </SliderContext.Provider>
-);
-}
+); }
 
 type SliderNavProps = {
 children: ReactNode;
@@ -132,28 +134,28 @@ left: element.offsetLeft,
 }, [activeIndex]);
 
 return (
+
 <div className={cn("relative flex", className)} role="tablist">
-{React.Children.map(children, (child, index) => {
-if (React.isValidElement(child)) {
-return React.cloneElement(child, {
-...child.props,
-index,
-registerRef: registerNavRef,
-});
-}
-return child;
-})}
-<motion.div
-className="absolute bottom-0 h-0.5 bg-foreground"
-animate={{
-          width: activeNavPosition.width,
-          left: activeNavPosition.left,
-        }}
-transition={{ type: "spring", stiffness: 300, damping: 30 }}
-/>
+  {React.Children.map(children, (child, index) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        ...child.props,
+        index,
+        registerRef: registerNavRef,
+      });
+    }
+    return child;
+  })}
+  <motion.div
+    className="absolute bottom-0 h-0.5 bg-foreground"
+    animate={{
+      width: activeNavPosition.width,
+      left: activeNavPosition.left,
+    }}
+    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+  />
 </div>
-);
-}
+); }
 
 type SliderNavTriggerProps = {
 children: ReactNode;
@@ -172,19 +174,20 @@ export function SliderNavTrigger({
   const isActive = activeIndex === index;
 
 return (
+
 <button
-ref={(el) => registerRef?.(index, el)}
-onClick={() => setActiveIndex(index)}
-role="tab"
-className={cn(
-"px-4 py-2 text-sm cursor-pointer transition-colors",
-isActive ? "text-foreground" : "text-muted-foreground",
-className
-)} >
-{children}
+  ref={(el) => registerRef?.(index, el)}
+  onClick={() => setActiveIndex(index)}
+  role="tab"
+  className={cn(
+    "px-4 py-2 text-sm cursor-pointer transition-colors",
+    isActive ? "text-foreground" : "text-muted-foreground",
+    className
+  )}
+>
+  {children}
 </button>
-);
-}
+); }
 
 type SliderContentProps = {
 children: ReactNode;
@@ -220,21 +223,22 @@ const x = dragX.get() as number;
 };
 
 return (
+
 <motion.div
 drag="x"
 dragConstraints={{ left: 0, right: 0 }}
 dragMomentum={false}
 style={{ x: dragX }}
 animate={{
-        translateX: \`-\${activeIndex * 100}%\`,
-      }}
+          translateX: \`-\${activeIndex * 100}%\`,
+        }}
 onDragEnd={handleDragEnd}
 transition={{
-        damping: 18,
-        stiffness: 90,
-        type: "spring",
-        duration: 0.2,
-      }}
+          damping: 18,
+          stiffness: 90,
+          type: "spring",
+          duration: 0.2,
+        }}
 className={cn(
 "flex items-center",
 "cursor-grab active:cursor-grabbing",
@@ -272,6 +276,7 @@ export function SliderIndicatorDots({
   const { activeIndex, itemsCount, setActiveIndex } = useSlider();
 
 return (
+
 <div className={cn("flex w-full items-center justify-center", className)}>
 <div className="flex gap-2">
 {Array.from({ length: itemsCount }, (\_, i) => (
@@ -306,6 +311,7 @@ export function SliderIndicatorLabels({
 if (labels.length !== itemsCount) return null;
 
 return (
+
 <div className={cn("flex w-full items-center justify-center", className)}>
 <div className="flex gap-2">
 {Array.from({ length: itemsCount }, (\_, i) => (
@@ -339,26 +345,24 @@ setActiveIndex((activeIndex + 1) % itemsCount);
 };
 
 return (
+
 <div className="flex gap-2">
-<button
-        className="bg-muted/60 text-muted-foreground hover:text-foreground rounded-full cursor-pointer p-1 transition-colors"
-        onClick={handlePrevious}
-        aria-label="Previous slide"
-      >
-<ChevronLeft className="h-4 w-4" />
-</button>
-<button
-        className="bg-muted/60 text-muted-foreground hover:text-foreground rounded-full cursor-pointer p-1 transition-colors"
-        onClick={handleNext}
-        aria-label="Next slide"
-      >
-<ChevronRight className="h-4 w-4" />
-</button>
+  <button
+    className="bg-muted/60 text-muted-foreground hover:text-foreground rounded-full cursor-pointer p-1 transition-colors"
+    onClick={handlePrevious}
+    aria-label="Previous slide"
+  >
+    <ChevronLeft className="h-4 w-4" />
+  </button>
+  <button
+    className="bg-muted/60 text-muted-foreground hover:text-foreground rounded-full cursor-pointer p-1 transition-colors"
+    onClick={handleNext}
+    aria-label="Next slide"
+  >
+    <ChevronRight className="h-4 w-4" />
+  </button>
 </div>
-);
-}
-`}
-/>
+); } `} />
 
 <div className="w-full h-32"></div>
 
@@ -369,43 +373,42 @@ return (
 
 import {
   Slider,
-  SliderNav,
-  SliderNavTrigger,
   SliderContent,
   SliderItem,
-} from "@/components/slider";
+  SliderNav,
+  SliderNavTrigger,
+} from "@/components/component-x/slider";
 
-export function SliderWithNav() {
+export function SliderWithTab() {
   return (
-    <div className="w-full space-y-6">
-      <SliderNav className="border-b">
-        <SliderNavTrigger>Featured</SliderNavTrigger>
-        <SliderNavTrigger>Popular</SliderNavTrigger>
-        <SliderNavTrigger>Recent</SliderNavTrigger>
-      </SliderNav>
-
-      <Slider>
-        <SliderContent>
-          <SliderItem className="h-64 bg-primary/20 flex items-center justify-center rounded-lg">
-            <span className="text-xl text-foreground">Featured Content</span>
+    <div className="w-full h-full p-2">
+      <Slider className="border flex flex-col h-full ">
+        <SliderNav className="border-b">
+          <SliderNavTrigger>Featured</SliderNavTrigger>
+          <SliderNavTrigger>Popular</SliderNavTrigger>
+          <SliderNavTrigger>Recent</SliderNavTrigger>
+        </SliderNav>
+        <SliderContent className="flex-1">
+          <SliderItem className="flex items-center justify-center bg-muted/25 h-full">
+            <span>Featured Content</span>
           </SliderItem>
-          <SliderItem className="h-64 bg-secondary/20 flex items-center justify-center rounded-lg">
-            <span className="text-xl text-foreground">Popular Content</span>
+          <SliderItem className="flex items-center justify-center bg-muted/25 h-full">
+            <span>Popular Content</span>
           </SliderItem>
-          <SliderItem className="h-64 bg-accent/20 flex items-center justify-center rounded-lg">
-            <span className="text-xl text-foreground">Recent Content</span>
+          <SliderItem className="flex items-center justify-center bg-muted/25 h-full">
+            <span>Recent Content</span>
           </SliderItem>
         </SliderContent>
       </Slider>
     </div>
-
-);
+  );
 }
+
 `}
 
 >
 
-  <SliderWithNav />
+  <SliderWithTab />
 </ComponentPreviewWithCode>
 
 <div className="w-full h-32"></div>
@@ -551,6 +554,3 @@ export function SliderWithButtons() {
 </ComponentPreviewWithCode>
 
 <div className="w-full h-64"></div>
-\`\`\`
-
-This documentation mirrors the structure and styling of the radial background documentation, using the same `ComponentPreviewWithCode` and `Installation` MDX components. It covers the main Slider component and all its subcomponents (SliderNav, SliderContent, SliderItem, SliderIndicatorDots, SliderIndicatorLabels, and SliderNavigation) with practical examples showing different use cases including tab navigation, dot indicators, label indicators, and navigation buttons.
