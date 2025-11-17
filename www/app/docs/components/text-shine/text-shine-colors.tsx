@@ -11,21 +11,19 @@ export function TextShineColors() {
   ];
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-8">
-      {colors.map(({ label, value }) => (
-        <div
-          key={label}
-          className="flex flex-col items-center justify-center h-32 border rounded-lg bg-muted/30"
-        >
-          <TextShine
-            className="text-2xl font-bold"
-            shineColor={value}
-            duration={6}
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {colors.map(({ label, value }) => (
+          <div
+            key={label}
+            className="flex flex-col px-3 py-1 items-center justify-center border rounded bg-muted/30 w-full"
           >
-            {label} Shine
-          </TextShine>
-        </div>
-      ))}
+            <TextShine shineColor={value}>
+              Text Shine <span className="text-muted-foreground">{label}</span>
+            </TextShine>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

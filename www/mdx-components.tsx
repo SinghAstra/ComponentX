@@ -73,12 +73,8 @@ import {
 } from "@/app/docs/components/radial-background";
 import {
   TextShineColors,
-  TextShineCombined,
-  TextShineCustom,
   TextShineDuration,
-  TextShineOpacity,
   TextShinePreview,
-  TextShineSizes,
 } from "@/app/docs/components/text-shine";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
@@ -152,12 +148,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BorderHoverLinkPreview,
     BorderHoverPositions,
     BorderHoverDurations,
-    TextShineCustom,
-    TextShineCombined,
     TextShineDuration,
-    TextShineOpacity,
     TextShinePreview,
-    TextShineSizes,
     TextShineColors,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");

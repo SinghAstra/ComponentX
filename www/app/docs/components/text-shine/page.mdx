@@ -115,21 +115,24 @@ export function TextShineDuration() {
     { label: "Slow", value: 12 },
   ];
 
-  return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-8">
-      {durations.map(({ label, value }) => (
-        <div
-          key={value}
-          className="flex flex-col items-center justify-center h-32 border rounded-lg bg-muted/30"
-        >
-          <TextShine className="text-xl" duration={value}>
-            Text Shine <span className="text-muted-foreground">{label}</span>
-          </TextShine>
-        </div>
-      ))}
-    </div>
-  );
-}
+return (
+
+<div className="w-full h-full overflow-y-auto flex items-center justify-center">
+  <div className="flex flex-col gap-4">
+    {durations.map(({ label, value }) => (
+      <div
+        key={value}
+        className="flex flex-col px-3 py-1 items-center justify-center border rounded bg-muted/30"
+      >
+        <TextShine duration={value}>
+          Text Shine <span className="text-muted-foreground">{label}</span>
+        </TextShine>
+      </div>
+    ))}
+  </div>
+</div>
+); }
+
 `}
 
 >
@@ -146,7 +149,7 @@ Customize the color of the shine effect to match your design system or create un
 <ComponentPreviewWithCode
   code={`"use client";
 
-import { TextShine } from "@/components/text-shine";
+import { TextShine } from "@/components/component-x/text-shine";
 
 export function TextShineColors() {
   const colors = [
@@ -158,180 +161,25 @@ export function TextShineColors() {
 
 return (
 
-<div className="w-full h-full overflow-y-auto flex flex-col gap-8">
-  {colors.map(({ label, value }) => (
-    <div
-      key={label}
-      className="flex flex-col items-center justify-center h-32 border rounded-lg bg-muted/30"
-    >
-      <TextShine className="text-2xl font-bold" shineColor={value} duration={6}>
-        {label} Shine
-      </TextShine>
-    </div>
-  ))}
+<div className="w-full h-full overflow-y-auto flex items-center justify-center">
+  <div className="flex flex-col gap-4 w-fit">
+    {colors.map(({ label, value }) => (
+      <div
+        key={label}
+        className="flex flex-col px-3 py-1 items-center justify-center border rounded bg-muted/30 w-full"
+      >
+        <TextShine shineColor={value}>
+          Text Shine <span className="text-muted-foreground">{label}</span>
+        </TextShine>
+      </div>
+    ))}
+  </div>
 </div>
 ); } `}
 
 >
 
   <TextShineColors />
-</ComponentPreviewWithCode>
-
-<div className="w-full h-32"></div>
-
-## Opacity Levels
-
-Fine-tune the opacity of the shine effect at different stages of the animation for subtle or prominent effects.
-
-<ComponentPreviewWithCode
-  code={`"use client";
-
-import { TextShine } from "@/components/text-shine";
-
-export function TextShineOpacity() {
-  const opacityVariants = [
-    {
-      label: "Subtle",
-      start: 0,
-      peak: 0.1,
-      end: 0,
-    },
-    {
-      label: "Medium",
-      start: 0,
-      peak: 0.3,
-      end: 0,
-    },
-    {
-      label: "Intense",
-      start: 0,
-      peak: 0.6,
-      end: 0,
-    },
-  ];
-
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-8">
-  {opacityVariants.map(({ label, start, peak, end }) => (
-    <div
-      key={label}
-      className="flex flex-col items-center justify-center h-32 border rounded-lg bg-muted/30"
-    >
-      <TextShine
-        className="text-2xl font-bold"
-        shineStartOpacity={start}
-        shinePeakOpacity={peak}
-        shineEndOpacity={end}
-        duration={6}
-      >
-        {label} Intensity
-      </TextShine>
-    </div>
-  ))}
-</div>
-); } `}
-
->
-
-  <TextShineOpacity />
-</ComponentPreviewWithCode>
-
-<div className="w-full h-32"></div>
-
-## Text Sizes
-
-The shine effect works seamlessly across different text sizes and font weights for headings, body text, and more.
-
-<ComponentPreviewWithCode
-  code={`"use client";
-
-import { TextShine } from "@/components/text-shine";
-
-export function TextShineSizes() {
-  return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-8 justify-center">
-      <div className="flex items-center justify-center">
-        <TextShine className="text-sm font-medium">
-          Small Text
-        </TextShine>
-      </div>
-      <div className="flex items-center justify-center">
-        <TextShine className="text-lg font-semibold">
-          Medium Text
-        </TextShine>
-      </div>
-      <div className="flex items-center justify-center">
-        <TextShine className="text-3xl font-bold">
-          Large Text
-        </TextShine>
-      </div>
-      <div className="flex items-center justify-center">
-        <TextShine className="text-5xl font-black">
-          Extra Large
-        </TextShine>
-      </div>
-    </div>
-  );
-}
-`}
->
-  <TextShineSizes />
-</ComponentPreviewWithCode>
-
-<div className="w-full h-64"></div>
-
-## Combined Effects
-
-Layer the shine effect with other typography properties for sophisticated and elegant text presentations.
-
-<ComponentPreviewWithCode
-  code={`"use client";
-
-import { TextShine } from "@/components/text-shine";
-
-export function TextShineCombined() {
-  return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-12 justify-center p-8">
-      <div className="flex flex-col items-center gap-2">
-        <TextShine
-          className="text-3xl font-bold tracking-tight"
-          shineColor="rgba(255, 215, 0, 1)"
-          shinePeakOpacity={0.4}
-          duration={5}
-        >
-          Premium Feature
-        </TextShine>
-        <p className="text-muted-foreground text-sm">
-          With custom gold shine effect
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center gap-2">
-        <TextShine
-          className="text-4xl font-black leading-tight"
-          shineColor="rgba(0, 255, 255, 1)"
-          shinePeakOpacity={0.5}
-          duration={4}
-        >
-          Headline{" "}
-          <span className="text-muted-foreground">
-            with Shine
-          </span>
-        </TextShine>
-        <p className="text-muted-foreground text-sm">
-          Cyan shine for maximum impact
-        </p>
-      </div>
-    </div>
-
-);
-}
-`}
-
->
-
-  <TextShineCombined />
 </ComponentPreviewWithCode>
 
 <div className="w-full h-32"></div>

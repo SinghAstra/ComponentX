@@ -1,14 +1,6 @@
 "use client";
 
 import BorderHoverLink from "@/components/component-x/border-hover-link";
-import {
-  Carousel,
-  CarouselBottomNavigation,
-  CarouselContent,
-  CarouselFooter,
-  CarouselIndicatorLabel,
-  CarouselItem,
-} from "@/components/component-x/carousel";
 import ConicBackground from "@/components/component-x/conic-background";
 import EllipseBackground from "@/components/component-x/ellipse-background";
 import {
@@ -23,13 +15,6 @@ import MaskedGridBackground from "@/components/component-x/masked-grid-backgroun
 import MovingBackground from "@/components/component-x/moving-background";
 import MovingBorder from "@/components/component-x/moving-border";
 import RadialBackground from "@/components/component-x/radial-background";
-import {
-  TabItem,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/component-x/tab";
 import { TextShine } from "@/components/component-x/text-shine";
 import Navbar from "@/components/navigation/navbar";
 import { Button } from "@/components/ui/button";
@@ -488,49 +473,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
                 </Button>
               </Link>
             </div>
-            <TextShine shineColor="text-primary">{siteConfig.name}</TextShine>
-          </div>
-          <div className="col-span-1 row-span-1 min-h-[400px] border border-neutral-800 rounded bg-background p-2">
-            <Tabs className="h-full flex flex-col">
-              <TabsList>
-                <TabsTrigger index={0}>First</TabsTrigger>
-                <TabsTrigger index={1}>Second</TabsTrigger>
-                <TabsTrigger index={2}>Third</TabsTrigger>
-              </TabsList>
-              <TabsContent className="flex-1">
-                <TabItem className="flex items-center justify-center bg-muted/10 border h-full ">
-                  First
-                </TabItem>
-                <TabItem className="flex items-center justify-center bg-muted/10 border h-full">
-                  Second
-                </TabItem>
-                <TabItem className="flex items-center justify-center bg-muted/10 border h-full">
-                  Third
-                </TabItem>
-              </TabsContent>
-            </Tabs>
-          </div>
-          <div className="col-span-1 row-span-1 min-h-[400px] border border-neutral-800 rounded bg-background p-2 flex">
-            <Carousel className="w-full h-full flex flex-col gap-4">
-              <CarouselContent className="flex-1">
-                {Array.from({ length: 5 }, (_, i) => {
-                  return (
-                    <CarouselItem
-                      key={i}
-                      className="w-full h-full flex items-center justify-center"
-                    >
-                      {i + 1}
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-              <CarouselFooter>
-                <CarouselIndicatorLabel
-                  labels={["First", "Second", "Third", "Fourth", "Fifth"]}
-                />
-                <CarouselBottomNavigation />
-              </CarouselFooter>
-            </Carousel>
+            <TextShine>{siteConfig.name}</TextShine>
           </div>
         </div>
         <Footer />
