@@ -413,9 +413,7 @@ export function SliderWithTab() {
 
 <div className="w-full h-32"></div>
 
-## Indicator Types
-
-### Dot Indicators
+## Label Indicators
 
 <ComponentPreviewWithCode
   code={`"use client";
@@ -423,85 +421,43 @@ export function SliderWithTab() {
 import {
   Slider,
   SliderContent,
-  SliderItem,
-  SliderIndicatorDots,
-} from "@/components/slider";
-
-export function SliderDotIndicators() {
-  return (
-    <div className="w-full space-y-4">
-      <div className="relative w-full h-64 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
-        <Slider className="h-full">
-          <SliderContent>
-            <SliderItem className="bg-primary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 1</span>
-            </SliderItem>
-            <SliderItem className="bg-secondary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 2</span>
-            </SliderItem>
-            <SliderItem className="bg-accent/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 3</span>
-            </SliderItem>
-            <SliderItem className="bg-destructive/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Slide 4</span>
-            </SliderItem>
-          </SliderContent>
-        </Slider>
-      </div>
-      <div className="flex justify-center">
-        <SliderIndicatorDots />
-      </div>
-    </div>
-  );
-}
-`}
->
-  <SliderDotIndicators />
-</ComponentPreviewWithCode>
-
-<div className="w-full h-32"></div>
-
-### Label Indicators
-
-<ComponentPreviewWithCode
-  code={`"use client";
-
-import {
-  Slider,
-  SliderContent,
-  SliderItem,
   SliderIndicatorLabels,
-} from "@/components/slider";
+  SliderItem,
+} from "@/components/component-x/slider";
 
 export function SliderLabelIndicators() {
   return (
-    <div className="w-full space-y-4">
-      <div className="relative w-full h-64 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
-        <Slider className="h-full">
-          <SliderContent>
-            <SliderItem className="bg-primary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Spring</span>
-            </SliderItem>
-            <SliderItem className="bg-secondary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Summer</span>
-            </SliderItem>
-            <SliderItem className="bg-accent/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Autumn</span>
-            </SliderItem>
-            <SliderItem className="bg-destructive/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Winter</span>
-            </SliderItem>
-          </SliderContent>
-        </Slider>
-      </div>
-      <div className="flex justify-center">
-        <SliderIndicatorLabels labels={["Spring", "Summer", "Autumn", "Winter"]} />
-      </div>
+    <div className="w-full h-full">
+      <Slider className="w-full h-full overflow-hidden border flex flex-col">
+        <SliderContent className="flex-1">
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">First</span>
+          </SliderItem>
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">Second</span>
+          </SliderItem>
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">Third</span>
+          </SliderItem>
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">Fourth</span>
+          </SliderItem>
+        </SliderContent>
+        <div className="flex justify-center p-2">
+          <SliderIndicatorLabels
+            classNameButton="hover:text-foreground transition-all duration-300"
+            labels={["First", "Second", "Third", "Fourth"]}
+          />
+        </div>
+      </Slider>
     </div>
   );
 }
+
 `}
+
 >
+
   <SliderLabelIndicators />
 </ComponentPreviewWithCode>
 
@@ -515,36 +471,33 @@ export function SliderLabelIndicators() {
 import {
   Slider,
   SliderContent,
+  SliderIndicatorDots,
   SliderItem,
   SliderNavigation,
-  SliderIndicatorDots,
-} from "@/components/slider";
+} from "@/components/component-x/slider";
 
 export function SliderWithButtons() {
   return (
-    <div className="w-full space-y-4">
-      <div className="relative w-full h-64 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
-        <Slider className="h-full">
-          <SliderContent>
-            <SliderItem className="bg-primary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Image 1</span>
-            </SliderItem>
-            <SliderItem className="bg-secondary/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Image 2</span>
-            </SliderItem>
-            <SliderItem className="bg-accent/20 flex items-center justify-center">
-              <span className="text-2xl text-foreground">Image 3</span>
-            </SliderItem>
-          </SliderContent>
-        </Slider>
-      </div>
-      <div className="flex items-center justify-between">
-        <div className="flex-1" />
-        <SliderNavigation />
-        <div className="flex-1 flex justify-end">
-          <SliderIndicatorDots />
+    <div className="w-full h-full">
+      <Slider className="h-full flex flex-col">
+        <SliderContent className="flex-1">
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">Slide 1</span>
+          </SliderItem>
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">Slide 2</span>
+          </SliderItem>
+          <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
+            <span className="text-2xl text-foreground">Slide 3</span>
+          </SliderItem>
+        </SliderContent>
+        <div className="flex items-center justify-between p-2">
+          <div className="flex-1 flex justify-center items-center">
+            <SliderIndicatorDots />
+          </div>
+          <SliderNavigation />
         </div>
-      </div>
+      </Slider>
     </div>
   );
 }

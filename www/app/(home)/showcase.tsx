@@ -42,6 +42,11 @@ import { DialogWrapper } from "../docs/components/dialog/dialog-wrapper";
 import { SearchDialog } from "../docs/components/dialog/search-dialog";
 import Footer from "./footer";
 import Hero from "./hero";
+import { SliderBasicShowcase } from "./slider-basic-showcase";
+import { SliderImageGalleryShowcase } from "./slider-image-gallery-showcase";
+import { SliderLabelShowcase } from "./slider-label-showcase";
+import { SliderNavigationShowcase } from "./slider-navigation-showcase";
+import { SliderTabShowcase } from "./slider-tab-showcase";
 
 interface ShowCasePageProps {
   showcase?: boolean;
@@ -475,6 +480,11 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </div>
             <TextShine>{siteConfig.name}</TextShine>
           </div>
+          <SliderBasicShowcase />
+          <SliderNavigationShowcase />
+          <SliderImageGalleryShowcase />
+          <SliderTabShowcase />
+          <SliderLabelShowcase />
         </div>
         <Footer />
       </div>

@@ -72,8 +72,6 @@ import {
   RadialBackgroundVariants,
 } from "@/app/docs/components/radial-background";
 import {
-  SliderDotIndicators,
-  SliderIndicators,
   SliderLabelIndicators,
   SliderPreview,
   SliderWithButtons,
@@ -159,8 +157,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TextShineDuration,
     TextShinePreview,
     TextShineColors,
-    SliderDotIndicators,
-    SliderIndicators,
     SliderLabelIndicators,
     SliderPreview,
     SliderWithButtons,
