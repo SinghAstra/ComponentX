@@ -7,7 +7,7 @@ A versatile file upload component that enables users to upload files through dra
 <ComponentPreviewWithCode
   code={`"use client";
 
-import { FileUploader } from "@/components/file-uploader";
+import { FileUploader } from "@/components/component-x/file-upload";
 import { useState } from "react";
 
 export function FileUploaderPreview() {
@@ -15,19 +15,18 @@ export function FileUploaderPreview() {
 
 return (
 
-<div className="w-full">
-<FileUploader
-value={files}
-onChange={setFiles}
-label="Upload images"
-description="Drag and drop your images here, or click to browse."
-accept="image/_"
-maxFiles={5}
-maxSize={5 _ 1024 \* 1024}
-/>
+<div className="w-full h-full overflow-y-auto">
+  <FileUploader
+    value={files}
+    onChange={setFiles}
+    label="Upload images"
+    description="Drag and drop your images here, or click to browse."
+    accept="image/*"
+    maxFiles={5}
+  />
 </div>
-);
-}
+); }
+
 `}
 
 >

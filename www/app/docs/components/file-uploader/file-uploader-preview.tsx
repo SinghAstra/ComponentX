@@ -7,7 +7,7 @@ export function FileUploaderPreview() {
   const [files, setFiles] = useState<File[]>([]);
 
   return (
-    <div className="w-full h-full overflow-y-auto">
+    <div className="w-full h-full overflow-y-auto p-4">
       <FileUploader
         value={files}
         onChange={setFiles}
