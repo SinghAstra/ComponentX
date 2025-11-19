@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useState } from "react";
-import { FileUploader } from "../file/file-upload";
+import { FileUploader } from "../../components/component-x/file-upload";
 
 const FileUploaderShowcase = () => {
   const [files, setFiles] = useState<File[]>([]);

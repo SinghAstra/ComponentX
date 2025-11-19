@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { TagInput } from './components/tag-input';
+import { useState } from "react";
+import { TagInput } from "../../components/component-x/tag-input";
 
 export default function Home() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <main className="min-h-screen bg-background flex items-center justify-center">
@@ -26,7 +26,7 @@ export default function Home() {
           )}
           {selectedTags.length > 0 && (
             <p className="text-sm text-muted-foreground">
-              Selected : {selectedTags.join(', ')}
+              Selected : {selectedTags.join(", ")}
             </p>
           )}
         </div>
