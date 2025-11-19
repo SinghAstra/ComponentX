@@ -39,6 +39,10 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/ellipse-background",
       },
       {
+        title: "File Uploader",
+        path: "/docs/components/file-uploader",
+      },
+      {
         title: "Floating Navbar",
         path: "/docs/components/floating-navbar",
       },

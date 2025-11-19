@@ -33,6 +33,7 @@ import {
   EllipseBackgroundTransition,
   EllipseBackgroundVariants,
 } from "@/app/docs/components/ellipse-background";
+import { FileUploaderPreview } from "@/app/docs/components/file-uploader/file-uploader-preview";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar";
 import {
   GridBackgroundDimensions,
@@ -183,6 +184,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TagInputNoLabel,
     TagInputPreview,
     TagInputRequired,
+    FileUploaderPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
