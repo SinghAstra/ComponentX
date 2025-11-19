@@ -40,6 +40,7 @@ import React, { useState } from "react";
 import { AuthDialog } from "../docs/components/dialog/auth-dialog";
 import { DialogWrapper } from "../docs/components/dialog/dialog-wrapper";
 import { SearchDialog } from "../docs/components/dialog/search-dialog";
+import { ColorPickerShowcase } from "./color-picker-showcase";
 import Footer from "./footer";
 import Hero from "./hero";
 import { SliderBasicShowcase } from "./slider-basic-showcase";
@@ -55,12 +56,11 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      whileInView="visible"
-      className="flex flex-col h-screen overflow-hidden"
-    >
+    // <motion.div
+    //   variants={containerVariant}
+    //   initial="hidden"
+    //   whileInView="visible"
+    <div className="flex flex-col h-screen overflow-hidden">
       <Navbar />
       <div className="w-full h-full flex flex-col overflow-y-auto p-4 sm:px-8">
         {!showcase && <LampBackground />}
@@ -483,11 +483,11 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
           <SliderNavigationShowcase />
           <SliderTabShowcase />
           <SliderLabelShowcase />
-          
+          <ColorPickerShowcase />
         </div>
         <Footer />
       </div>
-    </motion.div>
+    </div>
   );
 };
 

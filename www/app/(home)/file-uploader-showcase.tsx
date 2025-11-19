@@ -1,19 +1,30 @@
-'use client';
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import React, { useState } from "react";
+import { FileUploader } from "../file/file-upload";
 
-import React, { useState } from 'react';
-import { FileUploader } from './file-upload';
-
-function UploadPage() {
+const FileUploaderShowcase = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [rejections, setRejections] = useState<
     { file: File; reason: string }[]
   >([]);
   return (
-    <main className="mx-auto w-full max-w-3xl p-6 min-h-screen flex flex-col gap-4 items-center justify-center">
+    <div className="col-span-2 row-span-1 overflow-y-auto  border border-neutral-800 rounded bg-background relative flex flex-col gap-4 h-[400px] ">
+      <div className="absolute top-2 right-2">
+        <Link href="/docs/components/text-shine">
+          <Button
+            variant={"outline"}
+            size={"sm"}
+            className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
+          >
+            View Docs
+          </Button>
+        </Link>
+      </div>
       <FileUploader
         label="Images"
         description="Drag and drop images here, or click to browse."
-        accept={['image/*', '.png', '.jpg', '.jpeg', '.gif', '.webp']}
+        accept={["image/*", ".png", ".jpg", ".jpeg", ".gif", ".webp"]}
         multiple
         maxFiles={6}
         maxSize={8 * 1024 * 1024}
@@ -32,15 +43,15 @@ function UploadPage() {
                 className="text-sm text-muted-foreground"
               >
                 <span>{r.file.name}</span>
-                {' — '}
+                {" — "}
                 {r.reason}
               </li>
             ))}
           </ul>
         </div>
       )}
-    </main>
+    </div>
   );
-}
+};
 
-export default UploadPage;
+export default FileUploaderShowcase;

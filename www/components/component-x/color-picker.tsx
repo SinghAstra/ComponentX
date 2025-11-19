@@ -69,7 +69,6 @@ export function ColorPickerPopUp({
   presets,
   selectedColor,
   onColorSelect,
-  columns,
   title = "Pick a color",
   showHexCode = true,
 }: ColorPickerPopUpProps) {
@@ -81,7 +80,7 @@ export function ColorPickerPopUp({
           <span className="text-xs text-muted-foreground">{selectedColor}</span>
         )}
       </div>
-      <div className={cn(`grid gap-2`, `grid-cols-${columns}`)}>
+      <div className={cn(`grid gap-2`, `grid-cols-6`)}>
         {presets.map((hex) => {
           const selected = selectedColor.toUpperCase() === hex.toUpperCase();
           return (
@@ -210,7 +209,6 @@ interface ColorPickerInputProps {
   paletteTitle?: string;
   showHexCode?: boolean;
   defaultColor?: string;
-  paletteColumns?: number;
 }
 
 export function ColorPickerInput({
@@ -223,7 +221,6 @@ export function ColorPickerInput({
   paletteTitle = "Pick a color",
   showHexCode = true,
   defaultColor = "#3B82F6",
-  paletteColumns = 6,
 }: ColorPickerInputProps) {
   const [colorPickerPopUpOpen, setColorPickerPopUpOpen] = useState(false);
   const [internal, setInternal] = useState<string>(
@@ -252,7 +249,7 @@ export function ColorPickerInput({
         onOpenChange={setColorPickerPopUpOpen}
       >
         <PopoverTrigger asChild>
-          <div className="flex p-1 rounded border bg-transparent has-[:focus-visible]:border-ring ">
+          <div className="flex px-1 py-0.5 rounded border bg-transparent transition-all duration-300 has-[:focus-visible]:bg-muted/20 has-[:focus-visible]:border-ring ">
             <ColorPopUpTrigger
               color={internal}
               onClick={() => setColorPickerPopUpOpen(true)}
@@ -279,7 +276,6 @@ export function ColorPickerInput({
               commit(hex);
               setColorPickerPopUpOpen(false);
             }}
-            columns={paletteColumns}
             title={paletteTitle}
             showHexCode={showHexCode}
           />
