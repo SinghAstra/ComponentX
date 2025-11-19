@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import TableOfContents from '@/components/component-x/toc';
-import DocsSidebar from '@/components/layout/docs-sidebar';
-import { Button } from '@/components/ui/button';
-import { siteConfig } from '@/config/site';
-import Link from 'next/link';
-import React from 'react';
+import DocsSidebar from "@/components/layout/docs-sidebar";
+import TableOfContents from "@/components/mdx/toc";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import Link from "next/link";
+import React from "react";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -16,7 +16,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
         </Link>
         <a href={siteConfig.links.githubRepo} target="_blank">
           <Button
-            variant={'outline'}
+            variant={"outline"}
             className="bg-transparent hover:bg-muted/20 transition-all duration-300 px-3 py-2"
           >
             Github

@@ -82,6 +82,10 @@ export const docsLink: DocsSectionLink[] = [
         title: "Text Shine",
         path: "/docs/components/text-shine",
       },
+      {
+        title: "Video Upload",
+        path: "/docs/components/video-upload",
+      },
     ],
   },
 ];

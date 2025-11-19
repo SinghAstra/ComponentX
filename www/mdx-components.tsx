@@ -33,7 +33,7 @@ import {
   EllipseBackgroundTransition,
   EllipseBackgroundVariants,
 } from "@/app/docs/components/ellipse-background";
-import { FileUploaderPreview } from "@/app/docs/components/file-uploader/file-uploader-preview";
+import { FileUploaderPreview } from "@/app/docs/components/file-uploader";
 import { FloatingNavbarPreview } from "@/app/docs/components/floating-navbar";
 import {
   GridBackgroundDimensions,
@@ -96,6 +96,7 @@ import {
   TextShineDuration,
   TextShinePreview,
 } from "@/app/docs/components/text-shine";
+import { VideoUploadPreview } from "@/app/docs/components/video-upload";
 import { cn } from "@/lib/utils";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
@@ -185,6 +186,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TagInputPreview,
     TagInputRequired,
     FileUploaderPreview,
+    VideoUploadPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
