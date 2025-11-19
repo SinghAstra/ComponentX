@@ -1,23 +1,23 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { containerVariant, scaleInVariant } from "@/lib/variants";
+import { containerVariant } from "@/lib/variants";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 
-interface SliderShowcaseCardProps {
+interface ComponentShowcaseProps {
   docsLink: string;
   children: React.ReactNode;
   variant?: "full" | "compact";
   actionLabel?: string;
 }
 
-export function SliderShowcaseCard({
+export function ComponentShowcase({
   docsLink,
   children,
   variant = "full",
-}: SliderShowcaseCardProps): React.JSX.Element {
+}: ComponentShowcaseProps) {
   const isFullWidth = variant === "full";
 
   return (
@@ -29,7 +29,7 @@ export function SliderShowcaseCard({
         isFullWidth
           ? "col-span-1 sm:col-span-2 row-span-1"
           : "col-span-1 row-span-1"
-      } flex flex-col gap-4 items-center justify-center border bg-background rounded relative group transition-all duration-300 min-h-[400px]`}
+      } flex flex-col items-center justify-center border bg-background rounded relative group transition-all duration-300 min-h-[400px]`}
     >
       <div className=" p-2 flex justify-end w-full">
         <Link href={docsLink}>
@@ -43,12 +43,9 @@ export function SliderShowcaseCard({
         </Link>
       </div>
 
-      <motion.div
-        className="w-full h-full flex items-center justify-center p-2 pt-0"
-        variants={scaleInVariant}
-      >
+      <div className="w-full h-full flex items-center justify-center">
         {children}
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

@@ -483,6 +483,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
           <SliderNavigationShowcase />
           <SliderTabShowcase />
           <SliderLabelShowcase />
+          
         </div>
         <Footer />
       </div>

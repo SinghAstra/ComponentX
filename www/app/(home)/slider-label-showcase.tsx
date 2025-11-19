@@ -6,30 +6,28 @@ import {
   SliderIndicatorLabels,
   SliderItem,
 } from "@/components/component-x/slider";
-import { SliderShowcaseCard } from "./slider-showcase-card";
+import { ComponentShowcase } from "./component-showcase";
 
 export function SliderLabelShowcase() {
   return (
-    <SliderShowcaseCard
-      title="Label Indicators"
-      description="Navigate with label indicators"
+    <ComponentShowcase
       docsLink="/docs/components/slider#label-indicators"
-      variant="full"
+      variant="compact"
     >
       <div className="w-full h-full">
-        <Slider className="w-full h-full overflow-hidden border flex flex-col rounded">
+        <Slider className="w-full h-full overflow-hidden flex flex-col">
           <SliderContent className="flex-1">
-            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
-              <span className="text-2xl font-medium">First</span>
+            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border-r">
+              <span>First</span>
             </SliderItem>
-            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
-              <span className="text-2xl font-medium">Second</span>
+            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border-r">
+              <span>Second</span>
             </SliderItem>
-            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
-              <span className="text-2xl font-medium">Third</span>
+            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border-r">
+              <span>Third</span>
             </SliderItem>
-            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border">
-              <span className="text-2xl font-medium">Fourth</span>
+            <SliderItem className="bg-muted/25 flex items-center justify-center h-full border-r">
+              <span>Fourth</span>
             </SliderItem>
           </SliderContent>
           <div className="flex justify-center p-4">
@@ -40,6 +38,6 @@ export function SliderLabelShowcase() {
           </div>
         </Slider>
       </div>
-    </SliderShowcaseCard>
+    </ComponentShowcase>
   );
 }
