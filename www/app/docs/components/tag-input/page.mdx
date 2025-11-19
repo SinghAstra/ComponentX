@@ -1,0 +1,259 @@
+# Tag Input
+
+A flexible, accessible tag input component that allows users to add and remove items with keyboard support. Ideal for collecting multiple inputs like skills, keywords, email addresses, or any list-based data in a modern, user-friendly interface.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import { useState } from "react";
+import { TagInput } from "@/components/tag-input";
+
+export function TagInputPreview() {
+  const [tags, setTags] = useState<string[]>(['react', 'typescript', 'tailwind']);
+
+return (
+
+<div className="w-full max-w-sm mx-auto">
+  <TagInput
+    label="Skills"
+    placeholder="Add a skill..."
+    value={tags}
+    onChange={setTags}
+  />
+</div>
+); } `}
+
+>
+
+  <TagInputPreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add tag-input"
+  code={`"use client";
+
+import type React from "react";
+
+import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
+import {
+  forwardRef,
+  InputHTMLAttributes,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
+
+interface TagProps {
+label: string;
+onRemove: () => void;
+}
+
+export function Tag({ label, onRemove }: TagProps) {
+  return (
+    <div className="inline-flex border items-center gap-2 px-3 py-1.5 rounded text-sm font-medium transition-all duration-300  hover:bg-muted/20">
+      <span>{label}</span>
+      <button
+        onClick={onRemove}
+        className="inline-flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer"
+        aria-label={\`Remove \${label}\`}
+      >
+        <X className="w-4 h-4" />
+      </button>
+    </div>
+  );
+}
+
+export interface TagInputProps {
+  label?: string;
+  placeholder?: string;
+  value: string[];
+  onChange: (value: string[]) => void;
+  onInputChange?: (value: string) => void;
+  required?: boolean;
+}
+
+export const InputField = forwardRef<
+  HTMLInputElement,
+  InputHTMLAttributes<HTMLInputElement>
+>(({ className, ...props }, ref) => {
+  return (
+    <input
+      ref={ref}
+      className={cn(
+        "flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground",
+        "min-w-[120px]",
+        className
+      )}
+      {...props}
+    />
+  );
+});
+
+InputField.displayName = "InputField";
+
+export function TagInput({
+  label,
+  placeholder = "Add items...",
+  value,
+  onChange,
+  onInputChange,
+  required = false,
+}: TagInputProps) {
+  const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const newValue = e.target.value;
+setInputValue(newValue);
+onInputChange?.(newValue);
+};
+
+const handleAddItem = useCallback(
+(item: string) => {
+const trimmedItem = item.trim();
+if (trimmedItem && !value.includes(trimmedItem)) {
+onChange([...value, trimmedItem]);
+setInputValue("");
+inputRef.current?.focus();
+}
+},
+[value, onChange]
+);
+
+const handleRemoveItem = useCallback(
+(item: string) => {
+onChange(value.filter((v) => v !== item));
+},
+[value, onChange]
+);
+
+const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+if (e.key === "Enter") {
+e.preventDefault();
+handleAddItem(inputValue);
+} else if (e.key === "Backspace" && inputValue === "" && value.length > 0) {
+handleRemoveItem(value[value.length - 1]);
+}
+};
+
+return (
+
+<div className="w-full">
+{label && (
+<label className="block text-sm font-medium text-foreground mb-2">
+{label}
+{required && <span className="text-primary ml-1">\*</span>}
+</label>
+)}
+
+      <div
+        ref={containerRef}
+        className={cn(
+          "flex flex-wrap items-center gap-2 px-3 py-2 rounded",
+          "border border-input bg-background",
+          "transition-all duration-300"
+        )}
+      >
+        {value.map((item) => (
+          <Tag
+            key={item}
+            label={item}
+            onRemove={() => handleRemoveItem(item)}
+          />
+        ))}
+
+        <InputField
+          ref={inputRef}
+          type="text"
+          placeholder={value.length === 0 ? placeholder : ""}
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+    </div>
+
+);
+}
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Basic Usage
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import { useState } from "react";
+import { TagInput } from "@/components/tag-input";
+
+export function TagInputBasic() {
+  const [tags, setTags] = useState<string[]>([]);
+
+return (
+
+<div className="w-full max-w-sm space-y-4">
+  <TagInput
+    label="Technologies"
+    placeholder="Type and press Enter..."
+    value={tags}
+    onChange={setTags}
+  />
+  <div className="text-sm text-muted-foreground">
+    Added: {tags.length > 0 ? tags.join(", ") : "None"}
+  </div>
+</div>
+); } `}
+
+>
+
+  <TagInputBasic />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Multiple Tag Inputs
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import { useState } from "react";
+import { TagInput } from "@/components/tag-input";
+
+export function TagInputMultiple() {
+  const [skills, setSkills] = useState<string[]>(['React', 'Vue']);
+  const [interests, setInterests] = useState<string[]>(['Design', 'Music']);
+
+return (
+
+<div className="w-full max-w-sm space-y-6">
+  <TagInput
+    label="Technical Skills"
+    placeholder="Add a skill..."
+    value={skills}
+    onChange={setSkills}
+  />
+  <TagInput
+    label="Interests"
+    placeholder="Add an interest..."
+    value={interests}
+    onChange={setInterests}
+  />
+</div>
+); } `}
+
+>
+
+  <TagInputMultiple />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>

@@ -83,6 +83,14 @@ import {
   SliderWithTab,
 } from "@/app/docs/components/slider";
 import {
+  TagInputBasic,
+  TagInputDefaults,
+  TagInputMultiple,
+  TagInputNoLabel,
+  TagInputPreview,
+  TagInputRequired,
+} from "@/app/docs/components/tag-input";
+import {
   TextShineColors,
   TextShineDuration,
   TextShinePreview,
@@ -169,6 +177,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ColorPickerCustomPresets,
     ColorPickerNoLabel,
     ColorPickerPreview,
+    TagInputBasic,
+    TagInputDefaults,
+    TagInputMultiple,
+    TagInputNoLabel,
+    TagInputPreview,
+    TagInputRequired,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
