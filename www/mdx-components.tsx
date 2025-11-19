@@ -6,6 +6,11 @@ import {
   BorderHoverPositions,
 } from "@/app/docs/components/border-hover-link";
 import {
+  ColorPickerCustomPresets,
+  ColorPickerNoLabel,
+  ColorPickerPreview,
+} from "@/app/docs/components/color-picker";
+import {
   ConicAngleSpans,
   ConicBackgroundPositions,
   ConicBackgroundPreview,
@@ -161,6 +166,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     SliderPreview,
     SliderWithButtons,
     SliderWithTab,
+    ColorPickerCustomPresets,
+    ColorPickerNoLabel,
+    ColorPickerPreview,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

@@ -23,6 +23,10 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/border-hover-link",
       },
       {
+        title: "Color Picker",
+        path: "/docs/components/color-picker",
+      },
+      {
         title: "Conic Background",
         path: "/docs/components/conic-background",
       },
