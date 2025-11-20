@@ -32,7 +32,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetContent
               side="right"
-              className="h-full overflow-y-auto pt-0 border border-yellow-400 w-full"
+              className="h-full overflow-y-auto pt-0 border border-purple-400 w-full!"
             >
               <div className="flex flex-col gap-4">
                 <Link
