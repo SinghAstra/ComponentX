@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface MenuToggleProps {
   onOpenChange?: (isOpen: boolean) => void;
@@ -10,6 +10,7 @@ interface MenuToggleProps {
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
   ariaLabel?: string;
+  externalOpen?: boolean;
 }
 
 export function MenuToggle({
@@ -18,8 +19,9 @@ export function MenuToggle({
   size = "md",
   disabled = false,
   ariaLabel,
+  externalOpen = false,
 }: MenuToggleProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(externalOpen);
 
   const toggleMenu = () => {
     if (disabled) return;
@@ -45,6 +47,10 @@ export function MenuToggle({
     md: "h-0.5",
     lg: "h-1",
   };
+
+  useEffect(() => {
+    setIsOpen(externalOpen);
+  }, [externalOpen]);
 
   return (
     <button

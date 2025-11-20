@@ -9,49 +9,43 @@ import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const DocsLayout = ({ children }: { children: React.ReactNode }) => {
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
+const DocsLayoutHeader = ({
+  isOpen,
+  setIsSheetOpen,
+}: {
+  isOpen: boolean;
+  setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
-    <div className="h-dvh flex flex-col overflow-hidden w-full">
-      <div className="sticky top-0 inset-x-0 flex items-center justify-between p-4 py-3 w-full">
-        <Link href="/" className="text-xl text-primary">
-          {siteConfig.name}
-        </Link>
+    <div className="sticky top-0 inset-x-0 flex items-center justify-between p-2 w-full">
+      <Link href="/" className="text-xl logo text-primary">
+        {siteConfig.name}
+      </Link>
 
-        <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center">
+        <div className="hidden md:block">
           <a href={siteConfig.links.githubRepo} target="_blank">
             <Button
               variant={"outline"}
-              className="bg-transparent hover:bg-muted/20 transition-all duration-300 px-3 py-2"
+              className="bg-transparent hover:bg-muted/20 transition-all duration-300 font-normal"
             >
               Github
             </Button>
           </a>
-          <MenuToggle onOpenChange={setIsSheetOpen} />
-
-          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-            <SheetContent
-              side="right"
-              className="h-full overflow-y-auto pt-0 border border-purple-400 w-full!"
-            >
-              <div className="flex flex-col gap-4">
-                <Link
-                  href="/"
-                  className="text-xl text-primary font-bold mb-4 block"
-                  onClick={() => setIsSheetOpen(false)}
-                >
-                  {siteConfig.name}
-                </Link>
-
-                <DocsSidebar
-                  className="block w-full bg-transparent p-0"
-                  onLinkClick={() => setIsSheetOpen(false)}
-                />
-              </div>
-            </SheetContent>
-          </Sheet>
+        </div>
+        <div className="block md:hidden">
+          <MenuToggle onOpenChange={setIsSheetOpen} externalOpen={isOpen} />
         </div>
       </div>
+    </div>
+  );
+};
+
+const DocsLayout = ({ children }: { children: React.ReactNode }) => {
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  return (
+    <div className="h-dvh flex flex-col overflow-hidden w-full">
+      <DocsLayoutHeader setIsSheetOpen={setIsSheetOpen} isOpen={isSheetOpen} />
       <div className="flex flex-1 overflow-hidden relative">
         <DocsSidebar />
         <div className="flex-1 flex overflow-hidden pb-2 pr-2">
@@ -63,6 +57,21 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </div>
+      <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+        <SheetContent
+          side="right"
+          className="h-dvh flex flex-col gap-0 overflow-hidden w-full p-0"
+        >
+          <DocsLayoutHeader
+            setIsSheetOpen={setIsSheetOpen}
+            isOpen={isSheetOpen}
+          />
+          <DocsSidebar
+            className="block w-full bg-transparent p-2"
+            onLinkClick={() => setIsSheetOpen(false)}
+          />
+        </SheetContent>
+      </Sheet>
     </div>
   );
 };
