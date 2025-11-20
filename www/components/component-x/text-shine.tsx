@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 interface TextShineProps {
   children: React.ReactNode;
   className?: string;
@@ -17,7 +19,8 @@ export function TextShine({
   shinePeakOpacity = 0.8,
   shineEndOpacity = 0.3,
 }: TextShineProps) {
-  const animationId = `shine-${Math.random().toString(36).substr(2, 9)}`;
+  const id = useId();
+  const animationId = `shine-${id.replace(/:/g, "")}`;
 
   const startColor = shineColor.replace(
     /[\d.]+(?=\))/,

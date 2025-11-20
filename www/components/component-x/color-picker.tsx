@@ -228,8 +228,6 @@ export function ColorPickerInput({
   );
   const current = normalizeHex(value ?? internal) ?? defaultColor;
 
-  console.log("internal is ", internal);
-
   function commit(next: string) {
     const normalized = normalizeHex(next);
     if (!normalized) return;
