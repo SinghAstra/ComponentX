@@ -43,6 +43,7 @@ import { SearchDialog } from "../docs/components/dialog/search-dialog";
 import { ColorPickerShowcase } from "./color-picker-showcase";
 import Footer from "./footer";
 import Hero from "./hero";
+import MenuToggleShowcase from "./menu-toggle-showcase";
 import { SliderBasicShowcase } from "./slider-basic-showcase";
 import { SliderLabelShowcase } from "./slider-label-showcase";
 import { SliderNavigationShowcase } from "./slider-navigation-showcase";
@@ -486,6 +487,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
           <SliderLabelShowcase />
           <ColorPickerShowcase />
           <TagInputShowcase />
+          <MenuToggleShowcase />
         </div>
         <Footer />
       </div>

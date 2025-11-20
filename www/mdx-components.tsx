@@ -56,6 +56,10 @@ import {
   MaskedGridBackgroundSizes,
 } from "@/app/docs/components/masked-grid-background";
 import {
+  MenuTogglePreview,
+  MenuToggleSizes,
+} from "@/app/docs/components/menu-toggle";
+import {
   MovingBackgroundAngles,
   MovingBackgroundControl,
   MovingBackgroundDurations,
@@ -187,6 +191,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TagInputRequired,
     FileUploaderPreview,
     VideoUploadPreview,
+    MenuTogglePreview,
+    MenuToggleSizes,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (
