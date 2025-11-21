@@ -25,9 +25,7 @@ export function MovingBackgroundPreview() {
   );
 }
 `}
-
 >
-
   <MovingBackgroundPreview />
 </ComponentPreviewWithCode>
 
@@ -38,55 +36,55 @@ export function MovingBackgroundPreview() {
 <Installation
   command="npx cx add moving-background"
   code={`import { cn } from "@/lib/utils";
+import React from "react";
 
 interface MovingBackgroundProps {
-backgroundColor?: string;
-shineColor?: string;
+  backgroundColor?: string;
+  shineColor?: string;
 
-animationDuration?: number;
-animationDelay?: number;
-animated?: boolean;
-gradientAngle?: number;
-shineWidth?: number;
-zIndex?: number;
-opacity?: number;
-className?: string;
-position?: "absolute" | "fixed" | "relative";
+  animationDuration?: number;
+  animationDelay?: number;
+  animated?: boolean;
+  gradientAngle?: number;
+  shineWidth?: number;
+  zIndex?: number;
+  opacity?: number;
+  className?: string;
+  position?: "absolute" | "fixed" | "relative";
 }
 
 function MovingBackground({
-backgroundColor = "hsl(var(--muted)/0.4)",
-shineColor = "hsl(var(--primary)/0.4)",
-animationDuration = 6000,
-animationDelay = 0,
-animated = true,
-gradientAngle = 110,
-shineWidth = 10,
-zIndex = -1,
-opacity = 1,
-className,
-position = "absolute",
+  backgroundColor = "hsl(var(--muted)/0.4)",
+  shineColor = "hsl(var(--primary)/0.4)",
+  animationDuration = 6000,
+  animationDelay = 0,
+  animated = true,
+  gradientAngle = 110,
+  shineWidth = 10,
+  zIndex = -1,
+  opacity = 1,
+  className,
+  position = "absolute",
 }: MovingBackgroundProps) {
-const shineStart = 50 - shineWidth / 2;
-const shineEnd = 50 + shineWidth / 2;
+  const shineStart = 50 - shineWidth / 2;
+  const shineEnd = 50 + shineWidth / 2;
 
-const positionClass = {
-absolute: "absolute",
-fixed: "fixed",
-relative: "relative",
-}[position];
+  const positionClass = {
+    absolute: "absolute",
+    fixed: "fixed",
+    relative: "relative",
+  }[position];
 
-return (
-
-<>
-{animated && (
-<style>{\`
+  return (
+    <>
+      {animated && (
+        <style>{\`
 @keyframes moveShine {
-0% { background-position: 200% 0; }
-100% { background-position: 0% 0; }
+  0% { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
 }
 \`}</style>
-)}
+      )}
 
       <div
         className={cn(positionClass, "inset-0 overflow-hidden", className)}
@@ -101,12 +99,10 @@ return (
         }}
       />
     </>
-
-);
+  );
 }
 
 export default MovingBackground;
-
 `}
 />
 
@@ -126,33 +122,32 @@ export function MovingBackgroundDurations() {
     { label: "Slow", value: 10000 },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {durations.map(({ label, value }) => (
-    <div
-      key={value}
-      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
-    >
-      <MovingBackground
-        backgroundColor="hsl(var(--muted)/0.4)"
-        shineColor="hsl(var(--primary)/0.4)"
-        animationDuration={value}
-        gradientAngle={110}
-      />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full">
-        <h3 className="text-2xl text-foreground">{label}</h3>
-        <p className="text-sm text-muted-foreground mt-[1px]">
-          {value}ms duration
-        </p>
-      </div>
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {durations.map(({ label, value }) => (
+        <div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
+        >
+          <MovingBackground
+            backgroundColor="hsl(var(--muted)/0.4)"
+            shineColor="hsl(var(--primary)/0.4)"
+            animationDuration={value}
+            gradientAngle={110}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              {value}ms duration
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-); } `}
-
+  );
+}
+`}
 >
-
   <MovingBackgroundDurations />
 </ComponentPreviewWithCode>
 
@@ -171,32 +166,31 @@ export function MovingBackgroundAngles() {
     { label: "135°", value: 135 },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
-  <div className="flex flex-col gap-4">
-    {angles.map(({ label, value }) => (
-      <div
-        key={value}
-        className="relative px-4 py-2 border shadow-md rounded w-full"
-      >
-        <MovingBackground
-          backgroundColor="hsl(var(--muted)/0.4)"
-          shineColor="hsl(var(--primary)/0.4)"
-          animationDuration={6000}
-          gradientAngle={value}
-        />
-        <h3 className="text-foreground relative z-10 text-center">
-          Moving Background {label}
-        </h3>
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col gap-4">
+        {angles.map(({ label, value }) => (
+          <div
+            key={value}
+            className="relative px-4 py-2 border shadow-md rounded w-full"
+          >
+            <MovingBackground
+              backgroundColor="hsl(var(--muted)/0.4)"
+              shineColor="hsl(var(--primary)/0.4)"
+              animationDuration={6000}
+              gradientAngle={value}
+            />
+            <h3 className="text-foreground relative z-10 text-center">
+              Moving Background {label}
+            </h3>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
-); } `}
-
+    </div>
+  );
+}
+`}
 >
-
   <MovingBackgroundAngles />
 </ComponentPreviewWithCode>
 
@@ -216,34 +210,33 @@ export function MovingBackgroundShineWidth() {
     { label: "Wide", value: 20 },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {widths.map(({ label, value }) => (
-    <div
-      key={value}
-      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
-    >
-      <MovingBackground
-        backgroundColor="hsl(var(--muted)/0.4)"
-        shineColor="hsl(var(--primary)/0.4)"
-        animationDuration={6000}
-        gradientAngle={110}
-        shineWidth={value}
-      />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full">
-        <h3 className="text-2xl text-foreground">{label}</h3>
-        <p className="text-sm text-muted-foreground mt-[1px]">
-          Width: {value}%
-        </p>
-      </div>
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {widths.map(({ label, value }) => (
+        <div
+          key={value}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center rounded-lg"
+        >
+          <MovingBackground
+            backgroundColor="hsl(var(--muted)/0.4)"
+            shineColor="hsl(var(--primary)/0.4)"
+            animationDuration={6000}
+            gradientAngle={110}
+            shineWidth={value}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              Width: {value}%
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-); } `}
-
+  );
+}
+`}
 >
-
   <MovingBackgroundShineWidth />
 </ComponentPreviewWithCode>
 
@@ -261,26 +254,25 @@ import { Button } from '@/components/ui/button';
 export function MovingBackgroundControl() {
   const [animated, setAnimated] = useState(true);
 
-return (
-
-<div className="relative w-full h-96 overflow-hidden border flex flex-col items-center justify-center bg-background rounded-lg gap-4">
-  <MovingBackground
-    backgroundColor="hsl(var(--muted)/0.4)"
-    shineColor="hsl(var(--primary)/0.4)"
-    animationDuration={6000}
-    animated={animated}
-  />
-  <div className="relative z-10 flex flex-col items-center justify-center gap-4">
-    <h3 className="text-2xl text-foreground">Animation Control</h3>
-    <Button onClick={() => setAnimated(!animated)} variant="outline">
-      {animated ? 'Pause' : 'Play'}
-    </Button>
-  </div>
-</div>
-); } `}
-
+  return (
+    <div className="relative w-full h-96 overflow-hidden border flex flex-col items-center justify-center bg-background rounded-lg gap-4">
+      <MovingBackground
+        backgroundColor="hsl(var(--muted)/0.4)"
+        shineColor="hsl(var(--primary)/0.4)"
+        animationDuration={6000}
+        animated={animated}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center gap-4">
+        <h3 className="text-2xl text-foreground">Animation Control</h3>
+        <Button onClick={() => setAnimated(!animated)} variant="outline">
+          {animated ? 'Pause' : 'Play'}
+        </Button>
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <MovingBackgroundControl />
 </ComponentPreviewWithCode>
 
