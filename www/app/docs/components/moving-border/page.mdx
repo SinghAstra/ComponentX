@@ -49,85 +49,83 @@ export interface MovingBorderProps {
   // Color & appearance
   color?: string;
 
-// Animation
-duration?: number;
-speed?: MovingBorderSpeed;
-direction?: MovingBorderDirection;
+  // Animation
+  duration?: number;
+  speed?: MovingBorderSpeed;
+  direction?: MovingBorderDirection;
 
-// Content
-children: React.ReactNode;
+  // Content
+  children: React.ReactNode;
 
-// Styling
-className?: string;
-blendMode?: MovingBorderBlendMode;
-opacity?: number;
-blur?: number;
+  // Styling
+  className?: string;
+  blendMode?: MovingBorderBlendMode;
+  opacity?: number;
+  blur?: number;
 }
 
 const MovingBorder = ({
-color = "hsl(var(--primary))",
-duration = 3,
-speed = "normal",
-direction = "clockwise",
-children,
-className = "",
-blendMode = "normal",
-opacity = 1,
-blur = 0,
+  color = "hsl(var(--primary))",
+  duration = 3,
+  speed = "normal",
+  direction = "clockwise",
+  children,
+  className = "",
+  blendMode = "normal",
+  opacity = 1,
+  blur = 0,
 }: MovingBorderProps) => {
-const speedMap = {
-slow: duration _ 1.5,
-normal: duration,
-fast: duration _ 0.6,
-};
+  const speedMap = {
+    slow: duration * 1.5,
+    normal: duration,
+    fast: duration * 0.6,
+  };
 
-const animationDuration = speedMap[speed];
-const rotation = direction === "clockwise" ? 360 : -360;
+  const animationDuration = speedMap[speed];
+  const rotation = direction === "clockwise" ? 360 : -360;
 
-const dimensions = {
-width: 1000,
-height: 1000,
-};
+  const dimensions = {
+    width: 1000,
+    height: 1000,
+  };
 
-const glowStyle: CSSProperties = {
-background: \`conic-gradient(from 0deg at 50% 50%, transparent 0deg, \${color} 20deg, transparent 90deg)\`,
-filter: \`blur(\${blur}px)\`,
-opacity,
-mixBlendMode: blendMode,
-width: \`\${dimensions.width}%\`,
-height: \`\${dimensions.height}%\`,
-};
+  const glowStyle: CSSProperties = {
+    background: \`conic-gradient(from 0deg at 50% 50%, transparent 0deg, \${color} 20deg, transparent 90deg)\`,
+    filter: \`blur(\${blur}px)\`,
+    opacity,
+    mixBlendMode: blendMode,
+    width: \`\${dimensions.width}%\`,
+    height: \`\${dimensions.height}%\`,
+  };
 
-return (
-
-<div
-className={cn(
-"relative border p-[2px] overflow-hidden rounded",
-className
-)} >
-<motion.div
-className="absolute top-1/2 left-1/2 pointer-events-none z-[-1]"
-style={{
+  return (
+    <div
+      className={cn(
+        "relative border p-[2px] overflow-hidden rounded",
+        className
+      )}
+    >
+      <motion.div
+        className="absolute top-1/2 left-1/2 pointer-events-none z-[-1]"
+        style={{
           ...glowStyle,
           x: "-50%",
           y: "-50%",
         }}
-animate={{ rotate: rotation }}
-transition={{
+        animate={{ rotate: rotation }}
+        transition={{
           duration: animationDuration,
           repeat: Infinity,
           ease: "linear",
         }}
-/>
+      />
 
       <div className="z-10 bg-background">{children}</div>
     </div>
-
-);
+  );
 };
 
 export default MovingBorder;
-
 `}
 />
 
@@ -138,41 +136,39 @@ export default MovingBorder;
 <ComponentPreviewWithCode
   code={`"use client";
   
-  import MovingBorder, {
-    type MovingBorderSpeed,
-  } from "@/components/component-x/moving-border";
-  
-  function capitalizeFirstLetter(str: string): string {
-    if (!str) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-  
-  export function MovingBorderSpeeds() {
-    const speeds: MovingBorderSpeed[] = ["slow", "normal", "fast"];
-  
-    return (
-      <div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
-        <div className="flex flex-col gap-4 w-fit">
-          {speeds.map((speed) => (
-            <MovingBorder key={speed} speed={speed} className="rounded w-full">
-              <div className="rounded flex items-center justify-center px-3 py-1 w-full">
-                <h3 className="text-foreground text-sm">
-                  Moving Border{" "}
-                  <span className="text-muted-foreground">
-                    {capitalizeFirstLetter(speed)}
-                  </span>
-                </h3>
-              </div>
-            </MovingBorder>
-          ))}
-        </div>
+import MovingBorder, {
+  type MovingBorderSpeed,
+} from "@/components/component-x/moving-border";
+
+function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function MovingBorderSpeeds() {
+  const speeds: MovingBorderSpeed[] = ["slow", "normal", "fast"];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col gap-4 w-fit">
+        {speeds.map((speed) => (
+          <MovingBorder key={speed} speed={speed} className="rounded w-full">
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border{" "}
+                <span className="text-muted-foreground">
+                  {capitalizeFirstLetter(speed)}
+                </span>
+              </h3>
+            </div>
+          </MovingBorder>
+        ))}
       </div>
-    );
-  }
-  `}
-
+    </div>
+  );
+}
+`}
 >
-
   <MovingBorderSpeeds />
 </ComponentPreviewWithCode>
 
@@ -188,39 +184,38 @@ import MovingBorder, {
 } from "@/components/component-x/moving-border";
 
 function capitalizeFirstLetter(str: string): string {
-if (!str) return str;
-return str.charAt(0).toUpperCase() + str.slice(1);
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function MovingBorderDirections() {
   const directions: MovingBorderDirection[] = ["clockwise", "counterclockwise"];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex items-center justify-center">
-  <div className="flex flex-col gap-4 w-fit">
-    {directions.map((direction) => (
-      <MovingBorder
-        key={direction}
-        direction={direction}
-        className="rounded w-full"
-      >
-        <div className="rounded flex items-center justify-center px-3 py-1 w-full">
-          <h3 className="text-foreground text-sm">
-            Moving Border{' '}
-            <span className="text-muted-foreground">
-              {capitalizeFirstLetter(direction)}
-            </span>
-          </h3>
-        </div>
-      </MovingBorder>
-    ))}
-  </div>
-</div>
-); } `}
-
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {directions.map((direction) => (
+          <MovingBorder
+            key={direction}
+            direction={direction}
+            className="rounded w-full"
+          >
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border{' '}
+                <span className="text-muted-foreground">
+                  {capitalizeFirstLetter(direction)}
+                </span>
+              </h3>
+            </div>
+          </MovingBorder>
+        ))}
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <MovingBorderDirections />
 </ComponentPreviewWithCode>
 
@@ -241,25 +236,24 @@ export function MovingBorderColors() {
     { label: "Warning", value: "hsl(38, 92%, 50%)" },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex items-center justify-center">
-  <div className="flex flex-col gap-4 w-fit">
-    {colors.map(({ label, value }) => (
-      <MovingBorder key={label} color={value} className="rounded w-full">
-        <div className="rounded flex items-center justify-center px-3 py-1 w-full">
-          <h3 className="text-foreground text-sm">
-            Moving Border <span className="text-muted-foreground">{label}</span>
-          </h3>
-        </div>
-      </MovingBorder>
-    ))}
-  </div>
-</div>
-); } `}
-
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {colors.map(({ label, value }) => (
+          <MovingBorder key={label} color={value} className="rounded w-full">
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border <span className="text-muted-foreground">{label}</span>
+              </h3>
+            </div>
+          </MovingBorder>
+        ))}
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <MovingBorderColors />
 </ComponentPreviewWithCode>
 
@@ -270,42 +264,40 @@ return (
 <ComponentPreviewWithCode
   code={`"use client";
   
-  import MovingBorder from "@/components/component-x/moving-border";
-  
-  export function MovingBorderEffects() {
-    const effects = [
-      { label: "No Blur", blur: 0, opacity: 1 },
-      { label: "Light Blur", blur: 4, opacity: 0.8 },
-      { label: "Medium Blur", blur: 8, opacity: 0.6 },
-      { label: "Heavy Blur", blur: 16, opacity: 0.4 },
-    ];
-  
-    return (
-      <div className="w-full h-full overflow-y-auto flex items-center justify-center">
-        <div className="flex flex-col gap-4 w-fit">
-          {effects.map((effect) => (
-            <MovingBorder
-              key={effect.label}
-              blur={effect.blur}
-              opacity={effect.opacity}
-              className="rounded w-full"
-            >
-              <div className="rounded flex items-center justify-center px-3 py-1 w-full">
-                <h3 className="text-foreground text-sm">
-                  Moving Border{" "}
-                  <span className="text-muted-foreground">{effect.label}</span>
-                </h3>
-              </div>
-            </MovingBorder>
-          ))}
-        </div>
+import MovingBorder from "@/components/component-x/moving-border";
+
+export function MovingBorderEffects() {
+  const effects = [
+    { label: "No Blur", blur: 0, opacity: 1 },
+    { label: "Light Blur", blur: 4, opacity: 0.8 },
+    { label: "Medium Blur", blur: 8, opacity: 0.6 },
+    { label: "Heavy Blur", blur: 16, opacity: 0.4 },
+  ];
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {effects.map((effect) => (
+          <MovingBorder
+            key={effect.label}
+            blur={effect.blur}
+            opacity={effect.opacity}
+            className="rounded w-full"
+          >
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border{" "}
+                <span className="text-muted-foreground">{effect.label}</span>
+              </h3>
+            </div>
+          </MovingBorder>
+        ))}
       </div>
-    );
-  }
-   `}
-
+    </div>
+  );
+}
+`}
 >
-
   <MovingBorderEffects />
 </ComponentPreviewWithCode>
 
@@ -319,31 +311,31 @@ return (
 import MovingBorder from '@/components/component-x/moving-border';
 
 const durations = [
-{ label: "1s", value: 1 },
-{ label: "3s", value: 3 },
-{ label: "6s", value: 6 },
-{ label: "10s", value: 10 },
+  { label: "1s", value: 1 },
+  { label: "3s", value: 3 },
+  { label: "6s", value: 6 },
+  { label: "10s", value: 10 },
 ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex items-center justify-center">
-  <div className="flex flex-col gap-4 w-fit">
-    {durations.map(({ label, value }) => (
-      <MovingBorder key={label} duration={value} className="rounded w-full">
-        <div className="rounded flex items-center justify-center px-3 py-1 w-full">
-          <h3 className="text-foreground text-sm">
-            Moving Border <span className="text-muted-foreground">{label}</span>
-          </h3>
-        </div>
-      </MovingBorder>
-    ))}
-  </div>
-</div>
-); } `}
-
+export function MovingBorderDuration() {
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {durations.map(({ label, value }) => (
+          <MovingBorder key={label} duration={value} className="rounded w-full">
+            <div className="rounded flex items-center justify-center px-3 py-1 w-full">
+              <h3 className="text-foreground text-sm">
+                Moving Border <span className="text-muted-foreground">{label}</span>
+              </h3>
+            </div>
+          </MovingBorder>
+        ))}
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <MovingBorderDuration />
 </ComponentPreviewWithCode>
 
