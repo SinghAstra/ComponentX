@@ -36,72 +36,73 @@ export function RadialBackgroundPreview() {
   code={`import { cn } from "@/lib/utils";
 
 type RadialPosition =
-| "top-left"
-| "top-center"
-| "top-right"
-| "left-center"
-| "right-center"
-| "bottom-left"
-| "bottom-center"
-| "bottom-right";
+  | "top-left"
+  | "top-center"
+  | "top-right"
+  | "left-center"
+  | "right-center"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right";
 
 interface RadialBackgroundProps {
-className?: string;
-colorOne?: string;
-colorTwo?: string;
-position?: RadialPosition;
-variant?: "fade" | "glow";
-animate?: boolean;
-radius?: number;
+  className?: string;
+  colorOne?: string;
+  colorTwo?: string;
+  position?: RadialPosition;
+  variant?: "fade" | "glow";
+  animate?: boolean;
+  radius?: number;
 }
 
 const positionMap: Record<RadialPosition, string> = {
-"top-left": "0% 0%",
-"top-center": "50% 0%",
-"top-right": "100% 0%",
-"left-center": "0% 50%",
-"right-center": "100% 50%",
-"bottom-left": "0% 100%",
-"bottom-center": "50% 100%",
-"bottom-right": "100% 100%",
+  "top-left": "0% 0%",
+  "top-center": "50% 0%",
+  "top-right": "100% 0%",
+  "left-center": "0% 50%",
+  "right-center": "100% 50%",
+  "bottom-left": "0% 100%",
+  "bottom-center": "50% 100%",
+  "bottom-right": "100% 100%",
 };
 
 const RadialBackground = ({
-className,
-colorOne = "hsl(var(--primary))",
-colorTwo = "transparent",
-position = "top-left",
-variant = "fade",
-radius = 60,
-animate = false,
+  className,
+  colorOne = "hsl(var(--primary))",
+  colorTwo = "transparent",
+  position = "top-left",
+  variant = "fade",
+  radius = 60,
+  animate = false,
 }: RadialBackgroundProps) => {
-const gradientPosition = positionMap[position];
-let backgroundGradientValue;
-const maskImageValue = \`radial-gradient(circle at \${gradientPosition}, rgb(255, 255, 255,0.8), rgba(255, 255, 255,0.3) \${radius}%,rgba(255, 255, 255,0) 100%)\`;
-if (variant === "fade") {
-backgroundGradientValue = \`radial-gradient(circle at \${gradientPosition}, \${colorOne} 8%, \${colorTwo} \${radius}%,\${colorTwo} 100%)\`;
-} else {
-backgroundGradientValue = \`radial-gradient(circle at \${gradientPosition}, \${colorOne} \${
-radius / 2
-}%, \${colorTwo} \${radius}%,\${colorTwo} 100%)\`;
-}
+  const gradientPosition = positionMap[position];
+  let backgroundGradientValue;
+  const maskImageValue = \`radial-gradient(circle at \${gradientPosition}, rgb(255, 255, 255,0.8), rgba(255, 255, 255,0.3) \${radius}%,rgba(255, 255, 255,0) 100%)\`;
 
-return (
+  if (variant === "fade") {
+    backgroundGradientValue = \`radial-gradient(circle at \${gradientPosition}, \${colorOne} 8%, \${colorTwo} \${radius}%,\${colorTwo} 100%)\`;
+  } else {
+    backgroundGradientValue = \`radial-gradient(circle at \${gradientPosition}, \${colorOne} \${
+      radius / 2
+    }%, \${colorTwo} \${radius}%,\${colorTwo} 100%)\`;
+  }
 
-<div
-className={cn(
-"absolute inset-0 overflow-hidden bg-background z-[-1]",
-className
-)} >
-<div
-className={\`w-full h-full \${animate && "animate-pulse"}\`}
-style={{
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 overflow-hidden bg-background z-[-1]",
+        className
+      )}
+    >
+      <div
+        className={\`w-full h-full \${animate && "animate-pulse"}\`}
+        style={{
           background: backgroundGradientValue,
           maskImage: maskImageValue,
         }}
-/>
-</div>
-);
+      />
+    </div>
+  );
 };
 
 export default RadialBackground;
@@ -120,8 +121,8 @@ import RadialBackground, {
 } from "@/components/component-x/radial-background";
 
 function capitalizeFirstLetter(str: string): string {
-if (!str) return str;
-return str.charAt(0).toUpperCase() + str.slice(1);
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function RadialBackgroundPositions() {
@@ -136,33 +137,32 @@ export function RadialBackgroundPositions() {
     "bottom-right",
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {radialPositions.map((pos) => (
-    <div
-      key={pos}
-      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
-    >
-      <RadialBackground
-        position={pos}
-        variant="fade"
-        colorOne="hsl(var(--primary)/0.6)"
-        colorTwo="transparent"
-        radius={60}
-      />
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <h3 className="text-2xl text-foreground">
-          {pos.split('-').map(capitalizeFirstLetter).join(' ')}
-        </h3>
-      </div>
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {radialPositions.map((pos) => (
+        <div
+          key={pos}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <RadialBackground
+            position={pos}
+            variant="fade"
+            colorOne="hsl(var(--primary)/0.6)"
+            colorTwo="transparent"
+            radius={60}
+          />
+          <div className="relative z-10 flex items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">
+              {pos.split('-').map(capitalizeFirstLetter).join(' ')}
+            </h3>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-); } `}
-
+  );
+}
+`}
 >
-
   <RadialBackgroundPositions />
 </ComponentPreviewWithCode>
 
@@ -178,45 +178,44 @@ import RadialBackground, {
 } from "@/components/component-x/radial-background";
 
 function capitalizeFirstLetter(str: string): string {
-if (!str) return str;
-return str.charAt(0).toUpperCase() + str.slice(1);
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function RadialBackgroundVariants() {
   const variants: RadialVariant[] = ["fade", "glow"];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-  {variants.map((variant) => (
-    <div
-      key={variant}
-      className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
-    >
-      <RadialBackground
-        position="left-center"
-        variant={variant}
-        colorOne="hsl(var(--primary)/0.7)"
-        colorTwo="transparent"
-        radius={60}
-      />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full">
-        <h3 className="text-2xl text-foreground">
-          {capitalizeFirstLetter(variant)}
-        </h3>
-        <p className="text-sm text-muted-foreground mt-[1px]">
-          {variant === 'fade'
-            ? 'Smooth gradient fade'
-            : 'Bright glowing effect'}
-        </p>
-      </div>
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {variants.map((variant) => (
+        <div
+          key={variant}
+          className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
+        >
+          <RadialBackground
+            position="left-center"
+            variant={variant}
+            colorOne="hsl(var(--primary)/0.7)"
+            colorTwo="transparent"
+            radius={60}
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">
+              {capitalizeFirstLetter(variant)}
+            </h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              {variant === 'fade'
+                ? 'Smooth gradient fade'
+                : 'Bright glowing effect'}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-); } `}
-
+  );
+}
+`}
 >
-
   <RadialBackgroundVariants />
 </ComponentPreviewWithCode>
 
@@ -236,35 +235,33 @@ export function RadialBackgroundRadius() {
     { label: "Large", value: 100 },
   ];
 
-return (
-<div className="w-full h-full overflow-y-auto flex flex-col gap-4">
-{radiusSizes.map(({ label, value }) => (
-<div
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-4">
+      {radiusSizes.map(({ label, value }) => (
+        <div
           key={value}
           className="relative flex-none w-full h-full overflow-hidden border flex items-center justify-center"
         >
-<RadialBackground
+          <RadialBackground
             position="left-center"
             variant="fade"
             colorOne="hsl(var(--primary)/0.6)"
             colorTwo="transparent"
             radius={value}
           />
-<div className="relative z-10 flex flex-col items-center justify-center h-full">
-<h3 className="text-2xl text-foreground">{label}</h3>
-<p className="text-sm text-muted-foreground mt-[1px]">
-Radius: {value}%
-</p>
-</div>
-</div>
-))}
-</div>
-);
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <p className="text-sm text-muted-foreground mt-[1px]">
+              Radius: {value}%
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 `}
-
 >
-
   <RadialBackgroundRadius />
 </ComponentPreviewWithCode>
 
@@ -273,28 +270,24 @@ Radius: {value}%
 ## Animated Background
 
 <ComponentPreviewWithCode
-  code={`"use client";
+  code={`'use client';
 
-import RadialBackground from '@/components/radial-background';
+import RadialBackground from '@/components/component-x/radial-background';
 
 export function RadialBackgroundAnimated() {
   return (
-    <div className="relative w-full h-96 bg-gradient-to-b from-muted to-background rounded-lg overflow-hidden border">
+    <div className="relative w-full h-full overflow-hidden border">
       <RadialBackground
-        position="center"
+        position="left-center"
         variant="glow"
         colorOne="hsl(var(--primary)/0.8)"
         colorTwo="transparent"
         animate={true}
         radius={60}
       />
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-center">
-          <h3 className="text-2xl font-bold text-foreground">
-            Animated Radial
-          </h3>
-          <p className="text-muted-foreground mt-2">Pulse animation effect</p>
-        </div>
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        <h3 className="text-2xl text-foreground">Animated Radial</h3>
+        <p className="text-muted-foreground mt-[1px]">Pulse animation effect</p>
       </div>
     </div>
   );
