@@ -2,6 +2,7 @@
 
 import { MenuToggle } from "@/components/component-x/menu-toggle";
 import DocsSidebar from "@/components/layout/docs-sidebar";
+import { DocsPagination } from "@/components/mdx/docs-pagination";
 import TableOfContents from "@/components/mdx/toc";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
@@ -52,6 +53,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex-1 h-full flex overflow-hidden border rounded bg-muted/30">
             <div className="h-full p-4 sm:px-8 flex-1 overflow-y-auto">
               {children}
+              <DocsPagination />
             </div>
             <TableOfContents />
           </div>
