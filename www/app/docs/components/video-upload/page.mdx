@@ -37,7 +37,7 @@ import { CloudUpload, X } from "lucide-react";
 import { useRef, useState } from "react";
 
 interface VideoUploadProps {
-maxSize?: number;
+  maxSize?: number;
 }
 
 export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
@@ -49,21 +49,21 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-const supportedFormats = ['MP4', 'MOV', 'WebM', 'AVI'];
+  const supportedFormats = ['MP4', 'MOV', 'WebM', 'AVI'];
 
-const validateFile = (file: File): boolean => {
-const validTypes = [
-'video/mp4',
-'video/quicktime',
-'video/webm',
-'video/x-msvideo',
-];
-if (!validTypes.includes(file.type)) {
-setToastMessage(
-\`Invalid file type. Supported formats: \${supportedFormats.join(', ')}\`,
-);
-return false;
-}
+  const validateFile = (file: File): boolean => {
+    const validTypes = [
+      'video/mp4',
+      'video/quicktime',
+      'video/webm',
+      'video/x-msvideo',
+    ];
+    if (!validTypes.includes(file.type)) {
+      setToastMessage(
+        \`Invalid file type. Supported formats: \${supportedFormats.join(', ')}\`,
+      );
+      return false;
+    }
 
     const fileSizeMB = file.size / (1024 * 1024);
     if (fileSizeMB > maxSize) {
@@ -72,56 +72,53 @@ return false;
     }
 
     return true;
+  };
 
-};
-
-const handleFileSelect = (file: File) => {
-if (!validateFile(file)) return;
+  const handleFileSelect = (file: File) => {
+    if (!validateFile(file)) return;
 
     const preview = URL.createObjectURL(file);
     setVideo({ file, preview });
+  };
 
-};
-
-const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-e.preventDefault();
-setIsDragging(false);
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
 
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       handleFileSelect(files[0]);
     }
+  };
 
-};
+  const handleClear = () => {
+    setVideo(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
-const handleClear = () => {
-setVideo(null);
-if (fileInputRef.current) {
-fileInputRef.current.value = '';
-}
-};
-
-return (
-
-<div className="w-full space-y-4">
-{!video ? (
-<div
-className={\`border rounded border-dashed hover:bg-muted/20 transition-all duration-300 cursor-pointer \${
-isDragging && 'bg-muted/20'
-}\`}
-onDragOver={(e) => {
-e.preventDefault();
-setIsDragging(true);
-}}
-onDragLeave={() => setIsDragging(false)}
-onDrop={handleDrop}
-onClick={() => fileInputRef.current?.click()} >
-<div className="p-12 text-center space-y-4">
-<div className="flex justify-center">
-<div className="p-3 rounded bg-muted">
-<CloudUpload className="w-6 h-6 text-muted-foreground" />
-</div>
-</div>
+  return (
+    <div className="w-full space-y-4">
+      {!video ? (
+        <div
+          className={\`border rounded border-dashed hover:bg-muted/20 transition-all duration-300 cursor-pointer \${
+            isDragging && 'bg-muted/20'
+          }\`}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setIsDragging(true);
+          }}
+          onDragLeave={() => setIsDragging(false)}
+          onDrop={handleDrop}
+          onClick={() => fileInputRef.current?.click()}
+        >
+          <div className="p-12 text-center space-y-4">
+            <div className="flex justify-center">
+              <div className="p-3 rounded bg-muted">
+                <CloudUpload className="w-6 h-6 text-muted-foreground" />
+              </div>
+            </div>
 
             <p className="font-medium text-foreground">
               <span className="text-primary">Click to upload</span> or drag and
@@ -191,8 +188,7 @@ onClick={() => fileInputRef.current?.click()} >
         </div>
       )}
     </div>
-
-);
+  );
 }
 `}
 />
