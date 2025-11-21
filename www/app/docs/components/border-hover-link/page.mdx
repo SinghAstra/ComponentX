@@ -23,11 +23,8 @@ export function BorderHoverLinkPreview() {
     </div>
   );
 }
-
 `}
-
 >
-
   <BorderHoverLinkPreview />
 </ComponentPreviewWithCode>
 
@@ -38,79 +35,78 @@ export function BorderHoverLinkPreview() {
 <Installation
   command="npx cx add border-hover-link"
   code={`import { cn } from "@/lib/utils";
-  import type { ReactNode } from "react";
-  
-  export type BorderPosition = "top" | "bottom" | "left" | "right";
-  export type BorderHoverAnimationDirection = "ltr" | "rtl";
-  
-  export interface BorderHoverLinkProps {
-    children: ReactNode;
-    borderColor?: string;
-    className?: string;
-    duration?: number;
-    borderHeight?: string;
-    borderPosition?: BorderPosition;
-    animationDirection?: BorderHoverAnimationDirection;
-  }
-  
-  const BorderHoverLink = ({
-    children,
-    borderColor = "hsl(var(--primary))",
-    className,
-    duration = 700,
-    borderHeight = "1px",
-    borderPosition = "bottom",
-    animationDirection = "ltr",
-  }: BorderHoverLinkProps) => {
-    const positionClasses = {
-      top: "top-0 left-0 w-full",
-      bottom: "bottom-0 left-0 w-full",
-      left: "left-0 top-0 h-full",
-      right: "right-0 top-0 h-full",
-    };
-  
-    const getAnimationClasses = () => {
-      const isHorizontal =
-        borderPosition === "top" || borderPosition === "bottom";
-  
-      if (isHorizontal) {
-        return animationDirection === "ltr"
-          ? "scale-x-0 origin-right group-hover:scale-x-100 group-hover:origin-left"
-          : "scale-x-0 origin-left group-hover:scale-x-100 group-hover:origin-right";
-      } else {
-        return animationDirection === "ltr"
-          ? "scale-y-0 origin-bottom group-hover:scale-y-100 group-hover:origin-top"
-          : "scale-y-0 origin-top group-hover:scale-y-100 group-hover:origin-bottom";
-      }
-    };
-  
-    const sizeClass =
-      borderPosition === "left" || borderPosition === "right"
-        ? "w-[1px]"
-        : \`h-[\${borderHeight}]\`;
-  
-    return (
-      <span className={cn("relative group cursor-pointer", className)}>
-        {children}
-        <span
-          className={cn(
-            "absolute",
-            positionClasses[borderPosition],
-            sizeClass,
-            "transition-transform",
-            getAnimationClasses()
-          )}
-          style={{
-            backgroundColor: borderColor,
-            transitionDuration: \`\${duration}ms\`,
-          }}
-        />
-      </span>
-    );
+import type { ReactNode } from "react";
+
+export type BorderPosition = "top" | "bottom" | "left" | "right";
+export type BorderHoverAnimationDirection = "ltr" | "rtl";
+
+export interface BorderHoverLinkProps {
+  children: ReactNode;
+  borderColor?: string;
+  className?: string;
+  duration?: number;
+  borderHeight?: string;
+  borderPosition?: BorderPosition;
+  animationDirection?: BorderHoverAnimationDirection;
+}
+
+const BorderHoverLink = ({
+  children,
+  borderColor = "hsl(var(--primary))",
+  className,
+  duration = 700,
+  borderHeight = "1px",
+  borderPosition = "bottom",
+  animationDirection = "ltr",
+}: BorderHoverLinkProps) => {
+  const positionClasses = {
+    top: "top-0 left-0 w-full",
+    bottom: "bottom-0 left-0 w-full",
+    left: "left-0 top-0 h-full",
+    right: "right-0 top-0 h-full",
   };
-  
-  export default BorderHoverLink;
-  
+
+  const getAnimationClasses = () => {
+    const isHorizontal =
+      borderPosition === "top" || borderPosition === "bottom";
+
+    if (isHorizontal) {
+      return animationDirection === "ltr"
+        ? "scale-x-0 origin-right group-hover:scale-x-100 group-hover:origin-left"
+        : "scale-x-0 origin-left group-hover:scale-x-100 group-hover:origin-right";
+    } else {
+      return animationDirection === "ltr"
+        ? "scale-y-0 origin-bottom group-hover:scale-y-100 group-hover:origin-top"
+        : "scale-y-0 origin-top group-hover:scale-y-100 group-hover:origin-bottom";
+    }
+  };
+
+  const sizeClass =
+    borderPosition === "left" || borderPosition === "right"
+      ? "w-[1px]"
+      : \`h-[\${borderHeight}]\`;
+
+  return (
+    <span className={cn("relative group cursor-pointer", className)}>
+      {children}
+      <span
+        className={cn(
+          "absolute",
+          positionClasses[borderPosition],
+          sizeClass,
+          "transition-transform",
+          getAnimationClasses()
+        )}
+        style={{
+          backgroundColor: borderColor,
+          transitionDuration: \`\${duration}ms\`,
+        }}
+      />
+    </span>
+  );
+};
+
+export default BorderHoverLink;
 `}
 />
 
@@ -126,38 +122,36 @@ import BorderHoverLink, {
 } from "@/components/component-x/border-hover-link";
 
 function capitalizeFirstLetter(str: string): string {
-if (!str) return str;
-return str.charAt(0).toUpperCase() + str.slice(1);
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function BorderHoverPositions() {
-const positions: BorderPosition[] = ["top", "bottom", "left", "right"];
+  const positions: BorderPosition[] = ["top", "bottom", "left", "right"];
 
-    return (
-      <div className="w-full h-full overflow-y-auto flex items-center justify-center">
-        <div className="flex flex-col gap-4">
-          {positions.map((pos) => (
-            <BorderHoverLink
-              key={pos}
-              borderPosition={pos}
-              borderColor="hsl(var(--primary))"
-              duration={700}
-              className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden w-full text-center"
-            >
-              Hover me{" "}
-              <span className="text-muted-foreground text-sm">
-                {capitalizeFirstLetter(pos)}
-              </span>
-            </BorderHoverLink>
-          ))}
-        </div>
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4">
+        {positions.map((pos) => (
+          <BorderHoverLink
+            key={pos}
+            borderPosition={pos}
+            borderColor="hsl(var(--primary))"
+            duration={700}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden w-full text-center"
+          >
+            Hover me{" "}
+            <span className="text-muted-foreground text-sm">
+              {capitalizeFirstLetter(pos)}
+            </span>
+          </BorderHoverLink>
+        ))}
       </div>
-    );
-
-}`}
-
+    </div>
+  );
+}
+`}
 >
-
   <BorderHoverPositions />
 </ComponentPreviewWithCode>
 
@@ -173,8 +167,8 @@ import BorderHoverLink, {
 } from "@/components/component-x/border-hover-link";
 
 interface BorderItem {
-label: string;
-value: BorderHoverAnimationDirection;
+  label: string;
+  value: BorderHoverAnimationDirection;
 }
 
 export function BorderHoverDirections() {
@@ -183,33 +177,32 @@ export function BorderHoverDirections() {
     { label: "Right to Left", value: "rtl" },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex items-center justify-center">
-  <div className="flex flex-col gap-4">
-    {directions.map((dir) => (
-      <BorderHoverLink
-        key={dir.label}
-        borderPosition="bottom"
-        borderColor="hsl(var(--primary))"
-        animationDirection={dir.value}
-        duration={700}
-        className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center w-full"
-      >
-        <p className="text-foreground">
-          Hover me{" "}
-          <span className="text-sm text-muted-foreground">
-            {dir.value === "ltr" ? "left to right" : "right to left"}
-          </span>
-        </p>
-      </BorderHoverLink>
-    ))}
-  </div>
-</div>
-); } `}
-
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4">
+        {directions.map((dir) => (
+          <BorderHoverLink
+            key={dir.label}
+            borderPosition="bottom"
+            borderColor="hsl(var(--primary))"
+            animationDirection={dir.value}
+            duration={700}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center w-full"
+          >
+            <p className="text-foreground">
+              Hover me{" "}
+              <span className="text-sm text-muted-foreground">
+                {dir.value === "ltr" ? "left to right" : "right to left"}
+              </span>
+            </p>
+          </BorderHoverLink>
+        ))}
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <BorderHoverDirections />
 </ComponentPreviewWithCode>
 
@@ -218,8 +211,7 @@ return (
 ## Animation Duration
 
 <ComponentPreviewWithCode
-  code={`
-"use client";
+  code={`"use client";
 
 import BorderHoverLink from "@/components/component-x/border-hover-link";
 
@@ -230,32 +222,29 @@ export function BorderHoverDurations() {
     { label: "Slow", value: 1200 },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex items-center justify-center">
-  <div className="flex flex-col gap-4">
-    {durations.map(({ label, value }) => (
-      <BorderHoverLink
-        key={label}
-        borderPosition="bottom"
-        borderColor="hsl(var(--primary))"
-        duration={value}
-        className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
-      >
-        <p className="text-foreground">
-          Hover me{" "}
-          <span className="text-sm text-muted-foreground">{label}</span>
-        </p>
-      </BorderHoverLink>
-    ))}
-  </div>
-</div>
-); }
-
-}`}
-
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4">
+        {durations.map(({ label, value }) => (
+          <BorderHoverLink
+            key={label}
+            borderPosition="bottom"
+            borderColor="hsl(var(--primary))"
+            duration={value}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
+          >
+            <p className="text-foreground">
+              Hover me{" "}
+              <span className="text-sm text-muted-foreground">{label}</span>
+            </p>
+          </BorderHoverLink>
+        ))}
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <BorderHoverDurations />
 </ComponentPreviewWithCode>
 
@@ -264,7 +253,7 @@ return (
 ## Border Colors
 
 <ComponentPreviewWithCode
-  code={`'use client';
+  code={`"use client";
 
 import BorderHoverLink from "@/components/component-x/border-hover-link";
 
@@ -276,36 +265,31 @@ export function BorderHoverColors() {
     { label: 'Warning', value: 'hsl(38, 92%, 50%)' },
   ];
 
-return (
-
-<div className="w-full h-full overflow-y-auto flex items-center justify-center">
-  <div className="flex flex-col gap-4 w-fit">
-    {colors.map(({ label, value }) => (
-      <BorderHoverLink
-        key={label}
-        borderPosition="bottom"
-        borderColor={value}
-        duration={700}
-        className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
-      >
-        <p className="text-foreground ">
-          Hover me{" "}
-          <span
-            style={{
-              color: value,
-            }}
+  return (
+    <div className="w-full h-full overflow-y-auto flex items-center justify-center">
+      <div className="flex flex-col gap-4 w-fit">
+        {colors.map(({ label, value }) => (
+          <BorderHoverLink
+            key={label}
+            borderPosition="bottom"
+            borderColor={value}
+            duration={700}
+            className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
-            {label}
-          </span>
-        </p>
-      </BorderHoverLink>
-    ))}
-  </div>
-</div>
-); } `}
-
+            <p className="text-foreground ">
+              Hover me{" "}
+              <span style={{ color: value }}>
+                {label}
+              </span>
+            </p>
+          </BorderHoverLink>
+        ))}
+      </div>
+    </div>
+  );
+}
+`}
 >
-
   <BorderHoverColors />
 </ComponentPreviewWithCode>
 

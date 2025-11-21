@@ -28,6 +28,7 @@ export function ColorPickerPreview() {
 
 ## Installation
 
+{/* prettier-ignore */}
 <Installation
   command="npx cx add color-picker-input"
   code={`"use client";
@@ -43,30 +44,10 @@ import { cn } from "@/lib/utils";
 import { forwardRef, useEffect, useState } from "react";
 
 export const DEFAULT_COLOR_PRESETS = [
-  "#111827",
-  "#374151",
-  "#6B7280",
-  "#9CA3AF",
-  "#D1D5DB",
-  "#F3F4F6",
-  "#EF4444",
-  "#F59E0B",
-  "#FBBF24",
-  "#FCD34D",
-  "#34D399",
-  "#10B981",
-  "#06B6D4",
-  "#0EA5E9",
-  "#3B82F6",
-  "#6366F1",
-  "#8B5CF6",
-  "#EC4899",
-  "#F97316",
-  "#22C55E",
-  "#84CC16",
-  "#14B8A6",
-  "#A855F7",
-  "#E11D48",
+  "#111827", "#374151", "#6B7280", "#9CA3AF", "#D1D5DB", "#F3F4F6",
+  "#EF4444", "#F59E0B", "#FBBF24", "#FCD34D", "#34D399", "#10B981",
+  "#06B6D4", "#0EA5E9", "#3B82F6", "#6366F1", "#8B5CF6", "#EC4899",
+  "#F97316", "#22C55E", "#84CC16", "#14B8A6", "#A855F7", "#E11D48",
 ];
 
 export function normalizeHex(input: string): string | null {
@@ -89,12 +70,12 @@ export function isValidHex(input: string): boolean {
 }
 
 interface ColorPickerPopUpProps {
-presets: string[];
-selectedColor: string;
-onColorSelect: (hex: string) => void;
-columns?: number;
-title?: string;
-showHexCode?: boolean;
+  presets: string[];
+  selectedColor: string;
+  onColorSelect: (hex: string) => void;
+  columns?: number;
+  title?: string;
+  showHexCode?: boolean;
 }
 
 export function ColorPickerPopUp({
@@ -112,7 +93,7 @@ export function ColorPickerPopUp({
           <span className="text-xs text-muted-foreground">{selectedColor}</span>
         )}
       </div>
-      <div className={cn(\`grid gap-2\`, \`grid-cols-6\`)}>
+      <div className={cn("grid gap-2 grid-cols-6")}>
         {presets.map((hex) => {
           const selected = selectedColor.toUpperCase() === hex.toUpperCase();
           return (
@@ -139,13 +120,13 @@ export function ColorPickerPopUp({
 }
 
 interface ColorPopUpTriggerProps {
-color: string;
-onClick?: () => void;
-aria?: {
-label?: string;
-describedBy?: string;
-};
-className?: string;
+  color: string;
+  onClick?: () => void;
+  aria?: {
+    label?: string;
+    describedBy?: string;
+  };
+  className?: string;
 }
 
 export const ColorPopUpTrigger = forwardRef<
@@ -157,7 +138,7 @@ export const ColorPopUpTrigger = forwardRef<
       ref={ref}
       type="button"
       className={cn(
-        "h-full flex items-center justify-center  bg-transparent hover:bg-accent transition-colors p-1 rounded",
+        "h-full flex items-center justify-center bg-transparent hover:bg-accent transition-colors p-1 rounded",
         className
       )}
       onClick={onClick}
@@ -179,12 +160,12 @@ export const ColorPopUpTrigger = forwardRef<
 ColorPopUpTrigger.displayName = "ColorPopUpTrigger";
 
 interface ColorInputProps {
-value: string;
-onChange: (hex: string) => void;
-placeholder?: string;
-helpText?: string;
-showHelpText?: boolean;
-inputId?: string;
+  value: string;
+  onChange: (hex: string) => void;
+  placeholder?: string;
+  helpText?: string;
+  showHelpText?: boolean;
+  inputId?: string;
 }
 
 export function ColorInput({
@@ -196,52 +177,51 @@ export function ColorInput({
 }: ColorInputProps) {
   const [internalValue, setInternalValue] = useState(value);
 
-function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-setInternalValue(e.target.value);
-}
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setInternalValue(e.target.value);
+  }
 
-function handleBlur() {
-const normalized = normalizeHex(internalValue);
-if (normalized) {
-onChange(normalized);
-} else {
-setInternalValue(value);
-}
-}
+  function handleBlur() {
+    const normalized = normalizeHex(internalValue);
+    if (normalized) {
+      onChange(normalized);
+    } else {
+      setInternalValue(value);
+    }
+  }
 
-useEffect(() => {
-setInternalValue(value);
-}, [value]);
+  useEffect(() => {
+    setInternalValue(value);
+  }, [value]);
 
-return (
-
-<Input
-id={inputId}
-type="text"
-inputMode="text"
-spellCheck={false}
-placeholder={placeholder}
-className={cn("border-0 focus-visible:ring-0")}
-value={internalValue}
-onChange={handleChange}
-onBlur={handleBlur}
-pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
-aria-describedby={showHelpText ? \`\${inputId}-help\` : undefined}
-/>
-);
+  return (
+    <Input
+      id={inputId}
+      type="text"
+      inputMode="text"
+      spellCheck={false}
+      placeholder={placeholder}
+      className={cn("border-0 focus-visible:ring-0")}
+      value={internalValue}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+      aria-describedby={showHelpText ? \`\${inputId}-help\` : undefined}
+    />
+  );
 }
 
 interface ColorPickerInputProps {
-value?: string;
-onChange?: (hex: string) => void;
-label?: string;
-showLabel?: boolean;
-helpText?: string;
-showHelpText?: boolean;
-presets?: string[];
-paletteTitle?: string;
-showHexCode?: boolean;
-defaultColor?: string;
+  value?: string;
+  onChange?: (hex: string) => void;
+  label?: string;
+  showLabel?: boolean;
+  helpText?: string;
+  showHelpText?: boolean;
+  presets?: string[];
+  paletteTitle?: string;
+  showHexCode?: boolean;
+  defaultColor?: string;
 }
 
 export function ColorPickerInput({
@@ -261,60 +241,59 @@ export function ColorPickerInput({
   );
   const current = normalizeHex(value ?? internal) ?? defaultColor;
 
-function commit(next: string) {
-const normalized = normalizeHex(next);
-if (!normalized) return;
-setInternal(normalized);
-onChange?.(normalized);
-}
+  function commit(next: string) {
+    const normalized = normalizeHex(next);
+    if (!normalized) return;
+    setInternal(normalized);
+    onChange?.(normalized);
+  }
 
-return (
-
-<div className="w-full space-y-2">
-{showLabel && (
-<Label htmlFor="color-input" className="text-sm">
-{label}
-</Label>
-)}
-<Popover
+  return (
+    <div className="w-full space-y-2">
+      {showLabel && (
+        <Label htmlFor="color-input" className="text-sm">
+          {label}
+        </Label>
+      )}
+      <Popover
         open={colorPickerPopUpOpen}
         onOpenChange={setColorPickerPopUpOpen}
       >
-<PopoverTrigger asChild>
-<div className="flex px-1 py-0.5 rounded border bg-transparent transition-all duration-300 has-[:focus-visible]:bg-muted/20 has-[:focus-visible]:border-ring ">
-<ColorPopUpTrigger
-color={internal}
-onClick={() => setColorPickerPopUpOpen(true)}
-aria={{
+        <PopoverTrigger asChild>
+          <div className="flex px-1 py-0.5 rounded border bg-transparent transition-all duration-300 has-[:focus-visible]:bg-muted/20 has-[:focus-visible]:border-ring ">
+            <ColorPopUpTrigger
+              color={internal}
+              onClick={() => setColorPickerPopUpOpen(true)}
+              aria={{
                 label: \`\${label} picker, currently \${current}\`,
                 describedBy: "color-input-help",
               }}
-/>
-<ColorInput
+            />
+            <ColorInput
               value={internal}
               onChange={commit}
               helpText={helpText}
             />
-</div>
-</PopoverTrigger>
-<PopoverContent
+          </div>
+        </PopoverTrigger>
+        <PopoverContent
           className="w-72 bg-background border rounded shadow-sm"
           align="start"
         >
-<ColorPickerPopUp
-presets={presets}
-selectedColor={current}
-onColorSelect={(hex) => {
-commit(hex);
-setColorPickerPopUpOpen(false);
-}}
-title={paletteTitle}
-showHexCode={showHexCode}
-/>
-</PopoverContent>
-</Popover>
-</div>
-);
+          <ColorPickerPopUp
+            presets={presets}
+            selectedColor={current}
+            onColorSelect={(hex) => {
+              commit(hex);
+              setColorPickerPopUpOpen(false);
+            }}
+            title={paletteTitle}
+            showHexCode={showHexCode}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
 }
 
 export default ColorPickerInput;
@@ -334,32 +313,31 @@ import ColorPickerInput from "@/components/color-picker-input";
 export function ColorPickerCustomPresets() {
   const [color, setColor] = useState('#FF6B35');
 
-const brandColors = [
-'#FF6B35',
-'#004E89',
-'#F77F00',
-'#FCBF49',
-'#EAE2B7',
-'#003049',
-'#D62828',
-'#F77F00',
-];
+  const brandColors = [
+    '#FF6B35',
+    '#004E89',
+    '#F77F00',
+    '#FCBF49',
+    '#EAE2B7',
+    '#003049',
+    '#D62828',
+    '#F77F00',
+  ];
 
-return (
-
-<div className="w-full max-w-sm">
-  <ColorPickerInput
-    value={color}
-    onChange={setColor}
-    label="Brand Colors"
-    presets={brandColors}
-    paletteTitle="Select a brand color"
-  />
-</div>
-); } `}
-
+  return (
+    <div className="w-full max-w-sm">
+      <ColorPickerInput
+        value={color}
+        onChange={setColor}
+        label="Brand Colors"
+        presets={brandColors}
+        paletteTitle="Select a brand color"
+      />
+    </div>
+  );
+}
+`}
 >
-
   <ColorPickerCustomPresets />
 </ComponentPreviewWithCode>
 
@@ -374,22 +352,21 @@ import { useState } from "react";
 import ColorPickerInput from "@/components/color-picker-input";
 
 export function ColorPickerNoLabel() {
-const [color, setColor] = useState('#8B5CF6');
+  const [color, setColor] = useState('#8B5CF6');
 
-return (
-
-<div className="w-full max-w-sm">
-  <ColorPickerInput
-    value={color}
-    onChange={setColor}
-    showLabel={false}
-    showHexCode={true}
-  />
-</div>
-); } `}
-
+  return (
+    <div className="w-full max-w-sm">
+      <ColorPickerInput
+        value={color}
+        onChange={setColor}
+        showLabel={false}
+        showHexCode={true}
+      />
+    </div>
+  );
+}
+`}
 >
-
   <ColorPickerNoLabel />
 </ComponentPreviewWithCode>
 
