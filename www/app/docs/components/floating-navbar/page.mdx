@@ -19,16 +19,15 @@ import { useState } from 'react';
 export function FloatingNavbarPreview() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
-return (
-
-<div className="relative w-full h-full flex items-center justify-center">
-{isNavbarOpen && (
-<div
-className="fixed inset-0 bg-muted/30 backdrop-blur-sm z-[5] transition-opacity duration-300"
-onClick={() => setIsNavbarOpen(false)}
-aria-hidden="true"
-/>
-)}
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {isNavbarOpen && (
+        <div
+          className="fixed inset-0 bg-muted/30 backdrop-blur-sm z-[5] transition-opacity duration-300"
+          onClick={() => setIsNavbarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
 
       {isNavbarOpen && (
         <FloatingNavbar>
@@ -59,14 +58,11 @@ aria-hidden="true"
         )}
       </Button>
     </div>
-
-);
+  );
 }
 `}
-
 >
-
-  <FloatingNavbarPreview/>
+  <FloatingNavbarPreview />
 </ComponentPreviewWithCode>
 
 <div className="w-full h-32"></div>
@@ -75,7 +71,7 @@ aria-hidden="true"
 
 <Installation
   command="npx cx add floating-navbar"
-  code = {`"use client";
+  code={`"use client";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -84,8 +80,8 @@ import { usePathname } from "next/navigation";
 import type * as React from "react";
 
 interface FloatingNavbarProps {
-className?: string;
-children: React.ReactNode;
+  className?: string;
+  children: React.ReactNode;
 }
 
 export function FloatingNavbar({ className, children }: FloatingNavbarProps) {
@@ -99,8 +95,8 @@ export function FloatingNavbar({ className, children }: FloatingNavbarProps) {
 }
 
 interface FloatingNavbarContentProps {
-className?: string;
-children: React.ReactNode;
+  className?: string;
+  children: React.ReactNode;
 }
 
 export function FloatingNavbarContent({
@@ -120,10 +116,10 @@ export function FloatingNavbarContent({
 }
 
 interface FloatingNavbarItemProps {
-href: string;
-icon?: LucideIcon;
-label?: string;
-className?: string;
+  href: string;
+  icon?: LucideIcon;
+  label?: string;
+  className?: string;
 }
 
 export function FloatingNavbarItem({
@@ -135,23 +131,25 @@ export function FloatingNavbarItem({
   const pathname = usePathname();
   const isActive = pathname === href;
 
-return (
-
-<Button
-  variant="ghost"
-  asChild
-  className={cn(
-    'hover:bg-primary transition-all duration-300 rounded font-normal',
-    isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground',
-    className,
-  )}
->
-  <a href={href}>
-    {Icon ? <Icon className="h-4 w-4 mr-1" /> : null}
-    {label ? <span className="hidden sm:inline">{label}</span> : null}
-  </a>
-</Button>
-); }
+  return (
+    <Button
+      variant="ghost"
+      asChild
+      className={cn(
+        "hover:bg-primary transition-all duration-300 rounded font-normal",
+        isActive
+          ? "bg-primary text-primary-foreground"
+          : "text-muted-foreground",
+        className
+      )}
+    >
+      <a href={href}>
+        {Icon ? <Icon className="h-4 w-4 mr-1" /> : null}
+        {label ? <span className="hidden sm:inline">{label}</span> : null}
+      </a>
+    </Button>
+  );
+}
 
 export function FloatingNavbarSeparator({ className }: { className?: string }) {
   return (
