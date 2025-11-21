@@ -14,28 +14,27 @@ import { useState } from 'react';
 export function DialogPreview() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
 
-return (
-
-<>
-  <Button onClick={() => setIsDialogVisible(true)}>Open Dialog</Button>
-  <Dialog
-    isDialogVisible={isDialogVisible}
-    setIsDialogVisible={setIsDialogVisible}
-  >
-    <div className="p-6 space-y-4">
-      <h2 className="text-2xl font-semibold">Dialog Title</h2>
-      <p className="text-muted-foreground">
-        This is a simple dialog component with backdrop blur and smooth
-        animations.
-      </p>
-      <Button onClick={() => setIsDialogVisible(false)}>Close Dialog</Button>
-    </div>
-  </Dialog>
-</>
-); } `}
-
+  return (
+    <>
+      <Button onClick={() => setIsDialogVisible(true)}>Open Dialog</Button>
+      <Dialog
+        isDialogVisible={isDialogVisible}
+        setIsDialogVisible={setIsDialogVisible}
+      >
+        <div className="p-6 space-y-4">
+          <h2 className="text-2xl font-semibold">Dialog Title</h2>
+          <p className="text-muted-foreground">
+            This is a simple dialog component with backdrop blur and smooth
+            animations.
+          </p>
+          <Button onClick={() => setIsDialogVisible(false)}>Close Dialog</Button>
+        </div>
+      </Dialog>
+    </>
+  );
+}
+`}
 >
-
   <DialogPreview />
 </ComponentPreviewWithCode>
 
@@ -53,31 +52,31 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
 
 interface DialogProps {
-isDialogVisible: boolean;
-setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
-children: React.ReactNode;
-keyToMakeDialogVisible?: string;
-className?: string;
+  isDialogVisible: boolean;
+  setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  children: React.ReactNode;
+  keyToMakeDialogVisible?: string;
+  className?: string;
 }
 
 const Dialog = ({
-isDialogVisible,
-setIsDialogVisible,
-children,
-keyToMakeDialogVisible,
-className,
+  isDialogVisible,
+  setIsDialogVisible,
+  children,
+  keyToMakeDialogVisible,
+  className,
 }: DialogProps) => {
-const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
-useEffect(() => {
-const handleClickOutside = (event: MouseEvent) => {
-if (
-dialogRef.current &&
-!dialogRef.current.contains(event.target as Node)
-) {
-setIsDialogVisible(false);
-}
-};
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dialogRef.current &&
+        !dialogRef.current.contains(event.target as Node)
+      ) {
+        setIsDialogVisible(false);
+      }
+    };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === keyToMakeDialogVisible) {
@@ -100,15 +99,12 @@ setIsDialogVisible(false);
       document.removeEventListener("mousedown", handleClickOutside);
       document.body.style.overflow = "unset";
     };
+  }, [isDialogVisible, setIsDialogVisible, keyToMakeDialogVisible]);
 
-}, [isDialogVisible, setIsDialogVisible, keyToMakeDialogVisible]);
-
-if (!isDialogVisible) return;
-return (
-
-<div className="fixed inset-0 flex items-center justify-center z-[999]">
-<div className="absolute inset-0 bg-background/20 backdrop-blur-md z-[-1]" />
-
+  if (!isDialogVisible) return;
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-[999]">
+      <div className="absolute inset-0 bg-background/20 backdrop-blur-md z-[-1]" />
       <motion.div
         variants={scaleInVariant}
         initial="hidden"
@@ -122,12 +118,10 @@ return (
         {children}
       </motion.div>
     </div>
-
-);
+  );
 };
 
 export default Dialog;
-
 `}
 />
 
@@ -145,34 +139,33 @@ import { useState } from 'react';
 export function BasicDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
 
-return (
-
-<>
-  <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
-    Open Dialog
-  </Button>
-  <Dialog
-    isDialogVisible={isDialogVisible}
-    setIsDialogVisible={setIsDialogVisible}
-  >
-    <div className="p-6">
-      <h2 className="text-xl font-semibold mb-2">Confirm Action</h2>
-      <p className="text-muted-foreground mb-6">
-        Are you sure you want to proceed with this action?
-      </p>
-      <div className="flex gap-3 justify-end">
-        <Button variant="outline" onClick={() => setIsDialogVisible(false)}>
-          Cancel
-        </Button>
-        <Button onClick={() => setIsDialogVisible(false)}>Confirm</Button>
-      </div>
-    </div>
-  </Dialog>
-</>
-); } `}
-
+  return (
+    <>
+      <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
+        Open Dialog
+      </Button>
+      <Dialog
+        isDialogVisible={isDialogVisible}
+        setIsDialogVisible={setIsDialogVisible}
+      >
+        <div className="p-6">
+          <h2 className="text-xl font-semibold mb-2">Confirm Action</h2>
+          <p className="text-muted-foreground mb-6">
+            Are you sure you want to proceed with this action?
+          </p>
+          <div className="flex gap-3 justify-end">
+            <Button variant="outline" onClick={() => setIsDialogVisible(false)}>
+              Cancel
+            </Button>
+            <Button onClick={() => setIsDialogVisible(false)}>Confirm</Button>
+          </div>
+        </div>
+      </Dialog>
+    </>
+  );
+}
+`}
 >
-
   <BasicDialog />
 </ComponentPreviewWithCode>
 
@@ -191,37 +184,36 @@ import { useState } from 'react';
 export function DialogWithShortcut() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
 
-return (
-
-<>
-  <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
-    <span className="text-muted-foreground">Open</span>
-    <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ml-2">
-      <Command size={14} /> K
-    </span>
-  </Button>
-  <Dialog
-    isDialogVisible={isDialogVisible}
-    setIsDialogVisible={setIsDialogVisible}
-    keyToMakeDialogVisible="k"
-  >
-    <div className="p-6 space-y-4">
-      <div>
-        <h2 className="text-xl font-semibold">Quick Search</h2>
-        <p className="text-sm text-muted-foreground">
-          Press Cmd/Ctrl + K to open this dialog anytime
-        </p>
-      </div>
-      <p className="text-muted-foreground">
-        This dialog can be opened with a keyboard shortcut for quick access.
-      </p>
-    </div>
-  </Dialog>
-</>
-); } `}
-
+  return (
+    <>
+      <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
+        <span className="text-muted-foreground">Open</span>
+        <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ml-2">
+          <Command size={14} /> K
+        </span>
+      </Button>
+      <Dialog
+        isDialogVisible={isDialogVisible}
+        setIsDialogVisible={setIsDialogVisible}
+        keyToMakeDialogVisible="k"
+      >
+        <div className="p-6 space-y-4">
+          <div>
+            <h2 className="text-xl font-semibold">Quick Search</h2>
+            <p className="text-sm text-muted-foreground">
+              Press Cmd/Ctrl + K to open this dialog anytime
+            </p>
+          </div>
+          <p className="text-muted-foreground">
+            This dialog can be opened with a keyboard shortcut for quick access.
+          </p>
+        </div>
+      </Dialog>
+    </>
+  );
+}
+`}
 >
-
   <DialogWithShortcut />
 </ComponentPreviewWithCode>
 
@@ -240,37 +232,32 @@ export function DialogCustomSize() {
   const [smallOpen, setSmallOpen] = useState(false);
   const [largeOpen, setLargeOpen] = useState(false);
 
-return (
-
-<div className="flex gap-4">
-<Button
-variant="outline"
-onClick={() => setSmallOpen(true)} >
-Small Dialog
-</Button>
-<Dialog
+  return (
+    <div className="flex gap-4">
+      <Button variant="outline" onClick={() => setSmallOpen(true)}>
+        Small Dialog
+      </Button>
+      <Dialog
         isDialogVisible={smallOpen}
         setIsDialogVisible={setSmallOpen}
         className="max-w-sm"
       >
-<div className="p-4">
-<h2 className="text-lg font-semibold mb-2">Small Dialog</h2>
-<p className="text-sm text-muted-foreground">
-This is a compact dialog perfect for quick confirmations.
-</p>
-<Button
-size="sm"
-className="mt-4 w-full"
-onClick={() => setSmallOpen(false)} >
-Close
-</Button>
-</div>
-</Dialog>
+        <div className="p-4">
+          <h2 className="text-lg font-semibold mb-2">Small Dialog</h2>
+          <p className="text-sm text-muted-foreground">
+            This is a compact dialog perfect for quick confirmations.
+          </p>
+          <Button
+            size="sm"
+            className="mt-4 w-full"
+            onClick={() => setSmallOpen(false)}
+          >
+            Close
+          </Button>
+        </div>
+      </Dialog>
 
-      <Button
-        variant="outline"
-        onClick={() => setLargeOpen(true)}
-      >
+      <Button variant="outline" onClick={() => setLargeOpen(true)}>
         Large Dialog
       </Button>
       <Dialog
@@ -281,23 +268,17 @@ Close
         <div className="p-8">
           <h2 className="text-2xl font-semibold mb-4">Large Dialog</h2>
           <p className="text-muted-foreground mb-6">
-            This is a spacious dialog suitable for detailed content, forms, or rich information displays.
+            This is a spacious dialog suitable for detailed content, forms, or
+            rich information displays.
           </p>
-          <Button
-            onClick={() => setLargeOpen(false)}
-          >
-            Close
-          </Button>
+          <Button onClick={() => setLargeOpen(false)}>Close</Button>
         </div>
       </Dialog>
     </div>
-
-);
+  );
 }
 `}
-
 >
-
   <DialogCustomSize />
 </ComponentPreviewWithCode>
 
@@ -318,60 +299,59 @@ export function SearchDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [query, setQuery] = useState("");
 
-const results = ["Home", "About", "Services", "Contact", "Blog"];
-const filtered = results.filter(item =>
-item.toLowerCase().includes(query.toLowerCase())
-);
+  const results = ["Home", "About", "Services", "Contact", "Blog"];
+  const filtered = results.filter((item) =>
+    item.toLowerCase().includes(query.toLowerCase())
+  );
 
-return (
-
-<>
-  <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
-    <span className="text-muted-foreground">Search</span>
-    <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ml-2">
-      <Command size={14} /> M
-    </span>
-  </Button>
-  <Dialog
-    isDialogVisible={isDialogVisible}
-    setIsDialogVisible={setIsDialogVisible}
-    keyToMakeDialogVisible="m"
-  >
-    <div className="border-b p-4">
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-        <Input
-          autoFocus
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search..."
-          className="pl-10 border-0 bg-transparent focus-visible:ring-0"
-        />
-      </div>
-    </div>
-    <div className="max-h-64 overflow-y-auto p-2">
-      {filtered.length > 0 ? (
-        filtered.map((item) => (
-          <div
-            key={item}
-            className="p-3 hover:bg-muted/50 rounded cursor-pointer transition-colors"
-            onClick={() => setIsDialogVisible(false)}
-          >
-            {item}
+  return (
+    <>
+      <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
+        <span className="text-muted-foreground">Search</span>
+        <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ml-2">
+          <Command size={14} /> M
+        </span>
+      </Button>
+      <Dialog
+        isDialogVisible={isDialogVisible}
+        setIsDialogVisible={setIsDialogVisible}
+        keyToMakeDialogVisible="m"
+      >
+        <div className="border-b p-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              autoFocus
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search..."
+              className="pl-10 border-0 bg-transparent focus-visible:ring-0"
+            />
           </div>
-        ))
-      ) : (
-        <div className="p-8 text-center text-muted-foreground">
-          No results found
         </div>
-      )}
-    </div>
-  </Dialog>
-</>
-); } `}
-
+        <div className="max-h-64 overflow-y-auto p-2">
+          {filtered.length > 0 ? (
+            filtered.map((item) => (
+              <div
+                key={item}
+                className="p-3 hover:bg-muted/50 rounded cursor-pointer transition-colors"
+                onClick={() => setIsDialogVisible(false)}
+              >
+                {item}
+              </div>
+            ))
+          ) : (
+            <div className="p-8 text-center text-muted-foreground">
+              No results found
+            </div>
+          )}
+        </div>
+      </Dialog>
+    </>
+  );
+}
+`}
 >
-
   <SearchDialog />
 </ComponentPreviewWithCode>
 
@@ -394,70 +374,69 @@ export function AuthDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-const handleAuth = async () => {
-setIsLoading(true);
-await new Promise(resolve => setTimeout(resolve, 1000));
-setIsLoading(false);
-setIsDialogVisible(false);
-};
+  const handleAuth = async () => {
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
+    setIsDialogVisible(false);
+  };
 
-return (
-
-<>
-  <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
-    <span className="text-muted-foreground">Sign In</span>
-    <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ml-2">
-      <Command size={14} /> A
-    </span>
-  </Button>
-  <Dialog
-    isDialogVisible={isDialogVisible}
-    setIsDialogVisible={setIsDialogVisible}
-    keyToMakeDialogVisible="a"
-    className="max-w-[400px]"
-  >
-    <div className="space-y-4 p-6 text-center">
-      <div className="space-y-2 mb-6">
-        <h1 className="text-2xl font-semibold">Welcome Back</h1>
-        <p className="text-sm text-muted-foreground">
-          Sign in to your account to continue
-        </p>
-      </div>
-      <Button
-        onClick={handleAuth}
-        disabled={isLoading}
-        variant="outline"
-        className="w-full bg-transparent"
+  return (
+    <>
+      <Button variant="outline" onClick={() => setIsDialogVisible(true)}>
+        <span className="text-muted-foreground">Sign In</span>
+        <span className="flex items-center gap-1 bg-muted/60 p-1 rounded ml-2">
+          <Command size={14} /> A
+        </span>
+      </Button>
+      <Dialog
+        isDialogVisible={isDialogVisible}
+        setIsDialogVisible={setIsDialogVisible}
+        keyToMakeDialogVisible="a"
+        className="max-w-[400px]"
       >
-        <FaGithub className="mr-2 h-4 w-4" />
-        {isLoading ? 'Signing in...' : 'Continue with GitHub'}
-      </Button>
-      <div className="relative flex gap-1">
-        <span className="flex-1 flex items-center">
-          <Separator />
-        </span>
-        <span className="text-muted-foreground text-sm">Or</span>
-        <span className="flex-1 flex items-center">
-          <Separator />
-        </span>
-      </div>
-      <Button onClick={handleAuth} disabled={isLoading} className="w-full">
-        <Image
-          src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-          alt="Google"
-          width={16}
-          height={16}
-          className="mr-2"
-        />
-        {isLoading ? 'Signing in...' : 'Continue with Google'}
-      </Button>
-    </div>
-  </Dialog>
-</>
-); } `}
-
+        <div className="space-y-4 p-6 text-center">
+          <div className="space-y-2 mb-6">
+            <h1 className="text-2xl font-semibold">Welcome Back</h1>
+            <p className="text-sm text-muted-foreground">
+              Sign in to your account to continue
+            </p>
+          </div>
+          <Button
+            onClick={handleAuth}
+            disabled={isLoading}
+            variant="outline"
+            className="w-full bg-transparent"
+          >
+            <FaGithub className="mr-2 h-4 w-4" />
+            {isLoading ? "Signing in..." : "Continue with GitHub"}
+          </Button>
+          <div className="relative flex gap-1">
+            <span className="flex-1 flex items-center">
+              <Separator />
+            </span>
+            <span className="text-muted-foreground text-sm">Or</span>
+            <span className="flex-1 flex items-center">
+              <Separator />
+            </span>
+          </div>
+          <Button onClick={handleAuth} disabled={isLoading} className="w-full">
+            <Image
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
+            {isLoading ? "Signing in..." : "Continue with Google"}
+          </Button>
+        </div>
+      </Dialog>
+    </>
+  );
+}
+`}
 >
-
   <AuthDialog />
 </ComponentPreviewWithCode>
 
