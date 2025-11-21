@@ -13,24 +13,21 @@ import { useState } from "react";
 export function FileUploaderPreview() {
   const [files, setFiles] = useState<File[]>([]);
 
-return (
-
-<div className="w-full h-full overflow-y-auto p-4">
-  <FileUploader
-    value={files}
-    onChange={setFiles}
-    label="Upload images"
-    description="Drag and drop your images here, or click to browse."
-    accept="image/*"
-    maxFiles={5}
-  />
-</div>
-); }
-
+  return (
+    <div className="w-full h-full overflow-y-auto p-4">
+      <FileUploader
+        value={files}
+        onChange={setFiles}
+        label="Upload images"
+        description="Drag and drop your images here, or click to browse."
+        accept="image/*"
+        maxFiles={5}
+      />
+    </div>
+  );
+}
 `}
-
 >
-
   <FileUploaderPreview />
 </ComponentPreviewWithCode>
 
@@ -73,8 +70,8 @@ export function FileUploader({
   onChange,
   disabled,
   className,
-  label = 'Upload files',
-  description = 'Drag and drop files here, or click to browse.',
+  label = "Upload files",
+  description = "Drag and drop files here, or click to browse.",
   onReject,
 }: FileUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -82,87 +79,88 @@ export function FileUploader({
   const [internalFiles, setInternalFiles] = useState<File[]>([]);
   const files = value ?? internalFiles;
 
-const setFiles = useCallback(
-(next: File[]) => {
-if (onChange) onChange(next);
-else setInternalFiles(next);
-},
-[onChange],
-);
+  const setFiles = useCallback(
+    (next: File[]) => {
+      if (onChange) onChange(next);
+      else setInternalFiles(next);
+    },
+    [onChange]
+  );
 
-const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
-useEffect(() => {
-const urls: Record<string, string> = {};
-for (const f of files) {
-if (f.type.startsWith('image/')) {
-urls[getFileKey(f)] = URL.createObjectURL(f);
-}
-}
-setPreviewUrls(urls);
-return () => {
-Object.values(urls).forEach((u) => URL.revokeObjectURL(u));
-};
-}, [files]);
+  const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
 
-const handleBrowseClick = () => {
-if (disabled) return;
-inputRef.current?.click();
-};
+  useEffect(() => {
+    const urls: Record<string, string> = {};
+    for (const f of files) {
+      if (f.type.startsWith("image/")) {
+        urls[getFileKey(f)] = URL.createObjectURL(f);
+      }
+    }
+    setPreviewUrls(urls);
+    return () => {
+      Object.values(urls).forEach((u) => URL.revokeObjectURL(u));
+    };
+  }, [files]);
 
-const normalizeAccept = useMemo(() => {
-if (!accept) return undefined;
-const arr = Array.isArray(accept) ? accept : [accept];
-return arr.map((a) => a.trim()).filter(Boolean);
-}, [accept]);
+  const handleBrowseClick = () => {
+    if (disabled) return;
+    inputRef.current?.click();
+  };
 
-const acceptAttr = useMemo(() => {
-if (!normalizeAccept) return undefined;
-return normalizeAccept.join(',');
-}, [normalizeAccept]);
+  const normalizeAccept = useMemo(() => {
+    if (!accept) return undefined;
+    const arr = Array.isArray(accept) ? accept : [accept];
+    return arr.map((a) => a.trim()).filter(Boolean);
+  }, [accept]);
 
-function formatSize(bytes: number) {
-if (bytes === 0) return '0 B';
-const k = 1024;
-const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-const i = Math.floor(Math.log(bytes) / Math.log(k));
-return \`\${(bytes / Math.pow(k, i)).toFixed(i === 0 ? 0 : 1)} \${sizes[i]}\`;
-}
+  const acceptAttr = useMemo(() => {
+    if (!normalizeAccept) return undefined;
+    return normalizeAccept.join(",");
+  }, [normalizeAccept]);
 
-function getFileKey(f: File) {
-return \`\${f.name}-\${f.size}-\${f.lastModified}\`;
-}
+  function formatSize(bytes: number) {
+    if (bytes === 0) return "0 B";
+    const k = 1024;
+    const sizes = ["B", "KB", "MB", "GB", "TB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return \`\${(bytes / Math.pow(k, i)).toFixed(i === 0 ? 0 : 1)} \${sizes[i]}\`;
+  }
 
-const isAccepted = useCallback(
-(f: File) => {
-if (!normalizeAccept || normalizeAccept.length === 0) return true;
-return normalizeAccept.some((rule) => {
-if (rule.endsWith('/\*')) {
-const base = rule.slice(0, -1);
-return f.type.startsWith(base);
-}
-if (rule.startsWith('.')) {
-return f.name.toLowerCase().endsWith(rule.toLowerCase());
-}
-return f.type === rule;
-});
-},
-[normalizeAccept],
-);
+  function getFileKey(f: File) {
+    return \`\${f.name}-\${f.size}-\${f.lastModified}\`;
+  }
 
-const validate = useCallback(
-(newFiles: File[], current: File[]) => {
-const accepted: File[] = [];
-const rejections: { file: File; reason: string }[] = [];
-const existingKeys = new Set(current.map(getFileKey));
+  const isAccepted = useCallback(
+    (f: File) => {
+      if (!normalizeAccept || normalizeAccept.length === 0) return true;
+      return normalizeAccept.some((rule) => {
+        if (rule.endsWith("/*")) {
+          const base = rule.slice(0, -1);
+          return f.type.startsWith(base);
+        }
+        if (rule.startsWith(".")) {
+          return f.name.toLowerCase().endsWith(rule.toLowerCase());
+        }
+        return f.type === rule;
+      });
+    },
+    [normalizeAccept]
+  );
+
+  const validate = useCallback(
+    (newFiles: File[], current: File[]) => {
+      const accepted: File[] = [];
+      const rejections: { file: File; reason: string }[] = [];
+      const existingKeys = new Set(current.map(getFileKey));
 
       for (const file of newFiles) {
         const key = getFileKey(file);
         if (existingKeys.has(key)) {
-          rejections.push({ file, reason: 'Duplicate file' });
+          rejections.push({ file, reason: "Duplicate file" });
           continue;
         }
         if (!isAccepted(file)) {
-          rejections.push({ file, reason: 'File type not accepted' });
+          rejections.push({ file, reason: "File type not accepted" });
           continue;
         }
         if (file.size > maxSize) {
@@ -191,100 +189,98 @@ const existingKeys = new Set(current.map(getFileKey));
       } else {
         finalAccepted = accepted.slice(0, 1);
         accepted.slice(1).forEach((file) => {
-          rejections.push({ file, reason: 'Multiple files not allowed' });
+          rejections.push({ file, reason: "Multiple files not allowed" });
         });
       }
 
       return { finalAccepted, rejections };
     },
-    [isAccepted, maxFiles, maxSize, multiple],
+    [isAccepted, maxFiles, maxSize, multiple]
+  );
 
-);
-
-const addFiles = useCallback(
-(list: FileList | null) => {
-if (!list) return;
-if (disabled) return;
-const newFiles = Array.from(list);
-const { finalAccepted, rejections } = validate(newFiles, files);
-if (rejections.length && onReject) onReject(rejections);
-if (!finalAccepted.length) return;
+  const addFiles = useCallback(
+    (list: FileList | null) => {
+      if (!list) return;
+      if (disabled) return;
+      const newFiles = Array.from(list);
+      const { finalAccepted, rejections } = validate(newFiles, files);
+      if (rejections.length && onReject) onReject(rejections);
+      if (!finalAccepted.length) return;
 
       const next = multiple ? [...files, ...finalAccepted] : finalAccepted;
       setFiles(next);
     },
-    [disabled, files, multiple, onReject, setFiles, validate],
+    [disabled, files, multiple, onReject, setFiles, validate]
+  );
 
-);
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    addFiles(e.target.files);
+    if (inputRef.current) inputRef.current.value = "";
+  };
 
-const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-addFiles(e.target.files);
-if (inputRef.current) inputRef.current.value = '';
-};
+  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    addFiles(e.dataTransfer.files);
+  };
 
-const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
-e.preventDefault();
-e.stopPropagation();
-setIsDragging(false);
-addFiles(e.dataTransfer.files);
-};
+  const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
-const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-e.preventDefault();
-e.stopPropagation();
-};
+  const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
 
-const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
-e.preventDefault();
-e.stopPropagation();
-setIsDragging(true);
-};
+  const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
-const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
-e.preventDefault();
-e.stopPropagation();
-};
+  const removeFile = (key: string) => {
+    const next = files.filter((f) => getFileKey(f) !== key);
+    setFiles(next);
+  };
 
-const removeFile = (key: string) => {
-const next = files.filter((f) => getFileKey(f) !== key);
-setFiles(next);
-};
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (disabled) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleBrowseClick();
+    }
+  };
 
-const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-if (disabled) return;
-if (e.key === 'Enter' || e.key === ' ') {
-e.preventDefault();
-handleBrowseClick();
-}
-};
-
-return (
-
-<div className={cn('w-full', className)}>
-<label className="block text-sm font-medium text-foreground mb-2">
-{label}
-</label>
-<div
-role="button"
-tabIndex={disabled ? -1 : 0}
-aria-disabled={disabled}
-aria-label={label}
-onKeyDown={onKeyDown}
-onClick={handleBrowseClick}
-onDrop={onDrop}
-onDragOver={onDragOver}
-onDragEnter={onDragEnter}
-onDragLeave={onDragLeave}
-className={cn(
-'relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300',
-'bg-background text-foreground',
-'outline-none',
-isDragging ? 'ring-1 ring-offset-2 ring-primary' : 'ring-0',
-disabled
-? 'opacity-60 cursor-not-allowed'
-: 'cursor-pointer hover:bg-muted/30',
-)} >
-<input
+  return (
+    <div className={cn("w-full", className)}>
+      <label className="block text-sm font-medium text-foreground mb-2">
+        {label}
+      </label>
+      <div
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        aria-disabled={disabled}
+        aria-label={label}
+        onKeyDown={onKeyDown}
+        onClick={handleBrowseClick}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        onDragEnter={onDragEnter}
+        onDragLeave={onDragLeave}
+        className={cn(
+          "relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300",
+          "bg-background text-foreground",
+          "outline-none",
+          isDragging ? "ring-1 ring-offset-2 ring-primary" : "ring-0",
+          disabled
+            ? "opacity-60 cursor-not-allowed"
+            : "cursor-pointer hover:bg-muted/30"
+        )}
+      >
+        <input
           ref={inputRef}
           type="file"
           accept={acceptAttr}
@@ -295,50 +291,51 @@ disabled
           tabIndex={-1}
           disabled={disabled}
         />
-<div className="flex flex-col items-center gap-2 text-center">
-<div
-className={cn(
-'mx-auto h-12 w-12 rounded flex items-center justify-center',
-isDragging
-? 'bg-primary text-primary-foreground'
-: 'bg-muted text-muted-foreground',
-)}
-aria-hidden="true" >
-<ImageUp />
-</div>
-<p className="text-sm">{description}</p>
-<div className="text-xs text-muted-foreground">
-{normalizeAccept ? (
-<span>
-{'Accepted: '}
-{normalizeAccept.join(', ')}
-</span>
-) : (
-<span>{'Any file type'}</span>
-)}
-<span>
-{' • Max size: '}
-{formatSize(maxSize)}
-</span>
-{multiple && (
-<span>
-{' • Max files: '}
-{maxFiles}
-</span>
-)}
-</div>
-<div className="mt-2">
-<Button
+        <div className="flex flex-col items-center gap-2 text-center">
+          <div
+            className={cn(
+              "mx-auto h-12 w-12 rounded flex items-center justify-center",
+              isDragging
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground"
+            )}
+            aria-hidden="true"
+          >
+            <ImageUp />
+          </div>
+          <p className="text-sm">{description}</p>
+          <div className="text-xs text-muted-foreground">
+            {normalizeAccept ? (
+              <span>
+                {"Accepted: "}
+                {normalizeAccept.join(", ")}
+              </span>
+            ) : (
+              <span>{"Any file type"}</span>
+            )}
+            <span>
+                {" • Max size: "}
+              {formatSize(maxSize)}
+            </span>
+            {multiple && (
+              <span>
+                {" • Max files: "}
+                {maxFiles}
+              </span>
+            )}
+          </div>
+          <div className="mt-2">
+            <Button
               type="button"
               variant="outline"
               className="cursor-pointer bg-transparent font-normal hover:bg-muted/20 transition-all duration-300"
               disabled={disabled}
             >
-Browse files
-</Button>
-</div>
-</div>
-</div>
+              Browse files
+            </Button>
+          </div>
+        </div>
+      </div>
 
       {/* Previews */}
       {files.length > 0 && (
@@ -366,7 +363,7 @@ Browse files
                   }}
                 >
                   <span className="sr-only">
-                    {'Remove '}
+                    {"Remove "}
                     {file.name}
                   </span>
                   <X />
@@ -377,8 +374,7 @@ Browse files
         </div>
       )}
     </div>
-
-);
+  );
 }
 `}
 />
