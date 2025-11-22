@@ -88,6 +88,13 @@ import {
   SliderWithTab,
 } from "@/app/docs/components/slider";
 import {
+  TableAlignment,
+  TableComplex,
+  TableInteractive,
+  TablePreview,
+  TableSizes,
+} from "@/app/docs/components/table";
+import {
   TagInputBasic,
   TagInputDefaults,
   TagInputMultiple,
@@ -193,6 +200,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     VideoUploadPreview,
     MenuTogglePreview,
     MenuToggleSizes,
+    TableAlignment,
+    TableComplex,
+    TableInteractive,
+    TablePreview,
+    TableSizes,
     h1: ({ children, ...props }: React.HTMLProps<HTMLHeadingElement>) => {
       const id = generateId(children?.toString() || "");
       return (

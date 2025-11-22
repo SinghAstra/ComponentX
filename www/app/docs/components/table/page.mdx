@@ -1,0 +1,502 @@
+# Table
+
+A flexible, accessible table component with support for multiple sizes, text alignment options, and interactive states. Includes sortable headers, hover effects, and row selection states for building data-rich interfaces.
+
+<div className="w-full h-32"></div>
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import {
+  Table,
+  TableHead,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@/components/table";
+
+export function TablePreview() {
+  return (
+    <div className="w-full border rounded-lg p-6">
+      <Table size="md">
+        <TableHead>
+          <TableRow>
+            <TableHeaderCell>Name</TableHeaderCell>
+            <TableHeaderCell>Email</TableHeaderCell>
+            <TableHeaderCell align="right">Status</TableHeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>Sarah Johnson</TableCell>
+            <TableCell>sarah@example.com</TableCell>
+            <TableCell align="right">Active</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Michael Chen</TableCell>
+            <TableCell>michael@example.com</TableCell>
+            <TableCell align="right">Active</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Emily Rodriguez</TableCell>
+            <TableCell>emily@example.com</TableCell>
+            <TableCell align="right">Inactive</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+`}
+>
+  <TablePreview />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Installation
+
+<Installation
+  command="npx cx add table"
+  code={`import { cn } from "@/lib/utils";
+import React from "react";
+
+export interface TableProps
+  extends React.TableHTMLAttributes<HTMLTableElement> {
+  size?: "sm" | "md" | "lg";
+}
+
+export const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  ({ className, size = "md", ...props }, ref) => {
+    const sizeClasses = {
+      sm: "text-sm",
+      md: "text-base",
+      lg: "text-lg",
+    };
+
+    return (
+      <table
+        ref={ref}
+        className={cn("w-full border-collapse", sizeClasses[size], className)}
+        {...props}
+      />
+    );
+  }
+);
+
+Table.displayName = "Table";
+
+export const TableHead = React.forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, ...props }, ref) => (
+  <thead ref={ref} className={cn("bg-muted/30", className)} {...props} />
+));
+
+TableHead.displayName = "TableHead";
+
+export interface TableHeaderCellProps
+  extends React.ThHTMLAttributes<HTMLTableCellElement> {
+  align?: "left" | "center" | "right";
+}
+
+export const TableHeaderCell = React.forwardRef<
+  HTMLTableCellElement,
+  TableHeaderCellProps
+>(({ className, align = "left", ...props }, ref) => {
+  const alignClasses = {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+  };
+
+  return (
+    <th
+      ref={ref}
+      className={cn(
+        "px-4 py-3 font-semibold text-muted-foreground border",
+        alignClasses[align],
+        className
+      )}
+      {...props}
+    />
+  );
+});
+
+TableHeaderCell.displayName = "TableHeaderCell";
+
+export const TableBody = React.forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, ...props }, ref) => (
+  <tbody
+    ref={ref}
+    className={cn("divide-y divide-border", className)}
+    {...props}
+  />
+));
+
+TableBody.displayName = "TableBody";
+
+export interface TableRowProps
+  extends React.HTMLAttributes<HTMLTableRowElement> {
+  isHoverable?: boolean;
+  isSelected?: boolean;
+}
+
+export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
+  ({ className, isHoverable = true, isSelected = false, ...props }, ref) => (
+    <tr
+      ref={ref}
+      className={cn(
+        "border-b transition-all duration-300",
+        isHoverable && "hover:bg-muted/30",
+        isSelected && "bg-muted/30",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+
+TableRow.displayName = "TableRow";
+
+export interface TableCellProps
+  extends React.TdHTMLAttributes<HTMLTableCellElement> {
+  align?: "left" | "center" | "right";
+}
+
+export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
+  ({ className, align = "left", ...props }, ref) => {
+    const alignClasses = {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+    };
+
+    return (
+      <td
+        ref={ref}
+        className={cn(
+          "px-4 py-3 text-foreground border",
+          alignClasses[align],
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+
+TableCell.displayName = "TableCell";
+`}
+/>
+
+<div className="w-full h-32"></div>
+
+## Sizes
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import {
+  Table,
+  TableHead,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@/components/table";
+
+function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function TableSizes() {
+  const sizes = ["sm", "md", "lg"] as const;
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-6">
+      {sizes.map((size) => (
+        <div
+          key={size}
+          className="flex-none w-full border rounded-lg p-6"
+        >
+          <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+            {capitalizeFirstLetter(size)} - {size === 'sm' ? 'Compact' : size === 'md' ? 'Default' : 'Spacious'}
+          </h3>
+          <Table size={size}>
+            <TableHead>
+              <TableRow>
+                <TableHeaderCell>Header One</TableHeaderCell>
+                <TableHeaderCell>Header Two</TableHeaderCell>
+                <TableHeaderCell align="right">Header Three</TableHeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>Cell content</TableCell>
+                <TableCell>Cell content</TableCell>
+                <TableCell align="right">Action</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Cell content</TableCell>
+                <TableCell>Cell content</TableCell>
+                <TableCell align="right">Action</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <TableSizes />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Text Alignment
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import {
+  Table,
+  TableHead,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@/components/table";
+
+function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function TableAlignment() {
+  const alignments = ["left", "center", "right"] as const;
+
+  return (
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-6">
+      {alignments.map((align) => (
+        <div key={align} className="flex-none w-full border rounded-lg p-6">
+          <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+            {capitalizeFirstLetter(align)} Alignment
+          </h3>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeaderCell align={align}>Column One</TableHeaderCell>
+                <TableHeaderCell align={align}>Column Two</TableHeaderCell>
+                <TableHeaderCell align={align}>Column Three</TableHeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell align={align}>Data A</TableCell>
+                <TableCell align={align}>Data B</TableCell>
+                <TableCell align={align}>Data C</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align={align}>More data</TableCell>
+                <TableCell align={align}>More data</TableCell>
+                <TableCell align={align}>More data</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align={align}>Additional</TableCell>
+                <TableCell align={align}>Additional</TableCell>
+                <TableCell align={align}>Additional</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      ))}
+    </div>
+  );
+}
+`}
+>
+  <TableAlignment />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Interactive States
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import {
+  Table,
+  TableHead,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@/components/table";
+import { useState } from "react";
+
+export function TableInteractive() {
+  const [selectedRows, setSelectedRows] = useState<number[]>([1]);
+
+  const toggleRow = (index: number) => {
+    setSelectedRows((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
+
+  return (
+    <div className="w-full border rounded-lg p-6">
+      <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+        Hoverable & Selectable Rows
+      </h3>
+      <Table>
+        <TableHead>
+          <TableRow isHoverable={false}>
+            <TableHeaderCell>Product</TableHeaderCell>
+            <TableHeaderCell>Status</TableHeaderCell>
+            <TableHeaderCell align="right">Price</TableHeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {[
+            { id: 0, name: "Laptop", status: "In Stock", price: "\$999" },
+            { id: 1, name: "Mouse", status: "In Stock", price: "\$29" },
+            { id: 2, name: "Keyboard", status: "Low Stock", price: "\$79" },
+            { id: 3, name: "Monitor", status: "Out of Stock", price: "\$349" },
+          ].map((item) => (
+            <TableRow
+              key={item.id}
+              isSelected={selectedRows.includes(item.id)}
+              onClick={() => toggleRow(item.id)}
+              className="cursor-pointer"
+            >
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.status}</TableCell>
+              <TableCell align="right">{item.price}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <p className="text-xs text-muted-foreground mt-3">
+        Click rows to select them. {selectedRows.length} row(s) selected.
+      </p>
+    </div>
+  );
+}
+`}
+>
+  <TableInteractive />
+</ComponentPreviewWithCode>
+
+<div className="w-full h-32"></div>
+
+## Complex Data Table
+
+<ComponentPreviewWithCode
+  code={`"use client";
+
+import {
+  Table,
+  TableHead,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@/components/table";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  joinDate: string;
+  status: "Active" | "Inactive";
+}
+
+export function TableComplex() {
+  const users: User[] = [
+    {
+      id: 1,
+      name: "Alice Thompson",
+      email: "alice@company.com",
+      role: "Admin",
+      joinDate: "Jan 15, 2024",
+      status: "Active",
+    },
+    {
+      id: 2,
+      name: "Bob Martinez",
+      email: "bob@company.com",
+      role: "Editor",
+      joinDate: "Feb 20, 2024",
+      status: "Active",
+    },
+    {
+      id: 3,
+      name: "Carol Davis",
+      email: "carol@company.com",
+      role: "Viewer",
+      joinDate: "Mar 10, 2024",
+      status: "Inactive",
+    },
+    {
+      id: 4,
+      name: "David Wilson",
+      email: "david@company.com",
+      role: "Editor",
+      joinDate: "Apr 5, 2024",
+      status: "Active",
+    },
+  ];
+
+  return (
+    <div className="w-full border rounded-lg p-6">
+      <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+        User Management
+      </h3>
+      <Table size="md">
+        <TableHead>
+          <TableRow isHoverable={false}>
+            <TableHeaderCell>Name</TableHeaderCell>
+            <TableHeaderCell>Email</TableHeaderCell>
+            <TableHeaderCell>Role</TableHeaderCell>
+            <TableHeaderCell>Join Date</TableHeaderCell>
+            <TableHeaderCell align="center">Status</TableHeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {users.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell className="font-medium">{user.name}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.role}</TableCell>
+              <TableCell>{user.joinDate}</TableCell>
+              <TableCell align="center">
+                <span
+                  className={
+                    user.status === "Active"
+                      ? "inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
+                      : "inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100"
+                  }
+                >
+                  {user.status}
+                </span>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+`}
+>
+  <TableComplex />
+</ComponentPreviewWithCode>

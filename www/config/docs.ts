@@ -79,6 +79,10 @@ export const docsLink: DocsSectionLink[] = [
         path: "/docs/components/slider",
       },
       {
+        title: "Table",
+        path: "/docs/components/table",
+      },
+      {
         title: "Text Shine",
         path: "/docs/components/text-shine",
       },
