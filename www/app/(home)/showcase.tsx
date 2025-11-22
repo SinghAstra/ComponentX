@@ -48,6 +48,7 @@ import { SliderBasicShowcase } from "./slider-basic-showcase";
 import { SliderLabelShowcase } from "./slider-label-showcase";
 import { SliderNavigationShowcase } from "./slider-navigation-showcase";
 import { SliderTabShowcase } from "./slider-tab-showcase";
+import { TableShowcase } from "./table-showcase";
 import TagInputShowcase from "./tag-input-showcase";
 
 interface ShowCasePageProps {
@@ -488,6 +489,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
           <ColorPickerShowcase />
           <TagInputShowcase />
           <MenuToggleShowcase />
+          <TableShowcase />
         </div>
         <Footer />
       </div>
