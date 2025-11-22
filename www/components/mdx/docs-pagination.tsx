@@ -36,12 +36,11 @@ export function DocsPagination() {
 
   return (
     <div className="flex justify-between items-center mt-32 mb-8">
-      {/* Previous Link */}
       {previousLink ? (
         <Link
           href={previousLink.path}
           className={
-            "flex items-center gap-1 p-4 rounded border transition-all duration-300 hover:bg-muted/10 w-fit pr-16 group"
+            "flex items-center gap-1 p-4 rounded border transition-all duration-300 hover:bg-muted/30 w-fit pr-16 group"
           }
         >
           <ChevronLeft className="h-4 w-4 mr-1 group-hover:-translate-x-1 transition-all duration-300" />
@@ -55,7 +54,7 @@ export function DocsPagination() {
         <Link
           href={nextLink.path}
           className={cn(
-            "flex items-center gap-1 p-4 rounded border transition-all duration-300 hover:bg-muted/10 w-fit pl-16 group"
+            "flex items-center gap-1 p-4 rounded border transition-all duration-300 hover:bg-muted/30 w-fit pl-16 group"
           )}
         >
           <span className="text-base">{nextLink.title}</span>

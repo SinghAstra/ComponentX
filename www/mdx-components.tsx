@@ -89,7 +89,6 @@ import {
 } from "@/app/docs/components/slider";
 import {
   TableAlignment,
-  TableComplex,
   TableInteractive,
   TablePreview,
   TableSizes,
@@ -201,7 +200,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     MenuTogglePreview,
     MenuToggleSizes,
     TableAlignment,
-    TableComplex,
     TableInteractive,
     TablePreview,
     TableSizes,

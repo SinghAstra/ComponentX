@@ -18,9 +18,9 @@ export function TableSizes() {
   const sizes = ["sm", "md", "lg"] as const;
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-6">
+    <div className="w-full h-full overflow-y-auto flex flex-col gap-6 p-4">
       {sizes.map((size) => (
-        <div key={size} className="flex-none w-full border rounded-lg p-6">
+        <div key={size}>
           <h3 className="text-sm font-semibold text-muted-foreground mb-3">
             {capitalizeFirstLetter(size)} -{" "}
             {size === "sm" ? "Compact" : size === "md" ? "Default" : "Spacious"}
@@ -28,21 +28,26 @@ export function TableSizes() {
           <Table size={size}>
             <TableHead>
               <TableRow>
-                <TableHeaderCell>Header One</TableHeaderCell>
-                <TableHeaderCell>Header Two</TableHeaderCell>
-                <TableHeaderCell align="right">Header Three</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Email</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableCell>Cell content</TableCell>
-                <TableCell>Cell content</TableCell>
-                <TableCell align="right">Action</TableCell>
+                <TableCell>Sarah Johnson</TableCell>
+                <TableCell>sarah@example.com</TableCell>
+                <TableCell>Active</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Cell content</TableCell>
-                <TableCell>Cell content</TableCell>
-                <TableCell align="right">Action</TableCell>
+                <TableCell>Michael Chen</TableCell>
+                <TableCell>michael@example.com</TableCell>
+                <TableCell>Active</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Emily Rodriguez</TableCell>
+                <TableCell>emily@example.com</TableCell>
+                <TableCell>Inactive</TableCell>
               </TableRow>
             </TableBody>
           </Table>

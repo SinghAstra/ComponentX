@@ -11,7 +11,7 @@ import {
 
 export function TablePreview() {
   return (
-    <div className="w-full border rounded-lg p-6">
+    <div className="w-full p-4">
       <Table size="md">
         <TableHead>
           <TableRow>
