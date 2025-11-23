@@ -97,25 +97,25 @@ export function TableShowcase() {
             <TableRow>
               <TableHeaderCell
                 align="left"
-                className="sticky top-0 z-10 bg-background"
+                className="sticky top-0 z-10 bg-muted/40 backdrop-blur-md"
               >
                 Name
               </TableHeaderCell>
               <TableHeaderCell
                 align="left"
-                className="sticky top-0 z-10 bg-background"
+                className="sticky top-0 z-10 bg-muted/40 backdrop-blur-md"
               >
                 Department
               </TableHeaderCell>
               <TableHeaderCell
                 align="center"
-                className="sticky top-0 z-10 bg-background"
+                className="sticky top-0 z-10 bg-muted/40 backdrop-blur-md"
               >
                 Status
               </TableHeaderCell>
               <TableHeaderCell
                 align="right"
-                className="sticky top-0 z-10 bg-background"
+                className="sticky top-0 z-10 bg-muted/40 backdrop-blur-md"
               >
                 Salary
               </TableHeaderCell>

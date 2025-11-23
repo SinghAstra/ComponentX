@@ -21,7 +21,7 @@ export function TagInputShowcase() {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="col-span-1 sm:col-span-2 row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-300 hover:bg-background/60"
+      className="col-span-1 sm:col-span-2 bg-background row-span-1 flex flex-col gap-4 items-center justify-center border rounded relative group transition-all duration-300"
     >
       <div className="absolute top-2 right-2">
         <Link href="/docs/components/tag-input">
