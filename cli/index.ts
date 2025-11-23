@@ -24,7 +24,6 @@ async function loadConfig(): Promise<Config | null> {
   }
 }
 
-// --- 1. cx init Command ---
 program
   .command("init")
   .description("Initialize ComponentX configuration in the current directory.")
@@ -37,11 +36,9 @@ program
 
     const configPath = path.join(process.cwd(), CONFIG_FILE_NAME);
 
-    // 1. Check if config file already exists
     try {
       await fs.access(configPath);
 
-      // Prompt for overwrite confirmation
       const { confirmOverwrite } = await inquirer.prompt([
         {
           type: "confirm",
@@ -57,11 +54,8 @@ program
         console.log(chalk.cyan("Initialization cancelled by user."));
         return;
       }
-    } catch (error) {
-      // File does not exist, proceed normally
-    }
+    } catch (error) {}
 
-    // 2. Prompt for directories and alias
     const answers = await inquirer.prompt([
       {
         type: "input",
@@ -71,13 +65,11 @@ program
       },
     ]);
 
-    // 3. Create the structured configuration object
     const config: Config = {
       directory: answers.directory,
     };
 
     try {
-      // 4. Write the configuration to cx.json
       await fs.writeFile(configPath, JSON.stringify(config, null, 2), "utf-8");
 
       console.log(
@@ -95,7 +87,6 @@ program
     }
   });
 
-// --- 2. cx add Command (Implementation) ---
 program
   .command("add")
   .description("Download and add a component to your project.")
@@ -110,31 +101,27 @@ program
       )
     );
 
-    // 1. Load configuration
     const config = await loadConfig();
 
     if (!config) {
       console.error(
         chalk.red(
-          `\n❌ Error: Configuration file (${CONFIG_FILE_NAME}) not found. Please run 'cx init' first.`
+          `\n❌ Error: Configuration file (${CONFIG_FILE_NAME}) not found. Please run 'npm cx init' first.`
         )
       );
       return;
     }
 
-    // --- CRITICAL PATH CONVERSION ---
     let physicalDestDir = config.directory;
     if (physicalDestDir.startsWith("@/")) {
       physicalDestDir = "." + physicalDestDir.substring(1);
     }
 
-    // 2. Construct the URL for the component
     const componentFileName = `${componentName.toLowerCase()}.tsx`;
     const fetchUrl = `${COMPONENT_SOURCE_BASE}/${componentFileName}`;
 
     console.log(chalk.gray(`Fetching raw code from: ${fetchUrl}`));
 
-    // 3. Fetch the component content
     let componentContent: string;
     try {
       const response = await fetch(fetchUrl);
@@ -170,7 +157,6 @@ program
       return;
     }
 
-    // 4. Ensure the destination directory exists
     const fullDestDir = path.join(process.cwd(), physicalDestDir);
     try {
       await fs.mkdir(fullDestDir, { recursive: true });
@@ -186,7 +172,6 @@ program
       return;
     }
 
-    // 6. Write the file to the local directory
     const destFilePath = path.join(fullDestDir, componentFileName);
     try {
       await fs.writeFile(destFilePath, componentContent, "utf-8");
