@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import MovingBackground from '@/components/component-x/moving-background';
-import MovingBorder from '@/components/component-x/moving-border';
-import { Button } from '@/components/ui/button';
-import { siteConfig } from '@/config/site';
+import MovingBackground from "@/components/component-x/moving-background";
+import MovingBorder from "@/components/component-x/moving-border";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import {
   blurInVariant,
   containerVariant,
   scaleInVariant,
-} from '@/lib/variants';
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowRightIcon } from 'lucide-react';
-import Link from 'next/link';
-import { FaGithub, FaTwitter } from 'react-icons/fa';
+} from "@/lib/variants";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 
 function Hero() {
   return (
@@ -46,7 +46,7 @@ function Hero() {
 
       <motion.div variants={blurInVariant}>
         <p className=" md:text-lg lg:text-xl text-muted-foreground text-balance max-w-2xl">
-          Collection of UI Components
+          Collection of Reusable & Composable UI Components
         </p>
       </motion.div>
 
@@ -66,7 +66,7 @@ function Hero() {
           <MovingBorder>
             <a href={siteConfig.links.githubRepo} target="_blank">
               <Button
-                variant={'outline'}
+                variant={"outline"}
                 size="lg"
                 className="flex bg-background hover:bg-background items-center transition-all duration-300 text-md justify-center gap-2 rounded font-normal w-full border-0"
               >

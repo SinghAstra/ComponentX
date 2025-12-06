@@ -1,26 +1,21 @@
 "use client";
 
-import { docsLink } from "@/config/docs"; // Your doc structure array
+import { docsLink } from "@/config/docs";
 import { DocsLink } from "@/interfaces/docs-link";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// 1. Flatten the structured docsLink array into a single, ordered list
 const allDocsLinks = docsLink.flatMap((section) => section.links);
 
 export function DocsPagination() {
   const pathname = usePathname();
-
-  // 2. Find the index of the current page in the flattened list
   const currentIndex = allDocsLinks.findIndex((item) => item.path === pathname);
 
-  // Initialize previous and next links
   let previousLink: DocsLink | undefined;
   let nextLink: DocsLink | undefined;
 
-  // 3. Determine previous and next links based on the index
   if (currentIndex > 0) {
     previousLink = allDocsLinks[currentIndex - 1];
   }
@@ -29,39 +24,38 @@ export function DocsPagination() {
     nextLink = allDocsLinks[currentIndex + 1];
   }
 
-  // If there are no previous or next links, don't render the component
   if (!previousLink && !nextLink) {
     return null;
   }
 
   return (
-    <div className="flex justify-between items-center mt-32 mb-8">
+    <div className="flex gap-2 justify-between items-center my-8 sm:mt-32">
       {previousLink ? (
         <Link
           href={previousLink.path}
           className={
-            "flex items-center gap-1 p-4 rounded border transition-all duration-300 hover:bg-muted/30 w-fit pr-16 group"
+            "flex items-center gap-1 p-2 rounded border transition-all duration-300 hover:bg-muted/30 w-fit group max-w-[48%]"
           }
         >
-          <ChevronLeft className="h-4 w-4 mr-1 group-hover:-translate-x-1 transition-all duration-300" />
-          <span className="text-base">{previousLink.title}</span>
+          <ChevronLeft className="h-4 w-4 mr-1 group-hover:-translate-x-1 transition-all duration-300 flex-shrink-0" />
+          <span className="text-base truncate">{previousLink.title}</span>
         </Link>
       ) : (
-        <div className="w-1/2"></div>
+        <div className="hidden sm:block w-1/2"></div>
       )}
 
       {nextLink ? (
         <Link
           href={nextLink.path}
           className={cn(
-            "flex items-center gap-1 p-4 rounded border transition-all duration-300 hover:bg-muted/30 w-fit pl-16 group"
+            "flex items-center ml-auto sm:ml-0 gap-1 p-2 rounded border transition-all duration-300 hover:bg-muted/30 w-fit group max-w-[48%]"
           )}
         >
-          <span className="text-base">{nextLink.title}</span>
-          <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-all duration-300" />
+          <span className="text-base truncate">{nextLink.title}</span>
+          <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" />
         </Link>
       ) : (
-        <div className="w-1/2"></div>
+        <div className="hidden sm:block w-1/2"></div>
       )}
     </div>
   );

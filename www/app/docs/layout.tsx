@@ -49,7 +49,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
       <DocsLayoutHeader setIsSheetOpen={setIsSheetOpen} isOpen={isSheetOpen} />
       <div className="flex flex-1 overflow-hidden relative">
         <DocsSidebar />
-        <div className="flex-1 flex overflow-hidden pb-2 pr-2">
+        <div className="flex-1 flex overflow-hidden pb-2 pr-2 pl-2 lg:pl-0">
           <div className="flex-1 h-full flex overflow-hidden border rounded bg-muted/30">
             <div className="h-full p-4 sm:px-8 flex-1 overflow-y-auto">
               {children}
