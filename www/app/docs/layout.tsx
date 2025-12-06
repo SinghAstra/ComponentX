@@ -18,7 +18,7 @@ const DocsLayoutHeader = ({
   setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <div className="sticky top-0 inset-x-0 flex items-center justify-between p-2 w-full">
+    <div className="flex items-center justify-between p-2 w-full">
       <Link href="/" className="text-xl logo text-primary">
         {siteConfig.name}
       </Link>
