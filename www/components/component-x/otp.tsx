@@ -8,10 +8,19 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 interface OTPContainerProps {
   children: React.ReactNode;
   length?: number;
+  autoFocus?: boolean;
 }
 
-export function OTPContainer({ children, length = 6 }: OTPContainerProps) {
-  return <OTPProvider length={length}>{children}</OTPProvider>;
+export function OTPContainer({
+  children,
+  length = 6,
+  autoFocus = true,
+}: OTPContainerProps) {
+  return (
+    <OTPProvider length={length} autoFocus={autoFocus}>
+      {children}
+    </OTPProvider>
+  );
 }
 
 interface OTPContextType {
@@ -19,6 +28,7 @@ interface OTPContextType {
   setValues: (values: string[]) => void;
   focusIndex: number;
   setFocusIndex: (index: number) => void;
+  autoFocus: boolean;
 }
 
 const OTPContext = createContext<OTPContextType | undefined>(undefined);
@@ -26,16 +36,18 @@ const OTPContext = createContext<OTPContextType | undefined>(undefined);
 export function OTPProvider({
   children,
   length = 6,
+  autoFocus = true,
 }: {
   children: React.ReactNode;
   length?: number;
+  autoFocus?: boolean;
 }) {
   const [values, setValues] = useState<string[]>(Array(length).fill(""));
   const [focusIndex, setFocusIndex] = useState(0);
 
   return (
     <OTPContext.Provider
-      value={{ values, setValues, focusIndex, setFocusIndex }}
+      value={{ values, setValues, focusIndex, setFocusIndex, autoFocus }}
     >
       {children}
     </OTPContext.Provider>
@@ -72,13 +84,15 @@ interface OTPInputBoxProps {
 
 export function OTPInputBox({ index }: OTPInputBoxProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { values, setValues, focusIndex, setFocusIndex } = useOTP();
+  const { values, setValues, focusIndex, setFocusIndex, autoFocus } = useOTP();
 
   useEffect(() => {
-    if (focusIndex === index && inputRef.current) {
-      inputRef.current.focus();
+    if (!autoFocus) {
+      if (focusIndex === index && inputRef.current) {
+        inputRef.current.focus();
+      }
     }
-  }, [focusIndex, index]);
+  }, [focusIndex, index, autoFocus]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

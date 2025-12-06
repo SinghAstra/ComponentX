@@ -60,10 +60,6 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
   const [showFloatingNavbar, setShowFloatingNavbar] = useState(false);
 
   return (
-    // <motion.div
-    //   variants={containerVariant}
-    //   initial="hidden"
-    //   whileInView="visible"
     <div className="flex flex-col h-screen overflow-hidden">
       <Navbar />
       <div className="w-full h-full flex flex-col overflow-y-auto p-4 sm:px-8">

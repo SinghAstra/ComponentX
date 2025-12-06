@@ -21,7 +21,7 @@ const OTPShowcase = () => {
           </div>
 
           <div className="flex flex-col gap-0.5 px-4 sm:px-8">
-            <OTPContainer length={6}>
+            <OTPContainer length={6} autoFocus={false}>
               <OTPGroup className="justify-evenly w-full " />
               <p className="text-right text-xs text-muted-foreground">
                 You can manually type the otp or copy paste it.
