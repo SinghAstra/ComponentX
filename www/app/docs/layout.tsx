@@ -51,7 +51,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
         <DocsSidebar />
         <div className="flex-1 flex overflow-hidden pb-2 pr-2 pl-2 lg:pl-0">
           <div className="flex-1 h-full flex overflow-hidden border rounded bg-muted/30">
-            <div className="h-full p-4 sm:px-8 flex-1 overflow-y-auto">
+            <div className="h-full p-1 sm:p-4 sm:px-8 flex-1 overflow-y-auto">
               {children}
               <DocsPagination />
             </div>

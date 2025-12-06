@@ -59,6 +59,7 @@ function DocsNavItems({
                 "group flex h-8 w-full items-center pl-4 text-foreground hover:bg-muted/40 transition-all border-l-2 border-muted hover:border-primary",
                 pathname === item.path && "bg-muted/40 border-primary"
               )}
+              scroll={false}
               onClick={onLinkClick}
             >
               {item.title}
