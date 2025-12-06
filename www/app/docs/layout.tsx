@@ -45,7 +45,7 @@ const DocsLayoutHeader = ({
 const DocsLayout = ({ children }: { children: React.ReactNode }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   return (
-    <div className="h-dvh flex flex-col overflow-hidden w-full">
+    <div className="h-screen flex flex-col overflow-hidden w-full">
       <DocsLayoutHeader setIsSheetOpen={setIsSheetOpen} isOpen={isSheetOpen} />
       <div className="flex flex-1 overflow-hidden relative">
         <DocsSidebar />
