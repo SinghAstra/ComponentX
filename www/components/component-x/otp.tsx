@@ -87,7 +87,7 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
   const { values, setValues, focusIndex, setFocusIndex, autoFocus } = useOTP();
 
   useEffect(() => {
-    if (!autoFocus) {
+    if (autoFocus) {
       if (focusIndex === index && inputRef.current) {
         inputRef.current.focus();
       }
