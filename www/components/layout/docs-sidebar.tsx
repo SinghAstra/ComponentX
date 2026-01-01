@@ -18,7 +18,7 @@ function DocsSidebar({
   return (
     <div
       className={cn(
-        "w-[256px] py-4 bg-deep-primary h-full overflow-y-auto flex-nowrap hidden md:block",
+        "w-[256px] py-4 h-full overflow-y-auto flex-nowrap hidden md:block",
         className
       )}
     >
