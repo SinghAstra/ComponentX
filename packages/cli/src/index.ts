@@ -48,20 +48,23 @@ if (command === "add") {
   const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
   const targetDir = path.join(process.cwd(), config.componentPath);
 
-  // We wrap the async logic in a function to support older Node versions seamlessly
   async function fetchRegistryAndInstall() {
     console.log(
       `🌐 Fetching ${componentName} from ComponentX Remote Registry...`,
     );
 
-    // Using GitHub as a free, highly-available JSON API (pointing to your current branch)
     const REGISTRY_URL =
       "https://raw.githubusercontent.com/SinghAstra/ComponentX/feature/v2-monorepo/packages/registry/dist/registry.json";
 
     try {
       const response = await fetch(REGISTRY_URL);
       if (!response.ok) {
-        throw new Error(`Failed to fetch registry (HTTP ${response.status})`);
+        console.error(
+          `❌ Network Error: Failed to fetch registry (HTTP ${response.status})`,
+        );
+        console.error("💡 Ensure the registry.json file is pushed to GitHub.");
+        process.exitCode = 1; // Safely set exit code
+        return; // Gracefully exit to prevent Windows async crash
       }
 
       const registryData = await response.json();
@@ -71,7 +74,8 @@ if (command === "add") {
         console.error(
           `❌ Error: Component '${componentName}' not found in remote registry.`,
         );
-        process.exit(1);
+        process.exitCode = 1;
+        return;
       }
 
       if (!fs.existsSync(targetDir)) {
@@ -112,10 +116,9 @@ if (command === "add") {
       }
     } catch (error: any) {
       console.error("❌ Network Error:", error.message);
-      console.error(
-        "💡 Ensure you have an active internet connection and the repository is public.",
-      );
-      process.exit(1);
+      console.error("💡 Ensure you have an active internet connection.");
+      process.exitCode = 1;
+      return;
     }
   }
 

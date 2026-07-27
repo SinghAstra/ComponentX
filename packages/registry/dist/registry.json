@@ -1,0 +1,17 @@
+[
+  {
+    "name": "text-shine",
+    "type": "components:component-x",
+    "dependencies": [
+      "framer-motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "text-shine.tsx",
+        "content": "import React from \"react\";\n\nexport function TextShine() {\n  return <span className=\"text-shine-bg\">Shine Component</span>;\n}"
+      }
+    ]
+  }
+]
