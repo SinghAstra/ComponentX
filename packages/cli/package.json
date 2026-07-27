@@ -1,5 +1,5 @@
 {
-  "name": "@component-x/cli",
+  "name": "@singhastra/componentx-cli",
   "version": "1.0.1",
   "description": "The command line interface for ComponentX UI",
   "type": "module",
