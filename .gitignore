@@ -1,2 +1,8 @@
-PROJECT_PLAN.md
-CLI_PLAN.md
+node_modules/
+.next/
+dist/
+.turbo/
+.env*
+!.env.example
+pnpm-debug.log*
+.DS_Store

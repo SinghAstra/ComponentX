@@ -1,0 +1,20 @@
+{
+  "name": "@component-x/cli",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "componentx": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
