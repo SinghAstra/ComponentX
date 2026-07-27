@@ -1,20 +1,21 @@
 {
   "name": "@component-x/cli",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.1",
+  "description": "The command line interface for ComponentX UI",
+  "type": "module",
+  "main": "dist/index.js",
   "bin": {
     "componentx": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {
-    "commander": "^11.1.0",
-    "chalk": "^4.1.2",
-    "ora": "^5.4.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
   }
 }
