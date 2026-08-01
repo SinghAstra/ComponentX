@@ -7,6 +7,7 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
+    "shadcn": "^4.16.1",
     "turbo": "latest"
   },
   "packageManager": "pnpm@9.0.0"
