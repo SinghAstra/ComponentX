@@ -1,6 +1,6 @@
 {
   "name": "@singhastra/componentx-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The command line interface for ComponentX UI",
   "type": "module",
   "main": "dist/index.js",
@@ -13,9 +13,12 @@
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@types/prompts": "^2.4.9",
     "typescript": "^5.0.0"
   }
 }

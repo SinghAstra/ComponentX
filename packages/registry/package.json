@@ -1,5 +1,5 @@
 {
-  "name": "@component-x/registry",
+  "name": "@singhastra/componentx-registry",
   "version": "1.0.0",
   "private": true,
   "scripts": {
