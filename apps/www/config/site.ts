@@ -1,25 +1,25 @@
 import { SiteConfig } from "@/types/site";
 
 export const siteConfig: SiteConfig = {
-  name: "CombineX",
+  name: "ComponentX",
   description:
-    "Instantly visualize project modules, file structures, and high-level architectural summaries for any GitHub repository using AI.",
-  url: "https://combineX.vercel.app",
+    "A minimalist, copy-and-paste UI component library and CLI tool for modern React and Next.js applications.",
+  url: "https://componentx.vercel.app",
   keywords: [
-    "CombineX",
-    "Codebase Visualization",
-    "AI Architecture Mapping",
-    "Module Summaries",
-    "GitHub Repository Analyzer",
-    "Codebase Documentation",
-    "Developer Tools",
-    "Fast System Comprehension",
+    "ComponentX",
+    "UI Components",
+    "React Library",
+    "Tailwind CSS v4",
     "Next.js 15 App Router",
-    "Turborepo Monorepo",
+    "Copy and Paste UI",
+    "Design System",
+    "Frontend Development",
+    "CLI Tool",
+    "Shadcn Alternative",
   ],
   links: {
     twitter: "https://x.com/XSinghAstra",
     github: "https://github.com/SinghAstra",
-    githubRepo: "https://github.com/SinghAstra/CombineX",
+    githubRepo: "https://github.com/SinghAstra/componentx",
   },
 };
