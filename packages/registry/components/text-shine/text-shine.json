@@ -1,9 +1,0 @@
-{
-  "name": "text-shine",
-  "type": "components:component-x",
-  "dependencies": [
-    "framer-motion",
-    "clsx",
-    "tailwind-merge"
-  ]
-}

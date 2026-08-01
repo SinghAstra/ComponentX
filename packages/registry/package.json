@@ -2,20 +2,15 @@
   "name": "@component-x/registry",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "main": "src/schema.ts",
-  "exports": {
-    ".": "./src/schema.ts",
-    "./dist/registry.json": "./dist/registry.json"
-  },
   "scripts": {
-    "build": "node src/build-registry.ts"
-  },
-  "dependencies": {
-    "zod": "^3.22.0"
+    "build": "tsx scripts/build.ts"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0"
+    "@types/react": "^19.0.0",
+    "clsx": "^2.1.1",
+    "react": "^19.0.0",
+    "tailwind-merge": "^3.6.0",
+    "tsx": "^4.7.1"
   }
 }
