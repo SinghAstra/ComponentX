@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
-// @ts-ignore
+import rehypeSlug from "rehype-slug";
 import "highlight.js/styles/github-dark.css";
 
 interface MarkdownRendererProps {
@@ -18,7 +18,6 @@ const extractText = (node: React.ReactNode): string => {
   if (Array.isArray(node)) return node.map(extractText).join("");
 
   if (React.isValidElement(node)) {
-    // Safely cast the element so TypeScript knows it might have children
     const element = node as React.ReactElement<{ children?: React.ReactNode }>;
     return extractText(element.props.children);
   }
@@ -39,7 +38,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
     <div className="w-full max-w-none pb-24">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        rehypePlugins={[rehypeHighlight, rehypeSlug]}
         components={{
           h1: ({ children }) => (
             <h1 className="mt-2 scroll-m-20 text-4xl font-bold tracking-tight text-foreground">

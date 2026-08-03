@@ -50,9 +50,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           </nav>
         </aside>
 
-        <main className="flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-4xl px-8 py-8 xl:px-12">{children}</div>
-        </main>
+        <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
     </div>
   );
