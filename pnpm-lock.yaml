@@ -20,9 +20,6 @@ importers:
       '@base-ui/react':
         specifier: ^1.6.0
         version: 1.6.0(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      '@singhastra/componentx-registry':
-        specifier: workspace:*
-        version: link:../../packages/registry
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
