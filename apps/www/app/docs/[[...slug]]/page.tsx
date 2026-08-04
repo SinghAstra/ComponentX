@@ -43,15 +43,13 @@ export default async function DocPage({ params }: DocPageProps) {
   }
 
   return (
-    <div className="mx-auto flex max-w-7xl items-start gap-12 px-8 py-8 xl:px-12">
-      <div className="flex-1 min-w-0">
+    <div className="mx-auto flex-1 flex max-w-7xl items-start gap-12 h-full">
+      <div className="flex-1 min-w-0 overflow-y-auto p-8 xl:px-12  h-full">
         <MarkdownRenderer content={content} />
       </div>
 
-      <div className="hidden w-64 shrink-0 xl:block">
-        <div className="sticky top-8">
-          <TableOfContents headings={headings} />
-        </div>
+      <div className="hidden w-64 shrink-0 p-8 xl:block overflow-y-auto h-full">
+        <TableOfContents headings={headings} />
       </div>
     </div>
   );
