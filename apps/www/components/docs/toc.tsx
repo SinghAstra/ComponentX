@@ -15,6 +15,10 @@ interface TableOfContentsProps {
 export function TableOfContents({ headings }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
+
+  // Keep track of ALL headings currently visible on the screen
+  const visibleHeadings = useRef<Set<string>>(new Set());
+
   const [indicatorStyle, setIndicatorStyle] = useState({
     top: 0,
     height: 0,
@@ -26,11 +30,24 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+            visibleHeadings.current.add(entry.target.id);
+          } else {
+            visibleHeadings.current.delete(entry.target.id);
           }
         });
+
+        // Filter the headings array to find which ones are currently visible
+        const visible = headings.filter((h) =>
+          visibleHeadings.current.has(h.id),
+        );
+
+        // Always highlight the highest visible heading on the screen
+        if (visible.length > 0) {
+          setActiveId(visible[0].id);
+        }
       },
-      { rootMargin: "0px 0px -80% 0px" },
+      // Expanded detection area: triggers when headings enter the top 60% of the screen
+      { rootMargin: "0px 0px -40% 0px" },
     );
 
     headings.forEach((heading) => {
@@ -63,7 +80,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       </h4>
       <div className="relative">
         <div
-          className="absolute -left-px w-0.5 transition-all duration-300 ease-out"
+          className="absolute -left-px w-0.5 bg-primary transition-all duration-300 ease-out"
           style={{
             top: `${indicatorStyle.top}px`,
             height: `${indicatorStyle.height}px`,

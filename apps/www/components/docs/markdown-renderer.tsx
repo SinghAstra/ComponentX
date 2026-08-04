@@ -6,7 +6,6 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import "highlight.js/styles/github-dark.css";
 
 interface MarkdownRendererProps {
   content: string;
@@ -40,23 +39,35 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight, rehypeSlug]}
         components={{
-          h1: ({ children }) => (
-            <h1 className="mt-2 scroll-m-20 text-4xl font-bold tracking-tight text-foreground">
+          h1: ({ children, ...props }) => (
+            <h1
+              {...props}
+              className="mt-2 scroll-m-20 text-4xl font-bold tracking-tight text-foreground"
+            >
               {children}
             </h1>
           ),
-          h2: ({ children }) => (
-            <h2 className="mt-12 scroll-m-20 border-b border-border pb-2 text-2xl font-semibold tracking-tight text-foreground first:mt-0">
+          h2: ({ children, ...props }) => (
+            <h2
+              {...props}
+              className="mt-12 scroll-m-20 border-b border-border pb-2 text-2xl font-semibold tracking-tight text-foreground first:mt-0"
+            >
               {children}
             </h2>
           ),
-          h3: ({ children }) => (
-            <h3 className="mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-foreground">
+          h3: ({ children, ...props }) => (
+            <h3
+              {...props}
+              className="mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-foreground"
+            >
               {children}
             </h3>
           ),
-          h4: ({ children }) => (
-            <h4 className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-foreground">
+          h4: ({ children, ...props }) => (
+            <h4
+              {...props}
+              className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-foreground"
+            >
               {children}
             </h4>
           ),
@@ -70,7 +81,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               href={href}
               target={href?.startsWith("http") ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="font-medium text-cyan-400 underline underline-offset-4 decoration-cyan-400/30 hover:decoration-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-sm"
+              className="font-medium text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
             >
               {children}
             </a>
