@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import Link from "next/link";
 
 interface MarkdownRendererProps {
   content: string;
@@ -76,16 +77,30 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               {children}
             </p>
           ),
-          a: ({ children, href }) => (
-            <a
-              href={href}
-              target={href?.startsWith("http") ? "_blank" : "_self"}
-              rel="noopener noreferrer"
-              className="font-medium text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-            >
-              {children}
-            </a>
-          ),
+          a: ({ children, href }) => {
+            const isExternal = href?.startsWith("http");
+            const className =
+              "font-medium text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm";
+
+            if (isExternal) {
+              return (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  {children}
+                </a>
+              );
+            }
+
+            return (
+              <Link href={href || "#"} className={className}>
+                {children}
+              </Link>
+            );
+          },
           strong: ({ children }) => (
             <strong className="font-semibold text-neutral-100">
               {children}
@@ -95,7 +110,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const isInline = !className;
             if (isInline) {
               return (
-                <code className="relative rounded bg-neutral-800/50 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-neutral-200 border border-neutral-800">
+                <code className="relative rounded bg-muted/50 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground border">
                   {children}
                 </code>
               );

@@ -34,6 +34,6 @@ This command will prompt you to set up your configuration file and prepare your 
 
 Now that you understand the basics, dive deeper into the documentation to start building your interfaces:
 
-- [Installation Guide](https://www.google.com/search?q=/docs/installation) - Detailed setup instructions and framework prerequisites.
-- [CLI Reference](https://www.google.com/search?q=/docs/cli) - Explore all available commands and flags.
-- [Browse Components](https://www.google.com/search?q=/docs/components/hover-edge) - View the component registry and see them in action.
+- [Installation Guide](/docs/installation) - Detailed setup instructions and framework prerequisites.
+- [CLI Reference](/docs/cli) - Explore all available commands and flags.
+- [Browse Components](/docs/components/hover-edge) - View the component registry and see them in action.
