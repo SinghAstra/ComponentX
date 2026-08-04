@@ -8,6 +8,8 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import Link from "next/link";
 
+import "highlight.js/styles/vs2015.css";
+
 interface MarkdownRendererProps {
   content: string;
 }
@@ -73,7 +75,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             </h4>
           ),
           p: ({ children }) => (
-            <p className="leading-7 not-first:mt-6 text-neutral-300">
+            <p className="leading-7 not-first:mt-6 text-muted-foreground">
               {children}
             </p>
           ),
@@ -102,7 +104,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           strong: ({ children }) => (
-            <strong className="font-semibold text-neutral-100">
+            <strong className="font-semibold text-foreground">
               {children}
             </strong>
           ),
@@ -110,12 +112,14 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const isInline = !className;
             if (isInline) {
               return (
-                <code className="relative rounded bg-muted/50 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground border">
+                <code className="relative rounded px-[0.3rem] py-[0.1rem] bg-muted/50 font-mono text-sm text-foreground border">
                   {children}
                 </code>
               );
             }
-            return <code className={className}>{children}</code>;
+            return (
+              <code className={`${className} bg-transparent!`}>{children}</code>
+            );
           },
           pre: ({ children }) => {
             const codeElement = React.isValidElement(children)
@@ -126,7 +130,6 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               : null;
 
             const className = codeElement?.props?.className ?? "";
-
             const language = /language-(\w+)/.exec(className)?.[1] ?? "text";
 
             const rawText = extractText(codeElement?.props?.children).replace(
@@ -136,19 +139,19 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const isCopied = copiedCode === rawText;
 
             return (
-              <div className="my-6 overflow-hidden rounded-xl border border-neutral-800 bg-[#0d1117]">
-                <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-neutral-900/50">
-                  <span className="text-xs font-mono text-neutral-400 font-medium">
+              <div className="my-6 overflow-hidden rounded shadow-sm bg-muted/30">
+                <div className="flex items-center justify-between px-4 py-2 border-b">
+                  <span className="text-xs font-mono text-muted-foreground font-medium">
                     {language}
                   </span>
                   <button
                     onClick={() => copyToClipboard(rawText)}
-                    className="flex items-center gap-1.5 text-xs text-neutral-400 hover:text-neutral-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 rounded-sm px-1"
+                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm px-1 cursor-pointer"
                   >
                     {isCopied ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-green-400" />
-                        <span className="text-green-400">Copied</span>
+                        <Check className="w-3.5 h-3.5 text-primary" />
+                        <span className="text-primary">Copied</span>
                       </>
                     ) : (
                       <>
@@ -158,42 +161,42 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
                     )}
                   </button>
                 </div>
-                <pre className="overflow-x-auto p-4 text-[13px] leading-relaxed font-mono">
+                <pre className="overflow-x-auto text-[13px] leading-relaxed">
                   {children}
                 </pre>
               </div>
             );
           },
           ul: ({ children }) => (
-            <ul className="my-6 ml-6 list-disc [&>li]:mt-2 text-neutral-300">
+            <ul className="my-6 ml-6 list-disc [&>li]:mt-2 text-muted-foreground">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="my-6 ml-6 list-decimal [&>li]:mt-2 text-neutral-300">
+            <ol className="my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground">
               {children}
             </ol>
           ),
           li: ({ children }) => <li>{children}</li>,
           blockquote: ({ children }) => (
-            <blockquote className="mt-6 border-l-2 border-neutral-700 pl-6 italic text-neutral-400">
+            <blockquote className="mt-6 border-l-2 border-border pl-6 italic text-muted-foreground">
               {children}
             </blockquote>
           ),
-          hr: () => <hr className="my-8 border-neutral-800" />,
+          hr: () => <hr className="my-8 border-border" />,
           table: ({ children }) => (
-            <div className="my-6 w-full overflow-y-auto rounded-lg border border-neutral-800">
+            <div className="my-6 w-full overflow-y-auto rounded-lg border border-border">
               <table className="w-full text-sm text-left">{children}</table>
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="bg-neutral-900/50 text-neutral-200 border-b border-neutral-800">
+            <thead className="bg-muted text-foreground border-b border-border">
               {children}
             </thead>
           ),
           tbody: ({ children }) => <tbody>{children}</tbody>,
           tr: ({ children }) => (
-            <tr className="border-b border-neutral-800/50 last:border-0 hover:bg-neutral-900/20 transition-colors">
+            <tr className="border-b border-border/50 last:border-0 hover:bg-muted/50 transition-colors">
               {children}
             </tr>
           ),
@@ -201,7 +204,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <th className="px-4 py-3 font-medium">{children}</th>
           ),
           td: ({ children }) => (
-            <td className="px-4 py-3 text-neutral-300">{children}</td>
+            <td className="px-4 py-3 text-muted-foreground">{children}</td>
           ),
         }}
       >
