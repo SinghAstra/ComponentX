@@ -1,6 +1,9 @@
+"use client";
+
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 interface DocsLayoutProps {
@@ -8,6 +11,8 @@ interface DocsLayoutProps {
 }
 
 export default function DocsLayout({ children }: DocsLayoutProps) {
+  const pathname = usePathname();
+
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-background selection:bg-muted">
       <header className="z-50 flex h-14 shrink-0 items-center px-6 border-b">
@@ -34,16 +39,23 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                   {section.title}
                 </h4>
                 <div className="flex flex-col gap-0.5 text-sm">
-                  {section.items.map((item, itemIndex) => (
-                    <Link
-                      key={itemIndex}
-                      href={item.href}
-                      className="group flex w-full transition-all duration-200 items-center rounded-md border-0 px-2 py-1.5 
-                      text-muted-foreground hover:text-foreground hover:bg-muted"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
+                  {section.items.map((item, itemIndex) => {
+                    const isActive = pathname === item.href;
+
+                    return (
+                      <Link
+                        key={itemIndex}
+                        href={item.href}
+                        className={`group flex w-full transition-all duration-200 items-center rounded-md border-0 px-2 py-1.5 ${
+                          isActive
+                            ? "bg-muted text-foreground font-medium"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        }`}
+                      >
+                        {item.title}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}
