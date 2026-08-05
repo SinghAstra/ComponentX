@@ -1,9 +1,8 @@
 import { MarkdownRenderer } from "@/components/docs/markdown-renderer";
-import { TableOfContents, TOCHeading } from "@/components/docs/toc";
-import fs from "fs/promises";
-import path from "path";
+import { TableOfContents } from "@/components/docs/toc";
+import { DocsPagination } from "@/components/docs/pagination";
+import { getDocContent } from "@/lib/docs";
 import { notFound } from "next/navigation";
-import GithubSlugger from "github-slugger";
 
 interface DocPageProps {
   params: Promise<{
@@ -11,45 +10,25 @@ interface DocPageProps {
   }>;
 }
 
-function extractHeadings(content: string): TOCHeading[] {
-  const slugger = new GithubSlugger();
-  const regex = /^(## |### )(.*)$/gm;
-  const headings: TOCHeading[] = [];
-  let match;
-
-  while ((match = regex.exec(content)) !== null) {
-    const level = match[1].trim() === "##" ? 2 : 3;
-    const title = match[2].trim();
-    const id = slugger.slug(title);
-    headings.push({ level, title, id });
-  }
-
-  return headings;
-}
-
 export default async function DocPage({ params }: DocPageProps) {
   const resolvedParams = await params;
   const slugPath = resolvedParams.slug?.join("/") || "index";
-  const filePath = path.join(process.cwd(), "content/docs", `${slugPath}.md`);
 
-  let content = "";
-  let headings: TOCHeading[] = [];
+  const doc = await getDocContent(slugPath);
 
-  try {
-    content = await fs.readFile(filePath, "utf-8");
-    headings = extractHeadings(content);
-  } catch (error) {
+  if (!doc) {
     notFound();
   }
 
   return (
     <div className="mx-auto flex-1 flex max-w-7xl items-start gap-12 h-full border rounded bg-muted/20">
-      <div className="flex-1 min-w-0 overflow-y-auto p-8 xl:px-12  h-full">
-        <MarkdownRenderer content={content} />
+      <div className="flex-1 min-w-0 overflow-y-auto p-8 xl:px-12 h-full">
+        <MarkdownRenderer content={doc.content} />
+        <DocsPagination />
       </div>
 
       <div className="hidden w-64 shrink-0 p-8 xl:block overflow-y-auto h-full">
-        <TableOfContents headings={headings} />
+        <TableOfContents headings={doc.headings} />
       </div>
     </div>
   );
