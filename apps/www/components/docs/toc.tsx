@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 export interface TOCHeading {
   level: number;
@@ -16,9 +17,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
 
-  // Keep track of ALL headings currently visible on the screen
-  const visibleHeadings = useRef<Set<string>>(new Set());
-
   const [indicatorStyle, setIndicatorStyle] = useState({
     top: 0,
     height: 0,
@@ -26,28 +24,23 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visibleHeadings.current.add(entry.target.id);
-          } else {
-            visibleHeadings.current.delete(entry.target.id);
-          }
-        });
-
-        // Filter the headings array to find which ones are currently visible
-        const visible = headings.filter((h) =>
-          visibleHeadings.current.has(h.id),
-        );
-
-        // Always highlight the highest visible heading on the screen
-        if (visible.length > 0) {
-          setActiveId(visible[0].id);
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+          break;
         }
-      },
-      // Expanded detection area: triggers when headings enter the top 60% of the screen
-      { rootMargin: "0px 0px -40% 0px" },
+      }
+    };
+
+    const observerOptions = {
+      rootMargin: "0px 0px 0px 0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
     );
 
     headings.forEach((heading) => {
@@ -78,9 +71,14 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       <h4 className="text-sm font-semibold tracking-tight text-foreground">
         On This Page
       </h4>
-      <div className="relative">
+      <div className="relative pl-0">
         <div
-          className="absolute -left-px w-0.5 bg-primary transition-all duration-300 ease-out"
+          className="absolute left-0 top-0 h-full w-0.5 bg-border/40 rounded-full"
+          aria-hidden="true"
+        />
+
+        <div
+          className="absolute left-0 w-0.5 bg-primary transition-all duration-300 ease-out rounded-full"
           style={{
             top: `${indicatorStyle.top}px`,
             height: `${indicatorStyle.height}px`,
@@ -88,24 +86,26 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           }}
         />
 
-        <ul className="border-l border-border text-sm">
+        <ul className="list-none space-y-2.5 text-sm m-0 p-0">
           {headings.map((heading) => (
             <li
               key={heading.id}
               ref={(el) => {
                 itemRefs.current[heading.id] = el;
               }}
-              className={`py-1.5 transition-colors ${
-                heading.level === 3 ? "pl-8" : "pl-4"
-              }`}
+              className={cn(
+                "transition-all duration-200",
+                heading.level === 3 ? "pl-7" : "pl-4",
+              )}
             >
               <a
                 href={`#${heading.id}`}
-                className={`block truncate transition-colors ${
+                className={cn(
+                  "block truncate transition-colors duration-200",
                   activeId === heading.id
-                    ? "text-foreground font-medium"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
               >
                 {heading.title}
               </a>
