@@ -19,7 +19,6 @@ Run the following command in your terminal to initialize ComponentX in your proj
 
 ```bash
 npx @singhastra/componentx-cli init
-
 ```
 
 This command will prompt you to set up your configuration file and prepare your project architecture to start receiving components.
