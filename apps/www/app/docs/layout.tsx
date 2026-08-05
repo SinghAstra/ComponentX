@@ -24,7 +24,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
 
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-background selection:bg-muted">
-      <header className="z-50 flex h-14 shrink-0 items-center gap-4 px-4 md:px-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="z-50 flex h-14 shrink-0 items-center gap-4 px-4 md:px-6 border-b md:border-b-0">
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTrigger className="md:hidden flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             <Menu className="h-5 w-5" />
@@ -61,11 +61,13 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        <aside className="hidden md:block w-64 shrink-0 overflow-y-auto border-r px-2 py-8">
+        <aside className="hidden md:block w-64 shrink-0 overflow-y-auto px-2 py-8">
           <SidebarNav pathname={pathname} />
         </aside>
 
-        <main className="flex-1 overflow-y-auto h-full">{children}</main>
+        <main className="flex-1 overflow-y-hidden h-full p-2 pt-0 rounded">
+          {children}
+        </main>
       </div>
     </div>
   );

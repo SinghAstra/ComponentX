@@ -43,7 +43,7 @@ export default async function DocPage({ params }: DocPageProps) {
   }
 
   return (
-    <div className="mx-auto flex-1 flex max-w-7xl items-start gap-12 h-full">
+    <div className="mx-auto flex-1 flex max-w-7xl items-start gap-12 h-full border rounded bg-muted/20">
       <div className="flex-1 min-w-0 overflow-y-auto p-8 xl:px-12  h-full">
         <MarkdownRenderer content={content} />
       </div>
