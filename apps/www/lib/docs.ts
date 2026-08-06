@@ -20,13 +20,19 @@ export function extractHeadings(content: string): TOCHeading[] {
 }
 
 export async function getDocContent(slugPath: string) {
-  const filePath = path.join(process.cwd(), "content/docs", `${slugPath}.md`);
-
+  const basePath = path.join(process.cwd(), "content/docs", slugPath);
+  
   try {
-    const content = await fs.readFile(filePath, "utf-8");
+    const content = await fs.readFile(`${basePath}.md`, "utf-8");
     const headings = extractHeadings(content);
     return { content, headings };
   } catch (error) {
-    return null;
+    try {
+      const content = await fs.readFile(path.join(basePath, "index.md"), "utf-8");
+      const headings = extractHeadings(content);
+      return { content, headings };
+    } catch (fallbackError) {
+      return null; 
+    }
   }
 }
