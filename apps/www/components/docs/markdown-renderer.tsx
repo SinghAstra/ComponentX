@@ -1,14 +1,15 @@
-"use client";
-
-import { Check, Copy } from "lucide-react";
-import React, { useState } from "react";
-import ReactMarkdown from "react-markdown";
+import React from "react";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import Link from "next/link";
+import { CopyButton } from "./copy-button";
+import { ComponentPreview } from "./component-preview";
+import { InstallationTabs } from "./installation-tabs";
 
 import "highlight.js/styles/vs2015.css";
+import { Steps,Step } from "./steps";
 
 interface MarkdownRendererProps {
   content: string;
@@ -28,20 +29,22 @@ const extractText = (node: React.ReactNode): string => {
 };
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  const [copiedCode, setCopiedCode] = useState<string | null>(null);
-
-  const copyToClipboard = (code: string) => {
-    navigator.clipboard.writeText(code);
-    setCopiedCode(code);
-    setTimeout(() => setCopiedCode(null), 2000);
-  };
-
   return (
     <div className="w-full max-w-none pb-24">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight, rehypeSlug]}
+      <MDXRemote
+        source={content}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [rehypeHighlight, rehypeSlug],
+          },
+        }}
         components={{
+          ComponentPreview,
+          InstallationTabs,
+          Steps,
+          Step,
+          
           h1: ({ children, ...props }) => (
             <h1
               {...props}
@@ -121,7 +124,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               <code className={`${className} bg-transparent!`}>{children}</code>
             );
           },
-          pre: ({ children }) => {
+          pre: ({ children, ...props }) => {
             const codeElement = React.isValidElement(children)
               ? (children as React.ReactElement<{
                   className?: string;
@@ -136,7 +139,6 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               /\n$/,
               "",
             );
-            const isCopied = copiedCode === rawText;
 
             return (
               <div className="my-6 overflow-hidden rounded shadow-sm bg-muted/30">
@@ -144,24 +146,11 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   <span className="text-xs font-mono text-muted-foreground font-medium">
                     {language}
                   </span>
-                  <button
-                    onClick={() => copyToClipboard(rawText)}
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm px-1 cursor-pointer"
-                  >
-                    {isCopied ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-primary">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        Copy
-                      </>
-                    )}
-                  </button>
+                  
+                  <CopyButton text={rawText} />
+                  
                 </div>
-                <pre className="overflow-x-auto text-[13px] leading-relaxed">
+                <pre className="overflow-x-auto text-[13px] leading-relaxed" {...props}>
                   {children}
                 </pre>
               </div>
@@ -207,9 +196,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <td className="px-4 py-3 text-muted-foreground">{children}</td>
           ),
         }}
-      >
-        {content}
-      </ReactMarkdown>
+      />
     </div>
   );
 }
