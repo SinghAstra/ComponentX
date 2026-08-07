@@ -78,7 +78,6 @@ export function ComponentPreview({
         {preview}
       </TabsContent>
       
-
       <TabsContent 
         value="code" 
         className="mt-1 flex min-h-87.5 max-h-125 w-full overflow-auto rounded-xl border bg-muted/30"
