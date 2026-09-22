@@ -8,11 +8,22 @@ build/
 .next/
 out/
 .turbo/
+coverage/
+
+# Next.js generated types
+next-env.d.ts
 
 # Environment
 .env
 .env.local
 .env.*.local
+.env*.local
+
+# Vercel
+.vercel
+
+# Certificates
+*.pem
 
 # Editor
 .vscode/*
