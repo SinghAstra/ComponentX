@@ -1,5 +1,8 @@
 import path from 'node:path'
 
+import { glob } from 'glob'
+import { Project } from 'ts-morph'
+
 type RegistryFile = {
   name: string
   content: string
@@ -28,8 +31,22 @@ const REGISTRY_OUTPUT_PATH = path.resolve(
 async function main() {
   try {
     console.log('Initializing registry generation...')
-    void COMPONENTS_PATH
-    void REGISTRY_OUTPUT_PATH
+
+    const project = new Project()
+    const componentPaths = await glob(`${COMPONENTS_PATH}/*.tsx`)
+
+    const importSpecifiersByComponent = new Map<string, string[]>()
+
+    for (const componentPath of componentPaths.slice(0,2)) {
+      const sourceFile = project.addSourceFileAtPath(componentPath)
+      const importSpecifiers = sourceFile
+        .getImportDeclarations()
+        .map(declaration => declaration.getModuleSpecifierValue())
+      importSpecifiersByComponent.set(sourceFile.getBaseName(), importSpecifiers)
+    }
+
+
+    void importSpecifiersByComponent
     void ({} as Registry)
   } catch (error) {
     console.log('Error during registry generation.')
