@@ -1,7 +1,7 @@
 import path from 'node:path'
 
 import { glob } from 'glob'
-import { Project } from 'ts-morph'
+import { Project, SourceFile } from 'ts-morph'
 
 type RegistryFile = {
   name: string
@@ -36,6 +36,21 @@ const COMPONENT_PREFIX = '@/components/component-x/'
 const UI_PREFIX = '@/components/ui/'
 
 const FRAMEWORK_PACKAGES = new Set(['react', 'react-dom', 'next'])
+
+const ALIAS_TEMPLATES: Record<string, string> = {
+  '@/lib/utils': '<%= it.aliases.utils %>',
+  '@/lib/variants': '<%= it.aliases.variants %>',
+}
+
+function rewriteLibAliases(sourceFile: SourceFile) {
+  for (const declaration of sourceFile.getImportDeclarations()) {
+    const specifier = declaration.getModuleSpecifierValue()
+    const template = ALIAS_TEMPLATES[specifier]
+    if (template) {
+      declaration.getModuleSpecifier().replaceWithText(`'${template}'`)
+    }
+  }
+}
 
 function toPackageName(specifier: string): string {
   const segments = specifier.split('/')
@@ -103,6 +118,7 @@ async function main() {
         sourceFile.getBaseName(),
         classifyImports(importSpecifiers),
       )
+      rewriteLibAliases(sourceFile)
     }
 
     void dependenciesByComponent
