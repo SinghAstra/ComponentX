@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build:registry": "tsx scripts/build-registry.ts",
+    "check:registry": "tsx scripts/check-registry.ts",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
