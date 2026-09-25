@@ -1,3 +1,4 @@
+import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
 import { glob } from 'glob'
@@ -15,7 +16,6 @@ type Registry = {
   registryDependencies: string[]
   file: RegistryFile
 }
-
 
 const COMPONENTS_PATH = path.resolve(
   process.cwd(),
@@ -103,10 +103,13 @@ async function main() {
   try {
     console.log('Initializing registry generation...')
 
+    await fs.rm(REGISTRY_OUTPUT_PATH, { recursive: true, force: true })
+    await fs.mkdir(REGISTRY_OUTPUT_PATH, { recursive: true })
+
     const project = new Project()
     const componentPaths = await glob(`${COMPONENTS_PATH}/*.tsx`)
 
-    const dependenciesByComponent = new Map<string, DependencyLists>()
+    const components: string[] = []
 
     for (const componentPath of componentPaths) {
       const sourceFile = project.addSourceFileAtPath(componentPath)
@@ -114,20 +117,47 @@ async function main() {
         .getImportDeclarations()
         .map(declaration => declaration.getModuleSpecifierValue())
 
-      dependenciesByComponent.set(
-        sourceFile.getBaseName(),
-        classifyImports(importSpecifiers),
-      )
+      const dependencies = classifyImports(importSpecifiers)
       rewriteLibAliases(sourceFile)
+
+      const { name, base } = path.parse(sourceFile.getBaseName())
+
+      console.log(`Processing component: ${name}`)
+
+      const entry: Registry = {
+        name,
+        ...dependencies,
+        file: {
+          name: base,
+          content: sourceFile.getFullText(),
+        },
+      }
+
+      await fs.writeFile(
+        path.join(REGISTRY_OUTPUT_PATH, `${name}.json`),
+        JSON.stringify(entry, null, 2),
+        'utf8',
+      )
+
+      console.log(`Processed component: ${name}`)
+
+      components.push(name)
     }
 
-    void dependenciesByComponent
-    void ({} as Registry)
+    components.sort()
+
+    await fs.writeFile(
+      path.join(REGISTRY_OUTPUT_PATH, 'index.json'),
+      JSON.stringify({ components }, null, 2),
+      'utf8',
+    )
+
+    console.log('Registry generation completed successfully.')
   } catch (error) {
     console.log('Error during registry generation.')
-    if(error instanceof Error){
-      console.log("error.stack is ",error.stack)
-      console.log("error.message is ",error.message)
+    if (error instanceof Error) {
+      console.log('error.stack is ', error.stack)
+      console.log('error.message is ', error.message)
     }
     process.exit(1)
   }

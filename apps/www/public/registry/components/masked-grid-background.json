@@ -1,0 +1,10 @@
+{
+  "name": "masked-grid-background",
+  "externalDependencies": [],
+  "internalDependencies": [],
+  "registryDependencies": [],
+  "file": {
+    "name": "masked-grid-background.tsx",
+    "content": "import { cn } from '<%= it.aliases.utils %>';\nimport React from 'react';\n\nexport type MaskPosition = 'top' | 'center' | 'bottom';\n\ninterface MaskedGridBackgroundProps {\n  className?: string;\n  gridSize?: number;\n  gridLineColor?: string;\n  gridLineOpacity?: number;\n  maskPosition?: MaskPosition;\n  maskSize?: number;\n  maskOpacity?: {\n    start?: number;\n    middle?: number;\n    end?: number;\n  };\n}\n\nconst MaskedGridBackground = ({\n  className,\n  gridSize = 48,\n  gridLineColor = '#161616',\n  gridLineOpacity = 1,\n  maskPosition = 'top',\n  maskSize = 100,\n  maskOpacity = { start: 0.8, middle: 0.2, end: 0 },\n}: MaskedGridBackgroundProps) => {\n  const getRgbColor = (hexColor: string) => {\n    const hex = hexColor.replace('#', '');\n    const r = parseInt(hex.substring(0, 2), 16);\n    const g = parseInt(hex.substring(2, 4), 16);\n    const b = parseInt(hex.substring(4, 6), 16);\n    return `${r}, ${g}, ${b}`;\n  };\n\n  const rgbColor = getRgbColor(gridLineColor);\n  const gridLineColorWithOpacity = `rgba(${rgbColor}, ${gridLineOpacity})`;\n\n  const maskPositionValue = {\n    top: '50% 0%',\n    center: '50% 50%',\n    bottom: '50% 100%',\n  }[maskPosition];\n\n  const { start = 0.8, middle = 0.2, end = 0 } = maskOpacity;\n\n  return (\n    <div className={cn('absolute inset-0 z-[-1] bg-background', className)}>\n      <div\n        className=\"w-full h-full\"\n        style={{\n          backgroundImage: `linear-gradient(90deg,${gridLineColorWithOpacity} 1px,transparent 1px),linear-gradient(180deg,${gridLineColorWithOpacity} 1px,transparent 1px)`,\n          backgroundSize: `${gridSize}px ${gridSize}px`,\n          maskImage: `radial-gradient(ellipse ${maskSize}% ${maskSize}% at ${maskPositionValue},rgba(255,255,255,${start}) 20%,rgba(255,255,255,${middle}) 60%,rgba(255,255,255,${end}) 100%)`,\n        }}\n      />\n    </div>\n  );\n};\n\nexport default MaskedGridBackground;\n"
+  }
+}

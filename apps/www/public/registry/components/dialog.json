@@ -1,0 +1,12 @@
+{
+  "name": "dialog",
+  "externalDependencies": [
+    "framer-motion"
+  ],
+  "internalDependencies": [],
+  "registryDependencies": [],
+  "file": {
+    "name": "dialog.tsx",
+    "content": "'use client';\n\nimport { cn } from '<%= it.aliases.utils %>';\nimport { scaleInVariant } from '<%= it.aliases.variants %>';\nimport { motion } from 'framer-motion';\nimport React, { useEffect, useRef } from 'react';\n\ninterface DialogProps {\n  isDialogVisible: boolean;\n  setIsDialogVisible: React.Dispatch<React.SetStateAction<boolean>>;\n  children: React.ReactNode;\n  keyToMakeDialogVisible?: string;\n  className?: string;\n}\n\nconst Dialog = ({\n  isDialogVisible,\n  setIsDialogVisible,\n  children,\n  keyToMakeDialogVisible,\n  className,\n}: DialogProps) => {\n  const dialogRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const handleClickOutside = (event: MouseEvent) => {\n      if (\n        dialogRef.current &&\n        !dialogRef.current.contains(event.target as Node)\n      ) {\n        setIsDialogVisible(false);\n      }\n    };\n\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if ((e.ctrlKey || e.metaKey) && e.key === keyToMakeDialogVisible) {\n        e.preventDefault();\n        setIsDialogVisible(true);\n      }\n      if (e.key === 'Escape') {\n        setIsDialogVisible(false);\n      }\n    };\n\n    document.addEventListener('keydown', handleKeyDown);\n    if (isDialogVisible) {\n      document.addEventListener('mousedown', handleClickOutside);\n      document.body.style.overflow = 'hidden';\n    }\n\n    return () => {\n      document.removeEventListener('keydown', handleKeyDown);\n      document.removeEventListener('mousedown', handleClickOutside);\n      document.body.style.overflow = 'unset';\n    };\n  }, [isDialogVisible, setIsDialogVisible, keyToMakeDialogVisible]);\n\n  if (!isDialogVisible) return;\n  return (\n    <div className=\"fixed inset-0 flex items-center justify-center z-[999]\">\n      <div className=\"absolute inset-0 bg-background/20 backdrop-blur-md z-[-1]\" />\n\n      <motion.div\n        variants={scaleInVariant}\n        initial=\"hidden\"\n        animate=\"visible\"\n        className={cn(\n          'w-full max-w-xl mx-4 bg-background border rounded shadow-2xl relative cursor-pointer z-[1000]',\n          className,\n        )}\n        ref={dialogRef}\n      >\n        {children}\n      </motion.div>\n    </div>\n  );\n};\n\nexport default Dialog;\n"
+  }
+}

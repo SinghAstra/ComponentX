@@ -1,0 +1,24 @@
+{
+  "components": [
+    "border-hover-link",
+    "color-picker",
+    "conic-background",
+    "dialog",
+    "ellipse-background",
+    "file-upload",
+    "floating-navbar",
+    "grid-background",
+    "lamp-background",
+    "masked-grid-background",
+    "menu-toggle",
+    "moving-background",
+    "moving-border",
+    "otp",
+    "radial-background",
+    "slider",
+    "table",
+    "tag-input",
+    "text-shine",
+    "video-upload"
+  ]
+}

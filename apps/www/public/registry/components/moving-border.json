@@ -1,0 +1,12 @@
+{
+  "name": "moving-border",
+  "externalDependencies": [
+    "framer-motion"
+  ],
+  "internalDependencies": [],
+  "registryDependencies": [],
+  "file": {
+    "name": "moving-border.tsx",
+    "content": "'use client';\n\nimport { cn } from '<%= it.aliases.utils %>';\nimport { motion } from 'framer-motion';\nimport type React from 'react';\nimport { CSSProperties } from 'react';\n\nexport type MovingBorderSpeed = 'slow' | 'normal' | 'fast';\nexport type MovingBorderDirection = 'clockwise' | 'counterclockwise';\nexport type MovingBorderBlendMode =\n  | 'normal'\n  | 'screen'\n  | 'overlay'\n  | 'multiply'\n  | 'lighten';\n\nexport interface MovingBorderProps {\n  // Color & appearance\n  color?: string;\n\n  // Animation\n  duration?: number;\n  speed?: MovingBorderSpeed;\n  direction?: MovingBorderDirection;\n\n  // Content\n  children: React.ReactNode;\n\n  // Styling\n  className?: string;\n  blendMode?: MovingBorderBlendMode;\n  opacity?: number;\n  blur?: number;\n}\n\nconst MovingBorder = ({\n  color = 'hsl(var(--primary))',\n  duration = 3,\n  speed = 'normal',\n  direction = 'clockwise',\n  children,\n  className = '',\n  blendMode = 'normal',\n  opacity = 1,\n  blur = 0,\n}: MovingBorderProps) => {\n  const speedMap = {\n    slow: duration * 1.5,\n    normal: duration,\n    fast: duration * 0.6,\n  };\n\n  const animationDuration = speedMap[speed];\n  const rotation = direction === 'clockwise' ? 360 : -360;\n\n  const dimensions = {\n    width: 1000,\n    height: 1000,\n  };\n\n  const glowStyle: CSSProperties = {\n    background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, ${color} 20deg, transparent 90deg)`,\n    filter: `blur(${blur}px)`,\n    opacity,\n    mixBlendMode: blendMode,\n    width: `${dimensions.width}%`,\n    height: `${dimensions.height}%`,\n  };\n\n  return (\n    <div\n      className={cn(\n        'relative border p-[2px] overflow-hidden rounded',\n        className,\n      )}\n    >\n      <motion.div\n        className=\"absolute top-1/2 left-1/2 pointer-events-none z-[-1]\"\n        style={{\n          ...glowStyle,\n          x: '-50%',\n          y: '-50%',\n        }}\n        animate={{ rotate: rotation }}\n        transition={{\n          duration: animationDuration,\n          repeat: Infinity,\n          ease: 'linear',\n        }}\n      />\n\n      <div className=\"z-10 bg-background\">{children}</div>\n    </div>\n  );\n};\n\nexport default MovingBorder;\n"
+  }
+}

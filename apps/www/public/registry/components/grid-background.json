@@ -1,0 +1,10 @@
+{
+  "name": "grid-background",
+  "externalDependencies": [],
+  "internalDependencies": [],
+  "registryDependencies": [],
+  "file": {
+    "name": "grid-background.tsx",
+    "content": "import { cn } from '<%= it.aliases.utils %>';\nimport React from 'react';\n\ninterface GridBackgroundProps {\n  className?: string;\n  gridDimension?: string;\n  gridColor?: string;\n  backgroundColor?: string;\n  gridOpacity?: number;\n  lineWidth?: number;\n  absolute?: boolean;\n}\n\nconst GridBackground = ({\n  className,\n  gridDimension = '48',\n  gridColor = '#161616',\n  backgroundColor = 'bg-background',\n  gridOpacity = 1,\n  lineWidth = 1,\n  absolute = true,\n}: GridBackgroundProps) => {\n  const containerClasses = cn(\n    absolute && 'absolute inset-0 z-[-1]',\n    backgroundColor,\n    className,\n  );\n\n  const backgroundImage = `\n    linear-gradient(90deg, ${gridColor} ${lineWidth}px, transparent ${lineWidth}px),\n    linear-gradient(180deg, ${gridColor} ${lineWidth}px, transparent ${lineWidth}px)\n  `;\n\n  return (\n    <div className={containerClasses}>\n      <div\n        className=\"w-full h-full\"\n        style={{\n          backgroundImage,\n          backgroundSize: `${gridDimension}px ${gridDimension}px`,\n          opacity: gridOpacity,\n        }}\n      />\n    </div>\n  );\n};\n\nexport default GridBackground;\n"
+  }
+}

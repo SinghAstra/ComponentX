@@ -1,0 +1,14 @@
+{
+  "name": "floating-navbar",
+  "externalDependencies": [
+    "lucide-react"
+  ],
+  "internalDependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "file": {
+    "name": "floating-navbar.tsx",
+    "content": "'use client';\n\nimport { Button } from '@/components/ui/button';\nimport { cn } from '<%= it.aliases.utils %>';\nimport { LucideIcon } from 'lucide-react';\nimport { usePathname } from 'next/navigation';\nimport type * as React from 'react';\n\ninterface FloatingNavbarProps {\n  className?: string;\n  children: React.ReactNode;\n}\n\nexport function FloatingNavbar({ className, children }: FloatingNavbarProps) {\n  return (\n    <nav\n      className={cn('fixed top-6 left-1/2 -translate-x-1/2 z-10', className)}\n    >\n      {children}\n    </nav>\n  );\n}\n\ninterface FloatingNavbarContentProps {\n  className?: string;\n  children: React.ReactNode;\n}\n\nexport function FloatingNavbarContent({\n  className,\n  children,\n}: FloatingNavbarContentProps) {\n  return (\n    <div\n      className={cn(\n        'flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded p-2 shadow-lg',\n        className,\n      )}\n    >\n      {children}\n    </div>\n  );\n}\n\ninterface FloatingNavbarItemProps {\n  href: string;\n  icon?: LucideIcon;\n  label?: string;\n  className?: string;\n}\n\nexport function FloatingNavbarItem({\n  href,\n  icon: Icon,\n  label,\n  className,\n}: FloatingNavbarItemProps) {\n  const pathname = usePathname();\n  const isActive = pathname === href;\n\n  return (\n    <Button\n      variant=\"ghost\"\n      asChild\n      className={cn(\n        'hover:bg-primary transition-all duration-300 rounded font-normal',\n        isActive\n          ? 'bg-primary text-primary-foreground'\n          : 'text-muted-foreground',\n        className,\n      )}\n    >\n      <a href={href}>\n        {Icon ? <Icon className=\"h-4 w-4 mr-1\" /> : null}\n        {label ? <span className=\"hidden sm:inline\">{label}</span> : null}\n      </a>\n    </Button>\n  );\n}\n\nexport function FloatingNavbarSeparator({ className }: { className?: string }) {\n  return (\n    <span\n      aria-hidden=\"true\"\n      className={cn('h-5 w-px bg-muted/50', className)}\n    />\n  );\n}\n\nexport default FloatingNavbar;\n"
+  }
+}

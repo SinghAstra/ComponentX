@@ -1,0 +1,10 @@
+{
+  "name": "text-shine",
+  "externalDependencies": [],
+  "internalDependencies": [],
+  "registryDependencies": [],
+  "file": {
+    "name": "text-shine.tsx",
+    "content": "import { useId } from \"react\";\n\ninterface TextShineProps {\n  children: React.ReactNode;\n  className?: string;\n  duration?: number;\n  shineColor?: string;\n  shineStartOpacity?: number;\n  shinePeakOpacity?: number;\n  shineEndOpacity?: number;\n}\n\nexport function TextShine({\n  children,\n  className = \"\",\n  duration = 6,\n  shineColor = \"rgba(255, 255, 255, 1)\",\n  shineStartOpacity = 0.3,\n  shinePeakOpacity = 0.8,\n  shineEndOpacity = 0.3,\n}: TextShineProps) {\n  const id = useId();\n  const animationId = `shine-${id.replace(/:/g, \"\")}`;\n\n  const startColor = shineColor.replace(\n    /[\\d.]+(?=\\))/,\n    shineStartOpacity.toString()\n  );\n  const peakColor = shineColor.replace(\n    /[\\d.]+(?=\\))/,\n    shinePeakOpacity.toString()\n  );\n  const endColor = shineColor.replace(\n    /[\\d.]+(?=\\))/,\n    shineEndOpacity.toString()\n  );\n\n  return (\n    <>\n      <style>{`\n        @keyframes ${animationId} {\n          from {\n            background-position: 0 0;\n          }\n          to {\n            background-position: -400% 0;\n          }\n        }\n\n        .${animationId} {\n          background: linear-gradient(\n            90deg,\n            ${startColor} 0%,\n            ${peakColor} 20%,\n            ${endColor} 40%\n          );\n          background-position: 0 0;\n          background-size: 200% 100%;\n          -webkit-background-clip: text;\n          background-clip: text;\n          -webkit-text-fill-color: transparent;\n          animation: ${animationId} ${duration}s linear infinite;\n        }\n      `}</style>\n\n      <span className={`${animationId} ${className}`}>{children}</span>\n    </>\n  );\n}\n"
+  }
+}

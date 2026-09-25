@@ -1,0 +1,10 @@
+{
+  "name": "moving-background",
+  "externalDependencies": [],
+  "internalDependencies": [],
+  "registryDependencies": [],
+  "file": {
+    "name": "moving-background.tsx",
+    "content": "import { cn } from '<%= it.aliases.utils %>';\n\ninterface MovingBackgroundProps {\n  backgroundColor?: string;\n  shineColor?: string;\n\n  animationDuration?: number;\n  animationDelay?: number;\n  animated?: boolean;\n  gradientAngle?: number;\n  shineWidth?: number;\n  zIndex?: number;\n  opacity?: number;\n  className?: string;\n  position?: 'absolute' | 'fixed' | 'relative';\n}\n\nfunction MovingBackground({\n  backgroundColor = 'hsl(var(--muted)/0.4)',\n  shineColor = 'hsl(var(--primary)/0.4)',\n  animationDuration = 6000,\n  animationDelay = 0,\n  animated = true,\n  gradientAngle = 110,\n  shineWidth = 10,\n  zIndex = -1,\n  opacity = 1,\n  className,\n  position = 'absolute',\n}: MovingBackgroundProps) {\n  const shineStart = 50 - shineWidth / 2;\n  const shineEnd = 50 + shineWidth / 2;\n\n  const positionClass = {\n    absolute: 'absolute',\n    fixed: 'fixed',\n    relative: 'relative',\n  }[position];\n\n  return (\n    <>\n      {animated && (\n        <style>{`\n          @keyframes moveShine {\n            0% { background-position: 200% 0; }\n          100% { background-position: 0% 0; }\n          }\n        `}</style>\n      )}\n\n      <div\n        className={cn(positionClass, 'inset-0 overflow-hidden', className)}\n        style={{\n          zIndex,\n          opacity,\n          background: `linear-gradient(${gradientAngle}deg, ${backgroundColor} ${shineStart}%, ${shineColor} 50%, ${backgroundColor} ${shineEnd}%)`,\n          backgroundSize: '400% 100%',\n          animation: animated\n            ? `moveShine ${animationDuration}ms infinite linear ${animationDelay}ms`\n            : 'none',\n        }}\n      />\n    </>\n  );\n}\n\nexport default MovingBackground;\n"
+  }
+}
