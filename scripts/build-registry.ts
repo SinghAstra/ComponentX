@@ -100,6 +100,8 @@ function classifyImports(specifiers: string[]): DependencyLists {
 
 
 async function main() {
+  const startedAt = Date.now()
+
   try {
     console.log('Initializing registry generation...')
 
@@ -107,11 +109,16 @@ async function main() {
     await fs.mkdir(REGISTRY_OUTPUT_PATH, { recursive: true })
 
     const project = new Project()
-    const componentPaths = await glob(`${COMPONENTS_PATH}/*.tsx`)
+    const componentPaths = (await glob(`${COMPONENTS_PATH}/*.tsx`)).sort()
+
+    if (componentPaths.length === 0) {
+      throw new Error(`No components found in ${COMPONENTS_PATH}`)
+    }
 
     const components: string[] = []
 
     for (const componentPath of componentPaths) {
+      const componentStartedAt = Date.now()
       const sourceFile = project.addSourceFileAtPath(componentPath)
       const importSpecifiers = sourceFile
         .getImportDeclarations()
@@ -121,8 +128,6 @@ async function main() {
       rewriteLibAliases(sourceFile)
 
       const { name, base } = path.parse(sourceFile.getBaseName())
-
-      console.log(`Processing component: ${name}`)
 
       const entry: Registry = {
         name,
@@ -139,9 +144,11 @@ async function main() {
         'utf8',
       )
 
-      console.log(`Processed component: ${name}`)
-
       components.push(name)
+
+      console.log(
+        `Processed ${name} in ${Date.now() - componentStartedAt}ms (${components.length}/${componentPaths.length})`,
+      )
     }
 
     components.sort()
@@ -152,12 +159,15 @@ async function main() {
       'utf8',
     )
 
-    console.log('Registry generation completed successfully.')
+    console.log(
+      `Registry generation completed successfully: ${components.length} components in ${Date.now() - startedAt}ms.`,
+    )
   } catch (error) {
-    console.log('Error during registry generation.')
     if (error instanceof Error) {
-      console.log('error.stack is ', error.stack)
-      console.log('error.message is ', error.message)
+      console.error(`Registry generation failed: ${error.message}`)
+      console.error(error.stack)
+    } else {
+      console.error('Registry generation failed with an unknown error.')
     }
     process.exit(1)
   }
