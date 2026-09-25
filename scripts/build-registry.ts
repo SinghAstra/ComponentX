@@ -27,6 +27,62 @@ const REGISTRY_OUTPUT_PATH = path.resolve(
   'apps/www/public/registry/components',
 )
 
+type DependencyLists = Pick<
+  Registry,
+  'externalDependencies' | 'internalDependencies' | 'registryDependencies'
+>
+
+const COMPONENT_PREFIX = '@/components/component-x/'
+const UI_PREFIX = '@/components/ui/'
+
+const FRAMEWORK_PACKAGES = new Set(['react', 'react-dom', 'next'])
+
+function toPackageName(specifier: string): string {
+  const segments = specifier.split('/')
+  return specifier.startsWith('@')
+    ? `${segments[0]}/${segments[1]}`
+    : segments[0]
+}
+
+function classifyImports(specifiers: string[]): DependencyLists {
+  const externalDependencies = new Set<string>()
+  const internalDependencies = new Set<string>()
+  const registryDependencies = new Set<string>()
+
+  for (const specifier of specifiers) {
+    if (specifier.startsWith(COMPONENT_PREFIX)) {
+      internalDependencies.add(specifier.slice(COMPONENT_PREFIX.length))
+      continue
+    }
+
+    if (specifier.startsWith(UI_PREFIX)) {
+      registryDependencies.add(specifier.slice(UI_PREFIX.length))
+      continue
+    }
+
+    if (specifier.startsWith('@/lib/')) {
+      continue
+    }
+    if (specifier.startsWith('@/components/providers/')) {
+      continue
+    }
+
+    const packageName = toPackageName(specifier)
+
+    if (FRAMEWORK_PACKAGES.has(packageName)) {
+      continue
+    }
+
+    externalDependencies.add(packageName)
+  }
+
+  return {
+    externalDependencies: [...externalDependencies].sort(),
+    internalDependencies: [...internalDependencies].sort(),
+    registryDependencies: [...registryDependencies].sort(),
+  }
+}
+
 
 async function main() {
   try {
@@ -35,18 +91,21 @@ async function main() {
     const project = new Project()
     const componentPaths = await glob(`${COMPONENTS_PATH}/*.tsx`)
 
-    const importSpecifiersByComponent = new Map<string, string[]>()
+    const dependenciesByComponent = new Map<string, DependencyLists>()
 
-    for (const componentPath of componentPaths.slice(0,2)) {
+    for (const componentPath of componentPaths) {
       const sourceFile = project.addSourceFileAtPath(componentPath)
       const importSpecifiers = sourceFile
         .getImportDeclarations()
         .map(declaration => declaration.getModuleSpecifierValue())
-      importSpecifiersByComponent.set(sourceFile.getBaseName(), importSpecifiers)
+
+      dependenciesByComponent.set(
+        sourceFile.getBaseName(),
+        classifyImports(importSpecifiers),
+      )
     }
 
-
-    void importSpecifiersByComponent
+    void dependenciesByComponent
     void ({} as Registry)
   } catch (error) {
     console.log('Error during registry generation.')
