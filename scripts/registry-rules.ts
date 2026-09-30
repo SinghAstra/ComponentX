@@ -1,10 +1,5 @@
 import path from 'node:path'
 
-/**
- * Single source of truth for the registry generator (build-registry.ts) and the
- * registry consistency check (check-registry.ts). Nothing in this file may read
- * or write files or run on import, so both scripts can share it safely.
- */
 
 export type RegistryFile = {
   name: string
@@ -46,27 +41,18 @@ const LIB_PREFIX = '@/lib/'
 
 export const FRAMEWORK_PACKAGES = new Set(['react', 'react-dom', 'next'])
 
-/**
- * Specifiers that are rewritten to Eta placeholders so the CLI can resolve them
- * at install time. Everything else stays literal in `file.content`.
- */
 export const ALIAS_TEMPLATES: Record<string, string> = {
   '@/lib/utils': '<%= it.aliases.utils %>',
   '@/lib/variants': '<%= it.aliases.variants %>',
 }
 
-/**
- * Specifiers that are expected to survive verbatim in `file.content`.
- */
+
 export function isLiteralSpecifier(specifier: string): boolean {
   return (
     specifier.startsWith(UI_PREFIX) || specifier.startsWith(PROVIDER_PREFIX)
   )
 }
 
-/**
- * `lucide-react/icons/foo` -> `lucide-react`, `@radix-ui/react-dialog` -> `@radix-ui/react-dialog`.
- */
 export function toPackageName(specifier: string): string {
   const segments = specifier.split('/')
   return specifier.startsWith('@')
