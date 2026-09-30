@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@types/mdx':
+        specifier: ^2.0.14
+        version: 2.0.14
       '@types/node':
         specifier: ^26.6.2
         version: 26.6.2
@@ -180,6 +183,9 @@ importers:
         specifier: ^3.24.1
         version: 3.25.76
     devDependencies:
+      '@types/mdx':
+        specifier: ^2.0.14
+        version: 2.0.14
       '@types/node':
         specifier: ^20
         version: 20.19.43
@@ -226,9 +232,6 @@ importers:
         specifier: ^12.10.0
         version: 12.11.1(@types/node@24.13.6)
     devDependencies:
-      '@types/commander':
-        specifier: ^2.12.5
-        version: 2.12.5
       '@types/node':
         specifier: ^24.10.0
         version: 24.13.6
@@ -1994,10 +1997,6 @@ packages:
 
   '@tybys/wasm-util@0.10.4':
     resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
-
-  '@types/commander@2.12.5':
-    resolution: {integrity: sha512-YXGZ/rz+s57VbzcvEV9fUoXeJlBt5HaKu5iUheiIWNsJs23bz6AnRuRiZBRVBLYyPnixNvVnuzM5pSaxr8Yp/g==}
-    deprecated: This is a stub types definition. commander provides its own type definitions, so you do not need this installed.
 
   '@types/debug@4.1.13':
     resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
@@ -6507,10 +6506,6 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
-
-  '@types/commander@2.12.5':
-    dependencies:
-      commander: 14.0.3
 
   '@types/debug@4.1.13':
     dependencies:
