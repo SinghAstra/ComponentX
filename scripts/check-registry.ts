@@ -8,6 +8,7 @@ import {
   ALIAS_TEMPLATES,
   COMPONENTS_PATH,
   INDEX_FILE_NAME,
+  LIB_PREFIX,
   REGISTRY_OUTPUT_PATH,
   Registry,
   classifyImports,
@@ -144,6 +145,14 @@ async function main() {
       .getImportDeclarations()
       .map(declaration => declaration.getModuleSpecifierValue())
     const expected = classifyImports(specifiers)
+
+    for (const specifier of new Set(specifiers)) {
+      if (specifier.startsWith(LIB_PREFIX) && !ALIAS_TEMPLATES[specifier]) {
+        fail(
+          `${name}.tsx imports ${specifier}, which the registry does not ship — inline it in the component so the file stays self-contained`,
+        )
+      }
+    }
 
     for (const listName of DEPENDENCY_LISTS) {
       const list = entry[listName]

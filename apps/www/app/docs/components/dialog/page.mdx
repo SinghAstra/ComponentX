@@ -47,9 +47,17 @@ export function DialogPreview() {
   code={`"use client";
 
 import { cn } from '@/lib/utils';
-import { scaleInVariant } from '@/lib/variants';
 import { motion } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
+
+const scaleInVariant = {
+  hidden: { opacity: 0, scale: 0.6 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.2 },
+  },
+};
 
 interface DialogProps {
   isDialogVisible: boolean;
