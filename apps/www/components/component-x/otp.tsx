@@ -97,17 +97,14 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    // Only allow single digit
     if (value.length > 1) return;
 
-    // Only allow numbers
     if (value && !/^\d$/.test(value)) return;
 
     const newValues = [...values];
     newValues[index] = value;
     setValues(newValues);
 
-    // Move to next input if digit entered
     if (value && index < values.length - 1) {
       setFocusIndex(index + 1);
     }
@@ -119,7 +116,6 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
       newValues[index] = "";
       setValues(newValues);
 
-      // Move to previous input on backspace
       if (index > 0) {
         setFocusIndex(index - 1);
       }
@@ -144,7 +140,6 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
     });
     setValues(newValues);
 
-    // Focus last input or next empty input
     const nextEmptyIndex = newValues.findIndex((v, i) => i >= index && !v);
     if (nextEmptyIndex !== -1) {
       setFocusIndex(nextEmptyIndex);
@@ -186,7 +181,6 @@ export function useOTPField() {
   return {
     value: otpValue,
     onChange: (newValue: string) => {
-      // Handle direct value changes (e.g., from form submission)
       const digitsOnly = newValue.replace(/\D/g, "").split("").slice(0, length);
       setValues([...digitsOnly, ...Array(length - digitsOnly.length).fill("")]);
     },

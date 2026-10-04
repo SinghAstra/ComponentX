@@ -15,18 +15,14 @@ export type MovingBorderBlendMode =
   | 'lighten';
 
 export interface MovingBorderProps {
-  // Color & appearance
   color?: string;
 
-  // Animation
   duration?: number;
   speed?: MovingBorderSpeed;
   direction?: MovingBorderDirection;
 
-  // Content
   children: React.ReactNode;
 
-  // Styling
   className?: string;
   blendMode?: MovingBorderBlendMode;
   opacity?: number;

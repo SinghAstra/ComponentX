@@ -41,8 +41,6 @@ export const LIB_PREFIX = '@/lib/'
 
 export const FRAMEWORK_PACKAGES = new Set(['react', 'react-dom', 'next'])
 
-// The only shared file a registry component may import. Components must stay
-// self-contained, so anything else from `@/lib/*` has to be inlined instead.
 export const ALIAS_TEMPLATES: Record<string, string> = {
   '@/lib/utils': '<%= it.aliases.utils %>',
 }

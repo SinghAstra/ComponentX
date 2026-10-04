@@ -2,10 +2,6 @@ packages:
   - "apps/*"
   - "packages/*"
 
-# pnpm >= 11 fails the install with ERR_PNPM_IGNORED_BUILDS if a dependency has
-# a postinstall script that hasn't been explicitly allowed or denied here.
-# Every dependency we use is denied: none of these scripts are needed for
-# `next build`, and not running third-party install scripts is the safer default.
 allowBuilds:
   contentlayer2: false
   esbuild: false

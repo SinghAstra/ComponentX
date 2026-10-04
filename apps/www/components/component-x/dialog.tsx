@@ -4,9 +4,6 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
 
-// Kept local to this component so the file stays self-contained: a user who
-// copies `dialog.tsx` out of the registry gets a working file with no extra
-// `lib/variants` file to set up, and can tweak the animation freely.
 const scaleInVariant = {
   hidden: { opacity: 0, scale: 0.6 },
   visible: {

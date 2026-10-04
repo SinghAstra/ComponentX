@@ -1,10 +1,28 @@
-/**
- * Placeholder entry point for the ComponentX CLI.
- *
- * Task 5c set the package up (name, tsup build, dependencies). Task 5d replaces
- * this file with the real `cx init` / `cx add` commander skeleton.
- *
- * Imports are resolved by tsup, so relative imports are written without an
- * extension: `import { x } from './utils'`.
- */
-console.log('cx — ComponentX CLI (skeleton lands in task 5d)')
+import { Command } from 'commander'
+
+import { createAddCommand } from './commands/add'
+import { createInitCommand } from './commands/init'
+import { CliError } from './lib/errors'
+import { logger } from './lib/logger'
+import { withSharedOptions } from './lib/options'
+
+const VERSION = '0.1.0'
+
+const program = new Command()
+
+program
+  .name('cx')
+  .description('add ComponentX components to your project')
+  .version(VERSION)
+  .addCommand(withSharedOptions(createInitCommand()))
+  .addCommand(withSharedOptions(createAddCommand()))
+
+program.parseAsync(process.argv).catch((error: unknown) => {
+  logger.error(error instanceof Error ? error.message : String(error))
+
+  if (process.env.CX_DEBUG && error instanceof Error && error.stack) {
+    logger.error(error.stack)
+  }
+
+  process.exit(1)
+})
