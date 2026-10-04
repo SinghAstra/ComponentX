@@ -1,8 +1,21 @@
 {
-  "name": "@component-x/ui",
-  "version": "1.0.1",
+  "name": "@component-x/cli",
+  "version": "0.1.0",
   "bin": {
     "cx": "./dist/index.js"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "chalk": "^5.6.2",
@@ -10,16 +23,20 @@
     "inquirer": "^12.10.0"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0"
+    "@types/node": "^24.10.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
   },
-  "scripts": {},
   "keywords": [
     "cli",
     "components",
+    "componentx",
+    "registry",
+    "shadcn",
     "typescript"
   ],
   "author": "SinghAstra",
   "license": "ISC",
-  "description": "",
-  "type": "module"
+  "description": "Add ComponentX components to your project instantly."
 }
