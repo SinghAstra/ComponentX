@@ -16,6 +16,12 @@ export type RegistryIndex = {
 export type RegistryClient = {
   baseUrl: string;
   timeoutMs: number;
+}
+
+export const DEFAULT_REGISTRY_URL = 'https://componentx.vercel.app/registry/'
+
+export function resolveRegistryUrl(override?: string): string {
+  return override ?? process.env.CX_REGISTRY_URL ?? DEFAULT_REGISTRY_URL
 };
 
 export function createRegistryClient(
