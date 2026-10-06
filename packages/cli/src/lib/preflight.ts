@@ -49,6 +49,11 @@ async function findUp(from: string, file: string): Promise<string | null> {
   }
 }
 
+async function readJson(target: string): Promise<any> {
+  const raw = await fs.readFile(target, 'utf8')
+  return JSON.parse(raw.replace(/^\uFEFF/, ''))
+}
+
 function readPathMappings(raw: unknown): PathMapping[] {
   if (!raw || typeof raw !== 'object') return []
   const paths = (raw as Record<string, unknown>).paths
@@ -139,7 +144,7 @@ export async function preflight(cwd = process.cwd()): Promise<Preflight> {
   }
 
   const projectRoot = path.dirname(componentsPath)
-  const components = JSON.parse(await fs.readFile(componentsPath, 'utf8'))
+  const components = await readJson(componentsPath)
 
   const style =
     typeof components.style === 'string' ? components.style : 'new-york'
@@ -153,7 +158,7 @@ export async function preflight(cwd = process.cwd()): Promise<Preflight> {
   let baseUrl = '.'
 
   if (tsconfigPath) {
-    const tsconfig = JSON.parse(await fs.readFile(tsconfigPath, 'utf8'))
+    const tsconfig = await readJson(tsconfigPath)
     const options = tsconfig.compilerOptions ?? {}
     mappings = readPathMappings(options)
     if (typeof options.baseUrl === 'string') baseUrl = options.baseUrl
@@ -180,9 +185,7 @@ export async function preflight(cwd = process.cwd()): Promise<Preflight> {
   )
 
   const pkgPath = path.join(projectRoot, 'package.json')
-  const pkg = (await exists(pkgPath))
-    ? JSON.parse(await fs.readFile(pkgPath, 'utf8'))
-    : {}
+  const pkg = (await exists(pkgPath)) ? await readJson(pkgPath) : {}
 
   return {
     projectRoot,

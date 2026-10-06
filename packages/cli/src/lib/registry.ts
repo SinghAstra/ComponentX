@@ -1,3 +1,5 @@
+import { CliError } from './errors';
+
 export type RegistryItem = {
   name: string;
   externalDependencies: string[];
@@ -31,6 +33,16 @@ export function createRegistryClient(
   return { baseUrl: baseUrl.replace(/\/+$/, ''), timeoutMs };
 }
 
+export class RegistryError extends Error {
+  status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = 'RegistryError';
+    this.status = status;
+  }
+}
+
 export function registryUrl(
   client: RegistryClient,
   ...segments: string[]
@@ -47,6 +59,16 @@ async function fetchWithTimeout(
 
   try {
     return await fetch(url, { signal: controller.signal });
+  } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new CliError(
+        `Registry request timed out after ${client.timeoutMs}ms (${url})`,
+      );
+    }
+    const reason = error instanceof Error ? error.message : String(error);
+    throw new CliError(
+      `Cannot reach the registry at ${client.baseUrl}: ${reason}`,
+    );
   } finally {
     clearTimeout(timeout);
   }
@@ -104,9 +126,15 @@ export async function fetchComponent(
 
   if (!response.ok) {
     if (response.status === 404) {
-      throw new Error(`Component "${name}" not found in registry`);
+      throw new RegistryError(
+        `Component "${name}" not found in registry`,
+        404,
+      );
     }
-    throw new Error(`Failed to fetch component: ${response.status} ${response.statusText} (${url})`);
+    throw new RegistryError(
+      `Failed to fetch component: ${response.status} ${response.statusText} (${url})`,
+      response.status,
+    );
   }
 
   const data = await response.json();
