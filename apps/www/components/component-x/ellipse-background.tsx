@@ -64,16 +64,8 @@ function EllipseBackground({
   };
 
   return (
-    <div
-      className={cn(
-        'absolute inset-0 overflow-hidden bg-background z-[-1]',
-        className,
-      )}
-    >
-      <div
-        className={`w-full h-full ${animate && 'animate-pulse'}`}
-        style={style}
-      />
+    <div className={cn('absolute inset-0 overflow-hidden bg-background z-[-1]', className)}>
+      <div className={`w-full h-full ${animate && 'animate-pulse'}`} style={style} />
     </div>
   );
 }

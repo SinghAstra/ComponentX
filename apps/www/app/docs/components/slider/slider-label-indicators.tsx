@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import {
   Slider,
   SliderContent,
   SliderIndicatorLabels,
   SliderItem,
-} from "@/components/component-x/slider";
+} from '@/components/component-x/slider';
 
 export function SliderLabelIndicators() {
   return (
@@ -28,7 +28,7 @@ export function SliderLabelIndicators() {
         <div className="flex justify-center p-2">
           <SliderIndicatorLabels
             classNameButton="hover:text-foreground transition-all duration-300"
-            labels={["First", "Second", "Third", "Fourth"]}
+            labels={['First', 'Second', 'Third', 'Fourth']}
           />
         </div>
       </Slider>

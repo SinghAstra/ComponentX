@@ -5,12 +5,7 @@ import LampBackground, {
 } from '@/components/component-x/lamp-background';
 
 export function LampBackgroundPositions() {
-  const positions: LampBackgroundPosition[] = [
-    'top',
-    'right',
-    'bottom',
-    'left',
-  ];
+  const positions: LampBackgroundPosition[] = ['top', 'right', 'bottom', 'left'];
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-4">

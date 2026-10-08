@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import { ImageUp, X } from 'lucide-react';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 type Accept = string | string[];
 
@@ -45,7 +45,7 @@ export function FileUploader({
       if (onChange) onChange(next);
       else setInternalFiles(next);
     },
-    [onChange],
+    [onChange]
   );
 
   const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
@@ -60,7 +60,7 @@ export function FileUploader({
     return () => {
       Object.values(urls).forEach((u) => URL.revokeObjectURL(u));
     };
-  }, [files]);
+  }, [files, getFileKey]);
 
   const handleBrowseClick = () => {
     if (disabled) return;
@@ -83,7 +83,7 @@ export function FileUploader({
     const k = 1024;
     const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return `${(bytes / Math.pow(k, i)).toFixed(i === 0 ? 0 : 1)} ${sizes[i]}`;
+    return `${(bytes / k ** i).toFixed(i === 0 ? 0 : 1)} ${sizes[i]}`;
   }
 
   function getFileKey(f: File) {
@@ -104,7 +104,7 @@ export function FileUploader({
         return f.type === rule;
       });
     },
-    [normalizeAccept],
+    [normalizeAccept]
   );
 
   const validate = useCallback(
@@ -155,7 +155,7 @@ export function FileUploader({
 
       return { finalAccepted, rejections };
     },
-    [isAccepted, maxFiles, maxSize, multiple],
+    [isAccepted, maxFiles, maxSize, multiple, getFileKey, formatSize]
   );
 
   const addFiles = useCallback(
@@ -170,7 +170,7 @@ export function FileUploader({
       const next = multiple ? [...files, ...finalAccepted] : finalAccepted;
       setFiles(next);
     },
-    [disabled, files, multiple, onReject, setFiles, validate],
+    [disabled, files, multiple, onReject, setFiles, validate]
   );
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -216,9 +216,7 @@ export function FileUploader({
 
   return (
     <div className={cn('w-full', className)}>
-      <label className="block text-sm font-medium text-foreground mb-2">
-        {label}
-      </label>
+      <label className="block text-sm font-medium text-foreground mb-2">{label}</label>
       <div
         role="button"
         tabIndex={disabled ? -1 : 0}
@@ -235,9 +233,7 @@ export function FileUploader({
           'bg-background text-foreground',
           'outline-none',
           isDragging ? 'ring-1 ring-offset-2 ring-primary' : 'ring-0',
-          disabled
-            ? 'opacity-60 cursor-not-allowed'
-            : 'cursor-pointer hover:bg-muted/30',
+          disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer hover:bg-muted/30'
         )}
       >
         <input
@@ -255,9 +251,7 @@ export function FileUploader({
           <div
             className={cn(
               'mx-auto h-12 w-12 rounded flex items-center justify-center',
-              isDragging
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted text-muted-foreground',
+              isDragging ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
             )}
             aria-hidden="true"
           >

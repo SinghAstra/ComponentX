@@ -1,9 +1,9 @@
 #!/usr/bin/env tsx
-import path from 'node:path';
-import { promises as fs } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { tmpdir } from 'node:os';
 import { randomUUID } from 'node:crypto';
+import { promises as fs } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 const ROOT_DIR = path.resolve(import.meta.dirname, '../../..');
 const TEMP_DIR = path.join(tmpdir(), `componentx-smoke-${randomUUID()}`);
@@ -27,17 +27,17 @@ const NEXTJS_PACKAGE_JSON = {
     '@radix-ui/react-tabs': '1.1.0',
     'lucide-react': '0.400.0',
     'class-variance-authority': '0.7.0',
-    'clsx': '2.1.0',
+    clsx: '2.1.0',
     'tailwind-merge': '2.4.0',
   },
   devDependencies: {
-    typescript: '5.0.0',
-    '@types/node': '20.0.0',
-    '@types/react': '18.0.0',
-    '@types/react-dom': '18.0.0',
-    'tailwindcss': '3.4.0',
-    'postcss': '8.4.0',
-    'autoprefixer': '10.4.0',
+    typescript: '5.9.3',
+    '@types/node': '22.0.0',
+    '@types/react': '18.3.0',
+    '@types/react-dom': '18.3.0',
+    tailwindcss: '3.4.0',
+    postcss: '8.4.0',
+    autoprefixer: '10.4.0',
   },
 };
 
@@ -184,16 +184,29 @@ async function setupNextProject(): Promise<void> {
   await fs.mkdir(path.join(TEMP_DIR, 'src', 'lib'), { recursive: true });
   await fs.mkdir(path.join(TEMP_DIR, 'src', 'components'), { recursive: true });
 
-  await fs.writeFile(path.join(TEMP_DIR, 'package.json'), JSON.stringify(NEXTJS_PACKAGE_JSON, null, 2));
+  await fs.writeFile(
+    path.join(TEMP_DIR, 'package.json'),
+    JSON.stringify(NEXTJS_PACKAGE_JSON, null, 2)
+  );
   await fs.writeFile(path.join(TEMP_DIR, 'tsconfig.json'), JSON.stringify(TSCONFIG_JSON, null, 2));
-  await fs.writeFile(path.join(TEMP_DIR, 'components.json'), JSON.stringify(COMPONENTS_JSON, null, 2));
+  await fs.writeFile(
+    path.join(TEMP_DIR, 'components.json'),
+    JSON.stringify(COMPONENTS_JSON, null, 2)
+  );
   await fs.writeFile(path.join(TEMP_DIR, 'tailwind.config.ts'), TAILWIND_CONFIG);
   await fs.writeFile(path.join(TEMP_DIR, 'src', 'app', 'globals.css'), GLOBALS_CSS);
   await fs.writeFile(path.join(TEMP_DIR, 'src', 'lib', 'utils.ts'), UTILS_TS);
-  await fs.writeFile(path.join(TEMP_DIR, 'next-env.d.ts'), '/// <reference types="next" />\n/// <reference types="next/image-types/global" />\n');
+  await fs.writeFile(
+    path.join(TEMP_DIR, 'next-env.d.ts'),
+    '/// <reference types="next" />\n/// <reference types="next/image-types/global" />\n'
+  );
 }
 
-function runCmd(cmd: string, args: string[], cwd: string): { stdout: string; stderr: string; status: number } {
+function runCmd(
+  cmd: string,
+  args: string[],
+  cwd: string
+): { stdout: string; stderr: string; status: number } {
   const result = spawnSync(cmd, args, { cwd, encoding: 'utf8', timeout: 120_000, shell: true });
   return { stdout: result.stdout ?? '', stderr: result.stderr ?? '', status: result.status ?? 1 };
 }
@@ -221,7 +234,11 @@ async function main(): Promise<void> {
     }
 
     console.log('🚀 Running cx add dialog color-picker file-upload...');
-    const addResult = runCmd('node', [CLI_PATH, 'add', 'dialog', 'color-picker', 'file-upload', '--registry', REGISTRY_URL], TEMP_DIR);
+    const addResult = runCmd(
+      'node',
+      [CLI_PATH, 'add', 'dialog', 'color-picker', 'file-upload', '--registry', REGISTRY_URL],
+      TEMP_DIR
+    );
     console.log(addResult.stdout.trim());
     if (addResult.status !== 0) {
       console.error('stderr:', addResult.stderr);

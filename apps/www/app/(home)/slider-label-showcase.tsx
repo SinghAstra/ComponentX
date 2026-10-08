@@ -1,19 +1,16 @@
-"use client";
+'use client';
 
 import {
   Slider,
   SliderContent,
   SliderIndicatorLabels,
   SliderItem,
-} from "@/components/component-x/slider";
-import { ComponentShowcase } from "./component-showcase";
+} from '@/components/component-x/slider';
+import { ComponentShowcase } from './component-showcase';
 
 export function SliderLabelShowcase() {
   return (
-    <ComponentShowcase
-      docsLink="/docs/components/slider#label-indicators"
-      variant="compact"
-    >
+    <ComponentShowcase docsLink="/docs/components/slider#label-indicators" variant="compact">
       <div className="w-full h-full">
         <Slider className="w-full h-full overflow-hidden flex flex-col">
           <SliderContent className="flex-1">
@@ -33,7 +30,7 @@ export function SliderLabelShowcase() {
           <div className="flex justify-center p-4">
             <SliderIndicatorLabels
               classNameButton="hover:text-foreground transition-all duration-300"
-              labels={["First", "Second", "Third", "Fourth"]}
+              labels={['First', 'Second', 'Third', 'Fourth']}
             />
           </div>
         </Slider>

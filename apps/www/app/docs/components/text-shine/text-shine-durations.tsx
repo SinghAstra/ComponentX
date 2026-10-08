@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { TextShine } from "@/components/component-x/text-shine";
+import { TextShine } from '@/components/component-x/text-shine';
 
 export function TextShineDuration() {
   const durations = [
-    { label: "Fast", value: 3 },
-    { label: "Medium", value: 6 },
-    { label: "Slow", value: 12 },
+    { label: 'Fast', value: 3 },
+    { label: 'Medium', value: 6 },
+    { label: 'Slow', value: 12 },
   ];
 
   return (

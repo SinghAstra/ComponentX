@@ -27,9 +27,7 @@ export function ConicBackgroundSpans() {
             colorTwo="hsl(var(--primary))"
           />
           <div className="relative z-10 flex items-center justify-center h-full">
-            <h3 className="text-2xl text-foreground">
-              {capitalizeFirstLetter(span)}
-            </h3>
+            <h3 className="text-2xl text-foreground">{capitalizeFirstLetter(span)}</h3>
           </div>
         </div>
       ))}

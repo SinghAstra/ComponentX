@@ -1,8 +1,9 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface TabElem {
   label: string;
@@ -62,9 +63,7 @@ const Tabs = ({ tabs, tabContentClassName }: TabsProps) => {
           }}
         />
       </div>
-      <div className={cn('mt-4', tabContentClassName)}>
-        {tabs[activeTab].content}
-      </div>
+      <div className={cn('mt-4', tabContentClassName)}>{tabs[activeTab].content}</div>
     </div>
   );
 };

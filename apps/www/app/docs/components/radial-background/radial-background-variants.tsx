@@ -1,8 +1,6 @@
 'use client';
 
-import RadialBackground, {
-  type RadialVariant,
-} from '@/components/component-x/radial-background';
+import RadialBackground, { type RadialVariant } from '@/components/component-x/radial-background';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -27,13 +25,9 @@ export function RadialBackgroundVariants() {
             radius={60}
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
-            <h3 className="text-2xl text-foreground">
-              {capitalizeFirstLetter(variant)}
-            </h3>
+            <h3 className="text-2xl text-foreground">{capitalizeFirstLetter(variant)}</h3>
             <p className="text-sm text-muted-foreground mt-[1px]">
-              {variant === 'fade'
-                ? 'Smooth gradient fade'
-                : 'Bright glowing effect'}
+              {variant === 'fade' ? 'Smooth gradient fade' : 'Bright glowing effect'}
             </p>
           </div>
         </div>

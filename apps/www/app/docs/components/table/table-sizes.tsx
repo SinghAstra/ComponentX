@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Table,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@/components/component-x/table";
+} from '@/components/component-x/table';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -15,15 +15,15 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function TableSizes() {
-  const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ['sm', 'md', 'lg'] as const;
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-6 p-4">
       {sizes.map((size) => (
         <div key={size}>
           <h3 className="text-sm font-semibold text-muted-foreground mb-3">
-            {capitalizeFirstLetter(size)} -{" "}
-            {size === "sm" ? "Compact" : size === "md" ? "Default" : "Spacious"}
+            {capitalizeFirstLetter(size)} -{' '}
+            {size === 'sm' ? 'Compact' : size === 'md' ? 'Default' : 'Spacious'}
           </h3>
           <Table size={size}>
             <TableHead>

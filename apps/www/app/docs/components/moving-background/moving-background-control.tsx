@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import MovingBackground from '@/components/component-x/moving-background';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 export function MovingBackgroundControl() {
   const [animated, setAnimated] = useState(true);
@@ -17,9 +17,7 @@ export function MovingBackgroundControl() {
             animationDuration={6000}
             animated={animated}
           />
-          <h3 className="text-foreground relative z-10 text-center">
-            Animation Control
-          </h3>
+          <h3 className="text-foreground relative z-10 text-center">Animation Control</h3>
         </div>
         <Button
           onClick={() => setAnimated(!animated)}

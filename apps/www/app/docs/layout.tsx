@@ -1,14 +1,15 @@
-"use client";
+'use client';
 
-import { MenuToggle } from "@/components/component-x/menu-toggle";
-import DocsSidebar from "@/components/layout/docs-sidebar";
-import { DocsPagination } from "@/components/mdx/docs-pagination";
-import TableOfContents from "@/components/mdx/toc";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { siteConfig } from "@/config/site";
-import Link from "next/link";
-import React, { useState } from "react";
+import Link from 'next/link';
+import type React from 'react';
+import { useState } from 'react';
+import { MenuToggle } from '@/components/component-x/menu-toggle';
+import DocsSidebar from '@/components/layout/docs-sidebar';
+import { DocsPagination } from '@/components/mdx/docs-pagination';
+import TableOfContents from '@/components/mdx/toc';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { siteConfig } from '@/config/site';
 
 const DocsLayoutHeader = ({
   isOpen,
@@ -25,9 +26,9 @@ const DocsLayoutHeader = ({
 
       <div className="flex gap-2 items-center">
         <div className="hidden md:block">
-          <a href={siteConfig.links.githubRepo} target="_blank">
+          <a href={siteConfig.links.githubRepo} target="_blank" rel="noopener">
             <Button
-              variant={"outline"}
+              variant={'outline'}
               className="bg-transparent hover:bg-muted/20 transition-all duration-300 font-normal"
             >
               Github
@@ -60,14 +61,8 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
       <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-        <SheetContent
-          side="right"
-          className="h-dvh flex flex-col gap-0 overflow-hidden w-full p-0"
-        >
-          <DocsLayoutHeader
-            setIsSheetOpen={setIsSheetOpen}
-            isOpen={isSheetOpen}
-          />
+        <SheetContent side="right" className="h-dvh flex flex-col gap-0 overflow-hidden w-full p-0">
+          <DocsLayoutHeader setIsSheetOpen={setIsSheetOpen} isOpen={isSheetOpen} />
           <DocsSidebar
             className="block w-full bg-transparent p-2"
             onLinkClick={() => setIsSheetOpen(false)}

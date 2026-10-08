@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import type * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface FloatingNavbarProps {
   className?: string;
@@ -13,11 +13,7 @@ interface FloatingNavbarProps {
 
 export function FloatingNavbar({ className, children }: FloatingNavbarProps) {
   return (
-    <nav
-      className={cn('fixed top-6 left-1/2 -translate-x-1/2 z-10', className)}
-    >
-      {children}
-    </nav>
+    <nav className={cn('fixed top-6 left-1/2 -translate-x-1/2 z-10', className)}>{children}</nav>
   );
 }
 
@@ -26,15 +22,12 @@ interface FloatingNavbarContentProps {
   children: React.ReactNode;
 }
 
-export function FloatingNavbarContent({
-  className,
-  children,
-}: FloatingNavbarContentProps) {
+export function FloatingNavbarContent({ className, children }: FloatingNavbarContentProps) {
   return (
     <div
       className={cn(
         'flex items-center gap-1 bg-muted/20 backdrop-blur-sm border rounded p-2 shadow-lg',
-        className,
+        className
       )}
     >
       {children}
@@ -64,10 +57,8 @@ export function FloatingNavbarItem({
       asChild
       className={cn(
         'hover:bg-primary transition-all duration-300 rounded font-normal',
-        isActive
-          ? 'bg-primary text-primary-foreground'
-          : 'text-muted-foreground',
-        className,
+        isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground',
+        className
       )}
     >
       <a href={href}>
@@ -79,12 +70,7 @@ export function FloatingNavbarItem({
 }
 
 export function FloatingNavbarSeparator({ className }: { className?: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={cn('h-5 w-px bg-muted/50', className)}
-    />
-  );
+  return <span aria-hidden="true" className={cn('h-5 w-px bg-muted/50', className)} />;
 }
 
 export default FloatingNavbar;

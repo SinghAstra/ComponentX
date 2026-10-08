@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { containerVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import React from "react";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import type React from 'react';
+import { Button } from '@/components/ui/button';
+import { containerVariant } from '@/lib/variants';
 
 interface ComponentShowcaseProps {
   docsLink: string;
   children: React.ReactNode;
-  variant?: "full" | "compact";
+  variant?: 'full' | 'compact';
   actionLabel?: string;
   showHeader?: boolean;
   spanTwoRows?: boolean;
@@ -18,10 +18,10 @@ interface ComponentShowcaseProps {
 export function ComponentShowcase({
   docsLink,
   children,
-  variant = "full",
+  variant = 'full',
   showHeader = true,
 }: ComponentShowcaseProps) {
-  const isFullWidth = variant === "full";
+  const isFullWidth = variant === 'full';
 
   return (
     <motion.div
@@ -29,9 +29,7 @@ export function ComponentShowcase({
       initial="hidden"
       whileInView="visible"
       className={`${
-        isFullWidth
-          ? "col-span-1 sm:col-span-2 row-span-1"
-          : "col-span-1 row-span-1"
+        isFullWidth ? 'col-span-1 sm:col-span-2 row-span-1' : 'col-span-1 row-span-1'
       } flex flex-col items-center justify-center border bg-background rounded relative group transition-all duration-300 min-h-[400px]`}
     >
       {showHeader ? (
@@ -60,9 +58,7 @@ export function ComponentShowcase({
         </div>
       )}
 
-      <div className="w-full h-full flex items-center justify-center p-4">
-        {children}
-      </div>
+      <div className="w-full h-full flex items-center justify-center p-4">{children}</div>
     </motion.div>
   );
 }

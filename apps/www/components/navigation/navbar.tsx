@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
-import { siteConfig } from "@/config/site";
-import { navLinks } from "@/lib/nav-links";
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import { siteConfig } from '@/config/site';
+import { navLinks } from '@/lib/nav-links';
 
 const Navbar = () => {
   return (

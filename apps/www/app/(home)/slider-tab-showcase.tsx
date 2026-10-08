@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Slider,
@@ -6,15 +6,12 @@ import {
   SliderItem,
   SliderNav,
   SliderNavTrigger,
-} from "@/components/component-x/slider";
-import { ComponentShowcase } from "./component-showcase";
+} from '@/components/component-x/slider';
+import { ComponentShowcase } from './component-showcase';
 
 export function SliderTabShowcase() {
   return (
-    <ComponentShowcase
-      docsLink="/docs/components/slider#with-tab-navigation"
-      variant="compact"
-    >
+    <ComponentShowcase docsLink="/docs/components/slider#with-tab-navigation" variant="compact">
       <div className="w-full h-full">
         <Slider className="flex flex-col h-full w-full rounded">
           <SliderNav>

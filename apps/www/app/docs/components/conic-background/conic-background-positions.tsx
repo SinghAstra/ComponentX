@@ -10,12 +10,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function ConicBackgroundPositions() {
-  const conicBackgroundPositions: ConicBackgroundPositions[] = [
-    'right',
-    'top',
-    'left',
-    'bottom',
-  ];
+  const conicBackgroundPositions: ConicBackgroundPositions[] = ['right', 'top', 'left', 'bottom'];
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col">
       {conicBackgroundPositions.map((pos) => (
@@ -31,9 +26,7 @@ export function ConicBackgroundPositions() {
             colorTwo="hsl(var(--primary))"
           />
           <div className="relative z-10 flex items-center justify-center h-full">
-            <h3 className="text-2xl text-foreground">
-              {capitalizeFirstLetter(pos)}
-            </h3>
+            <h3 className="text-2xl text-foreground">{capitalizeFirstLetter(pos)}</h3>
           </div>
         </div>
       ))}

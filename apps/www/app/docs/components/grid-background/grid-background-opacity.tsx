@@ -25,10 +25,7 @@ export function GridBackgroundOpacity() {
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <h3 className="text-2xl text-foreground">
-              {label}{' '}
-              <span className="text-muted-foreground">
-                {(value * 100).toFixed(0)}%
-              </span>
+              {label} <span className="text-muted-foreground">{(value * 100).toFixed(0)}%</span>
             </h3>
           </div>
         </div>

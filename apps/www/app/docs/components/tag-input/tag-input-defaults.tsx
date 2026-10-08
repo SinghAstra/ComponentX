@@ -1,14 +1,10 @@
-"use client";
+'use client';
 
-import { TagInput } from "@/components/component-x/tag-input";
-import { useState } from "react";
+import { useState } from 'react';
+import { TagInput } from '@/components/component-x/tag-input';
 
 export function TagInputDefaults() {
-  const [tags, setTags] = useState<string[]>([
-    "JavaScript",
-    "React",
-    "TypeScript",
-  ]);
+  const [tags, setTags] = useState<string[]>(['JavaScript', 'React', 'TypeScript']);
 
   return (
     <div className="w-full max-w-sm">

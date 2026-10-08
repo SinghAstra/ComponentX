@@ -1,8 +1,4 @@
 {
   "files": [],
-  "references": [
-    { "path": "./apps/www" },
-    { "path": "./packages/cli" },
-    { "path": "./scripts" }
-  ]
+  "references": [{ "path": "./apps/www" }, { "path": "./packages/cli" }, { "path": "./scripts" }]
 }

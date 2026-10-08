@@ -1,46 +1,42 @@
-"use client";
+'use client';
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 
 export const DEFAULT_COLOR_PRESETS = [
-  "#111827",
-  "#374151",
-  "#6B7280",
-  "#9CA3AF",
-  "#D1D5DB",
-  "#F3F4F6",
-  "#EF4444",
-  "#F59E0B",
-  "#FBBF24",
-  "#FCD34D",
-  "#34D399",
-  "#10B981",
-  "#06B6D4",
-  "#0EA5E9",
-  "#3B82F6",
-  "#6366F1",
-  "#8B5CF6",
-  "#EC4899",
-  "#F97316",
-  "#22C55E",
-  "#84CC16",
-  "#14B8A6",
-  "#A855F7",
-  "#E11D48",
+  '#111827',
+  '#374151',
+  '#6B7280',
+  '#9CA3AF',
+  '#D1D5DB',
+  '#F3F4F6',
+  '#EF4444',
+  '#F59E0B',
+  '#FBBF24',
+  '#FCD34D',
+  '#34D399',
+  '#10B981',
+  '#06B6D4',
+  '#0EA5E9',
+  '#3B82F6',
+  '#6366F1',
+  '#8B5CF6',
+  '#EC4899',
+  '#F97316',
+  '#22C55E',
+  '#84CC16',
+  '#14B8A6',
+  '#A855F7',
+  '#E11D48',
 ];
 
 export function normalizeHex(input: string): string | null {
   let v = input.trim();
   if (!v) return null;
-  if (v[0] !== "#") v = `#${v}`;
+  if (v[0] !== '#') v = `#${v}`;
   const short = /^#([0-9a-fA-F]{3})$/;
   const long = /^#([0-9a-fA-F]{6})$/;
   if (short.test(v)) {
@@ -69,16 +65,14 @@ export function ColorPickerPopUp({
   presets,
   selectedColor,
   onColorSelect,
-  title = "Pick a color",
+  title = 'Pick a color',
   showHexCode = true,
 }: ColorPickerPopUpProps) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium">{title}</span>
-        {showHexCode && (
-          <span className="text-xs text-muted-foreground">{selectedColor}</span>
-        )}
+        {showHexCode && <span className="text-xs text-muted-foreground">{selectedColor}</span>}
       </div>
       <div className={cn(`grid gap-2`, `grid-cols-6`)}>
         {presets.map((hex) => {
@@ -88,8 +82,8 @@ export function ColorPickerPopUp({
               key={hex}
               type="button"
               className={cn(
-                "h-8 w-8 rounded-full border hover:ring-1 hover:ring-ring transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-ring",
-                selected ? "ring-1 ring-ring" : "ring-0"
+                'h-8 w-8 rounded-full border hover:ring-1 hover:ring-ring transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-ring',
+                selected ? 'ring-1 ring-ring' : 'ring-0'
               )}
               style={{
                 backgroundColor: hex,
@@ -116,35 +110,34 @@ interface ColorPopUpTriggerProps {
   className?: string;
 }
 
-export const ColorPopUpTrigger = forwardRef<
-  HTMLButtonElement,
-  ColorPopUpTriggerProps
->(({ color, onClick, aria, className }, ref) => {
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={cn(
-        "h-full flex items-center justify-center  bg-transparent hover:bg-accent transition-colors p-1 rounded",
-        className
-      )}
-      onClick={onClick}
-      aria-label={aria?.label || "Open color picker"}
-      title={color}
-      aria-describedby={aria?.describedBy}
-    >
-      <span
-        aria-hidden
-        className="block h-8 w-8 rounded"
-        style={{
-          backgroundColor: color,
-        }}
-      />
-    </button>
-  );
-});
+export const ColorPopUpTrigger = forwardRef<HTMLButtonElement, ColorPopUpTriggerProps>(
+  ({ color, onClick, aria, className }, ref) => {
+    return (
+      <button
+        ref={ref}
+        type="button"
+        className={cn(
+          'h-full flex items-center justify-center  bg-transparent hover:bg-accent transition-colors p-1 rounded',
+          className
+        )}
+        onClick={onClick}
+        aria-label={aria?.label || 'Open color picker'}
+        title={color}
+        aria-describedby={aria?.describedBy}
+      >
+        <span
+          aria-hidden
+          className="block h-8 w-8 rounded"
+          style={{
+            backgroundColor: color,
+          }}
+        />
+      </button>
+    );
+  }
+);
 
-ColorPopUpTrigger.displayName = "ColorPopUpTrigger";
+ColorPopUpTrigger.displayName = 'ColorPopUpTrigger';
 
 interface ColorInputProps {
   value: string;
@@ -158,9 +151,9 @@ interface ColorInputProps {
 export function ColorInput({
   value,
   onChange,
-  placeholder = "#000000",
+  placeholder = '#000000',
   showHelpText = true,
-  inputId = "color-input",
+  inputId = 'color-input',
 }: ColorInputProps) {
   const [internalValue, setInternalValue] = useState(value);
 
@@ -188,7 +181,7 @@ export function ColorInput({
       inputMode="text"
       spellCheck={false}
       placeholder={placeholder}
-      className={cn("border-0 focus-visible:ring-0")}
+      className={cn('border-0 focus-visible:ring-0')}
       value={internalValue}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -214,13 +207,13 @@ interface ColorPickerInputProps {
 export function ColorPickerInput({
   value,
   onChange,
-  label = "Color",
+  label = 'Color',
   showLabel = true,
   helpText,
   presets = DEFAULT_COLOR_PRESETS,
-  paletteTitle = "Pick a color",
+  paletteTitle = 'Pick a color',
   showHexCode = true,
-  defaultColor = "#3B82F6",
+  defaultColor = '#3B82F6',
 }: ColorPickerInputProps) {
   const [colorPickerPopUpOpen, setColorPickerPopUpOpen] = useState(false);
   const [internal, setInternal] = useState<string>(
@@ -242,10 +235,7 @@ export function ColorPickerInput({
           {label}
         </Label>
       )}
-      <Popover
-        open={colorPickerPopUpOpen}
-        onOpenChange={setColorPickerPopUpOpen}
-      >
+      <Popover open={colorPickerPopUpOpen} onOpenChange={setColorPickerPopUpOpen}>
         <PopoverTrigger asChild>
           <div className="flex px-1 py-0.5 rounded border bg-transparent transition-all duration-300 has-[:focus-visible]:bg-muted/20 has-[:focus-visible]:border-ring ">
             <ColorPopUpTrigger
@@ -253,20 +243,13 @@ export function ColorPickerInput({
               onClick={() => setColorPickerPopUpOpen(true)}
               aria={{
                 label: `${label} picker, currently ${current}`,
-                describedBy: "color-input-help",
+                describedBy: 'color-input-help',
               }}
             />
-            <ColorInput
-              value={internal}
-              onChange={commit}
-              helpText={helpText}
-            />
+            <ColorInput value={internal} onChange={commit} helpText={helpText} />
           </div>
         </PopoverTrigger>
-        <PopoverContent
-          className="w-72 bg-background border rounded shadow-sm"
-          align="start"
-        >
+        <PopoverContent className="w-72 bg-background border rounded shadow-sm" align="start">
           <ColorPickerPopUp
             presets={presets}
             selectedColor={current}

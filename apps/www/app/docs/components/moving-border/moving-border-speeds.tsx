@@ -1,8 +1,6 @@
 'use client';
 
-import MovingBorder, {
-  type MovingBorderSpeed,
-} from '@/components/component-x/moving-border';
+import MovingBorder, { type MovingBorderSpeed } from '@/components/component-x/moving-border';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -20,9 +18,7 @@ export function MovingBorderSpeeds() {
             <div className="rounded flex items-center justify-center px-3 py-1 w-full">
               <h3 className="text-foreground text-sm">
                 Moving Border{' '}
-                <span className="text-muted-foreground">
-                  {capitalizeFirstLetter(speed)}
-                </span>
+                <span className="text-muted-foreground">{capitalizeFirstLetter(speed)}</span>
               </h3>
             </div>
           </MovingBorder>

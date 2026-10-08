@@ -13,10 +13,7 @@ export function MovingBackgroundShineWidth() {
     <div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
       <div className="flex flex-col gap-4">
         {widths.map(({ label, value }) => (
-          <div
-            key={value}
-            className="relative px-4 py-2 border shadow-md rounded w-full"
-          >
+          <div key={value} className="relative px-4 py-2 border shadow-md rounded w-full">
             <MovingBackground
               backgroundColor="hsl(var(--muted)/0.4)"
               shineColor="hsl(var(--primary)/0.4)"
@@ -24,9 +21,7 @@ export function MovingBackgroundShineWidth() {
               gradientAngle={110}
               shineWidth={value}
             />
-            <h3 className="text-foreground relative z-10 text-center">
-              Moving Background {label}
-            </h3>
+            <h3 className="text-foreground relative z-10 text-center">Moving Background {label}</h3>
           </div>
         ))}
       </div>

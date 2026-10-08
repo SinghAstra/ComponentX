@@ -1,20 +1,14 @@
-"use client";
+'use client';
 
-import { TagInput } from "@/components/component-x/tag-input";
-import { Button } from "@/components/ui/button";
-import { containerVariant, scaleInVariant } from "@/lib/variants";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import React, { useState } from "react";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useState } from 'react';
+import { TagInput } from '@/components/component-x/tag-input';
+import { Button } from '@/components/ui/button';
+import { containerVariant, scaleInVariant } from '@/lib/variants';
 
 export function TagInputShowcase() {
-  const [tags, setTags] = useState<string[]>([
-    "Hey",
-    "man",
-    "how",
-    "are",
-    "you ?",
-  ]);
+  const [tags, setTags] = useState<string[]>(['Hey', 'man', 'how', 'are', 'you ?']);
 
   return (
     <motion.div
@@ -35,10 +29,7 @@ export function TagInputShowcase() {
         </Link>
       </div>
 
-      <motion.div
-        variants={scaleInVariant}
-        className="w-full max-w-md px-6 pb-6"
-      >
+      <motion.div variants={scaleInVariant} className="w-full max-w-md px-6 pb-6">
         <TagInput
           value={tags}
           onChange={setTags}

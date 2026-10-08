@@ -1,16 +1,9 @@
-"use client";
+'use client';
 
-import type React from "react";
-
-import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
-import {
-  forwardRef,
-  InputHTMLAttributes,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
+import { X } from 'lucide-react';
+import type React from 'react';
+import { forwardRef, type InputHTMLAttributes, useCallback, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface TagProps {
   label: string;
@@ -41,34 +34,33 @@ export interface TagInputProps {
   required?: boolean;
 }
 
-export const InputField = forwardRef<
-  HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement>
->(({ className, ...props }, ref) => {
-  return (
-    <input
-      ref={ref}
-      className={cn(
-        "flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground",
-        "min-w-[120px]",
-        className
-      )}
-      {...props}
-    />
-  );
-});
+export const InputField = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <input
+        ref={ref}
+        className={cn(
+          'flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground',
+          'min-w-[120px]',
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 
-InputField.displayName = "InputField";
+InputField.displayName = 'InputField';
 
 export function TagInput({
   label,
-  placeholder = "Add items...",
+  placeholder = 'Add items...',
   value,
   onChange,
   onInputChange,
   required = false,
 }: TagInputProps) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -83,7 +75,7 @@ export function TagInput({
       const trimmedItem = item.trim();
       if (trimmedItem && !value.includes(trimmedItem)) {
         onChange([...value, trimmedItem]);
-        setInputValue("");
+        setInputValue('');
         inputRef.current?.focus();
       }
     },
@@ -98,10 +90,10 @@ export function TagInput({
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleAddItem(inputValue);
-    } else if (e.key === "Backspace" && inputValue === "" && value.length > 0) {
+    } else if (e.key === 'Backspace' && inputValue === '' && value.length > 0) {
       handleRemoveItem(value[value.length - 1]);
     }
   };
@@ -118,23 +110,19 @@ export function TagInput({
       <div
         ref={containerRef}
         className={cn(
-          "flex flex-wrap items-center gap-2 px-3 py-2 rounded",
-          "border border-input bg-background",
-          "transition-all duration-300"
+          'flex flex-wrap items-center gap-2 px-3 py-2 rounded',
+          'border border-input bg-background',
+          'transition-all duration-300'
         )}
       >
         {value.map((item) => (
-          <Tag
-            key={item}
-            label={item}
-            onRemove={() => handleRemoveItem(item)}
-          />
+          <Tag key={item} label={item} onRemove={() => handleRemoveItem(item)} />
         ))}
 
         <InputField
           ref={inputRef}
           type="text"
-          placeholder={value.length === 0 ? placeholder : ""}
+          placeholder={value.length === 0 ? placeholder : ''}
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}

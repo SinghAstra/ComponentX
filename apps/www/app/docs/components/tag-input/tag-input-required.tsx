@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { TagInput } from "@/components/component-x/tag-input";
-import { useState } from "react";
+import { useState } from 'react';
+import { TagInput } from '@/components/component-x/tag-input';
 
 export function TagInputRequired() {
   const [tags, setTags] = useState<string[]>([]);

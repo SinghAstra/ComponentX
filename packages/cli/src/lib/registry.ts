@@ -18,18 +18,15 @@ export type RegistryIndex = {
 export type RegistryClient = {
   baseUrl: string;
   timeoutMs: number;
-}
-
-export const DEFAULT_REGISTRY_URL = 'https://componentx.vercel.app/registry/'
-
-export function resolveRegistryUrl(override?: string): string {
-  return override ?? process.env.CX_REGISTRY_URL ?? DEFAULT_REGISTRY_URL
 };
 
-export function createRegistryClient(
-  baseUrl: string,
-  timeoutMs = 10_000,
-): RegistryClient {
+export const DEFAULT_REGISTRY_URL = 'https://componentx.vercel.app/registry/';
+
+export function resolveRegistryUrl(override?: string): string {
+  return override ?? process.env.CX_REGISTRY_URL ?? DEFAULT_REGISTRY_URL;
+}
+
+export function createRegistryClient(baseUrl: string, timeoutMs = 10_000): RegistryClient {
   return { baseUrl: baseUrl.replace(/\/+$/, ''), timeoutMs };
 }
 
@@ -43,17 +40,11 @@ export class RegistryError extends Error {
   }
 }
 
-export function registryUrl(
-  client: RegistryClient,
-  ...segments: string[]
-): string {
+export function registryUrl(client: RegistryClient, ...segments: string[]): string {
   return [client.baseUrl, ...segments].join('/');
 }
 
-async function fetchWithTimeout(
-  client: RegistryClient,
-  url: string,
-): Promise<Response> {
+async function fetchWithTimeout(client: RegistryClient, url: string): Promise<Response> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), client.timeoutMs);
 
@@ -61,14 +52,10 @@ async function fetchWithTimeout(
     return await fetch(url, { signal: controller.signal });
   } catch (error) {
     if (error instanceof Error && error.name === 'AbortError') {
-      throw new CliError(
-        `Registry request timed out after ${client.timeoutMs}ms (${url})`,
-      );
+      throw new CliError(`Registry request timed out after ${client.timeoutMs}ms (${url})`);
     }
     const reason = error instanceof Error ? error.message : String(error);
-    throw new CliError(
-      `Cannot reach the registry at ${client.baseUrl}: ${reason}`,
-    );
+    throw new CliError(`Cannot reach the registry at ${client.baseUrl}: ${reason}`);
   } finally {
     clearTimeout(timeout);
   }
@@ -98,9 +85,7 @@ function isRegistryIndex(data: unknown): data is RegistryIndex {
   return Array.isArray(obj.components) && obj.components.every((c) => typeof c === 'string');
 }
 
-export async function fetchIndex(
-  client: RegistryClient,
-): Promise<RegistryIndex> {
+export async function fetchIndex(client: RegistryClient): Promise<RegistryIndex> {
   const url = registryUrl(client, 'components', 'index.json');
   const response = await fetchWithTimeout(client, url);
 
@@ -117,23 +102,17 @@ export async function fetchIndex(
   return data;
 }
 
-export async function fetchComponent(
-  client: RegistryClient,
-  name: string,
-): Promise<RegistryItem> {
+export async function fetchComponent(client: RegistryClient, name: string): Promise<RegistryItem> {
   const url = registryUrl(client, 'components', `${name}.json`);
   const response = await fetchWithTimeout(client, url);
 
   if (!response.ok) {
     if (response.status === 404) {
-      throw new RegistryError(
-        `Component "${name}" not found in registry`,
-        404,
-      );
+      throw new RegistryError(`Component "${name}" not found in registry`, 404);
     }
     throw new RegistryError(
       `Failed to fetch component: ${response.status} ${response.statusText} (${url})`,
-      response.status,
+      response.status
     );
   }
 
@@ -150,10 +129,7 @@ export async function fetchComponent(
   return data;
 }
 
-export async function fetchUtility(
-  client: RegistryClient,
-  name: string,
-): Promise<RegistryItem> {
+export async function fetchUtility(client: RegistryClient, name: string): Promise<RegistryItem> {
   const url = registryUrl(client, 'utilities', `${name}.json`);
   const response = await fetchWithTimeout(client, url);
 

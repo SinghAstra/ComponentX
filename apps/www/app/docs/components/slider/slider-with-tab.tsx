@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Slider,
@@ -6,7 +6,7 @@ import {
   SliderItem,
   SliderNav,
   SliderNavTrigger,
-} from "@/components/component-x/slider";
+} from '@/components/component-x/slider';
 
 export function SliderWithTab() {
   return (

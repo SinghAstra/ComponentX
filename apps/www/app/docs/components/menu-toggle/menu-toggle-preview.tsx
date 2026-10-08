@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { MenuToggle } from "@/components/component-x/menu-toggle";
-import { useState } from "react";
+import { useState } from 'react';
+import { MenuToggle } from '@/components/component-x/menu-toggle';
 
 export function MenuTogglePreview() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ export function MenuTogglePreview() {
       </div>
 
       <div className="text-sm text-muted-foreground">
-        {isOpen ? "Menu is open" : "Menu is closed"}
+        {isOpen ? 'Menu is open' : 'Menu is closed'}
       </div>
     </div>
   );

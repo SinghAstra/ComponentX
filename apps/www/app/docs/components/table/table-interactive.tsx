@@ -1,5 +1,6 @@
-"use client";
+'use client';
 
+import { useState } from 'react';
 import {
   Table,
   TableBody,
@@ -7,8 +8,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@/components/component-x/table";
-import { useState } from "react";
+} from '@/components/component-x/table';
 
 export function TableInteractive() {
   const [selectedRows, setSelectedRows] = useState<number[]>([1]);
@@ -34,10 +34,10 @@ export function TableInteractive() {
         </TableHead>
         <TableBody>
           {[
-            { id: 0, name: "Laptop", status: "In Stock", price: "\$999" },
-            { id: 1, name: "Mouse", status: "In Stock", price: "\$29" },
-            { id: 2, name: "Keyboard", status: "Low Stock", price: "\$79" },
-            { id: 3, name: "Monitor", status: "Out of Stock", price: "\$349" },
+            { id: 0, name: 'Laptop', status: 'In Stock', price: '$999' },
+            { id: 1, name: 'Mouse', status: 'In Stock', price: '$29' },
+            { id: 2, name: 'Keyboard', status: 'Low Stock', price: '$79' },
+            { id: 3, name: 'Monitor', status: 'Out of Stock', price: '$349' },
           ].map((item) => (
             <TableRow
               key={item.id}

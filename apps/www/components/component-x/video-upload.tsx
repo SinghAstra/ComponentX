@@ -1,11 +1,10 @@
 'use client';
 
+import { CloudUpload, X } from 'lucide-react';
 import type React from 'react';
-
+import { useRef, useState } from 'react';
 import { useToastContext } from '@/components/providers/toast';
 import { Button } from '@/components/ui/button';
-import { CloudUpload, X } from 'lucide-react';
-import { useRef, useState } from 'react';
 
 interface VideoUploadProps {
   maxSize?: number;
@@ -23,16 +22,9 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
   const supportedFormats = ['MP4', 'MOV', 'WebM', 'AVI'];
 
   const validateFile = (file: File): boolean => {
-    const validTypes = [
-      'video/mp4',
-      'video/quicktime',
-      'video/webm',
-      'video/x-msvideo',
-    ];
+    const validTypes = ['video/mp4', 'video/quicktime', 'video/webm', 'video/x-msvideo'];
     if (!validTypes.includes(file.type)) {
-      setToastMessage(
-        `Invalid file type. Supported formats: ${supportedFormats.join(', ')}`,
-      );
+      setToastMessage(`Invalid file type. Supported formats: ${supportedFormats.join(', ')}`);
       return false;
     }
 
@@ -92,8 +84,7 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
             </div>
 
             <p className="font-medium text-foreground">
-              <span className="text-primary">Click to upload</span> or drag and
-              drop
+              <span className="text-primary">Click to upload</span> or drag and drop
             </p>
 
             <div className="flex gap-2 justify-center">
@@ -114,9 +105,7 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
               ref={fileInputRef}
               type="file"
               accept="video/*"
-              onChange={(e) =>
-                e.target.files?.[0] && handleFileSelect(e.target.files[0])
-              }
+              onChange={(e) => e.target.files?.[0] && handleFileSelect(e.target.files[0])}
               className="hidden"
             />
           </div>
@@ -125,20 +114,14 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
         <div className="p-4 border overflow-hidden">
           {video.preview && (
             <div className="relative aspect-video flex items-center justify-center">
-              <video
-                src={video.preview}
-                className="w-full h-full object-cover rounded "
-                controls
-              />
+              <video src={video.preview} className="w-full h-full object-cover rounded " controls />
             </div>
           )}
 
           <div className="p-4 space-y-3">
             {video.file && (
               <div className="space-y-1 flex gap-2 justify-between items-center">
-                <p className="text-sm font-medium text-foreground truncate">
-                  {video.file.name}
-                </p>
+                <p className="text-sm font-medium text-foreground truncate">{video.file.name}</p>
                 <p className="text-xs text-muted-foreground">
                   {(video.file.size / (1024 * 1024)).toFixed(2)} MB
                 </p>

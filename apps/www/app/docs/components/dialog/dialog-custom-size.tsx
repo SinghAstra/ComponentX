@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Dialog from '@/components/component-x/dialog';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 export function DialogCustomSize() {
   const [smallOpen, setSmallOpen] = useState(false);
@@ -17,11 +17,7 @@ export function DialogCustomSize() {
       >
         Small Dialog
       </Button>
-      <Dialog
-        isDialogVisible={smallOpen}
-        setIsDialogVisible={setSmallOpen}
-        className="max-w-sm"
-      >
+      <Dialog isDialogVisible={smallOpen} setIsDialogVisible={setSmallOpen} className="max-w-sm">
         <div className="p-4">
           <h2 className="text-lg font-semibold mb-2">Small Dialog</h2>
           <p className="text-sm text-muted-foreground">
@@ -47,16 +43,12 @@ export function DialogCustomSize() {
       >
         Large Dialog
       </Button>
-      <Dialog
-        isDialogVisible={largeOpen}
-        setIsDialogVisible={setLargeOpen}
-        className="max-w-2xl"
-      >
+      <Dialog isDialogVisible={largeOpen} setIsDialogVisible={setLargeOpen} className="max-w-2xl">
         <div className="p-8">
           <h2 className="text-2xl font-semibold mb-4">Large Dialog</h2>
           <p className="text-muted-foreground mb-6">
-            This is a spacious dialog suitable for detailed content, forms, or
-            rich information displays.
+            This is a spacious dialog suitable for detailed content, forms, or rich information
+            displays.
           </p>
           <div className="w-full flex items-center justify-end">
             <Button

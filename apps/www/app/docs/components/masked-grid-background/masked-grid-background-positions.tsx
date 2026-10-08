@@ -1,7 +1,7 @@
 'use client';
 
 import MaskedGridBackground, {
-  MaskPosition,
+  type MaskPosition,
 } from '@/components/component-x/masked-grid-background';
 
 export function MaskedGridBackgroundPositions() {

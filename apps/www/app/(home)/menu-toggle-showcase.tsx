@@ -1,14 +1,9 @@
-import { MenuToggle } from "@/components/component-x/menu-toggle";
-import React from "react";
-import { ComponentShowcase } from "./component-showcase";
+import { MenuToggle } from '@/components/component-x/menu-toggle';
+import { ComponentShowcase } from './component-showcase';
 
 const MenuToggleShowcase = () => {
   return (
-    <ComponentShowcase
-      docsLink="/docs/components/menu-toggle"
-      variant="compact"
-      showHeader={false}
-    >
+    <ComponentShowcase docsLink="/docs/components/menu-toggle" variant="compact" showHeader={false}>
       <MenuToggle />
     </ComponentShowcase>
   );

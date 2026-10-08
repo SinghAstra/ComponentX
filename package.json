@@ -11,11 +11,13 @@
     "check:registry": "tsx scripts/check-registry.ts",
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "lint": "turbo run lint",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
     "typecheck": "turbo run typecheck",
     "format": "turbo run format"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.6.2",
     "glob": "^11.1.0",

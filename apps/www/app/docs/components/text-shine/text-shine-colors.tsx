@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { TextShine } from "@/components/component-x/text-shine";
+import { TextShine } from '@/components/component-x/text-shine';
 
 export function TextShineColors() {
   const colors = [
-    { label: "White", value: "rgba(255, 255, 255, 1)" },
-    { label: "Gold", value: "rgba(255, 215, 0, 1)" },
-    { label: "Cyan", value: "rgba(0, 255, 255, 1)" },
-    { label: "Pink", value: "rgba(255, 105, 180, 1)" },
+    { label: 'White', value: 'rgba(255, 255, 255, 1)' },
+    { label: 'Gold', value: 'rgba(255, 215, 0, 1)' },
+    { label: 'Cyan', value: 'rgba(0, 255, 255, 1)' },
+    { label: 'Pink', value: 'rgba(255, 105, 180, 1)' },
   ];
 
   return (

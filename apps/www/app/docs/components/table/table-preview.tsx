@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Table,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@/components/component-x/table";
+} from '@/components/component-x/table';
 
 export function TablePreview() {
   return (

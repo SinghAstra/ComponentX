@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Dialog from '@/components/component-x/dialog';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 export function DialogPreview() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -15,15 +15,11 @@ export function DialogPreview() {
       >
         Open Dialog
       </Button>
-      <Dialog
-        isDialogVisible={isDialogVisible}
-        setIsDialogVisible={setIsDialogVisible}
-      >
+      <Dialog isDialogVisible={isDialogVisible} setIsDialogVisible={setIsDialogVisible}>
         <div className="p-6 space-y-4">
           <h2 className="text-2xl font-normal">Dialog Title</h2>
           <p className="text-muted-foreground">
-            This is a simple dialog component with backdrop blur and smooth
-            animations.
+            This is a simple dialog component with backdrop blur and smooth animations.
           </p>
           <Button
             className="rounded font-normal bg-muted/40 hover:bg-muted/20 transition-all duration-300 border shadow-md"

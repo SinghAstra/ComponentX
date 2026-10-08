@@ -25,9 +25,7 @@ export function RadialBackgroundRadius() {
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <h3 className="text-2xl text-foreground">{label}</h3>
-            <p className="text-sm text-muted-foreground mt-[1px]">
-              Radius: {value}%
-            </p>
+            <p className="text-sm text-muted-foreground mt-[1px]">Radius: {value}%</p>
           </div>
         </div>
       ))}

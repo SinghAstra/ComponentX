@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { TagInput } from "@/components/component-x/tag-input";
-import { useState } from "react";
+import { useState } from 'react';
+import { TagInput } from '@/components/component-x/tag-input';
 
 export function TagInputBasic() {
   const [tags, setTags] = useState<string[]>([]);
@@ -15,7 +15,7 @@ export function TagInputBasic() {
         onChange={setTags}
       />
       <div className="text-sm text-muted-foreground">
-        Added: {tags.length > 0 ? tags.join(", ") : "None"}
+        Added: {tags.length > 0 ? tags.join(', ') : 'None'}
       </div>
     </div>
   );

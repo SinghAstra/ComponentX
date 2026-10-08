@@ -1,5 +1,4 @@
 import { cn } from '@/lib/utils';
-import React from 'react';
 
 interface GridBackgroundProps {
   className?: string;
@@ -20,11 +19,7 @@ const GridBackground = ({
   lineWidth = 1,
   absolute = true,
 }: GridBackgroundProps) => {
-  const containerClasses = cn(
-    absolute && 'absolute inset-0 z-[-1]',
-    backgroundColor,
-    className,
-  );
+  const containerClasses = cn(absolute && 'absolute inset-0 z-[-1]', backgroundColor, className);
 
   const backgroundImage = `
     linear-gradient(90deg, ${gridColor} ${lineWidth}px, transparent ${lineWidth}px),

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { MenuToggle } from "@/components/component-x/menu-toggle";
+import { MenuToggle } from '@/components/component-x/menu-toggle';
 
 export function MenuToggleSizes() {
   return (

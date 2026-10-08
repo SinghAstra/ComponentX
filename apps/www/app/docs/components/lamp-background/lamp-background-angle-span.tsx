@@ -1,8 +1,6 @@
 'use client';
 
-import LampBackground, {
-  type LampAngleSpan,
-} from '@/components/component-x/lamp-background';
+import LampBackground, { type LampAngleSpan } from '@/components/component-x/lamp-background';
 
 export function LampBackgroundAngleSpan() {
   const angleSpans: LampAngleSpan[] = ['small', 'medium', 'large'];

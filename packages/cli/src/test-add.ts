@@ -1,9 +1,9 @@
 #!/usr/bin/env tsx
-import path from 'node:path';
-import { promises as fs } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { tmpdir } from 'node:os';
 import { randomUUID } from 'node:crypto';
+import { promises as fs } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 const ROOT_DIR = path.resolve(import.meta.dirname, '../../..');
 const TEMP_DIR = path.join(tmpdir(), `componentx-test-${randomUUID()}`);
@@ -52,8 +52,18 @@ const MINIMAL_PACKAGE_JSON = {
   version: '0.0.0',
   private: true,
   scripts: { dev: 'next dev', build: 'next build', start: 'next start', lint: 'next lint' },
-  dependencies: { next: '15.0.0', react: '18.3.0', 'react-dom': '18.3.0', 'framer-motion': '11.0.0' },
-  devDependencies: { typescript: '5.0.0', '@types/node': '20.0.0', '@types/react': '18.0.0', '@types/react-dom': '18.0.0' },
+  dependencies: {
+    next: '15.0.0',
+    react: '18.3.0',
+    'react-dom': '18.3.0',
+    'framer-motion': '11.0.0',
+  },
+  devDependencies: {
+    typescript: '5.0.0',
+    '@types/node': '20.0.0',
+    '@types/react': '18.0.0',
+    '@types/react-dom': '18.0.0',
+  },
 };
 
 async function setupTempProject(): Promise<void> {
@@ -62,17 +72,22 @@ async function setupTempProject(): Promise<void> {
   await fs.mkdir(path.join(TEMP_DIR, 'src', 'components'), { recursive: true });
   await fs.mkdir(path.join(TEMP_DIR, 'src', 'lib'), { recursive: true });
   await fs.mkdir(path.join(TEMP_DIR, 'src', 'components', 'ui'), { recursive: true });
-  await fs.writeFile(path.join(TEMP_DIR, 'components.json'), JSON.stringify(MINIMAL_COMPONENTS_JSON, null, 2));
-  await fs.writeFile(path.join(TEMP_DIR, 'tsconfig.json'), JSON.stringify(MINIMAL_TSCONFIG_JSON, null, 2));
-  await fs.writeFile(path.join(TEMP_DIR, 'package.json'), JSON.stringify(MINIMAL_PACKAGE_JSON, null, 2));
+  await fs.writeFile(
+    path.join(TEMP_DIR, 'components.json'),
+    JSON.stringify(MINIMAL_COMPONENTS_JSON, null, 2)
+  );
+  await fs.writeFile(
+    path.join(TEMP_DIR, 'tsconfig.json'),
+    JSON.stringify(MINIMAL_TSCONFIG_JSON, null, 2)
+  );
+  await fs.writeFile(
+    path.join(TEMP_DIR, 'package.json'),
+    JSON.stringify(MINIMAL_PACKAGE_JSON, null, 2)
+  );
 }
 
 function runAddTest(): { stdout: string; stderr: string; status: number } {
-  const args = [
-    'add', 'dialog', 'color-picker',
-    '--registry', REGISTRY_URL,
-    '--no-install'
-  ];
+  const args = ['add', 'dialog', 'color-picker', '--registry', REGISTRY_URL, '--no-install'];
   const result = spawnSync('node', [CLI_PATH, ...args], {
     cwd: TEMP_DIR,
     encoding: 'utf8',
@@ -108,8 +123,14 @@ async function verifyResults(): Promise<void> {
     throw new Error('dialog.tsx missing framer-motion import');
   }
 
-  const colorPickerContent = await fs.readFile(path.join(componentXDir, 'color-picker.tsx'), 'utf8');
-  if (!colorPickerContent.includes("@/components/ui/input") || !colorPickerContent.includes("@/components/ui/popover")) {
+  const colorPickerContent = await fs.readFile(
+    path.join(componentXDir, 'color-picker.tsx'),
+    'utf8'
+  );
+  if (
+    !colorPickerContent.includes('@/components/ui/input') ||
+    !colorPickerContent.includes('@/components/ui/popover')
+  ) {
     throw new Error('color-picker.tsx missing expected shadcn/ui imports');
   }
 

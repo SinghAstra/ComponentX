@@ -1,18 +1,13 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import type React from 'react';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
+import { cn } from '@/lib/utils';
 
 export type MovingBorderSpeed = 'slow' | 'normal' | 'fast';
 export type MovingBorderDirection = 'clockwise' | 'counterclockwise';
-export type MovingBorderBlendMode =
-  | 'normal'
-  | 'screen'
-  | 'overlay'
-  | 'multiply'
-  | 'lighten';
+export type MovingBorderBlendMode = 'normal' | 'screen' | 'overlay' | 'multiply' | 'lighten';
 
 export interface MovingBorderProps {
   color?: string;
@@ -64,12 +59,7 @@ const MovingBorder = ({
   };
 
   return (
-    <div
-      className={cn(
-        'relative border p-[2px] overflow-hidden rounded',
-        className,
-      )}
-    >
+    <div className={cn('relative border p-[2px] overflow-hidden rounded', className)}>
       <motion.div
         className="absolute top-1/2 left-1/2 pointer-events-none z-[-1]"
         style={{

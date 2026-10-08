@@ -47,12 +47,7 @@ const ConicBackground = ({
   const maskImageValue = `radial-gradient(circle at ${positionVal.positionX} ${positionVal.positionY}, ${backgroundStops})`;
 
   return (
-    <div
-      className={cn(
-        'absolute inset-0 overflow-hidden z-[-1] bg-background',
-        className,
-      )}
-    >
+    <div className={cn('absolute inset-0 overflow-hidden z-[-1] bg-background', className)}>
       <div
         className="w-full h-full"
         style={{

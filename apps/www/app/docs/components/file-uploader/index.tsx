@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { FileUploader } from "@/components/component-x/file-upload";
-import { useState } from "react";
+import { useState } from 'react';
+import { FileUploader } from '@/components/component-x/file-upload';
 
 export function FileUploaderPreview() {
   const [files, setFiles] = useState<File[]>([]);

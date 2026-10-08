@@ -1,8 +1,6 @@
 'use client';
 
-import BorderHoverLink, {
-  BorderPosition,
-} from '@/components/component-x/border-hover-link';
+import BorderHoverLink, { type BorderPosition } from '@/components/component-x/border-hover-link';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -24,9 +22,7 @@ export function BorderHoverPositions() {
             className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden w-full text-center"
           >
             Hover me{' '}
-            <span className="text-muted-foreground text-sm">
-              {capitalizeFirstLetter(pos)}
-            </span>
+            <span className="text-muted-foreground text-sm">{capitalizeFirstLetter(pos)}</span>
           </BorderHoverLink>
         ))}
       </div>

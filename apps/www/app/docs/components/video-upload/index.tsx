@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { VideoUpload } from "@/components/component-x/video-upload";
+import { VideoUpload } from '@/components/component-x/video-upload';
 
 export function VideoUploadPreview() {
   return (

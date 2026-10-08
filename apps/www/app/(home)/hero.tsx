@@ -1,18 +1,14 @@
-"use client";
+'use client';
 
-import MovingBackground from "@/components/component-x/moving-background";
-import MovingBorder from "@/components/component-x/moving-border";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import {
-  blurInVariant,
-  containerVariant,
-  scaleInVariant,
-} from "@/lib/variants";
-import { motion } from "framer-motion";
-import { ArrowRight, ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import { motion } from 'framer-motion';
+import { ArrowRight, ArrowRightIcon } from 'lucide-react';
+import Link from 'next/link';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
+import MovingBackground from '@/components/component-x/moving-background';
+import MovingBorder from '@/components/component-x/moving-border';
+import { Button } from '@/components/ui/button';
+import { siteConfig } from '@/config/site';
+import { blurInVariant, containerVariant, scaleInVariant } from '@/lib/variants';
 
 function Hero() {
   return (
@@ -23,7 +19,7 @@ function Hero() {
       className="relative flex flex-col gap-4 items-center text-center justify-center min-h-[80vh] mb-8 sm:px-8 overflow-hidden"
     >
       <motion.div variants={scaleInVariant} className="z-[1]">
-        <a href={siteConfig.links.buildInPublic} target="_blank">
+        <a href={siteConfig.links.buildInPublic} target="_blank" rel="noopener">
           <Button
             variant="outline"
             className="rounded group relative font-normal bg-transparent hover:bg-muted/40"
@@ -64,9 +60,9 @@ function Hero() {
         </motion.div>
         <motion.div variants={scaleInVariant} className="w-full sm:w-fit">
           <MovingBorder>
-            <a href={siteConfig.links.githubRepo} target="_blank">
+            <a href={siteConfig.links.githubRepo} target="_blank" rel="noopener">
               <Button
-                variant={"outline"}
+                variant={'outline'}
                 size="lg"
                 className="flex bg-background hover:bg-background items-center transition-all duration-300 text-md justify-center gap-2 rounded font-normal w-full border-0"
               >

@@ -1,18 +1,15 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { Check, Copy } from 'lucide-react';
-import React, { useRef, useState } from 'react';
+import type React from 'react';
+import { useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children?: React.ReactNode;
 }
 
-export const CodeBlock = ({
-  children,
-  className,
-  ...props
-}: CodeBlockProps) => {
+export const CodeBlock = ({ children, className, ...props }: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
   const codeRef = useRef<HTMLPreElement>(null);
 
@@ -36,10 +33,7 @@ export const CodeBlock = ({
     <div className="relative z-1">
       <pre
         ref={codeRef}
-        className={cn(
-          'my-4 overflow-auto rounded border bg-muted/40 p-4 pr-12',
-          className,
-        )}
+        className={cn('my-4 overflow-auto rounded border bg-muted/40 p-4 pr-12', className)}
         {...props}
       >
         {children}
@@ -49,7 +43,7 @@ export const CodeBlock = ({
         className={cn(
           'absolute top-3 right-3 p-2 rounded transition-all duration-300',
           'bg-background/80 hover:bg-background border',
-          'hover:scale-105 active:scale-95',
+          'hover:scale-105 active:scale-95'
         )}
         aria-label="Copy code to clipboard"
       >

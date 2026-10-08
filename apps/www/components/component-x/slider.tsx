@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { motion, MotionValue, useMotionValue } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { type MotionValue, motion, useMotionValue } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, {
   createContext,
-  ReactNode,
+  type ReactNode,
   useContext,
   useEffect,
   useRef,
   useState,
-} from "react";
+} from 'react';
+import { cn } from '@/lib/utils';
 
 type SliderContextType = {
   activeIndex: number;
@@ -24,7 +24,7 @@ const SliderContext = createContext<SliderContextType | null>(null);
 
 export function useSlider() {
   const ctx = useContext(SliderContext);
-  if (!ctx) throw new Error("Slider components must be used within <Slider>");
+  if (!ctx) throw new Error('Slider components must be used within <Slider>');
   return ctx;
 }
 
@@ -49,9 +49,7 @@ export function Slider({ children, className, initialIndex = 0 }: SliderProps) {
         dragX,
       }}
     >
-      <div className={cn("relative overflow-hidden w-full", className)}>
-        {children}
-      </div>
+      <div className={cn('relative overflow-hidden w-full', className)}>{children}</div>
     </SliderContext.Provider>
   );
 }
@@ -84,7 +82,7 @@ export function SliderNav({ children, className }: SliderNavProps) {
   }, [activeIndex]);
 
   return (
-    <div className={cn("relative flex", className)} role="tablist">
+    <div className={cn('relative flex', className)} role="tablist">
       {React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
@@ -101,7 +99,7 @@ export function SliderNav({ children, className }: SliderNavProps) {
           width: activeNavPosition.width,
           left: activeNavPosition.left,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       />
     </div>
   );
@@ -129,8 +127,8 @@ export function SliderNavTrigger({
       onClick={() => setActiveIndex(index)}
       role="tab"
       className={cn(
-        "px-4 py-2 text-sm cursor-pointer transition-colors",
-        isActive ? "text-foreground" : "text-muted-foreground",
+        'px-4 py-2 text-sm cursor-pointer transition-colors',
+        isActive ? 'text-foreground' : 'text-muted-foreground',
         className
       )}
     >
@@ -142,14 +140,10 @@ export function SliderNavTrigger({
 type SliderContentProps = {
   children: ReactNode;
   className?: string;
-  onDragEnd?: (direction: "left" | "right" | "none") => void;
+  onDragEnd?: (direction: 'left' | 'right' | 'none') => void;
 };
 
-export function SliderContent({
-  children,
-  className,
-  onDragEnd,
-}: SliderContentProps) {
+export function SliderContent({ children, className, onDragEnd }: SliderContentProps) {
   const { activeIndex, setActiveIndex, dragX, setItemsCount } = useSlider();
   const itemsLength = React.Children.count(children);
 
@@ -160,13 +154,13 @@ export function SliderContent({
   const handleDragEnd = () => {
     const x = dragX.get() as number;
 
-    let direction: "left" | "right" | "none" = "none";
+    let direction: 'left' | 'right' | 'none' = 'none';
     if (x <= -10 && activeIndex < itemsLength - 1) {
       setActiveIndex(activeIndex + 1);
-      direction = "left";
+      direction = 'left';
     } else if (x >= 10 && activeIndex > 0) {
       setActiveIndex(activeIndex - 1);
-      direction = "right";
+      direction = 'right';
     }
     onDragEnd?.(direction);
   };
@@ -184,14 +178,10 @@ export function SliderContent({
       transition={{
         damping: 18,
         stiffness: 90,
-        type: "spring",
+        type: 'spring',
         duration: 0.2,
       }}
-      className={cn(
-        "flex items-center",
-        "cursor-grab active:cursor-grabbing",
-        className
-      )}
+      className={cn('flex items-center', 'cursor-grab active:cursor-grabbing', className)}
     >
       {children}
     </motion.div>
@@ -205,9 +195,7 @@ type SliderItemProps = {
 
 export function SliderItem({ children, className }: SliderItemProps) {
   return (
-    <motion.div
-      className={cn("w-full min-w-0 shrink-0 overflow-hidden", className)}
-    >
+    <motion.div className={cn('w-full min-w-0 shrink-0 overflow-hidden', className)}>
       {children}
     </motion.div>
   );
@@ -218,22 +206,19 @@ type SliderIndicatorProps = {
   classNameButton?: string;
 };
 
-export function SliderIndicatorDots({
-  className,
-  classNameButton,
-}: SliderIndicatorProps) {
+export function SliderIndicatorDots({ className, classNameButton }: SliderIndicatorProps) {
   const { activeIndex, itemsCount, setActiveIndex } = useSlider();
 
   return (
-    <div className={cn("flex w-full items-center justify-center", className)}>
+    <div className={cn('flex w-full items-center justify-center', className)}>
       <div className="flex gap-2">
         {Array.from({ length: itemsCount }, (_, i) => (
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
             className={cn(
-              "h-2 w-2 rounded-full transition-all duration-300",
-              activeIndex === i ? "bg-foreground" : "bg-muted-foreground/60",
+              'h-2 w-2 rounded-full transition-all duration-300',
+              activeIndex === i ? 'bg-foreground' : 'bg-muted-foreground/60',
               classNameButton
             )}
           />
@@ -259,17 +244,15 @@ export function SliderIndicatorLabels({
   if (labels.length !== itemsCount) return null;
 
   return (
-    <div className={cn("flex w-full items-center justify-center", className)}>
+    <div className={cn('flex w-full items-center justify-center', className)}>
       <div className="flex gap-2">
         {Array.from({ length: itemsCount }, (_, i) => (
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
             className={cn(
-              "transition-colors duration-200",
-              activeIndex === i
-                ? "text-foreground"
-                : "text-muted-foreground/60",
+              'transition-colors duration-200',
+              activeIndex === i ? 'text-foreground' : 'text-muted-foreground/60',
               classNameButton
             )}
           >

@@ -1,14 +1,6 @@
-import {
-  createRegistryClient,
-  fetchComponent,
-  fetchIndex,
-  fetchUtility,
-} from './registry';
+import { createRegistryClient, fetchComponent, fetchIndex, fetchUtility } from './registry';
 
-const client = createRegistryClient(
-  'https://componentx.vercel.app/registry/',
-  15_000,
-);
+const client = createRegistryClient('https://componentx.vercel.app/registry/', 15_000);
 
 const index = await fetchIndex(client);
 console.log('index:', index.components.length, 'components');
@@ -21,7 +13,7 @@ console.log(
   '| external:',
   dialog.externalDependencies.join(',') || 'none',
   '| registry:',
-  dialog.registryDependencies.join(',') || 'none',
+  dialog.registryDependencies.join(',') || 'none'
 );
 
 try {

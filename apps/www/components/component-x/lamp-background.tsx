@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
 import type { CSSProperties } from 'react';
+import { cn } from '@/lib/utils';
 
 export type LampBackgroundPosition = 'top' | 'right' | 'bottom' | 'left';
 export type LampAngleSpan = 'small' | 'medium' | 'large';
@@ -36,8 +36,7 @@ function LampBackground({
 
   switch (position) {
     case 'top':
-      maskImageStyle =
-        'linear-gradient(0deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))';
+      maskImageStyle = 'linear-gradient(0deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))';
       containerFlexClass = 'flex-row';
       gradient1FromAt = 'from 90deg at 0% 0%';
       gradient2FromAt = 'from 180deg at 100% 0%';
@@ -45,8 +44,7 @@ function LampBackground({
       div2SizeClass = 'flex-1 h-full';
       break;
     case 'bottom':
-      maskImageStyle =
-        'linear-gradient(180deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))';
+      maskImageStyle = 'linear-gradient(180deg, rgba(255, 255, 255,0), rgb(255, 255, 255,0.8))';
       containerFlexClass = 'flex-row';
       gradient1FromAt = 'from 0deg at 0% 100%';
       gradient2FromAt = 'from 270deg at 100% 100%';
@@ -54,8 +52,7 @@ function LampBackground({
       div2SizeClass = 'flex-1 h-full';
       break;
     case 'left':
-      maskImageStyle =
-        'linear-gradient(90deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))';
+      maskImageStyle = 'linear-gradient(90deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))';
       containerFlexClass = 'flex-col';
       gradient1FromAt = 'from 90deg at 0% 0%';
       gradient2FromAt = 'from 0deg at 0% 100%';
@@ -63,8 +60,7 @@ function LampBackground({
       div2SizeClass = 'flex-1 w-full';
       break;
     case 'right':
-      maskImageStyle =
-        'linear-gradient(270deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))';
+      maskImageStyle = 'linear-gradient(270deg, rgba(255, 255, 255), rgb(255, 255, 255,0.6))';
       containerFlexClass = 'flex-col';
       gradient1FromAt = 'from 180deg at 100% 0%';
       gradient2FromAt = 'from 270deg at 100% 100%';
@@ -90,11 +86,7 @@ function LampBackground({
   }
   return (
     <div
-      className={cn(
-        'absolute inset-0 flex z-[-1]',
-        containerFlexClass,
-        className,
-      )}
+      className={cn('absolute inset-0 flex z-[-1]', containerFlexClass, className)}
       style={{ gap: 0, maskImage: maskImageStyle }}
     >
       <div

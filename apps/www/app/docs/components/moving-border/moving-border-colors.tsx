@@ -17,8 +17,7 @@ export function MovingBorderColors() {
           <MovingBorder key={label} color={value} className="rounded w-full">
             <div className="rounded flex items-center justify-center px-3 py-1 w-full">
               <h3 className="text-foreground text-sm">
-                Moving Border{' '}
-                <span className="text-muted-foreground">{label}</span>
+                Moving Border <span className="text-muted-foreground">{label}</span>
               </h3>
             </div>
           </MovingBorder>

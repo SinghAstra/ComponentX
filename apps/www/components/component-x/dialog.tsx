@@ -1,8 +1,9 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import React, { useEffect, useRef } from 'react';
+import type React from 'react';
+import { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 const scaleInVariant = {
   hidden: { opacity: 0, scale: 0.6 },
@@ -32,10 +33,7 @@ const Dialog = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dialogRef.current &&
-        !dialogRef.current.contains(event.target as Node)
-      ) {
+      if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
         setIsDialogVisible(false);
       }
     };
@@ -74,7 +72,7 @@ const Dialog = ({
         animate="visible"
         className={cn(
           'w-full max-w-xl mx-4 bg-background border rounded shadow-2xl relative cursor-pointer z-[1000]',
-          className,
+          className
         )}
         ref={dialogRef}
       >

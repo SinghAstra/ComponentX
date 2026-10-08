@@ -1,7 +1,7 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { cn } from '@/lib/utils';
 import ClientCode from './client-code';
 
 interface InstallationProps {
@@ -19,9 +19,7 @@ export function Installation({ command, code }: InstallationProps) {
           onClick={() => setActiveTab('cli')}
           className={cn(
             'px-4 py-2 text-sm font-medium transition-colors relative',
-            activeTab === 'cli'
-              ? 'text-primary'
-              : 'text-muted-foreground hover:text-foreground',
+            activeTab === 'cli' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
           )}
         >
           CLI
@@ -33,9 +31,7 @@ export function Installation({ command, code }: InstallationProps) {
           onClick={() => setActiveTab('manual')}
           className={cn(
             'px-4 py-2 text-sm font-medium transition-colors relative',
-            activeTab === 'manual'
-              ? 'text-primary'
-              : 'text-muted-foreground hover:text-foreground',
+            activeTab === 'manual' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
           )}
         >
           Manual
@@ -50,12 +46,7 @@ export function Installation({ command, code }: InstallationProps) {
           <p className="text-sm text-muted-foreground">
             Run the following command to add the component:
           </p>
-          <ClientCode
-            language="bash"
-            code={command}
-            className="h-fit"
-            showLineNumbers={false}
-          />
+          <ClientCode language="bash" code={command} className="h-fit" showLineNumbers={false} />
         </div>
       )}
 

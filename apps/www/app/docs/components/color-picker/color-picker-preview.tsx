@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import ColorPickerInput from "@/components/component-x/color-picker";
+import ColorPickerInput from '@/components/component-x/color-picker';
 
 export function ColorPickerPreview() {
   return (

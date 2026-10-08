@@ -1,55 +1,42 @@
-"use client";
+'use client';
 
-import BorderHoverLink from "@/components/component-x/border-hover-link";
-import ConicBackground from "@/components/component-x/conic-background";
-import EllipseBackground from "@/components/component-x/ellipse-background";
+import { motion } from 'framer-motion';
+import { ArrowRightIcon, BookOpen, Briefcase, Home, ImageIcon, Info, Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
+import BorderHoverLink from '@/components/component-x/border-hover-link';
+import ConicBackground from '@/components/component-x/conic-background';
+import EllipseBackground from '@/components/component-x/ellipse-background';
 import {
   FloatingNavbar,
   FloatingNavbarContent,
   FloatingNavbarItem,
   FloatingNavbarSeparator,
-} from "@/components/component-x/floating-navbar";
-import GridBackground from "@/components/component-x/grid-background";
-import LampBackground from "@/components/component-x/lamp-background";
-import MaskedGridBackground from "@/components/component-x/masked-grid-background";
-import MovingBackground from "@/components/component-x/moving-background";
-import MovingBorder from "@/components/component-x/moving-border";
-import RadialBackground from "@/components/component-x/radial-background";
-import { TextShine } from "@/components/component-x/text-shine";
-import Navbar from "@/components/navigation/navbar";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import {
-  blurInVariant,
-  containerVariant,
-  scaleInVariant,
-} from "@/lib/variants";
-import { motion } from "framer-motion";
-import {
-  ArrowRightIcon,
-  BookOpen,
-  Briefcase,
-  Home,
-  ImageIcon,
-  Info,
-  Menu,
-  X,
-} from "lucide-react";
-import Link from "next/link";
-import React, { useState } from "react";
-import { AuthDialog } from "../docs/components/dialog/auth-dialog";
-import { DialogWrapper } from "../docs/components/dialog/dialog-wrapper";
-import { SearchDialog } from "../docs/components/dialog/search-dialog";
-import { ColorPickerShowcase } from "./color-picker-showcase";
-import Footer from "./footer";
-import Hero from "./hero";
-import MenuToggleShowcase from "./menu-toggle-showcase";
-import { SliderBasicShowcase } from "./slider-basic-showcase";
-import { SliderLabelShowcase } from "./slider-label-showcase";
-import { SliderNavigationShowcase } from "./slider-navigation-showcase";
-import { SliderTabShowcase } from "./slider-tab-showcase";
-import { TableShowcase } from "./table-showcase";
-import TagInputShowcase from "./tag-input-showcase";
+} from '@/components/component-x/floating-navbar';
+import GridBackground from '@/components/component-x/grid-background';
+import LampBackground from '@/components/component-x/lamp-background';
+import MaskedGridBackground from '@/components/component-x/masked-grid-background';
+import MovingBackground from '@/components/component-x/moving-background';
+import MovingBorder from '@/components/component-x/moving-border';
+import RadialBackground from '@/components/component-x/radial-background';
+import { TextShine } from '@/components/component-x/text-shine';
+import Navbar from '@/components/navigation/navbar';
+import { Button } from '@/components/ui/button';
+import { siteConfig } from '@/config/site';
+import { blurInVariant, containerVariant, scaleInVariant } from '@/lib/variants';
+import { AuthDialog } from '../docs/components/dialog/auth-dialog';
+import { DialogWrapper } from '../docs/components/dialog/dialog-wrapper';
+import { SearchDialog } from '../docs/components/dialog/search-dialog';
+import { ColorPickerShowcase } from './color-picker-showcase';
+import Footer from './footer';
+import Hero from './hero';
+import MenuToggleShowcase from './menu-toggle-showcase';
+import { SliderBasicShowcase } from './slider-basic-showcase';
+import { SliderLabelShowcase } from './slider-label-showcase';
+import { SliderNavigationShowcase } from './slider-navigation-showcase';
+import { SliderTabShowcase } from './slider-tab-showcase';
+import { TableShowcase } from './table-showcase';
+import TagInputShowcase from './tag-input-showcase';
 
 interface ShowCasePageProps {
   showcase?: boolean;
@@ -75,8 +62,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/floating-navbar">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -112,23 +99,11 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
                   <FloatingNavbarSeparator />
                   <FloatingNavbarItem href="/docs" icon={Info} label="About" />
                   <FloatingNavbarSeparator />
-                  <FloatingNavbarItem
-                    href="/docs"
-                    icon={Briefcase}
-                    label="Work"
-                  />
+                  <FloatingNavbarItem href="/docs" icon={Briefcase} label="Work" />
                   <FloatingNavbarSeparator />
-                  <FloatingNavbarItem
-                    href="/docs"
-                    icon={BookOpen}
-                    label="Blog"
-                  />
+                  <FloatingNavbarItem href="/docs" icon={BookOpen} label="Blog" />
                   <FloatingNavbarSeparator />
-                  <FloatingNavbarItem
-                    href="/docs"
-                    icon={ImageIcon}
-                    label="Gallery"
-                  />
+                  <FloatingNavbarItem href="/docs" icon={ImageIcon} label="Gallery" />
                 </FloatingNavbarContent>
               </FloatingNavbar>
             )}
@@ -161,8 +136,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/conic-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -194,8 +169,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/radial-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -226,8 +201,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/moving-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -254,8 +229,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -273,8 +248,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/ellipse-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -305,8 +280,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/lamp-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -332,8 +307,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog#search-dialog">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -347,8 +322,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/moving-border">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -357,9 +332,7 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             </div>
             <div className="p-[2px] relative z-[2] overflow-hidden rounded">
               <MovingBorder>
-                <div className="w-full h-full px-3 py-1 rounded">
-                  Moving Border
-                </div>
+                <div className="w-full h-full px-3 py-1 rounded">Moving Border</div>
               </MovingBorder>
             </div>
           </div>
@@ -372,8 +345,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/grid-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -404,8 +377,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/masked-grid-background">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -431,8 +404,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/dialog#authentication-dialog">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -446,8 +419,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/border-hover-link">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs
@@ -468,8 +441,8 @@ const ShowCasePage = ({ showcase = false }: ShowCasePageProps) => {
             <div className="absolute top-2 right-2">
               <Link href="/docs/components/text-shine">
                 <Button
-                  variant={"outline"}
-                  size={"sm"}
+                  variant={'outline'}
+                  size={'sm'}
                   className="font-normal rounded bg-muted/40 hover:bg-muted/20 transition-all duration-300"
                 >
                   View Docs

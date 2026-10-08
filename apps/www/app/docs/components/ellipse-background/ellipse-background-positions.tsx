@@ -1,7 +1,7 @@
 'use client';
 
 import EllipseBackground, {
-  EllipsePosition,
+  type EllipsePosition,
 } from '@/components/component-x/ellipse-background';
 
 function capitalizeFirstLetter(str: string): string {

@@ -22,8 +22,7 @@ export function MovingBorderEffects() {
           >
             <div className="rounded flex items-center justify-center px-3 py-1 w-full">
               <h3 className="text-foreground text-sm">
-                Moving Border{' '}
-                <span className="text-muted-foreground">{effect.label}</span>
+                Moving Border <span className="text-muted-foreground">{effect.label}</span>
               </h3>
             </div>
           </MovingBorder>

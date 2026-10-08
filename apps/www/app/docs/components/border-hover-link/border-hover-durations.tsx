@@ -21,8 +21,7 @@ export function BorderHoverDurations() {
             className="bg-background px-3 py-1 cursor-pointer rounded overflow-hidden text-center"
           >
             <p className="text-foreground">
-              Hover me{' '}
-              <span className="text-sm text-muted-foreground">{label}</span>
+              Hover me <span className="text-sm text-muted-foreground">{label}</span>
             </p>
           </BorderHoverLink>
         ))}

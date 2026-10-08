@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Table,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from "@/components/component-x/table";
+} from '@/components/component-x/table';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -15,7 +15,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function TableAlignment() {
-  const alignments = ["left", "center", "right"] as const;
+  const alignments = ['left', 'center', 'right'] as const;
 
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col gap-6">

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import {
   Slider,
   SliderContent,
   SliderIndicatorDots,
   SliderItem,
-} from "@/components/component-x/slider";
+} from '@/components/component-x/slider';
 
 export function SliderPreview() {
   return (

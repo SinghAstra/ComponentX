@@ -1,15 +1,15 @@
 'use client';
 
+import { motion } from 'framer-motion';
+import { Command, Loader } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
+import { FaGithub } from 'react-icons/fa';
 import Dialog from '@/components/component-x/dialog';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/site';
 import { scaleInVariant } from '@/lib/variants';
-import { motion } from 'framer-motion';
-import { Command, Loader } from 'lucide-react';
-import Image from 'next/image';
-import React, { useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
 
 export const AuthDialog = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -73,9 +73,7 @@ export const AuthDialog = () => {
         <div className="space-y-4 p-4 text-center bg-muted/20">
           <div className="space-y-1 mb-4">
             <h1 className="text-3xl tracking-wider">{siteConfig.name}</h1>
-            <span className="text-sm text-muted-foreground">
-              Sign In to Get Started
-            </span>
+            <span className="text-sm text-muted-foreground">Sign In to Get Started</span>
           </div>
           <Button
             onClick={handleGitHubSignIn}
@@ -91,9 +89,7 @@ export const AuthDialog = () => {
             ) : (
               <>
                 <FaGithub className="mr-2 h-5 w-5" />
-                <span className="text-center tracking-wide">
-                  Continue with GitHub
-                </span>
+                <span className="text-center tracking-wide">Continue with GitHub</span>
               </>
             )}
           </Button>
@@ -127,9 +123,7 @@ export const AuthDialog = () => {
                   height={18}
                   className="mr-2"
                 />
-                <span className="text-center tracking-wide">
-                  Continue with Google
-                </span>
+                <span className="text-center tracking-wide">Continue with Google</span>
               </>
             )}
           </Button>

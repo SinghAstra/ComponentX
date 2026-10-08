@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId } from 'react';
 
 interface TextShineProps {
   children: React.ReactNode;
@@ -12,28 +12,19 @@ interface TextShineProps {
 
 export function TextShine({
   children,
-  className = "",
+  className = '',
   duration = 6,
-  shineColor = "rgba(255, 255, 255, 1)",
+  shineColor = 'rgba(255, 255, 255, 1)',
   shineStartOpacity = 0.3,
   shinePeakOpacity = 0.8,
   shineEndOpacity = 0.3,
 }: TextShineProps) {
   const id = useId();
-  const animationId = `shine-${id.replace(/:/g, "")}`;
+  const animationId = `shine-${id.replace(/:/g, '')}`;
 
-  const startColor = shineColor.replace(
-    /[\d.]+(?=\))/,
-    shineStartOpacity.toString()
-  );
-  const peakColor = shineColor.replace(
-    /[\d.]+(?=\))/,
-    shinePeakOpacity.toString()
-  );
-  const endColor = shineColor.replace(
-    /[\d.]+(?=\))/,
-    shineEndOpacity.toString()
-  );
+  const startColor = shineColor.replace(/[\d.]+(?=\))/, shineStartOpacity.toString());
+  const peakColor = shineColor.replace(/[\d.]+(?=\))/, shinePeakOpacity.toString());
+  const endColor = shineColor.replace(/[\d.]+(?=\))/, shineEndOpacity.toString());
 
   return (
     <>

@@ -27,9 +27,7 @@ export function EllipseBackgroundTransition() {
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <h3 className="text-2xl text-foreground">{label}</h3>
-            <p className="text-sm text-muted-foreground mt-[1px]">
-              Transition: {value}%
-            </p>
+            <p className="text-sm text-muted-foreground mt-[1px]">Transition: {value}%</p>
           </div>
         </div>
       ))}

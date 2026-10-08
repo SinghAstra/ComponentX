@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
 import {
   Slider,
   SliderContent,
   SliderIndicatorDots,
   SliderItem,
-} from "@/components/component-x/slider";
-import { ComponentShowcase } from "./component-showcase";
+} from '@/components/component-x/slider';
+import { ComponentShowcase } from './component-showcase';
 
 export function SliderBasicShowcase() {
   return (

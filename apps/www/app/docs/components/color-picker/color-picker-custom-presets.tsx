@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import ColorPickerInput from "@/components/component-x/color-picker";
-import { useState } from "react";
+import { useState } from 'react';
+import ColorPickerInput from '@/components/component-x/color-picker';
 
 export function ColorPickerCustomPresets() {
-  const [color, setColor] = useState("#FF6B35");
+  const [color, setColor] = useState('#FF6B35');
 
   const brandColors = [
-    "#FF6B35",
-    "#004E89",
-    "#F77F00",
-    "#FCBF49",
-    "#EAE2B7",
-    "#003049",
-    "#D62828",
-    "#F77F00",
+    '#FF6B35',
+    '#004E89',
+    '#F77F00',
+    '#FCBF49',
+    '#EAE2B7',
+    '#003049',
+    '#D62828',
+    '#F77F00',
   ];
 
   return (

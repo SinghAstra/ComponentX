@@ -1,8 +1,6 @@
 'use client';
 
-import ConicBackground, {
-  type ConicAngleSpans,
-} from '@/components/component-x/conic-background';
+import ConicBackground, { type ConicAngleSpans } from '@/components/component-x/conic-background';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;
@@ -27,9 +25,7 @@ export function ConicAngleSpans() {
             colorTwo="hsl(var(--primary))"
           />
           <div className="relative z-10 flex items-center justify-center h-full">
-            <h3 className="text-2xl text-foreground">
-              {capitalizeFirstLetter(span)}
-            </h3>
+            <h3 className="text-2xl text-foreground">{capitalizeFirstLetter(span)}</h3>
           </div>
         </div>
       ))}

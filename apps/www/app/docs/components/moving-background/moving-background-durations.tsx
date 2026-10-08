@@ -13,10 +13,7 @@ export function MovingBackgroundDurations() {
     <div className="w-full h-full overflow-y-auto flex flex-col items-center justify-center gap-4">
       <div className="flex flex-col gap-4">
         {durations.map(({ label, value }) => (
-          <div
-            key={value}
-            className="relative px-4 py-2 border shadow-md rounded w-full"
-          >
+          <div key={value} className="relative px-4 py-2 border shadow-md rounded w-full">
             <MovingBackground
               backgroundColor="hsl(var(--muted)/0.4)"
               shineColor="hsl(var(--primary)/0.4)"

@@ -1,7 +1,7 @@
 'use client';
 
 import EllipseBackground, {
-  EllipseVariant,
+  type EllipseVariant,
 } from '@/components/component-x/ellipse-background';
 
 function capitalizeFirstLetter(str: string): string {
@@ -28,13 +28,9 @@ export function EllipseBackgroundVariants() {
             radiusY={100}
           />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
-            <h3 className="text-2xl text-foreground">
-              {capitalizeFirstLetter(variant)}
-            </h3>
+            <h3 className="text-2xl text-foreground">{capitalizeFirstLetter(variant)}</h3>
             <p className="text-sm text-muted-foreground mt-[1px]">
-              {variant === 'fade'
-                ? 'Smooth gradient fade'
-                : 'Bright glowing effect'}
+              {variant === 'fade' ? 'Smooth gradient fade' : 'Bright glowing effect'}
             </p>
           </div>
         </div>

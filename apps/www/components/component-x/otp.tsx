@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import type React from "react";
-
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import type React from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface OTPContainerProps {
   children: React.ReactNode;
@@ -11,11 +10,7 @@ interface OTPContainerProps {
   autoFocus?: boolean;
 }
 
-export function OTPContainer({
-  children,
-  length = 6,
-  autoFocus = true,
-}: OTPContainerProps) {
+export function OTPContainer({ children, length = 6, autoFocus = true }: OTPContainerProps) {
   return (
     <OTPProvider length={length} autoFocus={autoFocus}>
       {children}
@@ -42,13 +37,11 @@ export function OTPProvider({
   length?: number;
   autoFocus?: boolean;
 }) {
-  const [values, setValues] = useState<string[]>(Array(length).fill(""));
+  const [values, setValues] = useState<string[]>(Array(length).fill(''));
   const [focusIndex, setFocusIndex] = useState(0);
 
   return (
-    <OTPContext.Provider
-      value={{ values, setValues, focusIndex, setFocusIndex, autoFocus }}
-    >
+    <OTPContext.Provider value={{ values, setValues, focusIndex, setFocusIndex, autoFocus }}>
       {children}
     </OTPContext.Provider>
   );
@@ -57,7 +50,7 @@ export function OTPProvider({
 export function useOTP() {
   const context = useContext(OTPContext);
   if (!context) {
-    throw new Error("useOTP must be used within OTPProvider");
+    throw new Error('useOTP must be used within OTPProvider');
   }
   return context;
 }
@@ -70,7 +63,7 @@ export function OTPGroup({ className }: OTPGroupProps) {
   const { values } = useOTP();
 
   return (
-    <div className={cn("flex gap-2", className)}>
+    <div className={cn('flex gap-2', className)}>
       {values.map((_, index) => (
         <OTPInputBox key={index} index={index} />
       ))}
@@ -111,27 +104,27 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Backspace") {
+    if (e.key === 'Backspace') {
       const newValues = [...values];
-      newValues[index] = "";
+      newValues[index] = '';
       setValues(newValues);
 
       if (index > 0) {
         setFocusIndex(index - 1);
       }
-    } else if (e.key === "ArrowLeft" && index > 0) {
+    } else if (e.key === 'ArrowLeft' && index > 0) {
       setFocusIndex(index - 1);
-    } else if (e.key === "ArrowRight" && index < values.length - 1) {
+    } else if (e.key === 'ArrowRight' && index < values.length - 1) {
       setFocusIndex(index + 1);
     }
   };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const pastedData = e.clipboardData.getData("text");
+    const pastedData = e.clipboardData.getData('text');
     const digits = pastedData
-      .replace(/\D/g, "")
-      .split("")
+      .replace(/\D/g, '')
+      .split('')
       .slice(0, values.length - index);
 
     const newValues = [...values];
@@ -160,13 +153,13 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
       onKeyDown={handleKeyDown}
       onPaste={handlePaste}
       className={cn(
-        "h-12 w-12 text-center text-lg font-semibold",
-        "bg-background text-foreground",
-        "border",
-        "transition-all duration-300",
-        "hover:border-primary",
-        isFocused && "border-primary",
-        "disabled:opacity-50 disabled:cursor-not-allowed"
+        'h-12 w-12 text-center text-lg font-semibold',
+        'bg-background text-foreground',
+        'border',
+        'transition-all duration-300',
+        'hover:border-primary',
+        isFocused && 'border-primary',
+        'disabled:opacity-50 disabled:cursor-not-allowed'
       )}
       aria-label={`OTP digit ${index + 1}`}
     />
@@ -176,13 +169,13 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
 export function useOTPField() {
   const { values, setValues } = useOTP();
 
-  const otpValue = values.join("");
+  const otpValue = values.join('');
 
   return {
     value: otpValue,
     onChange: (newValue: string) => {
-      const digitsOnly = newValue.replace(/\D/g, "").split("").slice(0, length);
-      setValues([...digitsOnly, ...Array(length - digitsOnly.length).fill("")]);
+      const digitsOnly = newValue.replace(/\D/g, '').split('').slice(0, length);
+      setValues([...digitsOnly, ...Array(length - digitsOnly.length).fill('')]);
     },
   };
 }

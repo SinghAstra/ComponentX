@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { TextShine } from "@/components/component-x/text-shine";
+import { TextShine } from '@/components/component-x/text-shine';
 
 export function TextShinePreview() {
   return (

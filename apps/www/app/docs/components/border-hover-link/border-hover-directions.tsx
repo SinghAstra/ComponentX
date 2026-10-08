@@ -1,7 +1,7 @@
 'use client';
 
 import BorderHoverLink, {
-  BorderHoverAnimationDirection,
+  type BorderHoverAnimationDirection,
 } from '@/components/component-x/border-hover-link';
 
 interface BorderItem {

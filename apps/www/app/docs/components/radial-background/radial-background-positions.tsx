@@ -1,8 +1,6 @@
 'use client';
 
-import RadialBackground, {
-  type RadialPosition,
-} from '@/components/component-x/radial-background';
+import RadialBackground, { type RadialPosition } from '@/components/component-x/radial-background';
 
 function capitalizeFirstLetter(str: string): string {
   if (!str) return str;

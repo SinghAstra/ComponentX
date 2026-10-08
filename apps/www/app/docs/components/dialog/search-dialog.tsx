@@ -1,10 +1,5 @@
 'use client';
 
-import Dialog from '@/components/component-x/dialog';
-import { useToastContext } from '@/components/providers/toast';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { fadeInVariant, scaleInVariant } from '@/lib/variants';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -17,6 +12,11 @@ import {
   Zap,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import Dialog from '@/components/component-x/dialog';
+import { useToastContext } from '@/components/providers/toast';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { fadeInVariant, scaleInVariant } from '@/lib/variants';
 
 export const SearchDialog = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -67,12 +67,12 @@ export const SearchDialog = () => {
   const filteredCommands = commands.filter(
     (command) =>
       command.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      command.description.toLowerCase().includes(searchQuery.toLowerCase()),
+      command.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   useEffect(() => {
     setSelectedIndex(0);
-  }, [searchQuery]);
+  }, []);
 
   const handleSelectCommand = (index: number) => {
     const command = filteredCommands[index];
@@ -89,17 +89,13 @@ export const SearchDialog = () => {
       switch (event.key) {
         case 'ArrowDown':
           event.preventDefault();
-          setSelectedIndex((prev) =>
-            prev < filteredCommands.length - 1 ? prev + 1 : 0,
-          );
+          setSelectedIndex((prev) => (prev < filteredCommands.length - 1 ? prev + 1 : 0));
           break;
         case 'ArrowUp':
           event.preventDefault();
-          setSelectedIndex((prev) =>
-            prev > 0 ? prev - 1 : filteredCommands.length - 1,
-          );
+          setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredCommands.length - 1));
           break;
-        case 'Enter':
+        case 'Enter': {
           event.preventDefault();
           const command = filteredCommands[selectedIndex];
           if (command) {
@@ -107,9 +103,10 @@ export const SearchDialog = () => {
             setIsDialogVisible(false);
           }
           break;
-        default:
+        }
+        default: {
           const matchedIndex = filteredCommands.findIndex(
-            (cmd) => cmd.shortcut.toLowerCase() === event.key.toLowerCase(),
+            (cmd) => cmd.shortcut.toLowerCase() === event.key.toLowerCase()
           );
           if (matchedIndex !== -1) {
             event.preventDefault();
@@ -120,6 +117,7 @@ export const SearchDialog = () => {
             }
           }
           break;
+        }
       }
     };
 
@@ -134,11 +132,7 @@ export const SearchDialog = () => {
 
   return (
     <>
-      <motion.div
-        variants={scaleInVariant}
-        onClick={toggleDialog}
-        className="w-full max-w-[300px]"
-      >
+      <motion.div variants={scaleInVariant} onClick={toggleDialog} className="w-full max-w-[300px]">
         <Button
           className="rounded px-1 flex items-center justify-between w-full bg-transparent hover:bg-muted/40 transition-all duration-300 font-normal"
           variant={'outline'}
@@ -193,12 +187,8 @@ export const SearchDialog = () => {
                       <command.icon className="w-4 h-4 text-muted-foreground" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground text-sm">
-                        {command.label}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {command.description}
-                      </p>
+                      <p className="font-medium text-foreground text-sm">{command.label}</p>
+                      <p className="text-xs text-muted-foreground">{command.description}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -235,22 +225,16 @@ export const SearchDialog = () => {
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 bg-muted/70 rounded border border-border">
-                  ↑↓
-                </kbd>
+                <kbd className="px-1.5 py-0.5 bg-muted/70 rounded border border-border">↑↓</kbd>
                 Navigate
               </span>
               <span className="flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 bg-muted/70 rounded border border-border">
-                  ↵
-                </kbd>
+                <kbd className="px-1.5 py-0.5 bg-muted/70 rounded border border-border">↵</kbd>
                 Select
               </span>
             </div>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-muted/70 rounded border border-border">
-                Esc
-              </kbd>
+              <kbd className="px-1.5 py-0.5 bg-muted/70 rounded border border-border">Esc</kbd>
               Close
             </span>
           </div>

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { docsLink } from "@/config/docs";
-import { DocsLink } from "@/interfaces/docs-link";
-import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { docsLink } from '@/config/docs';
+import type { DocsLink } from '@/interfaces/docs-link';
+import { cn } from '@/lib/utils';
 
 const allDocsLinks = docsLink.flatMap((section) => section.links);
 
@@ -34,7 +34,7 @@ export function DocsPagination() {
         <Link
           href={previousLink.path}
           className={
-            "flex items-center gap-1 p-2 rounded border transition-all duration-300 hover:bg-muted/30 w-fit group max-w-[48%]"
+            'flex items-center gap-1 p-2 rounded border transition-all duration-300 hover:bg-muted/30 w-fit group max-w-[48%]'
           }
         >
           <ChevronLeft className="h-4 w-4 mr-1 group-hover:-translate-x-1 transition-all duration-300 flex-shrink-0" />
@@ -48,7 +48,7 @@ export function DocsPagination() {
         <Link
           href={nextLink.path}
           className={cn(
-            "flex items-center ml-auto sm:ml-0 gap-1 p-2 rounded border transition-all duration-300 hover:bg-muted/30 w-fit group max-w-[48%]"
+            'flex items-center ml-auto sm:ml-0 gap-1 p-2 rounded border transition-all duration-300 hover:bg-muted/30 w-fit group max-w-[48%]'
           )}
         >
           <span className="text-base truncate">{nextLink.title}</span>

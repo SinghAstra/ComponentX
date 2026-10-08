@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 export type BorderPosition = 'top' | 'bottom' | 'left' | 'right';
 export type BorderHoverAnimationDirection = 'ltr' | 'rtl';
@@ -31,8 +31,7 @@ const BorderHoverLink = ({
   };
 
   const getAnimationClasses = () => {
-    const isHorizontal =
-      borderPosition === 'top' || borderPosition === 'bottom';
+    const isHorizontal = borderPosition === 'top' || borderPosition === 'bottom';
 
     if (isHorizontal) {
       return animationDirection === 'ltr'
@@ -46,9 +45,7 @@ const BorderHoverLink = ({
   };
 
   const sizeClass =
-    borderPosition === 'left' || borderPosition === 'right'
-      ? 'w-[1px]'
-      : `h-[${borderHeight}]`;
+    borderPosition === 'left' || borderPosition === 'right' ? 'w-[1px]' : `h-[${borderHeight}]`;
 
   return (
     <span className={cn('relative group cursor-pointer', className)}>
@@ -59,7 +56,7 @@ const BorderHoverLink = ({
           positionClasses[borderPosition],
           sizeClass,
           'transition-transform',
-          getAnimationClasses(),
+          getAnimationClasses()
         )}
         style={{
           backgroundColor: borderColor,

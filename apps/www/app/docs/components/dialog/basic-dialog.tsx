@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Dialog from '@/components/component-x/dialog';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 export function BasicDialog() {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -16,10 +16,7 @@ export function BasicDialog() {
       >
         Open Dialog
       </Button>
-      <Dialog
-        isDialogVisible={isDialogVisible}
-        setIsDialogVisible={setIsDialogVisible}
-      >
+      <Dialog isDialogVisible={isDialogVisible} setIsDialogVisible={setIsDialogVisible}>
         <div className="p-6">
           <h2 className="text-xl font-semibold mb-2">Confirm Action</h2>
           <p className="text-muted-foreground mb-6">
@@ -33,10 +30,7 @@ export function BasicDialog() {
             >
               Cancel
             </Button>
-            <Button
-              className="rounded font-normal"
-              onClick={() => setIsDialogVisible(false)}
-            >
+            <Button className="rounded font-normal" onClick={() => setIsDialogVisible(false)}>
               Confirm
             </Button>
           </div>
