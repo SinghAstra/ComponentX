@@ -24,6 +24,7 @@ interface OTPContextType {
   focusIndex: number;
   setFocusIndex: (index: number) => void;
   autoFocus: boolean;
+  length: number;
 }
 
 const OTPContext = createContext<OTPContextType | undefined>(undefined);
@@ -41,7 +42,7 @@ export function OTPProvider({
   const [focusIndex, setFocusIndex] = useState(0);
 
   return (
-    <OTPContext.Provider value={{ values, setValues, focusIndex, setFocusIndex, autoFocus }}>
+    <OTPContext.Provider value={{ values, setValues, focusIndex, setFocusIndex, autoFocus, length }}>
       {children}
     </OTPContext.Provider>
   );
@@ -167,7 +168,7 @@ export function OTPInputBox({ index }: OTPInputBoxProps) {
 }
 
 export function useOTPField() {
-  const { values, setValues } = useOTP();
+  const { values, setValues, length } = useOTP();
 
   const otpValue = values.join('');
 
