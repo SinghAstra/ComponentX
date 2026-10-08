@@ -199,6 +199,13 @@ export function FileUploader({
   const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const onDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
   };
 
   const removeFile = (key: string) => {
@@ -208,11 +215,22 @@ export function FileUploader({
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (disabled) return;
+    if (e.key === 'Escape' && isDragging) {
+      e.preventDefault();
+      setIsDragging(false);
+      return;
+    }
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       handleBrowseClick();
     }
   };
+
+  useEffect(() => {
+    return () => {
+      setIsDragging(false);
+    };
+  }, []);
 
   return (
     <div className={cn('w-full', className)}>
@@ -228,6 +246,7 @@ export function FileUploader({
         onDragOver={onDragOver}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
+        onDragEnd={onDragEnd}
         className={cn(
           'relative flex flex-col items-center justify-center rounded border border-dashed p-6 transition-all duration-300',
           'bg-background text-foreground',
