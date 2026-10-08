@@ -3,7 +3,7 @@
 import { CloudUpload, X } from 'lucide-react';
 import type React from 'react';
 import { useRef, useState } from 'react';
-import { useToastContext } from '@/components/providers/toast';
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 
 interface VideoUploadProps {
@@ -15,7 +15,6 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
     file?: File;
     preview?: string;
   } | null>(null);
-  const { setToastMessage } = useToastContext();
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -24,13 +23,13 @@ export function VideoUpload({ maxSize = 100 }: VideoUploadProps) {
   const validateFile = (file: File): boolean => {
     const validTypes = ['video/mp4', 'video/quicktime', 'video/webm', 'video/x-msvideo'];
     if (!validTypes.includes(file.type)) {
-      setToastMessage(`Invalid file type. Supported formats: ${supportedFormats.join(', ')}`);
+      toast.error(`Invalid file type. Supported formats: ${supportedFormats.join(', ')}`);
       return false;
     }
 
     const fileSizeMB = file.size / (1024 * 1024);
     if (fileSizeMB > maxSize) {
-      setToastMessage(`File size exceeds ${maxSize}MB limit`);
+      toast.error(`File size exceeds ${maxSize}MB limit`);
       return false;
     }
 
