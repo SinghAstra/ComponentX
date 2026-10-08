@@ -1,7 +1,6 @@
 'use client';
 
 import { ImageUp, X } from 'lucide-react';
-import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -316,12 +315,11 @@ export function FileUploader({
             const key = getFileKey(file);
             const url = previewUrls[key];
             return (
-              <div key={key} className="relative rounded border h-24">
-                <Image
+              <div key={key} className="relative rounded border h-24 overflow-hidden">
+                <img
                   src={url}
                   alt={`${file.name} preview`}
-                  fill
-                  className="h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
 
                 <Button

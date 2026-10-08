@@ -1,10 +1,30 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 import type * as React from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+
+function usePathname(): string {
+  const [pathname, setPathname] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
+
+  useEffect(() => {
+    const onPathChange = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', onPathChange);
+    const originalPushState = history.pushState;
+    history.pushState = function (...args) {
+      originalPushState.apply(history, args);
+      onPathChange();
+    };
+    return () => {
+      window.removeEventListener('popstate', onPathChange);
+      history.pushState = originalPushState;
+    };
+  }, []);
+
+  return pathname;
+}
 
 interface FloatingNavbarProps {
   className?: string;
