@@ -4,6 +4,7 @@ import { Command } from 'commander'
 
 import { CliError } from '../lib/errors'
 import { writeGeneratedFile, writePrimitiveFile } from '../lib/files'
+import { buildInstallCommand, runInstall } from '../lib/install'
 import { logger } from '../lib/logger'
 import { preflight } from '../lib/preflight'
 import {
@@ -15,6 +16,8 @@ import {
 } from '../lib/registry'
 import { renderTemplate } from '../lib/render'
 import { collectShadcnItems } from '../lib/shadcn'
+
+const BROKEN_TOAST_IMPORT = '@/components/providers/toast'
 
 type AddOptions = {
   registry?: string
@@ -108,6 +111,12 @@ export function createAddCommand(): Command {
 
         if (result !== 'kept') written += 1
 
+        if (content.includes(BROKEN_TOAST_IMPORT)) {
+          logger.warn(
+            `${item.name} still imports "${BROKEN_TOAST_IMPORT}", a file that only exists in the ComponentX repo. It will fail to compile in your project until that import is removed.`,
+          )
+        }
+
         for (const internal of item.internalDependencies ?? []) {
           if (!visitedComponents.has(internal)) queue.push(internal)
         }
@@ -149,12 +158,21 @@ export function createAddCommand(): Command {
         logger.success(`${written} file(s) written`)
       }
 
-      if (npmDependencies.size > 0) {
-        const deps = [...npmDependencies].sort().join(', ')
+      const dependencies = [...npmDependencies]
+        .filter(name => !info.installedDeps.has(name))
+        .sort()
+
+      if (dependencies.length > 0) {
         if (writeOptions.dryRun) {
-          logger.info(`packages required: ${deps}`)
+          logger.info(`packages required: ${dependencies.join(', ')}`)
+        } else if (!options.install) {
+          logger.info(
+            `install them with: ${buildInstallCommand(info.packageManager, dependencies)}`,
+          )
         } else {
-          logger.warn(`install the required packages: ${deps}`)
+          logger.info(`installing ${dependencies.join(', ')}...`)
+          await runInstall(info.packageManager, dependencies)
+          logger.success('packages installed')
         }
       }
     })
